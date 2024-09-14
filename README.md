@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+# About the project
+
+- the App supports switching between languages applied using next-intl with app router
+- the icons used are from phosphor icons library [PhosphorIcons](https://phosphoricons.com/)
+- the app is user friendly and fit in all devices 
+- Redux toolkit for the shopping cart 
+- Typescript is the main software used in this project
+- Tailwind css for styling [Tailwindcss](https://tailwindcss.com/)
+- Dark mode [darkMode](https://prismic.io/blog/tailwind-css-darkmode-tutorial)
+- Firebase for backend to handle Authentication [Firebase](https://firebase.google.com/)
+- React-slick Package to manage the images slide [slickcarousel](https://react-slick.neostack.com/)

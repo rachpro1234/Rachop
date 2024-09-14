@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+@layer components {
+  .header_top__fb_wrapper {
+    @apply bg-gray-200 rounded-md p-[6px] text-[14px] cursor-pointer hover:bg-fb hover:text-white;
+  }
+  .header_top__inst_wrapper {
+    @apply bg-gray-200 rounded-md p-[6px] text-[14px] cursor-pointer hover:bg-inst hover:text-white;
+  }
+  .header_top__twi_wrapper {
+    @apply bg-gray-200 rounded-md p-[6px] text-[14px] cursor-pointer hover:bg-twi hover:text-white;
+  }
+  .header_top__lin_wrapper {
+    @apply bg-gray-200 rounded-md p-[6px] text-[14px] cursor-pointer hover:bg-lin hover:text-white;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-inline: 1rem;
+  font-family: "Roboto Mono", monospace;
+}
+
+.app-star {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+input[type="radio"] {
+  display: none;
+}
+
+.star {
+  font-size: 1.7rem;
+  cursor: pointer;
+  margin: 0.313rem;
+}
+
+.app-star .rate-count {
+  padding-bottom: 0;
+}
+
+@media screen and (max-width: 1018px) {
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    width: 18.75rem;
+    position: fixed;
+    bottom: 6.5%;
+    left: 0;
+    padding: 7rem 0 0 1.875rem;
+    background-color: #eee;
+    color: #000;
+    box-shadow: 1rem 2.5rem 3.75rem rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .nav-links.active {
+    left: 0px;
+  }
+
+  .nav-links.inactive {
+    left: -18.75rem;
+  }
+
+}
+
+
+.nav-links li .nav-link:hover,
+.nav-links li .nav-link.active {
+    color:  rgb(151, 79, 218);
+    font-weight: bolder;
+}
+
+
+
+
+
+
+
+
+

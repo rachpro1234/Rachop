@@ -1,0 +1,186 @@
+{
+  "Navbar": {
+    "Home": "Home",
+    "About_us": "About Us",
+    "Men": "Men",
+    "Women": "Women",
+    "Jewellery": "Jewellery",
+    "Perfume": "Perfume",
+    "Order": "Order",
+    "sign_in": "sign in",
+    "sign_up": "sign up"
+  },
+
+  "NotFoundPage": {
+    "not_found": "Not Found"
+  },
+
+  "Index": {
+    "FREE_SHIPPING": "FREE SHIPPING",
+    "50$": "50$",
+    "THIS_WEEK_ORDER_OVER": "THIS WEEK ORDER OVER",
+    "we_offer": "we offer",
+    "in_products": "in products",
+    "variety": "variety",
+    "quality": "quality",
+    "guarantee": "guarantee",
+    "reliability": "reliability",
+    "sign_in": "sign in",
+    "sign_up": "sign up",
+    "trending_item": "Bose Items",
+    "men_sunglasses": "men sunglasses",
+    "new_fashion_summer_sale": "New Fashion Summer Sale",
+    "women_latest_fashion": "women latest fashion",
+    "trending_earring": "trending earring",
+    "women_latest_fashion_sale": "women latest fashion sale",
+    "modern_nails_design": "modern nails design",
+    "women_latest_design": "women latest design",
+    "starting_at": "starting at",
+    "shop_now": "shop now",
+    "enter_product_name": "Enter product Name...",
+    "new_arrival": "New Arrival",
+    "jacket": "jacket",
+    "greyman_jacket_heliko_tex": "greyman jacket - heliko tex",
+    "skirt": "skirt",
+    "brown_floral_wrap_midi_skirt": "brown floral wrap midi skirt",
+    "party_wear": "party wear",
+    "women_party_shoes": "women party shoes",
+    "shirt": "shirt",
+    "men_corporate_shirt": "men corporate shirt",
+    "shoes": "shoes",
+    "green_waterproof_hiking_shoes": "green waterproof hiking shoes",
+    "watches": "watches",
+    "smart_watches_vital_plus": "smart watches vital plus",
+    "pocket_watch_leather_pouch": "pocket watch leather pouch",
+    "testimonials": "Testimonials",
+    "fashion_model_&_artist": "fashion model & artist",
+    "the_service_is_amazing!!": "the service is amazing!!",
+    "film_maker_&_singer": "film maker & singer",
+    "i_would_recommend_it_to_everybody": "I would recommend to to everybody",
+    "ceo_&_founder_invision": "CEO & founder invision",
+    "i_can't_ask_for_more_than_that": "I can't ask for more than that",
+    "25%_discount": "25% Discount",
+    "sommer_collection": "Sommer collection",
+    "starting_@_$20_shop_now": "Starting @ $20 Shop Now",
+    "$" : "€"
+  },
+
+  "ServiceBanner": {
+    "fast_&_free_delivery": "fast & free delivery",
+    "free_delivered_orders": "free delivered orders",
+    "safe_payment": "safe payment",
+    "pay_safely_your_orders": "pay safely your orders",
+    "Money_Refund": "money refund",
+    "get_your_money_back": "get your money back",
+    "24h_availability": "24 availability",
+    "we_are_24h_available_for_you": "we are 24h available for you"
+  },
+
+  "About": {
+    "about": "about",
+    "we_have_fashion_store_in": "we have fashion stores in",
+    "germany": "Germany",
+    "italy": "Italy",
+    "austria": "Austria",
+    "swiss": "Swiss",
+    "morocco": "Morocco",
+    "our_story": "our story",
+    "journy_start_from": "journy start from"
+  },
+
+
+  "Men": {
+    "men": "Men",
+    "shop_with_us": "shop with us",
+    "light_jogging_jacket": "leichte Joggingjacke",
+    "jogging_jacket": "leichte Jacke",
+    "winter_jacket": "Winterjacke",
+    "winter_hoodie": "Winter-Hoodie",
+    "automn_trikot": "Herbsttrikot",
+    "cold_days_jacket": "Jacke für kalte Tage",
+    "$" : "$"
+  },
+  "Women": {
+    "women": "Women",
+    "shop_with_us": "shop with us",
+    "automn-dress": "Autumn Dress",
+    "green_occasions_dress": "Green Occasions Dress",
+    "sommer-dress": "Summer Dress",
+    "party_wear_dress": "Party Wear Dress",
+    "winter-dress": "Winter Dress",
+    "snow_wear_dress": "Snow Wear Dress",
+    "sport-wear": "Sportswear",
+    "sport_top_trikot": "Sport Top Trikot",
+    "sommer_outgoing_wear": "Summer Outgoing Wear",
+    "sommer-wear": "Summer Wear",
+    "top_sommer_trikot": "Top Summer Trikot",
+    "$" : "$"
+  },
+
+  "Jewellery": {
+    "jewellery": "Jewellery",
+    "shop_with_us": "shop with us",
+    "o-collier": "Necklace",
+    "occasion_collier": "Occasion Necklace",
+    "f-d-necklace": "F-D-Necklace",
+    "festival_day_necklace": "Festival Day Necklace",
+    "h-necklace": "H-Necklace",
+    "holiday_necklace": "Holiday Necklace",
+    "f-e-necklace": "F-E-Necklace",
+    "formal_evening_necklace": "Evening Necklace",
+    "c-d-necklace": "C-D-Necklace",
+    "casual_daily_necklace": "Casual Daily Necklace",
+    "w-collier": "W-Necklace",
+    "wedding_collier": "Wedding Necklace",
+    "$" : "$"
+  },
+
+  "Order": {
+    "your_orders": "your orders",
+    "Cart_is_empty_please_add_an_item": "cart is empty.please add an item",
+    "buy": "Buy",
+    "total_items": "Total Items"
+  },
+  "Perfume": {
+    "shop_with_us": "shop with us",
+    "perfume": "Perfume",
+    "winter_perfume": "Winter Perfume",
+    "automn_perfume": "Autumn Perfume",
+    "daily_perfume": "Daily Perfume",
+    "$" : "$"
+  },
+
+  "Footer": {
+    "about_us": "About Us",
+    "order": "Order",
+    "men": "Men",
+    "women": "Women",
+    "copyright": "copyright",
+    "all_rights_reserved": "all rights reserved",
+    "your_favorite_place_not_only_to_shop_but_to_get_your_need_satisfied_too": "Your favorite place not only to shop but to get your needs satisfied too",
+    "Rachop_has_always_provided_the_things_every_client_needed": "Rachop has always provided the things every client needed",
+    "Don't_miss_this_chance_and_get_you_what_you_search_for": "Don't miss this chance and get what you're looking for."
+  },
+
+  "SignUp": {
+    "sign_up": "Sign up",
+    "sign_in": "Sign in",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "enter_your_password": "Enter your password",
+    "enter_your_email": "Enter your email",
+    "enter_your_name": "Enter your name",
+    "already_have_account": "Already have an account"
+  },
+
+  "SignIn": {
+    "sign_up": "Sign up",
+    "sign_in": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "enter_your_password": "Enter your password",
+    "enter_your_email": "Enter your email",
+    "don't_have_an_account": "Don't have an account"
+  }
+}

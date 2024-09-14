@@ -1,0 +1,185 @@
+{
+  "Navbar": {
+    "Home": "Casa",
+    "About_us": "chi siamo",
+    "Men": "Uomini",
+    "Women": "Donne",
+    "Jewellery": "Gioielleria",
+    "Perfume": "Profumo",
+    "Order": "Ordine"
+  },
+
+  "NotFoundPage": {
+    "not_found": "Non trovato"
+  },
+
+  "Index": {
+    "FREE_SHIPPING": "Spedizione gratuita",
+    "50$": "50$",
+    "THIS_WEEK_ORDER_OVER": "L'ORDINE DI QUESTA SETTIMANA È FINITO",
+    "we_offer": "offriamo",
+    "in_products": "nei prodotti",
+    "variety": "varietà",
+    "quality": "qualità",
+    "guarantee": "garanzia",
+    "reliability": "affidabilità",
+    "sign_in": "registrazione",
+    "sign_up": "Iscriviti",
+    "trending_item": "articolo di tendenza",
+    "men_sunglasses": "occhiali da sole da uomo",
+    "new_fashion_summer_sale": "Nuovi moda saldi estivi",
+    "women_latest_fashion": "l'ultima moda femminile",
+    "trending_earring": "Orecchino di tendenza",
+    "women_latest_fashion_sale": "saldi dell'ultima moda femminile",
+    "modern_nails_design": "Design moderno delle unghie",
+    "women_latest_design": "donne ultimi design",
+    "starting_at": "a partire da",
+    "shop_now": "acquistare ora",
+    "enter_product_name": "inserisci il nome del prodotto...",
+    "new_arrival": "nuovo arrivo",
+    "jacket": "Giacca",
+    "greyman_jacket_heliko_tex": "Giacca GreyMan - Heliko Tex",
+    "skirt": "gonna",
+    "brown_floral_wrap_midi_skirt": "gonna midi a portafoglio floreale marrone",
+    "party_wear": "Abbigliamento da festa",
+    "women_party_shoes": "Scarpe da festa da donna",
+    "shirt": "Camicia",
+    "men_corporate_shirt": "Camicia aziendale da uomo",
+    "shoes": "Scarpe",
+    "green_waterproof_hiking_shoes": "Scarpe da trekking impermeabili verdi",
+    "watches": "Orologi",
+    "smart_watches_vital_plus": "Orologi intelligenti Vital Plus",
+    "pocket_watch_leather_pouch": "Custodia in pelle per orologio da tasca",
+    "testimonials": "Testimonianze",
+    "fashion_model_&_artist": "modella e artista",
+    "the_service_is_amazing!!": "il servizio è fantastico!!",
+    "film_maker_&_singer": "regista e cantante",
+    "i_would_recommend_it_to_everybody": "Lo consiglierei a tutti",
+    "ceo_&_founder_invision": "Visione del CEO e del fondatore",
+    "i_can't_ask_for_more_than_that": "Non posso chiedere di più",
+    "25%_discount": "25% Sconto",
+    "sommer_collection": "Collezione estiva",
+    "starting_@_$20_shop_now": "A partire da $ 20 Acquista ora",
+    "$" : "€"
+  },
+
+  "ServiceBanner": {
+    "fast_&_free_delivery": "consegna veloce e gratuita",
+    "free_delivered_orders": "ordini consegnati gratuitamente",
+    "safe_payment": "pagamento sicuro",
+    "pay_safely_your_orders": "Paga i tuoi ordini in tutta sicurezza",
+    "Money_Refund": "Rimborso in denaro",
+    "get_your_money_back": "Recupera i tuoi soldi",
+    "24h_availability": "Disponibilità 24 ore su 24",
+    "we_are_24h_available_for_you": "siamo disponibili 24 ore su 24 per te"
+  },
+
+  "About": {
+    "about": "Chi siamo",
+    "we_have_fashion_store_in": "abbiamo un negozio di moda a",
+    "germany": "Germania",
+    "italy": "Italia",
+    "austria": "Austria",
+    "swiss": "Svizzera",
+    "morocco": "Marocco",
+    "our_story": "la nostra storia",
+    "journy_start_from": "il viaggio inizia da"
+  },
+
+
+  "Men": {
+    "men": "Uomini",
+    "shop_with_us": "acquista con noi",
+    "light_jogging_jacket": "jogging leggera",
+    "jogging_jacket": "giacca da jogging",
+    "winter_jacket": "giacca invernale",
+    "winter_hoodie": "hoodie invernale",
+    "automn_trikot": "maglione autunnale",
+    "cold_days_jacket": "giacca giorni freddi",
+    "$" : "€"
+  },
+  "Women": {
+    "women": "Donne",
+    "shop_with_us": "acquista con noi",
+    "automn-dress": "Vestito autunnale",
+    "green_occasions_dress": "Vestito verde per occasioni",
+    "sommer-dress": "Vestito estivo",
+    "party_wear_dress": "Vestito da sera",
+    "winter-dress": "Vestito invernale",
+    "snow_wear_dress": "Vestito da neve",
+    "sport-wear": "Abbigliamento sportivo",
+    "sport_top_trikot": "Top sportivo",
+    "sommer_outgoing_wear": "Abbigliamento da sera estivo",
+    "sommer-wear": "Abbigliamento estivo",
+    "top_sommer_trikot": "Top estivo",
+    "$" : "€"
+  },
+
+  "Jewellery": {
+    "jewellery": "Gioielli",
+    "shop_with_us": "acquista con noi",
+    "o-collier": "collana",
+    "occasion_collier": "Collana per occasioni",
+    "f-d-necklace": "c-p-festività",
+    "festival_day_necklace": "Collana per festività",
+    "h-necklace": "c-p-vacanze",
+    "holiday_necklace": "Collana per vacanze",
+    "f-e-necklace": "c-p-serata formale",
+    "formal_evening_necklace": "Collana per serata formale",
+    "c-d-necklace": "c-p-uso quotidiano",
+    "casual_daily_necklace": "Collana per uso quotidiano",
+    "w-collier": "c-d-sposa",
+    "wedding_collier": "Collana da sposa",
+    "$" : "€"
+  },
+
+  "Order": {
+    "your_orders": "I tuoi ordini",
+    "Cart_is_empty_please_add_an_item": "Carrello vuoto.Aggiungi un articolo",
+    "buy": "Acquista",
+    "total_items": "Numero totale di articoli"
+  },
+
+  "Perfume": {
+    "shop_with_us": "Acquista con noi",
+    "perfume": "Profumo",
+    "winter_perfume": "Profumo d'Inverno",
+    "automn_perfume": "Profumo d'Autunno",
+    "daily_perfume": "Profumo Quotidiano",
+    "$" : "€"
+  },
+
+  "Footer": {
+    "about_us": "Su di noi",
+    "order": "Ordine",
+    "men": "Uomini",
+    "women": "Donne",
+    "copyright": "diritto d'autore",
+    "all_rights_reserved": "Tutti i diritti riservati",
+    "your_favorite_place_not_only_to_shop_but_to_get_your_need_satisfied_too": "Il tuo posto preferito non solo per fare acquisti, ma anche per soddisfare le tue esigenze",
+    "Rachop_has_always_provided_the_things_every_client_needed": "Rachop ha sempre fornito le cose di cui ogni cliente aveva bisogno",
+    "Don't_miss_this_chance_and_get_you_what_you_search_for": "Non perdere questa occasione e ottieni ciò che cerchi"
+  },
+
+  "SignUp": {
+    "sign_up": "Iscrivetevi",
+    "sign_in": "Accedi",
+    "name": "Nome",
+    "email": "Email",
+    "password": "Password",
+    "enter_your_password": "Inserisci la tua password",
+    "enter_your_email": "Inserisci la tua email",
+    "enter_your_name": "Inserisci il tuo nome",
+    "already_have_account": "Hai già un account"
+  },
+
+  "SignIn": {
+    "sign_up": "Iscrivetevi",
+    "sign_in": "Accedi",
+    "email": "Email",
+    "password": "Password",
+    "enter_your_password": "Inserisci la tua password",
+    "enter_your_email": "Inserisci la tua email",
+    "don't_have_an_account": "Non hai un account"
+  }
+}

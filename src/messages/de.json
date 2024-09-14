@@ -1,0 +1,189 @@
+{
+  "Navbar": {
+    "Home": "Home",
+    "About_us": "Über uns",
+    "Men": "Herren",
+    "Women": "Damen",
+    "Jewellery": "Schmuck",
+    "Perfume": "Parfüm",
+    "Order": "Bestellung",
+    "sign_in": "anmelden",
+    "sign_up": "registrieren"
+  },
+
+  "NotFoundPage": {
+    "not_found": "Nicht Gefunden"
+  },
+
+  "Index": {
+    "FREE_SHIPPING": "KOSTENLOSER VERSAND",
+    "50$": "50€",
+    "THIS_WEEK_ORDER_OVER": "Die Woche bestellung uber",
+    "we_offer": "Wir bieten",
+    "in_products": "bei Produkten",
+    "variety": "Vielfalt",
+    "quality": "Qualität",
+    "guarantee": "Garantie",
+    "reliability": "Zuverlässigkeit",
+     "sign_in": "anmelden",
+    "sign_up": "registrieren",
+    "trending_item": "Trendartikel",
+    "men_sunglasses": "Herren-Sonnenbrille",
+    "new_fashion_summer_sale": "neuer Mode-Sommerschlussverkauf",
+    "women_latest_fashion": "Damen neueste Mode",
+    "trending_earring": "Trendiger Ohrring",
+    "women_latest_fashion_sale": "Neueste Damenmode im Sale",
+    "modern_nails_design": "modernes Nageldesign",
+    "women_latest_design": "Damen neuestes Design",
+    "starting_at": "ab",
+    "shop_now": "Jetzt einkaufen",
+    "enter_product_name": "Geben Sie den Produktnamen ein...",
+    "new_arrival": "Neuankömmling",
+    "jacket": "Jacke",
+    "greyman_jacket_heliko_tex": "graue Herrenjacke - Heliko Tex",
+    "skirt": "Rock",
+    "brown_floral_wrap_midi_skirt": "Brauner, geblümter Midi-Wickelrock",
+    "party_wear": "Partykleidung",
+    "women_party_shoes": "Partyschuhe für Damen",
+    "shirt": "Hemd",
+    "men_corporate_shirt": "Firmenhemd für Herren",
+    "shoes": "Schuhe",
+    "green_waterproof_hiking_shoes": "Grüne wasserdichte Wanderschuhe",
+    "watches": "Uhren",
+    "smart_watches_vital_plus": "Smartwatches Vital Plus",
+    "pocket_watch_leather_pouch": "Taschenuhr - Lederetui",
+    "testimonials": "Referenzen",
+    "fashion_model_&_artist": "Model und Künstler",
+    "the_service_is_amazing!!": "Der Service ist unglaublich!!",
+    "film_maker_&_singer": "Filmemacher und Sänger",
+    "i_would_recommend_it_to_everybody": "Ich würde es jedem empfehlen",
+    "ceo_&_founder_invision": "Vision des CEO und Gründers",
+    "i_can't_ask_for_more_than_that": "Mehr kann ich nicht verlangen",
+    "25%_discount": "25% Rabatt",
+    "sommer_collection": "Sommerkollektion",
+    "starting_@_$20_shop_now": "Ab 20$ Jetzt einkaufen",
+    "$" : "€"
+  },
+
+  "ServiceBanner": {
+    "fast_&_free_delivery": "schnelle & kostenlose Lieferung",
+    "free_delivered_orders": "Kostenlose Lieferung von Bestellungen",
+    "safe_payment": "sichere Zahlung",
+    "pay_safely_your_orders": "Bezahlen Sie Ihre Bestellungen sicher",
+    "Money_Refund": "Geldrückerstattung",
+    "get_your_money_back": "Holen Sie sich Ihr Geld zurück",
+    "24h_availability": "24h Verfügbarkeit",
+    "we_are_24h_available_for_you": "Wir sind 24h für Sie erreichbar"
+  },
+
+  "About": {
+    "about": "über uns",
+    "we_have_fashion_store_in": "Wir haben ein Modegeschäft in",
+    "germany": "Deutschland",
+    "italy": "Italien",
+    "austria": "Österreich",
+    "swiss": "Schweiz",
+    "morocco": "Marokko",
+    "our_story": "Unsere Geschichte",
+    "journy_start_from": "Die Reise beginnt ab"
+  },
+
+
+  "Men": {
+    "men": "Herren",
+    "shop_with_us": "Kaufen Sie bei uns ein",
+    "light_jogging_jacket": "leichte Joggingjacke",
+    "jogging_jacket": "leichte Jacke",
+    "winter_jacket": "Winterjacke",
+    "winter_hoodie": "Winter-Hoodie",
+    "automn_trikot": "Herbsttrikot",
+    "cold_days_jacket": "Jacke für kalte Tage",
+    "$" : "€"
+  },
+
+
+  "Jewellery": {
+    "jewellery": "Schmuck",
+    "shop_with_us": "Kaufen Sie bei uns ein",
+    "o-collier": "a-kette",
+    "occasion_collier": "Anlasskette",
+    "f-d-necklace": "f-t-kette",
+    "festival_day_necklace": "Festtagkette",
+    "h-necklace": "f-t-kette",
+    "holiday_necklace": "Feiertagskette",
+    "f-e-necklace": "g-n-kette",
+    "formal_evening_necklace": "Galanacht-Kette",
+    "c-d-necklace": "a-t-kette",
+    "casual_daily_necklace": "Alltagskette",
+    "w-collier": "h-ketter",
+    "wedding_collier": "Hochzeitskette",
+    "$" : "€"
+  },
+
+  "Order": {
+    "your_orders": "Ihre Bestellungen",
+    "Cart_is_empty_please_add_an_item": "Einkaufswagen ist leer.Bitte fügen Sie einen Artikel hinzu",
+    "buy": "Kaufen",
+    "total_items": "Gesamtzahl der Artikel"
+  },
+
+  "Perfume": {
+    "shop_with_us": "Kaufen Sie bei uns ein",
+    "perfume": "Parfüm",
+    "winter_perfume": "winter parfüm",
+    "automn_perfume": "herbst parfüm",
+    "daily_perfume": "alltags parfüm",
+    "$" : "€"
+  },
+
+  "Women": {
+    "women": "Damen",
+    "shop_with_us": "Kaufen Sie bei uns ein",
+    "automn-dress": "Herbst-kleid",
+    "green_occasions_dress": "Grünes Anlasskleid",
+    "sommer-dress": "Sommer-kleid",
+    "party_wear_dress": "Party-kleid",
+    "winter-dress": "Winter-kleid",
+    "snow_wear_dress": "Schneekleidungskleid",
+    "sport-wear": "Sport-bekleidung",
+    "sport_top_trikot": "sport oberteil",
+    "sommer_outgoing_wear": "Ausgehkleidung",
+    "sommer-wear": "Sommer-kleidung",
+    "top_sommer_trikot": "Top Sommertrikot",
+    "$" : "€"
+  },
+
+  "Footer": {
+    "about_us": "über uns",
+    "order": "bestellung",
+    "men": "Herren",
+    "women": "Damen",
+    "copyright": "Urheberrecht",
+    "all_rights_reserved": "Alle Rechte vorbehalten",
+    "your_favorite_place_not_only_to_shop_but_to_get_your_need_satisfied_too": "Ihr Lieblingsplatz, nicht nur zum Einkaufen, sondern auch, um Ihre Bedürfnisse zu erfüllen",
+    "Rachop_has_always_provided_the_things_every_client_needed": " Rachop hat immer die Dinge bereitgestellt, die jeder Kunde benötigt",
+    "Don't_miss_this_chance_and_get_you_what_you_search_for": "Verpassen Sie nicht diese Chance und holen Sie sich, was Sie suchen."
+  },
+
+  "SignUp": {
+    "sign_up": "Melden Sie sich an",
+    "sign_in" : "anmelden",
+    "name": "Name",
+    "email" :"E-Mail",
+    "password": "Passwort",
+    "enter_your_password": "Geben Sie Ihr Passwort ein",
+    "enter_your_email": "Geben Sie Ihre E-Mail-Adresse ein",
+    "enter_your_name": "Geben Sie Ihren Namen ein",
+    "already_have_account": "Sie haben bereits ein Konto"
+  },
+
+  "SignIn": {
+    "sign_up": "Melden Sie sich an",
+    "sign_in" : "anmelden",
+    "email" :"E-Mail",
+    "password": "Passwort",
+    "enter_your_password": "Geben Sie Ihr Passwort ein",
+    "enter_your_email": "Geben Sie Ihre E-Mail-Adresse ein",
+    "don't_have_an_account": "habe kein Konto"
+  }
+}
