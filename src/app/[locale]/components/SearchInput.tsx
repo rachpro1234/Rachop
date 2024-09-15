@@ -71,7 +71,7 @@ export const SearchInput = () => {
         updateUserProfile(user);
       } else {
         // signed out
-        setAuthenticatedUser(null);
+        setAuthenticatedUser("");
       }
     });
   }, []);
