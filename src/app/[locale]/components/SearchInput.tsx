@@ -94,7 +94,7 @@ export const SearchInput = () => {
       `${t("guarantee")}`,
       `${t("reliability")}`,
     ],
-    loop: {},
+    loop: 0,
   });
 
   useEffect(() => {
