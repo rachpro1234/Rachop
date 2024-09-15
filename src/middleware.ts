@@ -19,7 +19,8 @@ export default function (req: NextRequest): NextResponse {
 export const config = {
   // Match only internationalized pathnames
   matcher: [
-    "/", "/(de|en|it)/:path*",
-    "/((?!api|_next/static|_next/image|assets|favicon.ico).*)",
+    // "/", "/(de|en|it)/:path*",
+    // "/((?!api|_next/static|_next/image|assets|favicon.ico).*)",
+    '/((?!api|_next/static|_next/image|.*\\.png$).*)'
   ],
 };
