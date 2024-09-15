@@ -3,13 +3,11 @@
 import { useTranslations } from "next-intl";
 import React, { useState, useId } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
-
-
 
 const SignUp = () => {
   const t = useTranslations("SignUp");
@@ -80,7 +78,9 @@ const SignUp = () => {
     <div className="flex items-center justify-center pt-7 mb-10">
       <div className="relative w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg dark:bg-slate-950">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{t("sign_up")}</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            {t("sign_up")}
+          </h2>
         </div>
 
         {/* Form */}
@@ -155,7 +155,6 @@ const SignUp = () => {
               {icon}
             </span>
           </div>
-
 
           <button
             type="submit"

@@ -15,7 +15,7 @@ import { AppDispatch, useAppSelector } from "../redux/store";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 import { useRouter } from "next/navigation";
 import { Moon } from "@phosphor-icons/react/dist/ssr";
 import { Sun } from "@phosphor-icons/react/dist/ssr";
@@ -179,7 +179,11 @@ function Navbar() {
         <div className="flex justify-between items-center text-[28px] py-2 cursor-pointer">
           <div className="bars" onClick={toggleSideBar}>
             {navOpen ? (
-              <X size={32} onClick={() => setNavOpen(false)} className="hover:text-accent" />
+              <X
+                size={32}
+                onClick={() => setNavOpen(false)}
+                className="hover:text-accent"
+              />
             ) : (
               <List size={32} className="hover:text-accent" />
             )}
@@ -200,7 +204,7 @@ function Navbar() {
               {pathname === "/order" ? (
                 <Handbag size={32} weight="fill" />
               ) : (
-                <Handbag size={32} className="hover:text-accent"  />
+                <Handbag size={32} className="hover:text-accent" />
               )}
             </Link>
           </div>
@@ -213,7 +217,11 @@ function Navbar() {
           </Link>
           {authenticatedUser === null ? (
             <div ref={navRef}>
-              <User size={32} onClick={toggleDropdown} className="hover:text-accent" />
+              <User
+                size={32}
+                onClick={toggleDropdown}
+                className="hover:text-accent"
+              />
               {isOpen && (
                 <div className="origin-top-right absolute bottom-9 right-11 mt-2 w-44 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
                   <ul
@@ -255,7 +263,11 @@ function Navbar() {
           )}
 
           <div className="relative">
-            <SquaresFour size={32} onClick={handleLanguageClick} className="hover:text-accent" />
+            <SquaresFour
+              size={32}
+              onClick={handleLanguageClick}
+              className="hover:text-accent"
+            />
             {isClick && (
               <span className="absolute bottom-7 right-1 text-base">
                 <LanguageSwitcher />
@@ -269,4 +281,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

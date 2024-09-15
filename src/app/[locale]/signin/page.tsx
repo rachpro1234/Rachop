@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState, useId } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 
 import { useRouter } from "next/navigation";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
@@ -70,13 +70,15 @@ function SignIn() {
       });
   };
 
-  console.log(id)
+  console.log(id);
 
   return (
     <div className="flex items-center justify-center pt-7 mb-10">
       <div className="relative w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg dark:bg-slate-950">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900  dark:text-white">{t("sign_in")}</h2>
+          <h2 className="text-3xl font-bold text-gray-900  dark:text-white">
+            {t("sign_in")}
+          </h2>
         </div>
 
         {/* Form */}

@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { useClickAway } from "react-use";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 import { useRouter } from "next/navigation";
 
 import { useTypewriter, Cursor } from "react-simple-typewriter";
@@ -80,7 +80,7 @@ export const SearchInput = () => {
     signOut(auth)
       .then(() => {
         router.push("/signup");
-        alert("user signed out")
+        alert("user signed out");
       })
       .catch((error) => {
         alert(error);
@@ -187,7 +187,11 @@ export const SearchInput = () => {
           </Link>
         )}
         <button type="button" onClick={toggleTheme} className="dark:text-white">
-          {mode === "dark" ? <Sun size={32} className="hover:text-accent" /> : <Moon size={32} className="hover:text-accent" />}
+          {mode === "dark" ? (
+            <Sun size={32} className="hover:text-accent" />
+          ) : (
+            <Moon size={32} className="hover:text-accent" />
+          )}
         </button>
         <Link href={`order`} className="cursor-pointer">
           {cartItems !== 0 ? (
