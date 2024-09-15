@@ -24,7 +24,7 @@ const About = () => {
       `zurich,${t("swiss")}`,
       `agadir,${t("morocco")}`,
     ],
-    loop: {},
+    loop: 0,
   });
 
 
