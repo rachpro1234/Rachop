@@ -13,6 +13,9 @@ import image5 from "/public/about/image5.jpg";
 import image6 from "/public/about/image6.jpg";
 import image7 from "/public/about/image7.jpg";
 
+interface props {
+  loop: any;
+}
 
 
 const About = () => {
@@ -25,7 +28,7 @@ const About = () => {
       `zurich,${t("swiss")}`,
       `agadir,${t("morocco")}`,
     ],
-    loop: {},
+    loop: {} as any,
   });
 
 
