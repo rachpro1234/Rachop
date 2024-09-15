@@ -20,7 +20,7 @@ const Stars: React.FC<propsType> = () => {
     <div className="app-star">
       {[...Array(totalStars)].map((star, index) => {
         // map through the stars and display each
-        const currentRating:number = index + 1; // adding 1 to the current rating index
+        const currentRating: any = index + 1; // adding 1 to the current rating index
         // const starColor =
         //   currentRating > (hover || rating) ? "#e4e5e9" : "#F44336";
         return (

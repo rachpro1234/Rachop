@@ -115,6 +115,7 @@ export const SearchInput = () => {
   };
 
   const mode = localStorage.getItem("theme");
+  
 
   // #131927 nice dark mode color to use
   return (
