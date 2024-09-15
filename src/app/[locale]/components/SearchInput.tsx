@@ -52,7 +52,7 @@ export const SearchInput = () => {
     setIsOpen(false);
   };
 
-  const [authenticatedUser, setAuthenticatedUser] = useState("");
+  const [authenticatedUser, setAuthenticatedUser] = useState<null | undefined>();
   const router = useRouter();
 
   function updateUserProfile(user: any) {
@@ -71,7 +71,7 @@ export const SearchInput = () => {
         updateUserProfile(user);
       } else {
         // signed out
-        setAuthenticatedUser("");
+        setAuthenticatedUser(null);
       }
     });
   }, []);
@@ -140,7 +140,7 @@ export const SearchInput = () => {
       </div>
 
       <div className="sm:flex items-center gap-4 text-2xl hidden relative">
-        {authenticatedUser === "" ? (
+        {authenticatedUser === null ? (
           <div ref={navRef}>
             <User
               size={32}

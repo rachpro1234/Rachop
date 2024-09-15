@@ -83,7 +83,7 @@ function Navbar() {
     setISClick(!isClick);
   }
 
-  const [authenticatedUser, setAuthenticatedUser] = useState("");
+  const [authenticatedUser, setAuthenticatedUser] = useState<null | undefined>();
   const router = useRouter();
 
   function updateUserProfile(user: any) {
@@ -103,7 +103,7 @@ function Navbar() {
         updateUserProfile(user);
       } else {
         // signed out
-        setAuthenticatedUser("");
+        setAuthenticatedUser(null);
       }
     });
   }, []);
@@ -215,7 +215,7 @@ function Navbar() {
               <House size={32} className="hover:text-accent" />
             )}
           </Link>
-          {authenticatedUser === "" ? (
+          {authenticatedUser === null ? (
             <div ref={navRef}>
               <User
                 size={32}
