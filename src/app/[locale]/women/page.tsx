@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import banner from "public/womenProducts/banner.jpg"
+import banner from "public/womenProducts/banner.png"
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
@@ -35,7 +35,7 @@ function Men() {
   const womenProducts = [
     {
       id: 0,
-      img: "/womenProducts/w-product1.jpg",
+      img: "/womenProducts/w-product1.png",
       title: `${t("automn-dress")}`,
       desc: `${t("green_occasions_dress")}`,
       price: 30,
@@ -44,7 +44,7 @@ function Men() {
     {
       id: 1,
       title: `${t("sommer-dress")}`,
-      img: "/womenProducts/w-product2.jpg",
+      img: "/womenProducts/w-product2.png",
       desc: `${t("party_wear_dress")}`,
       price: 70,
       prevPrice: 120,
@@ -52,7 +52,7 @@ function Men() {
     {
       id: 2,
       title: `${t("winter-dress")}`,
-      img: "/womenProducts/w-product3.jpg",
+      img: "/womenProducts/w-product3.png",
       desc: `${t("snow_wear_dress")}`,
       price: 60,
       prevPrice: 90,
@@ -60,7 +60,7 @@ function Men() {
     {
       id: 3,
       title: `${t("sport-wear")}`,
-      img: "/womenProducts/w-product4.jpg",
+      img: "/womenProducts/w-product4.png",
       desc: `${t("sport_top_trikot")}`,
       price: 30,
       prevPrice: 50,
@@ -68,7 +68,7 @@ function Men() {
     {
       id: 4,
       title: `${t("sport-wear")}`,
-      img: "/womenProducts/w-product5.jpg",
+      img: "/womenProducts/w-product5.png",
       desc: `${t("sommer_outgoing_wear")}`,
       price: 60,
       prevPrice: 90,
@@ -76,7 +76,7 @@ function Men() {
     {
       id: 5,
       title: `${t("sommer-wear")}`,
-      img: "/womenProducts/w-product6.jpg",
+      img: "/womenProducts/w-product6.png",
       desc: `${t("top_sommer_trikot")}`,
       price: 40,
       prevPrice: 60,

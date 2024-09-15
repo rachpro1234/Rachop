@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import banner from "public/perfume/banner.jpg";
+import banner from "public/perfume/banner.png";
 import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";
 import Stars from "../components/Stars";
 import { useDispatch } from "react-redux";
@@ -35,7 +35,7 @@ function Perfume() {
   const perfumeItems = [
     {
       id: 0,
-      img: "/perfume/pro1.jpg",
+      img: "/perfume/pro1.png",
       title: "aqua alleguria",
       desc: `${t("winter_perfume")}`,
       price: 30,
@@ -43,7 +43,7 @@ function Perfume() {
     },
     {
       id: 1,
-      img: "/perfume/pro2.jpg",
+      img: "/perfume/pro2.png",
       title: "park avenue",
       desc: "eau de parfum",
       price: 60,
@@ -51,7 +51,7 @@ function Perfume() {
     },
     {
       id: 2,
-      img: "/perfume/pro3.jpg",
+      img: "/perfume/pro3.png",
       title: "poeme",
       desc: "lancome",
       price: 50,
@@ -59,7 +59,7 @@ function Perfume() {
     },
     {
       id: 3,
-      img: "/perfume/pro4.jpg",
+      img: "/perfume/pro4.png",
       title: "eaudemoiselle",
       desc: "de givenchy",
       price: 100,
@@ -67,7 +67,7 @@ function Perfume() {
     },
     {
       id: 4,
-      img: "/perfume/pro5.jpg",
+      img: "/perfume/pro5.png",
       title: "jeanne lanvin",
       desc: `${t("automn_perfume")}`,
       price: 70,
@@ -75,7 +75,7 @@ function Perfume() {
     },
     {
       id: 5,
-      img: "/perfume/pro6.jpg",
+      img: "/perfume/pro6.png",
       title: "aqua alleguria",
       desc: `${t("daily_perfume")}`,
       price: 40,

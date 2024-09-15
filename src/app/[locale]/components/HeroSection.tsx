@@ -47,28 +47,28 @@ const HeroSection = () => {
     {
       id: 0,
       title: `${t("trending_item")}`,
-      img: "/assets/Shop-1.jpg",
+      img: "/assets/Shop-1.png",
       price: "$20",
       desc: `${t("men_sunglasses")}`,
     },
     {
       id: 1,
       title: `${t("new_fashion_summer_sale")}`,
-      img: "/assets/Shop-2.jpg",
+      img: "/assets/Shop-2.png",
       price: "$20",
       desc: `${t("women_latest_fashion")}`,
     },
     {
       id: 2,
       title: `${t("trending_earring")}`,
-      img: "/assets/Shop-3.jpg",
+      img: "/assets/Shop-3.png",
       price: "$20",
       desc: `${t("women_latest_fashion_sale")}`,
     },
     {
       id: 3,
       title: `${t("modern_nails_design")}`,
-      img: "/assets/Shop-4.jpg",
+      img: "/assets/Shop-4.png",
       price: "$20",
       desc: `${t("women_latest_design")}`,
     },
@@ -78,7 +78,7 @@ const HeroSection = () => {
   const products: Product[] = [
     {
       id: 0,
-      img: "/products/product-1.jpg",
+      img: "/products/product-1.png",
       title: `${t("jacket")}`,
       desc: `${t("greyman_jacket_heliko_tex")}`,
       price: 45,
@@ -86,7 +86,7 @@ const HeroSection = () => {
     },
     {
       id: 1,
-      img: "/products/product-2.jpg",
+      img: "/products/product-2.png",
       title: `${t("skirt")}`,
       desc: `${t("brown_floral_wrap_midi_skirt")}`,
       price: 55,
@@ -94,7 +94,7 @@ const HeroSection = () => {
     },
     {
       id: 2,
-      img: "/products/product-3.jpg",
+      img: "/products/product-3.png",
       title: ` ${t("party_wear")}`,
       desc: `${t("women_party_shoes")}`,
       price: 25,
@@ -102,7 +102,7 @@ const HeroSection = () => {
     },
     {
       id: 3,
-      img: "/products/product-4.jpg",
+      img: "/products/product-4.png",
       title: `${t("shirt")}`,
       desc: `${t("men_corporate_shirt")}`,
       price: 45,
@@ -110,7 +110,7 @@ const HeroSection = () => {
     },
     {
       id: 4,
-      img: "/products/product-5.jpg",
+      img: "/products/product-5.png",
       title: `${t("shoes")}`,
       desc: `${t("green_waterproof_hiking_shoes")}`,
       price: 100,
@@ -118,7 +118,7 @@ const HeroSection = () => {
     },
     {
       id: 5,
-      img: "/products/product-6.jpg",
+      img: "/products/product-6.png",
       title: `${t("watches")}`,
       desc: `${t("smart_watches_vital_plus")}`,
       price: 100,
@@ -126,7 +126,7 @@ const HeroSection = () => {
     },
     {
       id: 6,
-      img: "/products/product-7.jpg",
+      img: "/products/product-7.png",
       title: `${t("watches")}`,
       desc: `${t("pocket_watch_leather_pouch")}`,
       price: 120,
@@ -138,21 +138,21 @@ const HeroSection = () => {
   const testimonialData = [
     {
       id: 0,
-      img: "/testimonial/ph-1.jpg",
+      img: "/testimonial/ph-1.png",
       name: "Natalia Brese",
       position: `${t("fashion_model_&_artist")}`,
       testimonial: `${t("the_service_is_amazing!!")}`,
     },
     {
       id: 1,
-      img: "/testimonial/ph-2.jpg",
+      img: "/testimonial/ph-2.png",
       name: "Thomas Havbe",
       position: `${t("film_maker_&_singer")}`,
       testimonial: `${t("i_would_recommend_it_to_everybody")}`,
     },
     {
       id: 2,
-      img: "/testimonial/ph-4.jpg",
+      img: "/testimonial/ph-4.png",
       name: "Karmen raden",
       position: `${t("ceo_&_founder_invision")}`,
       testimonial: `${t("i_can't_ask_for_more_than_that")}`,
@@ -306,7 +306,7 @@ const HeroSection = () => {
             );
           })}
         </Slider>
-        <div className="bg-[url(/assets/banner.jpg)] bg-bottom sm:bg-cover h-[500px] rounded-2xl grid place-items-center mt-10">
+        <div className="bg-[url(/assets/banner.png)] bg-bottom sm:bg-cover h-[500px] rounded-2xl grid place-items-center mt-10">
           <div className=" text-center lg:space-y-4 bg-[#ff7a1aa2] min-w-[270px] sm:min-w-[300px] py-9 sm:px-9 md:min-w-[500px]  rounded-lg sm:rounded-none">
             <Link href={`/discount`}>
               <button
