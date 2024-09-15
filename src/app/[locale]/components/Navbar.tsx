@@ -103,7 +103,7 @@ function Navbar() {
         updateUserProfile(user);
       } else {
         // signed out
-        setAuthenticatedUser(null);
+        setAuthenticatedUser("");
       }
     });
   }, []);
