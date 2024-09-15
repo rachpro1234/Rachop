@@ -140,7 +140,7 @@ export const SearchInput = () => {
       </div>
 
       <div className="sm:flex items-center gap-4 text-2xl hidden relative">
-        {authenticatedUser === null ? (
+        {authenticatedUser === "" ? (
           <div ref={navRef}>
             <User
               size={32}

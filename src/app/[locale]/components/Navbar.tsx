@@ -215,7 +215,7 @@ function Navbar() {
               <House size={32} className="hover:text-accent" />
             )}
           </Link>
-          {authenticatedUser === null ? (
+          {authenticatedUser === "" ? (
             <div ref={navRef}>
               <User
                 size={32}
