@@ -1,6 +1,6 @@
 {
-  "extends": ["next/babel","next/core-web-vitals"],
-  "presets": ["next/babel"],
-  "plugins": []
+  "extends": ["next/babel","next/core-web-vitals"]
+  // "presets": ["next/babel"],
+  // "plugins": []
   // "extends": ["next/core-web-vitals"]
 }
