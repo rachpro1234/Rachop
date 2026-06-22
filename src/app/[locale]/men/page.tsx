@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import banner from "public/menProducts/banner.jpg";
+import banner from "/public/menProducts/banner.jpg";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
@@ -121,9 +121,9 @@ function Men() {
 
   return (
     <div className="pt-4 relative">
-     <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
-      {t("men")}
-      </h1> 
+      <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
+        {t("men")}
+      </h1>
       <Image
         src={banner}
         width={900}
@@ -141,7 +141,10 @@ function Men() {
         <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
           {menProducts.map((item) => {
             return (
-              <div className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]" key={item.id}>
+              <div
+                className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
+                key={item.id}
+              >
                 <div className="overflow-hidden">
                   <Image
                     src={item.img}
@@ -163,13 +166,17 @@ function Men() {
                   </span>
                   <div className="flex justify-between items-center">
                     <div className="product-card__price font-bold flex gap-4">
-                      <span className="dark:text-white">{item.price}.00{t("$")}</span>
+                      <span className="dark:text-white">
+                        {item.price}.00{t("$")}
+                      </span>
                       <span className="line-through font-normal text-[#aea3a3]">
                         {item.prevPrice}.00{t("$")}
                       </span>
                     </div>
                     <button
                       type="submit"
+                      aria-label={t("add_to_cart")}
+                      title={t("add_to_cart")}
                       className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
                     >
                       <ShoppingCartSimple

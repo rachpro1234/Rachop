@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import banner from "public/perfume/banner.png";
+import banner from "/public/perfume/banner.png";
 import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";
 import Stars from "../components/Stars";
 import { useDispatch } from "react-redux";
@@ -174,6 +174,8 @@ function Perfume() {
                     </div>
                     <button
                       type="submit"
+                      aria-label={t("add_to_cart")}
+                      title={t("add_to_cart")}
                       className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
                     >
                       <ShoppingCartSimple
