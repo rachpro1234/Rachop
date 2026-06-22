@@ -119,6 +119,13 @@ function Navbar() {
       });
   };
 
+    const [mode, setMode] = useState<String | null>(null) 
+  
+  
+    useEffect(() => {
+      setMode(localStorage.getItem("theme"))
+    })
+
   const toggleTheme = () => {
     if (document.documentElement.classList.contains("dark")) {
       document.documentElement.classList.remove("dark");
@@ -129,14 +136,14 @@ function Navbar() {
     }
   };
 
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const theme = localStorage.getItem("theme");
+  //   if (theme === "dark") {
+  //     document.documentElement.classList.add("dark");
+  //   }
+  // }, []);
 
-  const mode = localStorage.getItem("theme");
+  // const mode = localStorage.getItem("theme");
 
   return (
     <div>
@@ -229,7 +236,9 @@ function Navbar() {
                     aria-orientation="vertical"
                     aria-labelledby="options-menu"
                   >
-                    <li>
+                    <li
+                    role="menuitem"
+                    >
                       <Link
                         href={`signin`}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer capitalize"
@@ -238,7 +247,7 @@ function Navbar() {
                         {t("sign_in")}
                       </Link>
                     </li>
-                    <li>
+                    <li role="menuitem">
                       <Link
                         href={`signup`}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer capitalize"

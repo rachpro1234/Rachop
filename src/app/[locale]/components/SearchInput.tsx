@@ -97,12 +97,19 @@ export const SearchInput = () => {
     loop: 0,
   });
 
+  const [mode, setMode] = useState<String | null>(null) 
+
+
   useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
+    setMode(localStorage.getItem("theme"))
+  })
+
+  // useEffect(() => {
+  //   const theme = localStorage.getItem("theme");
+  //   if (theme === "dark") {
+  //     document.documentElement.classList.add("dark");
+  //   }
+  // }, []);
 
   const toggleTheme = () => {
     if (document.documentElement.classList.contains("dark")) {
@@ -114,12 +121,12 @@ export const SearchInput = () => {
     }
   };
 
-  const mode = localStorage.getItem("theme");
+  // const mode = localStorage.getItem("theme");
   
 
   // #131927 nice dark mode color to use
   return (
-    <div className="flex items-center justify-between sm:p-[16px] pt-[10px] pb-0 flex-col sm:flex-row gap-4">
+    <div className="container flex items-center justify-between sm:p-[16px] pt-[10px] pb-0 flex-col sm:flex-row gap-4">
       <div className="flex items-center justify-center gap-4 text-4xl font-bold uppercase dark:text-white text-blakish">
         <Link href="/">
           <span className="hover:text-accent">R</span>
@@ -155,18 +162,20 @@ export const SearchInput = () => {
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
-                  <li>
+                  <li role="menuitem">
                     <Link
                       href={`signin`}
+                      role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blakish cursor-pointer capitalize dark:bg-[#131927] dark:text-white"
                       onClick={closeDropdown}
                     >
                       {t("sign_in")}
                     </Link>
                   </li>
-                  <li>
+                  <li role="menuitem">
                     <Link
                       href={`signup`}
+                      role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blakish cursor-pointer capitalize dark:bg-[#131927] dark:text-white"
                       onClick={closeDropdown}
                     >
