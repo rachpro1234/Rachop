@@ -20,7 +20,7 @@ export const config = {
   // Match only internationalized pathnames
   matcher: [
     // "/", "/(de|en|it)/:path*",
-    // "/((?!api|_next/static|_next/image|assets|favicon.ico).*)",
-    '/((?!api|_next/static|_next/image|.*\\.png$).*)'
+    "/((?!api|_next/static|_next/image|assets|favicon.ico).*)",
+    // '/((?!api|_next/static|_next/image|.*\\.png$).*)' // exclude all png files from the middleware 
   ],
 };
