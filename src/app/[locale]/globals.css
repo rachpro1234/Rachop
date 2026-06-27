@@ -80,6 +80,11 @@ input[type="radio"] {
 
 }
 
+@media screen and (max-width: 600px) {
+  body {
+    padding-inline: 1rem;
+  }
+}
 
 .nav-links li .nav-link:hover,
 .nav-links li .nav-link.active {

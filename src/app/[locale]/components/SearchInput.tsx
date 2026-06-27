@@ -126,7 +126,7 @@ export const SearchInput = () => {
 
   // #131927 nice dark mode color to use
   return (
-    <div className="container flex items-center justify-between sm:p-[16px] pt-[10px] pb-0 flex-col sm:flex-row gap-4">
+    <div className="container flex items-center justify-between py-3 flex-col sm:flex-row gap-4">
       <div className="flex items-center justify-center gap-4 text-4xl font-bold uppercase dark:text-white text-blakish">
         <Link href="/">
           <span className="hover:text-accent">R</span>

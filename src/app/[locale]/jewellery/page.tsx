@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import banner from "/public/jewellery/banner.png";
+import banner from "/public/jewellery/banner.webp";
 import Stars from "../components/Stars";
 import { ShoppingCartSimple } from "@phosphor-icons/react";
 import { useEffect } from "react";
@@ -35,7 +35,7 @@ function Jewellery() {
   const jewelleryItems = [
     {
       id: 0,
-      img: "/jewellery/p1.png",
+      img: "/jewellery/p1.webp",
       title: `${t("o-collier")}`,
       desc: `${t("occasion_collier")}`,
       price: 400,
@@ -43,7 +43,7 @@ function Jewellery() {
     },
     {
       id: 1,
-      img: "/jewellery/p2.png",
+      img: "/jewellery/p2.webp",
       title: `${t("f-d-necklace")}`,
       desc: `${t("festival_day_necklace")}`,
       price: 400,
@@ -51,7 +51,7 @@ function Jewellery() {
     },
     {
       id: 2,
-      img: "/jewellery/p3.png",
+      img: "/jewellery/p3.webp",
       title: `${t("h-necklace")}`,
       desc: `${t("holiday_necklace")}`,
       price: 400,
@@ -59,7 +59,7 @@ function Jewellery() {
     },
     {
       id: 3,
-      img: "/jewellery/pr4.png",
+      img: "/jewellery/pr4.webp",
       title: `${t("f-e-necklace")}`,
       desc: `${t("formal_evening_necklace")}`,
       price: 400,
@@ -67,7 +67,7 @@ function Jewellery() {
     },
     {
       id: 4,
-      img: "/jewellery/p5.png",
+      img: "/jewellery/p5.webp",
       title: `${t("c-d-necklace")}`,
       desc: `${t("casual_daily_necklace")}`,
       price: 400,
@@ -75,7 +75,7 @@ function Jewellery() {
     },
     {
       id: 5,
-      img: "/jewellery/p6.png",
+      img: "/jewellery/p6.webp",
       title: `${t("w-collier")}`,
       desc: `${t("wedding_collier")}`,
       price: 400,
@@ -120,7 +120,7 @@ function Jewellery() {
   }, [cartArray]);
 
   return (
-    <div className="relative pt-6">
+    <div className="container relative pt-6">
       <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
         {t("jewellery")}
       </h1>

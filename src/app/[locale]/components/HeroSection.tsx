@@ -78,7 +78,7 @@ const HeroSection = () => {
   const products: Product[] = [
     {
       id: 0,
-      img: "/products/product-1.png",
+      img: "/products/product-1.webp",
       title: `${t("jacket")}`,
       desc: `${t("greyman_jacket_heliko_tex")}`,
       price: 45,
@@ -86,7 +86,7 @@ const HeroSection = () => {
     },
     {
       id: 1,
-      img: "/products/product-2.png",
+      img: "/products/product-2.webp",
       title: `${t("skirt")}`,
       desc: `${t("brown_floral_wrap_midi_skirt")}`,
       price: 55,
@@ -94,7 +94,7 @@ const HeroSection = () => {
     },
     {
       id: 2,
-      img: "/products/product-3.png",
+      img: "/products/product-3.webp",
       title: ` ${t("party_wear")}`,
       desc: `${t("women_party_shoes")}`,
       price: 25,
@@ -102,7 +102,7 @@ const HeroSection = () => {
     },
     {
       id: 3,
-      img: "/products/product-4.png",
+      img: "/products/product-4.webp",
       title: `${t("shirt")}`,
       desc: `${t("men_corporate_shirt")}`,
       price: 45,
@@ -110,7 +110,7 @@ const HeroSection = () => {
     },
     {
       id: 4,
-      img: "/products/product-5.png",
+      img: "/products/product-5.webp",
       title: `${t("shoes")}`,
       desc: `${t("green_waterproof_hiking_shoes")}`,
       price: 100,
@@ -118,7 +118,7 @@ const HeroSection = () => {
     },
     {
       id: 5,
-      img: "/products/product-6.png",
+      img: "/products/product-6.webp",
       title: `${t("watches")}`,
       desc: `${t("smart_watches_vital_plus")}`,
       price: 100,
@@ -126,7 +126,7 @@ const HeroSection = () => {
     },
     {
       id: 6,
-      img: "/products/product-7.png",
+      img: "/products/product-7.webp",
       title: `${t("watches")}`,
       desc: `${t("pocket_watch_leather_pouch")}`,
       price: 120,

@@ -35,7 +35,7 @@ function Men() {
   const menProducts = [
     {
       id: 0,
-      img: "/menProducts/product1.png",
+      img: "/menProducts/product1.webp",
       title: "jacket",
       desc: `${t("light_jogging_jacket")}`,
       price: 50,
@@ -44,7 +44,7 @@ function Men() {
     {
       id: 1,
       title: "Jacket",
-      img: "/menProducts/product2.png",
+      img: "/menProducts/product2.webp",
       desc: `${t("jogging_jacket")}`,
       price: 60,
       prevPrice: 120,
@@ -52,7 +52,7 @@ function Men() {
     {
       id: 2,
       title: "color",
-      img: "/menProducts/product3.png",
+      img: "/menProducts/product3.webp",
       desc: `${t("winter_jacket")}`,
       price: 90,
       prevPrice: 140,
@@ -60,7 +60,7 @@ function Men() {
     {
       id: 3,
       title: "price range",
-      img: "/menProducts/product4.png",
+      img: "/menProducts/product4.webp",
       desc: `${t("winter_hoodie")}`,
       price: 70,
       prevPrice: 100,
@@ -68,7 +68,7 @@ function Men() {
     {
       id: 4,
       title: "price range",
-      img: "/menProducts/product5.png",
+      img: "/menProducts/product5.webp",
       desc: `${t("automn_trikot")}`,
       price: 50,
       prevPrice: 70,
@@ -76,7 +76,7 @@ function Men() {
     {
       id: 5,
       title: "price range",
-      img: "/menProducts/product6.png",
+      img: "/menProducts/product6.webp",
       desc: `${t("cold_days_jacket")}`,
       price: 70,
       prevPrice: 100,
@@ -120,7 +120,7 @@ function Men() {
   }, [cartArray]);
 
   return (
-    <div className="pt-4 relative">
+    <div className="container pt-4 relative">
       <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
         {t("men")}
       </h1>

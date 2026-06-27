@@ -31,7 +31,7 @@ const About = () => {
 
   return (
     <div>
-      <div className="pt-6 relative">
+      <div className="container pt-6 relative">
         <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
           {t("about")}
         </h1>

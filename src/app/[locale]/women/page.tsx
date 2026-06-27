@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import banner from "/public/womenProducts/banner.png";
+import banner from "/public/womenProducts/banner.webp";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
@@ -29,13 +29,13 @@ interface Product {
   prevPrice: number;
 }
 
-function Men() {
+function Women() {
   const t = useTranslations("Women");
 
   const womenProducts = [
     {
       id: 0,
-      img: "/womenProducts/w-product1.png",
+      img: "/womenProducts/w-product1.webp",
       title: `${t("automn-dress")}`,
       desc: `${t("green_occasions_dress")}`,
       price: 30,
@@ -44,7 +44,7 @@ function Men() {
     {
       id: 1,
       title: `${t("sommer-dress")}`,
-      img: "/womenProducts/w-product2.png",
+      img: "/womenProducts/w-product2.webp",
       desc: `${t("party_wear_dress")}`,
       price: 70,
       prevPrice: 120,
@@ -52,7 +52,7 @@ function Men() {
     {
       id: 2,
       title: `${t("winter-dress")}`,
-      img: "/womenProducts/w-product3.png",
+      img: "/womenProducts/w-product3.webp",
       desc: `${t("snow_wear_dress")}`,
       price: 60,
       prevPrice: 90,
@@ -60,7 +60,7 @@ function Men() {
     {
       id: 3,
       title: `${t("sport-wear")}`,
-      img: "/womenProducts/w-product4.png",
+      img: "/womenProducts/w-product4.webp",
       desc: `${t("sport_top_trikot")}`,
       price: 30,
       prevPrice: 50,
@@ -68,7 +68,7 @@ function Men() {
     {
       id: 4,
       title: `${t("sport-wear")}`,
-      img: "/womenProducts/w-product5.png",
+      img: "/womenProducts/w-product5.webp",
       desc: `${t("sommer_outgoing_wear")}`,
       price: 60,
       prevPrice: 90,
@@ -76,7 +76,7 @@ function Men() {
     {
       id: 5,
       title: `${t("sommer-wear")}`,
-      img: "/womenProducts/w-product6.png",
+      img: "/womenProducts/w-product6.webp",
       desc: `${t("top_sommer_trikot")}`,
       price: 40,
       prevPrice: 60,
@@ -120,7 +120,7 @@ function Men() {
   }, [cartArray]);
 
   return (
-    <div className="pt-6 relative">
+    <div className="container pt-6 relative">
       <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
         {t("women")}
       </h1>
@@ -196,4 +196,4 @@ function Men() {
   );
 }
 
-export default Men;
+export default Women;

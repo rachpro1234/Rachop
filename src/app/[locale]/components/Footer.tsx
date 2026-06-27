@@ -14,7 +14,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full bg-gray-100 dark:bg-slate-950 dark:text-white">
+    <footer className="w-full dark:bg-slate-950 dark:text-white">
       <div className="relative container px-4 py-16 sm:px-6 lg:px-8 lg:pt-24">
         <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
           <Link
