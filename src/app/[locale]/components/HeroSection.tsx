@@ -138,21 +138,21 @@ const HeroSection = () => {
   const testimonialData = [
     {
       id: 0,
-      img: "/testimonial/ph-1.png",
+      img: "/testimonial/ph-1.webp",
       name: "Natalia Brese",
       position: `${t("fashion_model_&_artist")}`,
       testimonial: `${t("the_service_is_amazing!!")}`,
     },
     {
       id: 1,
-      img: "/testimonial/ph-2.png",
+      img: "/testimonial/ph-2.webp",
       name: "Thomas Havbe",
       position: `${t("film_maker_&_singer")}`,
       testimonial: `${t("i_would_recommend_it_to_everybody")}`,
     },
     {
       id: 2,
-      img: "/testimonial/ph-4.png",
+      img: "/testimonial/ph-4.webp",
       name: "Karmen raden",
       position: `${t("ceo_&_founder_invision")}`,
       testimonial: `${t("i_can't_ask_for_more_than_that")}`,
@@ -238,7 +238,7 @@ const HeroSection = () => {
           <h1 className="font-medium pb-4 text-3xl capitalize dark:text-white">
             {t("new_arrival")}
           </h1>
-          <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))]  place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
             {products.map((item) => {
               return (
                 <div

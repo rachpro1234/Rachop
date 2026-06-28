@@ -17,6 +17,7 @@ const Testimonial: React.FC<propsType> = ({
 }) => {
   return (
     <div className="flex items-center relative">
+      <p className="absolute top-0 left-0 w-full h-full m-0 bg-black/50"></p>
       <div className="w-[100%]">
         <Image
           alt="image"
@@ -29,7 +30,7 @@ const Testimonial: React.FC<propsType> = ({
       </div>
       <div className="absolute left-[30px] lg:space-y-4 bg-[#ffffffa2] sm:bg-transparent p-6 sm:p-0 rounded-lg sm:rounded-none">
         <div className="flex-col relative">
-          <h3 className="text-accent font-bold uppercase">{name}</h3>
+          <h3 className="text-accent font-bold uppercase text-[4rem]">{name}</h3>
           <p className="sm:text-[#8b8b8b] text-blakish">{position}</p>
           <p className="text-white">
             <span className="text-accent absolute -left-[9.2%]">

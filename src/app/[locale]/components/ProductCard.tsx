@@ -108,6 +108,7 @@ const ProductCard: React.FC<Product> = ({
             </div>
             <Link href="/order">
               <button
+                aria-label="Add to cart"
                 type="submit"
                 className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
                 // onClick={() => checkProducts}

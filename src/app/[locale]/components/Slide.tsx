@@ -36,7 +36,7 @@ const Slide: React.FC<propsType> = ({ title, img, desc, price }) => {
         property="false"
         width={2000}
         height={2000}
-        className="w-[100%] h-[500px] max-sm:h-[460px] rounded-xl object-cover md:object-right lg:object-[right_30%]"
+        className="w-[100%] h-[450px] max-sm:h-[460px] rounded-xl object-cover md:object-right lg:object-[right_30%]"
       />
     </div>
   );

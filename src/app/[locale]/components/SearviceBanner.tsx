@@ -15,25 +15,25 @@ function SearviceBanner() {
   const ServiceItems = [
     {
       id: 0,
-      icon: <Truck size={72} color="rgb(151, 79, 218)" />,
+      icon: <Truck size={72} color="rgb(151, 79, 218)" weight="thin" />,
       title: `${t("fast_&_free_delivery")}`,
       desc: `${t("free_delivered_orders")}`,
     },
     {
       id: 1,
-      icon: <CreditCard size={72} color="rgb(151, 79, 218)" />,
+      icon: <CreditCard size={72} color="rgb(151, 79, 218)"  weight="thin" />,
       title: `${t("safe_payment")}`,
       desc: `${t("pay_safely_your_orders")}`,
     },
     {
       id: 2,
-      icon: <Money size={72} color="rgb(151, 79, 218)" />,
+      icon: <Money size={72} color="rgb(151, 79, 218)"  weight="thin" />,
       title: `${t("Money_Refund")}`,
       desc: `${t("get_your_money_back")}`,
     },
     {
       id: 3,
-      icon: <ClockCounterClockwise size={72} color="rgb(151, 79, 218)" />,
+      icon: <ClockCounterClockwise size={72} color="rgb(151, 79, 218)" weight="thin" />,
       title: `${t("24h_availability")}`,
       desc: `${t("we_are_24h_available_for_you")}`,
     },
@@ -41,7 +41,7 @@ function SearviceBanner() {
 
   return (
     <div className="servicee-banner container py-7">
-      <div className="icon dark:bg-slate-950 p-10 md:flex items-center justify-between gap-10 select-none w-full">
+      <div className="icon dark:bg-slate-950 md:flex items-center justify-between gap-10 select-none w-full">
         {ServiceItems.map((item) => (
           <div key={item.id}>
             <div className="flex items-center justify-center flex-col">

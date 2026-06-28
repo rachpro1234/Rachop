@@ -16,7 +16,7 @@ const config: Config = {
       },
       container: {
         center: true,
-        // padding: "16px", 
+        
       },
       colors: {
         fb: "#3b5998", // facebook icon color
