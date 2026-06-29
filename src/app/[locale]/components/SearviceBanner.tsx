@@ -8,7 +8,6 @@ import { useTranslations } from "next-intl";
 
 
 
-// columns-2 place-items-center md:columns-4 sm:columns-2 
 function SearviceBanner() {
   const t = useTranslations("ServiceBanner");
 

@@ -21,6 +21,7 @@ export const config = {
   matcher: [
     // "/", "/(de|en|it)/:path*",
     // "/((?!api|_next/static|_next/image|assets|favicon.ico).*)",
-    '/((?!api|_next/static|_next/image|.*\\.webp$).*)'
+    // '/((?!api|_next/static|_next/image|.*\\.webp$).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.webp$).*)'
   ],
 };

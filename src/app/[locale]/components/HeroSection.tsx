@@ -308,7 +308,7 @@ const HeroSection = () => {
             );
           })}
         </Slider>
-        <div className="bg-[url(/assets/banner.png)] bg-bottom sm:bg-cover h-[500px] rounded-2xl grid place-items-center mt-10">
+        <div className="bg-[url(/assets/banner.webp)] bg-bottom sm:bg-cover h-[500px] rounded-2xl grid place-items-center mt-10">
           <div className=" text-center lg:space-y-4 bg-[#ff7a1aa2] min-w-[270px] sm:min-w-[300px] py-9 sm:px-9 md:min-w-[500px]  rounded-lg sm:rounded-none">
             <Link href={`/discount`}>
               <button
