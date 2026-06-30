@@ -26,7 +26,7 @@ interface cartItems {
   quantity: number;
 }
 
-export const SearchInput = () => {
+const SearchInput = () => {
   const t = useTranslations("Index");
 
   const [cartItems, setCartItems] = useState(1);
@@ -250,3 +250,5 @@ export const SearchInput = () => {
     </div>
   );
 };
+
+export default SearchInput;

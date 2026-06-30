@@ -124,7 +124,7 @@ function Perfume() {
   }, [cartArray]);
 
   return (
-    <div className="container relative pt-6">
+    <div className="container relative pt-[160px]">
         <h1 className="absolute text-[#fff] text-7xl flex items-center justify-center capitalize ml-4">
           {t("perfume")}
         </h1>

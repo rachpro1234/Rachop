@@ -1,7 +1,8 @@
 import Footer from "../components/Footer";
-import HeaderTop from "../components/HeaderTop";
-import Navbar from "../components/Navbar";
-import { SearchInput } from "../components/SearchInput";
+// import HeaderTop from "../components/HeaderTop";
+// import Navbar from "../components/Navbar";
+// import { SearchInput } from "../components/SearchInput";
+import FullHeader from "../components/FullHeader";
 import SearviceBanner from "../components/SearviceBanner";
 
 export const metadata = {
@@ -16,11 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <HeaderTop />
-      <SearchInput />
+        <FullHeader />
       <hr />
       <br />
-      <Navbar />
+      {/* <Navbar /> */}
       {children}
       <SearviceBanner />
       <Footer />

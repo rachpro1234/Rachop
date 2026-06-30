@@ -1,6 +1,6 @@
 'use client'
 
-
+import React, { useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslations } from "next-intl";
 // Phosphor icons
@@ -9,9 +9,12 @@ import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 import { XLogo } from "@phosphor-icons/react/dist/ssr";
 import { LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import { motion, useScroll, useMotionValueEvent } from "motion/react"
+
 
 const HeaderTop = () => {
   const t = useTranslations("Index");
+
   return (
     <div className="border-b border-gray-200 hidden sm:block">
       <div className="container py-4">

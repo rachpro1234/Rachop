@@ -208,14 +208,10 @@ const HeroSection = () => {
   };
 
   return (
-    <div>
-      {/* <Navbar /> */}
-      <div>
-        <Navbar />
-      </div>
+    <main>
 
       {/* main HOME content*/}
-      <main>
+      <article className="pt-[160px]">
         {/** Slider container */}
         <div className="container">
           <Slider {...settings}>
@@ -230,7 +226,7 @@ const HeroSection = () => {
             ))}
           </Slider>
         </div>
-      </main>
+      </article>
 
       {/** HOME Products container */}
       <article>
@@ -328,7 +324,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

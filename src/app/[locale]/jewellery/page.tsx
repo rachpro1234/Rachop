@@ -120,7 +120,7 @@ function Jewellery() {
   }, [cartArray]);
 
   return (
-    <div className="container relative pt-6">
+    <div className="container relative pt-[160px]">
       <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
         {t("jewellery")}
       </h1>

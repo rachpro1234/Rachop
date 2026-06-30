@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { Moon } from "@phosphor-icons/react/dist/ssr";
 import { Sun } from "@phosphor-icons/react/dist/ssr";
 
+
 interface cartItems {
   id: number;
   title: string;
@@ -147,7 +148,7 @@ function Navbar() {
 
   return (
     <div>
-      <div>
+      <header>
         <ul
           ref={navRef}
           className={`nav-links ${
@@ -179,7 +180,7 @@ function Navbar() {
             </button>
           </li>
         </ul>
-      </div>
+      </header>
 
       {/* small screen navbar on the page bottom when resizing the screen */}
       <div className="lg:hidden fixed bottom-0 w-full bg-white left-[50%] -translate-x-[50%] max-w-[500px] px-8 z-50 rounded-lg dark:bg-[#131927] dark:text-white">
