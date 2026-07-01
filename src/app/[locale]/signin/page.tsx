@@ -73,7 +73,7 @@ function SignIn() {
   console.log(id);
 
   return (
-    <div className="flex items-center justify-center pt-7 mb-10">
+    <div className="flex items-center justify-center pt-[160px] mb-10">
       <div className="relative w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg dark:bg-slate-950">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-900  dark:text-white">

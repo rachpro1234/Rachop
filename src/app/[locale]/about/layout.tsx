@@ -19,12 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <>
-      {/* <HeaderTop />
-      <SearchInput /> */}
         <FullHeader />
       <hr />
       <br />
-      {/* <Navbar /> */}
       {children}
       <SearviceBanner />
       <Footer />
