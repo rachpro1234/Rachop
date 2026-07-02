@@ -1,11 +1,8 @@
-// import React from 'react'
 
-"use client"; // notice; not including the use client will throw a server error because of using the Slider effect in it ,
+"use client"; 
 
 import Link from "next/link";
-import Navbar from "./Navbar";
-
-import Slider from "react-slick"; // slide effect package
+import Slider from "react-slick";
 import Slide from "./Slide";
 import Testimonial from "./Testimonial";
 import { useTranslations } from "next-intl";
@@ -22,6 +19,7 @@ import { useEffect } from "react";
 
 interface Product {
   id: number;
+  slug: string;
   title: string;
   desc: string;
   img: string;
@@ -74,12 +72,16 @@ const HeroSection = () => {
     },
   ];
 
+   // split the slug to get the product ID and find the corresponding product
+  const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+
   // products data
   const products: Product[] = [
     {
       id: 0,
       img: "/products/product-1.webp",
       title: `${t("jacket")}`,
+      slug: `${slugify(t("jacket"))}`,
       desc: `${t("greyman_jacket_heliko_tex")}`,
       price: 45,
       prevPrice: 95,
@@ -88,6 +90,7 @@ const HeroSection = () => {
       id: 1,
       img: "/products/product-2.webp",
       title: `${t("skirt")}`,
+      slug: `${slugify(t("skirt"))}`,
       desc: `${t("brown_floral_wrap_midi_skirt")}`,
       price: 55,
       prevPrice: 105,
@@ -96,6 +99,7 @@ const HeroSection = () => {
       id: 2,
       img: "/products/product-3.webp",
       title: ` ${t("party_wear")}`,
+      slug: `${slugify(t("party_wear"))}`,
       desc: `${t("women_party_shoes")}`,
       price: 25,
       prevPrice: 75,
@@ -104,6 +108,7 @@ const HeroSection = () => {
       id: 3,
       img: "/products/product-4.webp",
       title: `${t("shirt")}`,
+      slug: `${slugify(t("shirt"))}`,      
       desc: `${t("men_corporate_shirt")}`,
       price: 45,
       prevPrice: 95,
@@ -112,6 +117,7 @@ const HeroSection = () => {
       id: 4,
       img: "/products/product-5.webp",
       title: `${t("shoes")}`,
+      slug: `${slugify(t("shoes"))}`,      
       desc: `${t("green_waterproof_hiking_shoes")}`,
       price: 100,
       prevPrice: 107,
@@ -120,6 +126,7 @@ const HeroSection = () => {
       id: 5,
       img: "/products/product-6.webp",
       title: `${t("watches")}`,
+      slug: `${slugify(t("watches"))}`,
       desc: `${t("smart_watches_vital_plus")}`,
       price: 100,
       prevPrice: 150,
@@ -128,12 +135,13 @@ const HeroSection = () => {
       id: 6,
       img: "/products/product-7.webp",
       title: `${t("watches")}`,
+      slug: `${slugify(t("watches"))}`,
       desc: `${t("pocket_watch_leather_pouch")}`,
       price: 120,
       prevPrice: 170,
     },
   ];
-
+  
   // Testimonial data
   const testimonialData = [
     {
@@ -188,7 +196,7 @@ const HeroSection = () => {
       dispatch(updateCart(updatedCart));
     }
 
-    console.log("Add to cart");
+    // console.log("Add to cart");
   };
 
   useEffect(() => {
@@ -241,44 +249,46 @@ const HeroSection = () => {
                   className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                   key={item.id}
                 >
-                  <div className="overflow-hidden">
-                    <Image
-                      src={item.img}
-                      alt="product-img"
-                      property="false"
-                      width={200}
-                      height={200}
-                      className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
-                    />
-                  </div>
-                  <div className="product-card__info space-y-2 py-2">
-                    <h3 className="text-accent font-bold uppercase">
-                      {item.title}
-                    </h3>
-                    <p className="text-[#aaa] max-w-[200px] capitalize">
-                      {item.desc}
-                    </p>
-                    <span>
-                      <Stars currentRating={null} />
-                    </span>
-                    <div className="flex justify-between items-center">
-                      <div className="product-card__price font-bold flex gap-4">
-                        <span className="text-blakish dark:text-white">{item.price}.00{t("$")}</span>
-                        <span className="line-through font-normal text-[#aea3a3]">
-                          {item.prevPrice}.00{t("$")}
-                        </span>
-                      </div>
-                      <button
-                        type="submit"
-                        aria-label={t("add_to_cart")}
-                        title={t("add_to_cart")}
-                        className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
-                        onClick={() => addToCart(item)}
-                      >
-                        <ShoppingCartSimple size={32}  className="dark:bg-[#131927] dark:text-white hover:text-accent"/>
-                      </button>
+                  <Link href={`/product/${item.slug}-${item.id}`}>
+                    <div className="overflow-hidden">
+                      <Image
+                        src={item.img}
+                        alt="product-img"
+                        property="false"
+                        width={200}
+                        height={200}
+                        className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
+                      />
                     </div>
-                  </div>
+                    <div className="product-card__info space-y-2 py-2">
+                      <h3 className="text-accent font-bold uppercase">
+                        {item.title}
+                      </h3>
+                      <p className="text-[#aaa] max-w-[200px] capitalize">
+                        {item.desc}
+                      </p>
+                      <span>
+                        <Stars currentRating={null} />
+                      </span>
+                      <div className="flex justify-between items-center">
+                        <div className="product-card__price font-bold flex gap-4">
+                          <span className="text-blakish dark:text-white">{item.price}.00{t("$")}</span>
+                          <span className="line-through font-normal text-[#aea3a3]">
+                            {item.prevPrice}.00{t("$")}
+                          </span>
+                        </div>
+                        <button
+                          type="submit"
+                          aria-label={t("add_to_cart")}
+                          title={t("add_to_cart")}
+                          className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+                          onClick={() => addToCart(item)}
+                        >
+                          <ShoppingCartSimple size={32}  className="dark:bg-[#131927] dark:text-white hover:text-accent"/>
+                        </button>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               );
             })}
