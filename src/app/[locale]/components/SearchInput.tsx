@@ -203,7 +203,7 @@ const SearchInput = () => {
             <Moon size={32} className="hover:text-accent" />
           )}
         </button>
-        <Link href={`order`} className="cursor-pointer">
+        <Link href={`/order`} className="cursor-pointer">
           {cartItems !== 0 ? (
             <p className="bg-red-600 rounded-full absolute top-0 right-0 w-[18px] h-[20px] text-[12px] text-white flex items-center justify-center -translate-x-15.5 -translate-y-1">
               {cartItems}

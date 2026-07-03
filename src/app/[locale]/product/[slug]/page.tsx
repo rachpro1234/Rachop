@@ -1,11 +1,13 @@
 'use client'
 
+import React, { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { notFound } from "next/navigation";
 import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../../redux/store";
 import { updateCart } from "../../redux/features/cart-slice";
+import Stars from "../../components/Stars";
 
 interface Product {
   id: number;
@@ -138,21 +140,30 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
  
      // console.log("Add to cart");
    };
+
+     useEffect(() => {
+       console.log("cartArray", cartArray);
+     }, [cartArray]);
  
   return (
-    <article className="flex items-center justify-center pt-[160px]">
+    <article className="flex items-center justify-center min-h-screen py-2">
           
       <img src={product.img} alt={product.title} />
       <div>
-          <p>Product Title: {product.title}</p>
-          <p>Product Description: {product.desc}</p>
-          <p>Product Price: ${product.price}</p>
-          <p>Previous Price: ${product.prevPrice}</p>
+          <h1 className="text-3xl font-bold text-accent uppercase">{product.title}</h1>
+          <p className="text-xl capitalize">{product.desc}</p>
+          <span>
+              <Stars currentRating={null} />
+          </span>
+          <span className="flex items-center gap-2">
+            <p className="text-blakish dark:text-white">${product.price}</p>
+            <p className="line-through text-[#aea3a3]">${product.prevPrice}</p>
+          </span>
           <button
             type="submit"
             aria-label={t("add_to_cart")}
             title={t("add_to_cart")}
-            className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+            className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 duration-300"
             onClick={() => addToCart(product)}
           >
             <ShoppingCartSimple size={32}  className="dark:bg-[#131927] dark:text-white hover:text-accent"/>

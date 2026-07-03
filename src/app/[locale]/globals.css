@@ -22,7 +22,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  outline: 1px rgb(151, 79, 218) solid;
+  /* outline: 1px rgb(151, 79, 218) solid; */
 }
 
 html {
