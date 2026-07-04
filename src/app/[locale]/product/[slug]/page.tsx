@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../../redux/store";
 import { updateCart } from "../../redux/features/cart-slice";
 import Stars from "../../components/Stars";
+import ThumbnailSlider from "../../components/ThumbnailSlider";
 
 interface Product {
   id: number;
@@ -15,6 +16,7 @@ interface Product {
   title: string;
   desc: string;
   img: string;
+  images: string[];
   price: number;
   prevPrice: number;
 }
@@ -37,6 +39,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     {
       id: 0,
       img: "/products/product-1.webp",
+      images: ["/products/product-1.webp", "/products/product-1.webp", "/products/product-1.webp"],
       title: `${t("jacket")}`,
       slug: `${t("jacket")}`,
       desc: `${t("greyman_jacket_heliko_tex")}`,
@@ -46,6 +49,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     {
       id: 1,
       img: "/products/product-2.webp",
+      images: ["/products/product-2.webp", "/products/product-2.webp", "/products/product-2.webp"],
       title: `${t("skirt")}`,
       slug: `${t("skirt")}`,
       desc: `${t("brown_floral_wrap_midi_skirt")}`,
@@ -55,6 +59,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     {
       id: 2,
       img: "/products/product-3.webp",
+      images: ["/products/product-3.webp", "/products/product-3.webp", "/products/product-3.webp"],
       title: ` ${t("party_wear")}`,
       slug: `${t("party_wear")}`,
       desc: `${t("women_party_shoes")}`,
@@ -64,6 +69,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     {
       id: 3,
       img: "/products/product-4.webp",
+      images: ["/products/product-4.webp", "/products/product-4.webp", "/products/product-4.webp"],
       title: `${t("shirt")}`,
       slug: `${t("shirt")}`,
       desc: `${t("men_corporate_shirt")}`,
@@ -73,6 +79,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     {
       id: 4,
       img: "/products/product-5.webp",
+      images: ["/products/product-5.webp", "/products/product-5.webp", "/products/product-5.webp"],
       title: `${t("shoes")}`,
       slug: `${t("shoes")}`,
       desc: `${t("green_waterproof_hiking_shoes")}`,
@@ -82,6 +89,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     {
       id: 5,
       img: "/products/product-6.webp",
+      images: ["/products/product-6.webp", "/products/product-6.webp", "/products/product-6.webp"],
       title: `${t("watches")}`,
       slug: `${t("watches")}`,
       desc: `${t("smart_watches_vital_plus")}`,
@@ -91,6 +99,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     {
       id: 6,
       img: "/products/product-7.webp",
+      images: ["/products/product-7.webp", "/products/product-7.webp", "/products/product-7.webp"],
       title: `${t("watches")}`,
       slug: `${t("watches")}`,
       desc: `${t("pocket_watch_leather_pouch")}`,
@@ -146,7 +155,8 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
      }, [cartArray]);
  
   return (
-    <article className="flex items-center justify-center min-h-screen py-2">
+    <section>
+    <article className="flex items-center justify-center py-2">
           
       <img src={product.img} alt={product.title} />
       <div>
@@ -169,7 +179,13 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
             <ShoppingCartSimple size={32}  className="dark:bg-[#131927] dark:text-white hover:text-accent"/>
           </button>
       </div>
+
     </article>
+      {/* thumbnail display test */}
+      <div className="w-full h-screen flex items-center justify-center">
+        <ThumbnailSlider images={product.images} />
+      </div>
+    </section>
   );
 };
 

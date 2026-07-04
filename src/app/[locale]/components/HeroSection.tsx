@@ -260,7 +260,7 @@ const HeroSection = () => {
                         className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
                       />
                     </div>
-                    <div className="product-card__info space-y-2 py-2">
+                    <div className="product-card__info space-y-2">
                       <h3 className="text-accent font-bold uppercase">
                         {item.title}
                       </h3>
