@@ -249,7 +249,7 @@ const HeroSection = () => {
                   className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                   key={item.id}
                 >
-                  <Link href={`/product/${item.slug}-${item.id}`}>
+                  <Link className="grid h-full" href={`/product/${item.slug}-${item.id}`}>
                     <div className="overflow-hidden">
                       <Image
                         src={item.img}
@@ -260,16 +260,18 @@ const HeroSection = () => {
                         className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
                       />
                     </div>
-                    <div className="product-card__info space-y-2">
-                      <h3 className="text-accent font-bold uppercase">
-                        {item.title}
-                      </h3>
-                      <p className="text-[#aaa] max-w-[200px] capitalize">
-                        {item.desc}
-                      </p>
-                      <span>
-                        <Stars currentRating={null} />
-                      </span>
+                    <div className="product-card__info flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-accent font-bold uppercase">
+                          {item.title}
+                        </h3>
+                        <p className="text-[#aaa] max-w-[200px] capitalize">
+                          {item.desc}
+                        </p>
+                        <span>
+                          <Stars currentRating={null} />
+                        </span>
+                      </div>
                       <div className="flex justify-between items-center">
                         <div className="product-card__price font-bold flex gap-4">
                           <span className="text-blakish dark:text-white">{item.price}.00{t("$")}</span>

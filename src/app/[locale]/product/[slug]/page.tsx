@@ -8,7 +8,8 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../../redux/store";
 import { updateCart } from "../../redux/features/cart-slice";
 import Stars from "../../components/Stars";
-import ThumbnailSlider from "../../components/ThumbnailSlider";
+// import ThumbnailSlider from "../../components/ThumbnailSlider";
+import ImageEffect from "../../components/ImageEffect"
 
 interface Product {
   id: number;
@@ -39,7 +40,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     {
       id: 0,
       img: "/products/product-1.webp",
-      images: ["/products/product-1.webp", "/products/product-1.webp", "/products/product-1.webp"],
+      images: ["/assets/thumbnail1-img1.webp", "/assets/thumbnail1-img2.webp", "/assets/thumbnail1-img3.webp"],
       title: `${t("jacket")}`,
       slug: `${t("jacket")}`,
       desc: `${t("greyman_jacket_heliko_tex")}`,
@@ -156,35 +157,54 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
  
   return (
     <section>
-    <article className="flex items-center justify-center py-2">
+    <article className="flex items-center justify-center gap-7 min-h-screen pt-20">
           
-      <img src={product.img} alt={product.title} />
+      {/* <img className="w-[700px]" src={product.img} alt={product.title} /> */}
+      <ImageEffect image={product.img} />
       <div>
           <h1 className="text-3xl font-bold text-accent uppercase">{product.title}</h1>
           <p className="text-xl capitalize">{product.desc}</p>
           <span>
               <Stars currentRating={null} />
           </span>
-          <span className="flex items-center gap-2">
-            <p className="text-blakish dark:text-white">${product.price}</p>
-            <p className="line-through text-[#aea3a3]">${product.prevPrice}</p>
-          </span>
-          <button
-            type="submit"
-            aria-label={t("add_to_cart")}
-            title={t("add_to_cart")}
-            className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 duration-300"
-            onClick={() => addToCart(product)}
-          >
-            <ShoppingCartSimple size={32}  className="dark:bg-[#131927] dark:text-white hover:text-accent"/>
-          </button>
+          <div className="flex justify-between gap-4 mt-4">
+            <span className="flex items-center gap-2">
+              <p className="text-blakish dark:text-white text-4xl font-bold">${product.price}</p>
+              <p className="line-through text-[#aea3a3]">${product.prevPrice}</p>
+            </span>
+            {/* <button
+              type="submit"
+              aria-label={t("add_to_cart")}
+              title={t("add_to_cart")}
+              className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 duration-300"
+              onClick={() => addToCart(product)}
+            >
+              <ShoppingCartSimple size={32}  className="dark:bg-[#131927] dark:text-white hover:text-accent"/>
+            </button> */}
+            <button
+              type="submit"
+              aria-label={t("add_to_cart")}
+              title={t("add_to_cart")}
+              onClick={() => addToCart(product)}
+              className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-[2px] bg-black rounded-full bg-gradient-to-t from-[#8122b0] to-[#dc98fd] active:scale-95"
+            >
+              <span
+                className="w-full h-full capitalize flex items-center gap-2 px-7 py-2 bg-accent text-white rounded-full bg-gradient-to-t from-[#a62ce2] to-accent"
+              >
+              <ShoppingCartSimple size={20}  className="text-white"/>
+
+              add to cart</span>
+            </button>
+          </div>
+
       </div>
 
     </article>
       {/* thumbnail display test */}
-      <div className="w-full h-screen flex items-center justify-center">
-        <ThumbnailSlider images={product.images} />
-      </div>
+      {/* <div className="w-full h-screen flex items-center justify-center"> */}
+        {/* <ThumbnailSlider images={product.images} /> */}
+      {/* </div> */}
+      {/* <ImageEffect image={product.img} /> */}
     </section>
   );
 };
