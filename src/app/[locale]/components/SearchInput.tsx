@@ -12,9 +12,10 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import { useRouter } from "next/navigation";
 
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+// import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { Moon } from "@phosphor-icons/react/dist/ssr";
 import { Sun } from "@phosphor-icons/react/dist/ssr";
+import Navbar from "./Navbar";
 
 interface cartItems {
   id: number;
@@ -87,15 +88,15 @@ const SearchInput = () => {
       });
   };
 
-  const [text] = useTypewriter({
-    words: [
-      `${t("variety")}`,
-      `${t("quality")}`,
-      `${t("guarantee")}`,
-      `${t("reliability")}`,
-    ],
-    loop: 0,
-  });
+  // const [text] = useTypewriter({
+  //   words: [
+  //     `${t("variety")}`,
+  //     `${t("quality")}`,
+  //     `${t("guarantee")}`,
+  //     `${t("reliability")}`,
+  //   ],
+  //   loop: 0,
+  // });
 
   const [mode, setMode] = useState<String | null>(null) 
 
@@ -138,14 +139,15 @@ const SearchInput = () => {
         </Link>
       </div>
 
-      <div className="sm:text-4xl md:text-2xl text-[16px] text-center font-bold uppercase dark:text-white">
+      {/* <div className="sm:text-4xl md:text-2xl text-[16px] text-center font-bold uppercase dark:text-white">
         {t("we_offer")}
         <span className="text-accent ml-4 uppercase font-bold">
           {text}
           <Cursor />
         </span>
         {t("in_products")}
-      </div>
+      </div> */}
+      <Navbar />
 
       <div className="sm:flex items-center gap-4 text-2xl hidden relative">
         {authenticatedUser === null ? (

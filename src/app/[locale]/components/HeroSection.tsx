@@ -3,7 +3,6 @@
 
 import Link from "next/link";
 import Slider from "react-slick";
-import Slide from "./Slide";
 import Testimonial from "./Testimonial";
 import { useTranslations } from "next-intl";
 import "slick-carousel/slick/slick.css";
@@ -16,6 +15,8 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
 import { useEffect } from "react";
+import { motion, useInView } from "motion/react";
+import Slide from "./Slide"
 
 interface Product {
   id: number;
@@ -219,33 +220,36 @@ const HeroSection = () => {
     <main>
 
       {/* main HOME content*/}
-      <article className="pt-[160px]">
-        {/** Slider container */}
-        <div className="container">
-          <Slider {...settings}>
-            {slideData.map((item) => (
-              <Slide
-                key={item.id}
-                title={item.title}
-                img={item.img}
-                desc={item.desc}
-                price={item.price}
-              />
-            ))}
-          </Slider>
-        </div>
-      </article>
+        {/* <article className="pt-[160px]">
+          <div className="container">
+            <Slider {...settings}>
+              {slideData.map((item) => (
+                <Slide
+                  key={item.id}
+                  title={item.title}
+                  img={item.img}
+                  desc={item.desc}
+                  price={item.price}
+                />
+              ))}
+            </Slider>
+          </div>
+        </article> */}
+        <Slide />
 
       {/** HOME Products container */}
-      <article>
-        <div className="container pt-16">
+        <article className="container pt-16">
           <h1 className="font-medium pb-4 text-3xl capitalize dark:text-white">
             {t("new_arrival")}
           </h1>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))]  place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
-            {products.map((item) => {
+            {products.map((item, index) => {
               return (
-                <div
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
                   className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                   key={item.id}
                 >
@@ -291,19 +295,18 @@ const HeroSection = () => {
                       </div>
                     </div>
                   </Link>
-                </div>
+                </motion.div>
               );
             })}
           </div>
-        </div>
-      </article>
+        </article>
 
       {/** Testimonial */}
       <div className="container pt-6 grid-cols-2">
         <h2 className="pb-4 font-medium text-3xl capitalize dark:text-white">
           {t("testimonials")}
         </h2>
-        <Slider {...settings} className="w-[100%]">
+        {/* <Slider {...settings} className="w-[100%]">
           {testimonialData.map((item) => {
             return (
               <Testimonial
@@ -315,7 +318,7 @@ const HeroSection = () => {
               />
             );
           })}
-        </Slider>
+        </Slider> */}
         <div className="bg-[url(/assets/banner.webp)] bg-bottom sm:bg-cover h-[500px] rounded-2xl grid place-items-center mt-10">
           <div className=" text-center lg:space-y-4 bg-[#ff7a1aa2] min-w-[270px] sm:min-w-[300px] py-9 sm:px-9 md:min-w-[500px]  rounded-lg sm:rounded-none">
             <Link href={`/discount`}>

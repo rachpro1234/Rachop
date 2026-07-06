@@ -1,45 +1,111 @@
-import React from "react";
-import Image from "next/image";
+
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+
+import "../css/swiperStyles.css";
+
+// import required modules
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+import Slide from './Slide';
 import { useTranslations } from "next-intl";
 
 
-
-interface propsType {
-  title: string;
-  img: string;
-  desc: string;
-  price: string;
-}
-
-const Slide: React.FC<propsType> = ({ title, img, desc, price }) => {
-
-  const t = useTranslations("Index")
-
+export default function App() {
+  const t = useTranslations("Index");
+ 
+    // slide data
+  const slideData = [
+    {
+      id: 0,
+      title: `${t("trending_item")}`,
+      img: "/assets/shop-1.webp",
+      price: "$20",
+      desc: `${t("men_sunglasses")}`,
+    },
+    {
+      id: 1,
+      title: `${t("new_fashion_summer_sale")}`,
+      img: "/assets/shop-2.webp",
+      price: "$20",
+      desc: `${t("women_latest_fashion")}`,
+    },
+    {
+      id: 2,
+      title: `${t("trending_earring")}`,
+      img: "/assets/shop-3.webp",
+      price: "$20",
+      desc: `${t("women_latest_fashion_sale")}`,
+    },
+    {
+      id: 3,
+      title: `${t("modern_nails_design")}`,
+      img: "/assets/shop-4.webp",
+      price: "$20",
+      desc: `${t("women_latest_design")}`,
+    },
+  ];
 
   return (
-    <div className="relative max-sm:pt-0 pt-6">
-      <div className="absolute left-[30px] md:left-[70px] max-w-[250px] sm:max-w-[350px] top-[50%] -translate-y-[50%]  lg:space-y-4 bg-[#ffffffa2] sm:bg-transparent p-4 sm:p-0 rounded-lg sm:rounded-none">
-        <h3 className="text-white text-[24px] lg:text-[28px]">{title}</h3>
-        <h2 className="text-accent text-[26px] md:text-[30px] lg:text[44px] font-bold leading-1.2 uppercase">
-          {desc}
-        </h2>
-        <h3 className="text-[24px] text-gray-300">
-          {t("starting_at")}
-          <b> {price}</b>
-        .00
-        </h3>
-        <button type="button" className="bg-accent mt-3.5 text-white text-[14px] md:text-[16px] p-2 px-4 rounded-lg inline-block cursor-pointer hover:bg-blakish uppercase text-bold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">{t("shop_now")}</button>
-      </div>
-      <Image
-        src={img}
-        alt="photo"
-        property="false"
-        width={2000}
-        height={2000}
-        className="w-[100%] h-[450px] max-sm:h-[460px] rounded-xl object-cover md:object-right lg:object-[right_30%]"
-      />
-    </div>
+    <>
+      <Swiper
+        effect={'coverflow'}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={'auto'}
+        initialSlide={1}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        pagination={true}
+        modules={[EffectCoverflow, Pagination]}
+        className="mySwiper"
+      >
+        {slideData.map((slide, index) => (
+          <div key={index}>
+            <SwiperSlide>
+              <img src={slide.img} alt='' />
+            </SwiperSlide>
+          </div>
+        ))}
+        {/* <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/abstract-2.jpg" alt='' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/abstract-3.jpg" alt='' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/abstract-4.jpg" alt='' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/abstract-5.jpg" alt='' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/abstract-6.jpg" alt='' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/abstract-7.jpg" alt='' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/abstract-8.jpg" alt='' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/abstract-9.jpg" alt='' />
+        </SwiperSlide> */}
+      </Swiper>
+    </>
   );
-};
-
-export default Slide;
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from "react";
+import React from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslations } from "next-intl";
 // Phosphor icons
@@ -9,11 +9,21 @@ import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 import { XLogo } from "@phosphor-icons/react/dist/ssr";
 import { LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { motion, useScroll, useMotionValueEvent } from "motion/react"
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 
 const HeaderTop = () => {
   const t = useTranslations("Index");
+
+   const [text] = useTypewriter({
+      words: [
+        `${t("variety")}`,
+        `${t("quality")}`,
+        `${t("guarantee")}`,
+        `${t("reliability")}`,
+      ],
+      loop: 0,
+    });
 
   return (
     <div className="border-b border-gray-200 hidden sm:block">
@@ -34,9 +44,17 @@ const HeaderTop = () => {
             </Link>
           </div>
 
-          <div className="text-gray-500 text-[12px]">
+          {/* <div className="text-gray-500 text-[12px]">
             <b className="dark:text-white">{t("FREE_SHIPPING")}</b> {t("THIS_WEEK_ORDER_OVER")} - <span className="text-accent font-medium">{t("50$")}</span>
-          </div>
+          </div> */}
+            <div className="sm:text-4xl md:text-2xl text-[16px] text-center font-bold uppercase dark:text-white">
+              {t("we_offer")}
+              <span className="text-accent ml-4 uppercase font-bold">
+                {text}
+                <Cursor />
+              </span>
+              {t("in_products")}
+            </div>
 
           <LanguageSwitcher />
         </div>
