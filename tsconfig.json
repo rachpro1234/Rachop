@@ -1,29 +1,158 @@
 {
+
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/components/*": ["./app/[locale]/components/*"],
-      "@/*": ["./src/*"],
-      "/*": ["./node_modules/*"]
-    }
+  "lib": [
+  "dom",
+
+  
+  
+  "dom.iterable",
+
+  
+  
+  "esnext"
+
+  
+  ],
+
+  
+  "allowJs": true,
+
+  
+  "skipLibCheck": true,
+
+  
+  "forceConsistentCasingInFileNames": true,
+
+  
+  "strict": true,
+
+  
+  "noEmit": true,
+
+  
+  "esModuleInterop": true,
+
+  
+  "module": "esnext",
+
+  
+  "moduleResolution": "bundler",
+
+  
+  "resolveJsonModule": true,
+
+  
+  "isolatedModules": true,
+
+  
+  "jsx": "preserve",
+
+  
+  "incremental": true,
+
+  
+  "plugins": [
+
+  
+  
+  {
+
+  
+  
+  
+  "name": "next"
+
+  
+  
+  }
+
+  
+  ],
+
+  
+  "paths": {
+
+  
+  
+  "@/components/*": [
+
+  
+  
+  
+  "./app/[locale]/components/*"
+
+  
+  
+  ],
+
+  
+  
+  "@/*": [
+
+  
+  
+  
+  "./*"
+
+  
+  
+  ],
+
+  
+  
+  "/*": [
+
+  
+  
+  
+  "./node_modules/*"
+
+  
+  
+  ],
+
+  
+  
+  "@videos/*": [
+
+  
+  
+  
+  "./videos/*"
+
+  
+  
+  ]
+
+  
+  }
+
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+
+  "include": [
+
+  
+  "video.d.ts",
+
+  
+  "next-env.d.ts",
+
+  
+  "**/*.ts",
+
+  
+  "**/*.tsx",
+
+  
+  ".next/types/**/*.ts"
+
+  ],
+
+  "exclude": [
+
+  
+  "node_modules"
+
+  ]
 }

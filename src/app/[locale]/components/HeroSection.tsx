@@ -15,8 +15,10 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
 import { useEffect } from "react";
-import { motion, useInView } from "motion/react";
+import { motion } from "motion/react";
 import Slide from "./Slide"
+import Video from 'next-video'
+import videoDatei from '@/videos/discount-vd.mp4';
 
 interface Product {
   id: number;
@@ -42,36 +44,36 @@ const HeroSection = () => {
   const t = useTranslations("Index");
 
   // slide data
-  const slideData = [
-    {
-      id: 0,
-      title: `${t("trending_item")}`,
-      img: "/assets/shop-1.webp",
-      price: "$20",
-      desc: `${t("men_sunglasses")}`,
-    },
-    {
-      id: 1,
-      title: `${t("new_fashion_summer_sale")}`,
-      img: "/assets/shop-2.webp",
-      price: "$20",
-      desc: `${t("women_latest_fashion")}`,
-    },
-    {
-      id: 2,
-      title: `${t("trending_earring")}`,
-      img: "/assets/shop-3.webp",
-      price: "$20",
-      desc: `${t("women_latest_fashion_sale")}`,
-    },
-    {
-      id: 3,
-      title: `${t("modern_nails_design")}`,
-      img: "/assets/shop-4.webp",
-      price: "$20",
-      desc: `${t("women_latest_design")}`,
-    },
-  ];
+  // const slideData = [
+  //   {
+  //     id: 0,
+  //     title: `${t("trending_item")}`,
+  //     img: "/assets/shop-1.webp",
+  //     price: "$20",
+  //     desc: `${t("men_sunglasses")}`,
+  //   },
+  //   {
+  //     id: 1,
+  //     title: `${t("new_fashion_summer_sale")}`,
+  //     img: "/assets/shop-2.webp",
+  //     price: "$20",
+  //     desc: `${t("women_latest_fashion")}`,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: `${t("trending_earring")}`,
+  //     img: "/assets/shop-3.webp",
+  //     price: "$20",
+  //     desc: `${t("women_latest_fashion_sale")}`,
+  //   },
+  //   {
+  //     id: 3,
+  //     title: `${t("modern_nails_design")}`,
+  //     img: "/assets/shop-4.webp",
+  //     price: "$20",
+  //     desc: `${t("women_latest_design")}`,
+  //   },
+  // ];
 
    // split the slug to get the product ID and find the corresponding product
   const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
@@ -220,21 +222,6 @@ const HeroSection = () => {
     <main>
 
       {/* main HOME content*/}
-        {/* <article className="pt-[160px]">
-          <div className="container">
-            <Slider {...settings}>
-              {slideData.map((item) => (
-                <Slide
-                  key={item.id}
-                  title={item.title}
-                  img={item.img}
-                  desc={item.desc}
-                  price={item.price}
-                />
-              ))}
-            </Slider>
-          </div>
-        </article> */}
         <Slide />
 
       {/** HOME Products container */}
@@ -302,11 +289,11 @@ const HeroSection = () => {
         </article>
 
       {/** Testimonial */}
-      <div className="container pt-6 grid-cols-2">
-        <h2 className="pb-4 font-medium text-3xl capitalize dark:text-white">
-          {t("testimonials")}
+      <div className="container pt-9 grid-cols-2">
+        <h2 className="flex items-center justify-center gap-4 pb-4 font-medium text-3xl capitalize dark:text-white">
+          {t("testimonials")} <hr className="w-full" />
         </h2>
-        {/* <Slider {...settings} className="w-[100%]">
+        <Slider {...settings} className="w-[100%]">
           {testimonialData.map((item) => {
             return (
               <Testimonial
@@ -318,8 +305,9 @@ const HeroSection = () => {
               />
             );
           })}
-        </Slider> */}
+        </Slider>
         <div className="bg-[url(/assets/banner.webp)] bg-bottom sm:bg-cover h-[500px] rounded-2xl grid place-items-center mt-10">
+           <Video src={videoDatei} />
           <div className=" text-center lg:space-y-4 bg-[#ff7a1aa2] min-w-[270px] sm:min-w-[300px] py-9 sm:px-9 md:min-w-[500px]  rounded-lg sm:rounded-none">
             <Link href={`/discount`}>
               <button
