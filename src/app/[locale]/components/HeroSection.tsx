@@ -20,6 +20,8 @@ import Slide from "./Slide"
 import Video from 'next-video'
 import videoDatei from '@/videos/discount-vd.mp4';
 
+import { HR } from "flowbite-react";
+
 interface Product {
   id: number;
   slug: string;
@@ -291,9 +293,9 @@ const HeroSection = () => {
       {/** Testimonial */}
       <div className="container pt-9 grid-cols-2">
         <h2 className="flex items-center justify-center gap-4 pb-4 font-medium text-3xl capitalize dark:text-white">
-          {t("testimonials")} <hr className="w-full" />
+          {t("testimonials")} <HR className="text-black dark:text-white w-full" />
         </h2>
-        <Slider {...settings} className="w-[100%]">
+        <Slider {...settings} className="w-[100%] rounded-xl">
           {testimonialData.map((item) => {
             return (
               <Testimonial
@@ -306,9 +308,16 @@ const HeroSection = () => {
             );
           })}
         </Slider>
-        <div className="bg-[url(/assets/banner.webp)] bg-bottom sm:bg-cover h-[500px] rounded-2xl grid place-items-center mt-10">
-           <Video src={videoDatei} />
-          <div className=" text-center lg:space-y-4 bg-[#ff7a1aa2] min-w-[270px] sm:min-w-[300px] py-9 sm:px-9 md:min-w-[500px]  rounded-lg sm:rounded-none">
+        <div className="rounded-2xl grid mt-10">
+          <h2 className="flex items-center justify-center gap-4 pb-4 font-medium text-3xl capitalize dark:text-white">
+            {t("demo")} <HR className="text-black dark:text-white w-full" />
+          </h2>
+          <Video 
+            src={videoDatei} 
+            style={{ '--media-accent-color':'rgb(151, 79, 218)', '--media-object-fit': 'cover' }}
+            className="overflow-hidden rounded-xl"
+          />
+          {/* <div className=" text-center lg:space-y-4 bg-[#ff7a1aa2] min-w-[270px] sm:min-w-[300px] py-9 sm:px-9 md:min-w-[500px]  rounded-lg sm:rounded-none">
             <Link href={`/discount`}>
               <button
                 type="button"
@@ -324,7 +333,7 @@ const HeroSection = () => {
             <p className="text-gray-500 text-[20px]">
               {t("starting_@_$20_shop_now")}
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </main>
