@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import Link from "next/link";
 import banner from "/public/menProducts/banner.jpg";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
@@ -32,12 +33,15 @@ interface Product {
 function Men() {
   const t = useTranslations("Men");
 
+  const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+
   const menProducts = [
     {
       id: 0,
       img: "/menProducts/product1.webp",
       title: "jacket",
       desc: `${t("light_jogging_jacket")}`,
+      slug: `${slugify(t("light_jogging_jacket"))}`,
       price: 50,
       prevPrice: 100,
     },
@@ -46,6 +50,7 @@ function Men() {
       title: "Jacket",
       img: "/menProducts/product2.webp",
       desc: `${t("jogging_jacket")}`,
+      slug: `${slugify(t("jogging_jacket"))}`,
       price: 60,
       prevPrice: 120,
     },
@@ -54,6 +59,7 @@ function Men() {
       title: "color",
       img: "/menProducts/product3.webp",
       desc: `${t("winter_jacket")}`,
+      slug: `${slugify(t("winter_jacket"))}`,
       price: 90,
       prevPrice: 140,
     },
@@ -62,6 +68,7 @@ function Men() {
       title: "price range",
       img: "/menProducts/product4.webp",
       desc: `${t("winter_hoodie")}`,
+      slug: `${slugify(t("winter_hoodie"))}`,
       price: 70,
       prevPrice: 100,
     },
@@ -70,6 +77,7 @@ function Men() {
       title: "price range",
       img: "/menProducts/product5.webp",
       desc: `${t("automn_trikot")}`,
+      slug: `${slugify(t("automn_trikot"))}`,
       price: 50,
       prevPrice: 70,
     },
@@ -78,6 +86,7 @@ function Men() {
       title: "price range",
       img: "/menProducts/product6.webp",
       desc: `${t("cold_days_jacket")}`,
+      slug: `${slugify(t("cold_days_jacket"))}`,
       price: 70,
       prevPrice: 100,
     },
@@ -145,48 +154,50 @@ function Men() {
                 className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                 key={item.id}
               >
-                <div className="overflow-hidden">
-                  <Image
-                    src={item.img}
-                    alt="product-img"
-                    width={200}
-                    height={200}
-                    className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
-                  />
-                </div>
-                <div className="product-card__info space-y-2 py-2">
-                  <h3 className="text-accent font-bold uppercase">
-                    {item.title}
-                  </h3>
-                  <p className="text-[#aaa] max-w-[200px] capitalize">
-                    {item.desc}
-                  </p>
-                  <span>
-                    <Stars currentRating={null} />
-                  </span>
-                  <div className="flex justify-between items-center">
-                    <div className="product-card__price font-bold flex gap-4">
-                      <span className="dark:text-white">
-                        {item.price}.00{t("$")}
-                      </span>
-                      <span className="line-through font-normal text-[#aea3a3]">
-                        {item.prevPrice}.00{t("$")}
-                      </span>
-                    </div>
-                    <button
-                      type="submit"
-                      aria-label={t("add_to_cart")}
-                      title={t("add_to_cart")}
-                      className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
-                    >
-                      <ShoppingCartSimple
-                        size={32}
-                        onClick={() => addToCart(item)}
-                        className="dark:bg-[#131927] dark:text-white hover:text-accent"
-                      />
-                    </button>
+                <Link href={`/menProducts/${item.slug}-${item.id}`}>
+                  <div className="overflow-hidden">
+                    <Image
+                      src={item.img}
+                      alt="product-img"
+                      width={200}
+                      height={200}
+                      className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
+                    />
                   </div>
-                </div>
+                  <div className="product-card__info space-y-2 py-2">
+                    <h3 className="text-accent font-bold uppercase">
+                      {item.title}
+                    </h3>
+                    <p className="text-[#aaa] max-w-[200px] capitalize">
+                      {item.desc}
+                    </p>
+                    <span>
+                      <Stars currentRating={null} />
+                    </span>
+                    <div className="flex justify-between items-center">
+                      <div className="product-card__price font-bold flex gap-4">
+                        <span className="dark:text-white">
+                          {item.price}.00{t("$")}
+                        </span>
+                        <span className="line-through font-normal text-[#aea3a3]">
+                          {item.prevPrice}.00{t("$")}
+                        </span>
+                      </div>
+                      <button
+                        type="submit"
+                        aria-label={t("add_to_cart")}
+                        title={t("add_to_cart")}
+                        className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+                      >
+                        <ShoppingCartSimple
+                          size={32}
+                          onClick={() => addToCart(item)}
+                          className="dark:bg-[#131927] dark:text-white hover:text-accent"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </Link>
               </div>
             );
           })}

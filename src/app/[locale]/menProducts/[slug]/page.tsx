@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../../redux/store";
 import { updateCart } from "../../redux/features/cart-slice";
 import Stars from "../../components/Stars";
-// import ImageEffect from "../../components/ImageEffect"
 import ImageEffect from "@/src/app/[locale]/components/ImageEffect"
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
 
@@ -18,7 +17,6 @@ interface Product {
   title: string;
   desc: string;
   img: string;
-  images: string[];
   price: number;
   prevPrice: number;
 }
@@ -34,79 +32,63 @@ interface cartItems {
 }
 
 const ProductPage = ({ params }: { params: { slug: string } }) => {
-  const t = useTranslations("Index");
+  const t = useTranslations("Men");
 
     // products data
-  const products: Product[] = [
+  const menProducts: Product[] = [
     {
       id: 0,
-      img: "/products/product-1.webp",
-      images: ["/assets/thumbnail1-img1.webp", "/assets/thumbnail1-img2.webp", "/assets/thumbnail1-img3.webp"],
-      title: `${t("jacket")}`,
-      slug: `${t("jacket")}`,
-      desc: `${t("greyman_jacket_heliko_tex")}`,
-      price: 45,
-      prevPrice: 95,
+      img: "/menProducts/product1.webp",
+      title: "jacket",
+      desc: `${t("light_jogging_jacket")}`,
+      slug: t("light_jogging_jacket"),
+      price: 50,
+      prevPrice: 100,
     },
     {
       id: 1,
-      img: "/products/product-2.webp",
-      images: ["/products/product-2.webp", "/products/product-2.webp", "/products/product-2.webp"],
-      title: `${t("skirt")}`,
-      slug: `${t("skirt")}`,
-      desc: `${t("brown_floral_wrap_midi_skirt")}`,
-      price: 55,
-      prevPrice: 105,
+      title: "Jacket",
+      img: "/menProducts/product2.webp",
+      desc: `${t("jogging_jacket")}`,
+      slug: t("jogging_jacket"),
+      price: 60,
+      prevPrice: 120,
     },
     {
       id: 2,
-      img: "/products/product-3.webp",
-      images: ["/products/product-3.webp", "/products/product-3.webp", "/products/product-3.webp"],
-      title: ` ${t("party_wear")}`,
-      slug: `${t("party_wear")}`,
-      desc: `${t("women_party_shoes")}`,
-      price: 25,
-      prevPrice: 75,
+      title: "color",
+      img: "/menProducts/product3.webp",
+      desc: `${t("winter_jacket")}`,
+      slug: t("winter_jacket"),
+      price: 90,
+      prevPrice: 140,
     },
     {
       id: 3,
-      img: "/products/product-4.webp",
-      images: ["/products/product-4.webp", "/products/product-4.webp", "/products/product-4.webp"],
-      title: `${t("shirt")}`,
-      slug: `${t("shirt")}`,
-      desc: `${t("men_corporate_shirt")}`,
-      price: 45,
-      prevPrice: 95,
+      title: "price range",
+      img: "/menProducts/product4.webp",
+      desc: `${t("winter_hoodie")}`,
+      slug: t("winter_hoodie"),
+      price: 70,
+      prevPrice: 100,
     },
     {
       id: 4,
-      img: "/products/product-5.webp",
-      images: ["/products/product-5.webp", "/products/product-5.webp", "/products/product-5.webp"],
-      title: `${t("shoes")}`,
-      slug: `${t("shoes")}`,
-      desc: `${t("green_waterproof_hiking_shoes")}`,
-      price: 100,
-      prevPrice: 107,
+      title: "price range",
+      img: "/menProducts/product5.webp",
+      desc: `${t("automn_trikot")}`,
+      slug: t("automn_trikot"),
+      price: 50,
+      prevPrice: 70,
     },
     {
       id: 5,
-      img: "/products/product-6.webp",
-      images: ["/products/product-6.webp", "/products/product-6.webp", "/products/product-6.webp"],
-      title: `${t("watches")}`,
-      slug: `${t("watches")}`,
-      desc: `${t("smart_watches_vital_plus")}`,
-      price: 100,
-      prevPrice: 150,
-    },
-    {
-      id: 6,
-      img: "/products/product-7.webp",
-      images: ["/products/product-7.webp", "/products/product-7.webp", "/products/product-7.webp"],
-      title: `${t("watches")}`,
-      slug: `${t("watches")}`,
-      desc: `${t("pocket_watch_leather_pouch")}`,
-      price: 120,
-      prevPrice: 170,
+      title: "price range",
+      img: "/menProducts/product6.webp",
+      desc: `${t("cold_days_jacket")}`,
+      slug: t("cold_days_jacket"),
+      price: 70,
+      prevPrice: 100,
     },
   ];
 
@@ -114,7 +96,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
 
 
 
- const product = products.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
+ const product = menProducts.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
 
  if(!product) {
   notFound();

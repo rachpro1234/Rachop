@@ -93,10 +93,7 @@ input[type="radio"] {
     font-weight: bolder;
 }
 
-/* Thumbnail styles */
-/* .swiper-slide-thumb-active {
-  border-color: black;
-} */
+
 .slick-list {
   border-radius: 1rem !important;
 }

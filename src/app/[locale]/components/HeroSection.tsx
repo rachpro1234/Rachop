@@ -228,10 +228,10 @@ const HeroSection = () => {
 
       {/** HOME Products container */}
         <article className="container pt-16">
-          <h1 className="font-medium pb-4 text-3xl capitalize dark:text-white">
-            {t("new_arrival")}
+          <h1 className="flex items-center justify-center gap-4 font-medium text-3xl uppercase dark:text-white">
+            {t("new_arrival")} <HR className="text-black dark:text-white w-full [2px]" />
           </h1>
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))]  place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] pt-4 place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
             {products.map((item, index) => {
               return (
                 <motion.div
@@ -292,10 +292,10 @@ const HeroSection = () => {
 
       {/** Testimonial */}
       <div className="container pt-9 grid-cols-2">
-        <h2 className="flex items-center justify-center gap-4 pb-4 font-medium text-3xl capitalize dark:text-white">
-          {t("testimonials")} <HR className="text-black dark:text-white w-full" />
+        <h2 className="flex items-center justify-center gap-4 font-medium text-3xl uppercase dark:text-white">
+          {t("testimonials")} <HR className="text-black dark:text-white w-full h-[2px]" />
         </h2>
-        <Slider {...settings} className="w-[100%] rounded-xl">
+        <Slider {...settings} className="w-[100%] rounded-xl pt-4">
           {testimonialData.map((item) => {
             return (
               <Testimonial
@@ -309,13 +309,13 @@ const HeroSection = () => {
           })}
         </Slider>
         <div className="rounded-2xl grid mt-10">
-          <h2 className="flex items-center justify-center gap-4 pb-4 font-medium text-3xl capitalize dark:text-white">
-            {t("demo")} <HR className="text-black dark:text-white w-full" />
+          <h2 className="flex items-center justify-center gap-4 font-medium text-3xl uppercase dark:text-white">
+            {t("demo")} <HR className="text-black dark:text-white w-full h-[2px]" />
           </h2>
           <Video 
             src={videoDatei} 
             style={{ '--media-accent-color':'rgb(151, 79, 218)', '--media-object-fit': 'cover' }}
-            className="overflow-hidden rounded-xl"
+            className="overflow-hidden rounded-xl pt-4"
           />
           {/* <div className=" text-center lg:space-y-4 bg-[#ff7a1aa2] min-w-[270px] sm:min-w-[300px] py-9 sm:px-9 md:min-w-[500px]  rounded-lg sm:rounded-none">
             <Link href={`/discount`}>
