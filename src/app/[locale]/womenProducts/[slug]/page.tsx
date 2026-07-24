@@ -32,63 +32,63 @@ interface cartItems {
 }
 
 const ProductPage = ({ params }: { params: { slug: string } }) => {
-  const t = useTranslations("Men");
+  const t = useTranslations("Women");
 
     // products data
-  const menProducts: Product[] = [
+   const womenProducts: Product[] = [
     {
       id: 0,
-      img: "/menProducts/product1.webp",
-      title: "jacket",
-      desc: `${t("light_jogging_jacket")}`,
-      slug: t("light_jogging_jacket"),
-      price: 50,
-      prevPrice: 100,
+      img: "/womenProducts/w-product1.webp",
+      title: `${t("automn-dress")}`,
+      slug: t('automn-dress'),
+      desc: `${t("green_occasions_dress")}`,
+      price: 30,
+      prevPrice: 70,
     },
     {
       id: 1,
-      title: "Jacket",
-      img: "/menProducts/product2.webp",
-      desc: `${t("jogging_jacket")}`,
-      slug: t("jogging_jacket"),
-      price: 60,
+      title: `${t("sommer-dress")}`,
+      slug: t("sommer-dress"),
+      img: "/womenProducts/w-product2.webp",
+      desc: `${t("party_wear_dress")}`,
+      price: 70,
       prevPrice: 120,
     },
     {
       id: 2,
-      title: "color",
-      img: "/menProducts/product3.webp",
-      desc: `${t("winter_jacket")}`,
-      slug: t("winter_jacket"),
-      price: 90,
-      prevPrice: 140,
+      title: `${t("winter-dress")}`,
+      slug: t("winter-dress"),
+      img: "/womenProducts/w-product3.webp",
+      desc: `${t("snow_wear_dress")}`,
+      price: 60,
+      prevPrice: 90,
     },
     {
       id: 3,
-      title: "price range",
-      img: "/menProducts/product4.webp",
-      desc: `${t("winter_hoodie")}`,
-      slug: t("winter_hoodie"),
-      price: 70,
-      prevPrice: 100,
+      title: `${t("sport-wear")}`,
+      slug: t("sport-wear"),
+      img: "/womenProducts/w-product4.webp",
+      desc: `${t("sport_top_trikot")}`,
+      price: 30,
+      prevPrice: 50,
     },
     {
       id: 4,
-      title: "price range",
-      img: "/menProducts/product5.webp",
-      desc: `${t("automn_trikot")}`,
-      slug: t("automn_trikot"),
-      price: 50,
-      prevPrice: 70,
+      title: `${t("sport-wear")}`,
+      slug: t("sport-wear"),
+      img: "/womenProducts/w-product5.webp",
+      desc: `${t("sommer_outgoing_wear")}`,
+      price: 60,
+      prevPrice: 90,
     },
     {
       id: 5,
-      title: "price range",
-      img: "/menProducts/product6.webp",
-      desc: `${t("cold_days_jacket")}`,
-      slug: t("cold_days_jacket"),
-      price: 70,
-      prevPrice: 100,
+      title: `${t("sommer-wear")}`,
+      slug: t("sommer-wear"),
+      img: "/womenProducts/w-product6.webp",
+      desc: `${t("top_sommer_trikot")}`,
+      price: 40,
+      prevPrice: 60,
     },
   ];
 
@@ -96,7 +96,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
 
 
 
- const product = menProducts.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
+ const product = womenProducts.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
 
  if(!product) {
   notFound();

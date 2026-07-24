@@ -50,7 +50,7 @@ const ImageEffect = ({ image }: imageEffectProps) => {
                 onMouseLeave={handleMouseLeave}
                 onMouseEnter={handleMouseEnter}
                 onMouseMove={handleMouseMove}
-                className='w-80 h-96 relative overflow-hidden'>
+                className='w-80 h-96 relative overflow-hidden rounded-xl'>
                             <Image 
                             className='object-cover border z-10'
                              alt="" 

@@ -25,7 +25,7 @@ function FullHeader() {
 
   return (
     <motion.header
-     className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-[#131927] dark:text-white"
+     className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-[#131927] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.1)]"
         animate={{ y: hidden ? -140 : 0,
         opacity: hidden ? 0 : 1,
        }}
