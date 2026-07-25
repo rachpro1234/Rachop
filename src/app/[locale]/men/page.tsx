@@ -10,6 +10,7 @@ import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
 import Stars from "../components/Stars";
 import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";
+import { motion } from "motion/react";
 
 interface cartItems {
   id: number;
@@ -148,9 +149,13 @@ function Men() {
 
       <div className="pt-14">
         <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
-          {menProducts.map((item) => {
+          {menProducts.map((item, index) => {
             return (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
                 className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                 key={item.id}
               >
@@ -198,7 +203,7 @@ function Men() {
                     </div>
                   </div>
                 </Link>
-              </div>
+              </motion.div>
             );
           })}
         </div>

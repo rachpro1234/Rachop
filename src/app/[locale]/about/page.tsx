@@ -3,15 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import aboutBanner from "/public/about/aboutBanner.jpg";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
-import image1 from "/public/about/image1.jpg";
-import image2 from "/public/about/image2.jpg";
-import image3 from "/public/about/image3.jpg";
-import image4 from "/public/about/image4.jpg";
-import image5 from "/public/about/image5.jpg";
-import image6 from "/public/about/image6.jpg";
-import image7 from "/public/about/image7.jpg";
 
 
 const About = () => {
@@ -36,12 +28,13 @@ const About = () => {
           {t("about")}
         </h1>
         <Image
-          src={aboutBanner}
+          src='/about/aboutBanner.jpg'
           width={900}
           height={900}
           property="true"
           placeholder="blur"
           alt="banner"
+          priority
           className="w-[100%] h-[500px] object-cover object-right rounded-lg"
         />
 
@@ -71,42 +64,42 @@ const About = () => {
             </p>
             <div className="w-full max-w-5xl p-5 pb-10 mx-auto mb-10 gap-5 sm:columns-3 columns-2 space-y-5 overflow-hidden">
               <Image
-                src={image1}
+                src='/about/image1.jpg'
                 width={600}
                 height={600}
                 alt="image"
                 className="cursor-pointer transition duration-500 hover:scale-110"
               />
               <Image
-                src={image2}
+                src='/about/image2.jpg'
                 width={600}
                 height={600}
                 alt="image"
                 className="cursor-pointer transition duration-500 hover:scale-110"
               />
               <Image
-                src={image3}
+                src='/about/image3.jpg'
                 width={600}
                 height={600}
                 alt="image"
                 className="cursor-pointer transition duration-500 hover:scale-110"
               />
               <Image
-                src={image4}
+                src='/about/image4.jpg'
                 width={600}
                 height={600}
                 alt="image"
                 className="cursor-pointer transition duration-500 hover:scale-110"
               />
               <Image
-                src={image5}
+                src='/about/image5.jpg'
                 width={600}
                 height={600}
                 alt="image"
                 className="cursor-pointer transition duration-500 hover:scale-110"
               />
               <Image
-                src={image6}
+                src='/about/image6.jpg'
                 width={700}
                 height={700}
                 alt="image"
@@ -131,7 +124,7 @@ const About = () => {
           </div>
           <div className="overflow-hidden">
             <Image
-              src={image7}
+              src='/about/image7.jpg'
               width={900}
               height={900}
               property="true"

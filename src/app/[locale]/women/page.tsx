@@ -10,6 +10,7 @@ import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
 import { ShoppingCartSimple } from "@phosphor-icons/react";
 import Stars from "../components/Stars";
+import { motion } from "motion/react";
 
 interface cartItems {
   id: number;
@@ -41,53 +42,53 @@ function Women() {
       id: 0,
       img: "/womenProducts/w-product1.webp",
       title: `${t("automn-dress")}`,
-      slug: `${slugify(t("automn-dress"))}`,
       desc: `${t("green_occasions_dress")}`,
+      slug: `${slugify(t("green_occasions_dress"))}`,
       price: 30,
       prevPrice: 70,
     },
     {
       id: 1,
       title: `${t("sommer-dress")}`,
-      slug: `${slugify(t("sommer-dress"))}`,
       img: "/womenProducts/w-product2.webp",
       desc: `${t("party_wear_dress")}`,
+      slug: `${slugify(t("party_wear_dress"))}`,
       price: 70,
       prevPrice: 120,
     },
     {
       id: 2,
       title: `${t("winter-dress")}`,
-      slug: `${slugify(t("winter-dress"))}`,
       img: "/womenProducts/w-product3.webp",
       desc: `${t("snow_wear_dress")}`,
+      slug: `${slugify(t("snow_wear_dres"))}`,
       price: 60,
       prevPrice: 90,
     },
     {
       id: 3,
       title: `${t("sport-wear")}`,
-      slug: `${slugify(t("sport-wear"))}`,
       img: "/womenProducts/w-product4.webp",
       desc: `${t("sport_top_trikot")}`,
+      slug: `${slugify(t("ssport_top_trikot"))}`,
       price: 30,
       prevPrice: 50,
     },
     {
       id: 4,
       title: `${t("sport-wear")}`,
-      slug: `${slugify(t("sport-wear"))}`,
       img: "/womenProducts/w-product5.webp",
       desc: `${t("sommer_outgoing_wear")}`,
+      slug: `${slugify(t("sommer_outgoing_wear"))}`,
       price: 60,
       prevPrice: 90,
     },
     {
       id: 5,
       title: `${t("sommer-wear")}`,
-      slug: `${slugify(t("sommer-wear"))}`,
       img: "/womenProducts/w-product6.webp",
       desc: `${t("top_sommer_trikot")}`,
+      slug: `${slugify(t("top_sommer_trikot"))}`,
       price: 40,
       prevPrice: 60,
     },
@@ -149,9 +150,13 @@ function Women() {
 
       <div className="pt-14">
         <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
-          {womenProducts.map((item) => {
+          {womenProducts.map((item, index) => {
             return (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
                 className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                 key={item.id}
               >
@@ -199,7 +204,7 @@ function Women() {
                     </div>
                   </div>
                 </Link>
-              </div>
+              </motion.div>
             );
           })}
         </div>
