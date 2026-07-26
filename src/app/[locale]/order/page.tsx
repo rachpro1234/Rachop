@@ -64,7 +64,7 @@ const Product: React.FC = () => {
   };
 
   return (
-    <div className="pt-[160px]">
+    <div className="pt-[160px] max-w-[1536px] mx-auto">
       {cartItems.length !== 0 ? (
         <h1 className="text-center mb-10 capitalize font-bold text-3xl dark:text-white">{t("your_orders")}</h1>
       ) : (
@@ -75,7 +75,7 @@ const Product: React.FC = () => {
           {t("Cart_is_empty_please_add_an_item")}
         </h1>
       ) : null}
-      <div className="flex flex-col gap-4 max-w-[1280px] mx-auto">
+      <div className="flex flex-col gap-4">
         {cartItems.map((item, index) => {
           return (
             <motion.div
@@ -100,7 +100,7 @@ const Product: React.FC = () => {
                   <span>
                     <Stars currentRating={null} />
                   </span>
-                  <h2 className="font-bold dark:text-white text-4xl">{item.price * item.quantity}$</h2>
+                  <h2 className="font-bold dark:text-white text-4xl mb-2">{item.price * item.quantity}$</h2>
                   <div className="flex items-center gap-4 w-fit rounded-xl border-black border-2 border-solid px-2">
                     <button
                       type="button"
@@ -122,7 +122,7 @@ const Product: React.FC = () => {
                 <span 
                 className="flex gap-2 text-xl cursor-pointer uppercase hover:underline hover:text-accent transition-all duration-300 ease-in-out"
                 onClick={() => removeCartItems(index)}>
-                  delete
+                 {t("delete")}
                   <Trash
                     size={26}
                     className="cursor-pointer hover:text-accent dark:text-white"
@@ -133,9 +133,9 @@ const Product: React.FC = () => {
           );
         })}
       </div>
-      <div className="flex items-center justify-center mt-4 gap-10 mb-4">
+      <div className="flex items-center justify-end mt-4 gap-10 mb-4">
         {cartItems.length !== 0 ? (
-          <button type="button"  className="bg-purple-700 text-[#fff] px-4">
+          <button type="button"  className="bg-accent text-[#fff] text-xl hover:bg-purple-400 transition-colors duration-300 ease-in-out py-3 px-7 rounded-full">
             {t("buy")}
           </button>
         ) : (

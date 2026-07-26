@@ -4,7 +4,14 @@ import React from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+import aboutBanner from "/public/about/aboutBanner.webp"
 
+
+interface AboutImages {
+  id: Number;
+  src: string;
+  alt: string;
+}
 
 const About = () => {
   const t = useTranslations("About");
@@ -19,6 +26,38 @@ const About = () => {
     loop: 0,
   });
 
+  const aboutImages: AboutImages[] = [
+    {
+      id: 0,
+      src: "/about/image1.webp",
+      alt: "About image 1"
+    },
+     {
+      id: 1,
+      src: '/about/image2.webp',
+      alt: "About image 2"
+    },
+     {
+      id: 2,
+      src: '/about/image3.webp',
+      alt: "About image 3"
+    },
+     {
+      id: 3,
+      src: '/about/image4.webp',
+      alt: "About image 4"
+    },
+     {
+      id: 4,
+      src: '/about/image5.webp',
+      alt: "About image 5"
+    },
+     {
+      id: 5,
+      src: '/about/image6.webp',
+      alt: "About image 6"
+    },
+  ]
 
 
   return (
@@ -28,14 +67,14 @@ const About = () => {
           {t("about")}
         </h1>
         <Image
-          src='/about/aboutBanner.jpg'
+          src={aboutBanner}
           width={900}
           height={900}
           property="true"
           placeholder="blur"
+          blurDataURL="about blur image"
           alt="banner"
-          priority
-          className="w-[100%] h-[500px] object-cover object-right rounded-lg"
+          className="w-[100%] h-[500px] object-cover object-right rounded-xl"
         />
 
         <div className="pt-16 sm:flex items-center justify-center gap-10">
@@ -63,48 +102,19 @@ const About = () => {
               exercitationem, vitae veniam harum animi explicabo perspiciatis
             </p>
             <div className="w-full max-w-5xl p-5 pb-10 mx-auto mb-10 gap-5 sm:columns-3 columns-2 space-y-5 overflow-hidden">
-              <Image
-                src='/about/image1.jpg'
-                width={600}
-                height={600}
-                alt="image"
-                className="cursor-pointer transition duration-500 hover:scale-110"
-              />
-              <Image
-                src='/about/image2.jpg'
-                width={600}
-                height={600}
-                alt="image"
-                className="cursor-pointer transition duration-500 hover:scale-110"
-              />
-              <Image
-                src='/about/image3.jpg'
-                width={600}
-                height={600}
-                alt="image"
-                className="cursor-pointer transition duration-500 hover:scale-110"
-              />
-              <Image
-                src='/about/image4.jpg'
-                width={600}
-                height={600}
-                alt="image"
-                className="cursor-pointer transition duration-500 hover:scale-110"
-              />
-              <Image
-                src='/about/image5.jpg'
-                width={600}
-                height={600}
-                alt="image"
-                className="cursor-pointer transition duration-500 hover:scale-110"
-              />
-              <Image
-                src='/about/image6.jpg'
-                width={700}
-                height={700}
-                alt="image"
-                className="cursor-pointer transition duration-500 hover:scale-110"
-              />
+              {aboutImages.map((img, index) => {
+                return (
+                  <div key={index}>
+                    <Image
+                      src={img.src}
+                      width={600}
+                      height={600}
+                      alt="image"
+                      className="cursor-pointer transition duration-500 hover:scale-110"
+                    />
+                  </div>
+              );
+              })}
 
             </div>
 
@@ -124,12 +134,12 @@ const About = () => {
           </div>
           <div className="overflow-hidden">
             <Image
-              src='/about/image7.jpg'
+              src='/about/image7.webp'
               width={900}
               height={900}
               property="true"
               alt="banner"
-              className="w-[100%] h-[500px] object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
+              className="w-[100%] h-[500px] object-cover object-center rounded-xl mb-10"
             />
           </div>
         </div>

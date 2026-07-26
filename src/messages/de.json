@@ -124,6 +124,7 @@
   "Order": {
     "your_orders": "Ihre Bestellungen",
     "Cart_is_empty_please_add_an_item": "Einkaufswagen ist leer.Bitte fügen Sie einen Artikel hinzu",
+    "delete": "löschen",
     "buy": "Kaufen",
     "total_items": "Gesamtzahl der Artikel"
   },

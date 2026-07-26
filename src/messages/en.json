@@ -100,6 +100,7 @@
     "cold_days_jacket": "Jacke für kalte Tage",
     "$" : "$"
   },
+
   "Women": {
     "women": "Women",
     "shop_with_us": "shop with us",
@@ -140,6 +141,7 @@
   "Order": {
     "your_orders": "your orders",
     "Cart_is_empty_please_add_an_item": "cart is empty.please add an item",
+    "delete": "delete",
     "buy": "Buy",
     "total_items": "Total Items"
   },

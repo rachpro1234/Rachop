@@ -98,6 +98,8 @@
     "cold_days_jacket": "giacca giorni freddi",
     "$" : "€"
   },
+
+
   "Women": {
     "women": "Donne",
     "shop_with_us": "acquista con noi",
@@ -138,6 +140,7 @@
   "Order": {
     "your_orders": "I tuoi ordini",
     "Cart_is_empty_please_add_an_item": "Carrello vuoto.Aggiungi un articolo",
+    "delete": "elimina",
     "buy": "Acquista",
     "total_items": "Numero totale di articoli"
   },
