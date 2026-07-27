@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { EmbeddedCheckoutProvider, EmbeddedCheckout } from "@stripe/react-stripe-js";
 import { createCheckoutSession } from "@/src/app/actions/stripe";
 
-const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY!);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 export default function CheckoutForm({ priceId }: { priceId: string }) {
   // We fetch the clientSecret via the Server Action
