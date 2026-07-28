@@ -228,7 +228,7 @@ const HeroSection = () => {
 
       {/** HOME Products container */}
         <article className="container pt-16">
-          <h1 className="flex items-center justify-center gap-4 font-medium text-3xl uppercase dark:text-white">
+          <h1 className="flex items-center justify-center gap-4 font-medium text-xl uppercase dark:text-white">
             {t("new_arrival")} <HR className="text-black dark:text-white w-full [2px]" />
           </h1>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] pt-4 place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
