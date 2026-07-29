@@ -20,7 +20,8 @@ import Navbar from "./Navbar";
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;

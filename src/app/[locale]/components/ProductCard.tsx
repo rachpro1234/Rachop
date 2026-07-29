@@ -11,7 +11,7 @@ import { updateCart } from "../redux/features/cart-slice";
 interface Product {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -20,7 +20,8 @@ interface Product {
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -30,7 +31,7 @@ interface cartItems {
 
 const ProductCard: React.FC<Product> = ({
   title,
-  desc,
+  desc_key,
   img,
   price,
   prevPrice,
@@ -60,7 +61,8 @@ const ProductCard: React.FC<Product> = ({
           const newCartItem  = {
             id: product.id,
             title: product.title,
-            desc: product.desc,
+            desc_key: product.desc_key,
+            category: '',
             img: product.img,
             price: product.price,
             prevPrice: product.prevPrice,
@@ -95,7 +97,7 @@ const ProductCard: React.FC<Product> = ({
         </div>
         <div className="product-card__info space-y-2 py-2">
           <h3 className="text-accent font-bold uppercase">{title}</h3>
-          <p className="text-[#aaa] max-w-[200px] capitalize">{desc}</p>
+          <p className="text-[#aaa] max-w-[200px] capitalize">{desc_key}</p>
           <span>
             <Stars currentRating={null} />
           </span>
