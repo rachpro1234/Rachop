@@ -15,7 +15,7 @@ interface Product {
   id: number;
   slug: string;
   title: string;
-  desc: string;
+  desc_key: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -24,7 +24,8 @@ interface Product {
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -41,7 +42,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       img: "/womenProducts/w-product1.webp",
       title: `${t("automn-dress")}`,
       slug: t('automn-dress'),
-      desc: `${t("green_occasions_dress")}`,
+      desc_key: "green_occasions_dress",
       price: 30,
       prevPrice: 70,
     },
@@ -50,7 +51,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       title: `${t("sommer-dress")}`,
       slug: t("sommer-dress"),
       img: "/womenProducts/w-product2.webp",
-      desc: `${t("party_wear_dress")}`,
+      desc_key: "party_wear_dress",
       price: 70,
       prevPrice: 120,
     },
@@ -59,7 +60,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       title: `${t("winter-dress")}`,
       slug: t("winter-dress"),
       img: "/womenProducts/w-product3.webp",
-      desc: `${t("snow_wear_dress")}`,
+      desc_key: "snow_wear_dress",
       price: 60,
       prevPrice: 90,
     },
@@ -68,7 +69,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       title: `${t("sport-wear")}`,
       slug: t("sport-wear"),
       img: "/womenProducts/w-product4.webp",
-      desc: `${t("sport_top_trikot")}`,
+      desc_key: "sport_top_trikot",
       price: 30,
       prevPrice: 50,
     },
@@ -77,7 +78,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       title: `${t("sport-wear")}`,
       slug: t("sport-wear"),
       img: "/womenProducts/w-product5.webp",
-      desc: `${t("sommer_outgoing_wear")}`,
+      desc_key: "sommer_outgoing_wear",
       price: 60,
       prevPrice: 90,
     },
@@ -86,7 +87,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       title: `${t("sommer-wear")}`,
       slug: t("sommer-wear"),
       img: "/womenProducts/w-product6.webp",
-      desc: `${t("top_sommer_trikot")}`,
+      desc_key: "top_sommer_trikot",
       price: 40,
       prevPrice: 60,
     },
@@ -120,7 +121,8 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
        const newCartItem = {
          id: product.id,
          title: product.title,
-         desc: product.desc,
+         desc_key: product.desc_key,
+         category: "Women",
          img: product.img,
          price: product.price,
          prevPrice: product.prevPrice,
@@ -154,7 +156,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
         <ImageEffect image={product.img} />
         <div>
             <h1 className="text-3xl font-bold text-accent uppercase">{product.title}</h1>
-            <p className="text-xl capitalize">{product.desc}</p>
+            <p className="text-xl capitalize">{t(product.desc_key)}</p>
             <span>
                 <Stars currentRating={null} />
             </span>

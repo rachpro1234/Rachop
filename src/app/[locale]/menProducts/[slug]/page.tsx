@@ -15,7 +15,7 @@ interface Product {
   id: number;
   slug: string;
   title: string;
-  desc: string;
+  desc_key: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -24,7 +24,8 @@ interface Product {
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -40,7 +41,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 0,
       img: "/menProducts/product1.webp",
       title: "jacket",
-      desc: `${t("light_jogging_jacket")}`,
+      desc_key: "light_jogging_jacket",
       slug: t("light_jogging_jacket"),
       price: 50,
       prevPrice: 100,
@@ -49,7 +50,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 1,
       title: "Jacket",
       img: "/menProducts/product2.webp",
-      desc: `${t("jogging_jacket")}`,
+      desc_key: "jogging_jacket",
       slug: t("jogging_jacket"),
       price: 60,
       prevPrice: 120,
@@ -58,7 +59,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 2,
       title: "color",
       img: "/menProducts/product3.webp",
-      desc: `${t("winter_jacket")}`,
+      desc_key: "winter_jacket",
       slug: t("winter_jacket"),
       price: 90,
       prevPrice: 140,
@@ -67,7 +68,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 3,
       title: "price range",
       img: "/menProducts/product4.webp",
-      desc: `${t("winter_hoodie")}`,
+      desc_key: "winter_hoodie",
       slug: t("winter_hoodie"),
       price: 70,
       prevPrice: 100,
@@ -76,7 +77,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 4,
       title: "price range",
       img: "/menProducts/product5.webp",
-      desc: `${t("automn_trikot")}`,
+      desc_key: "automn_trikot",
       slug: t("automn_trikot"),
       price: 50,
       prevPrice: 70,
@@ -85,7 +86,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 5,
       title: "price range",
       img: "/menProducts/product6.webp",
-      desc: `${t("cold_days_jacket")}`,
+      desc_key: "cold_days_jacket",
       slug: t("cold_days_jacket"),
       price: 70,
       prevPrice: 100,
@@ -120,7 +121,8 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
        const newCartItem = {
          id: product.id,
          title: product.title,
-         desc: product.desc,
+         desc_key: product.desc_key,
+         category: "Men",
          img: product.img,
          price: product.price,
          prevPrice: product.prevPrice,
@@ -154,7 +156,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
         <ImageEffect image={product.img} />
         <div>
             <h1 className="text-3xl font-bold text-accent uppercase">{product.title}</h1>
-            <p className="text-xl capitalize">{product.desc}</p>
+            <p className="text-xl capitalize">{t(product.desc_key)}</p>
             <span>
                 <Stars currentRating={null} />
             </span>

@@ -13,7 +13,7 @@ import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 
 const HeaderTop = () => {
-  const t = useTranslations("Index");
+  const t = useTranslations("HeroSection");
 
    const [text] = useTypewriter({
       words: [

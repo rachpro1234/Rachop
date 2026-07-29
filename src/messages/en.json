@@ -15,7 +15,7 @@
     "not_found": "Not Found"
   },
 
-  "Index": {
+  "HeroSection": {
     "FREE_SHIPPING": "FREE SHIPPING",
     "50$": "50$",
     "THIS_WEEK_ORDER_OVER": "THIS WEEK ORDER OVER",
@@ -138,7 +138,7 @@
     "$" : "$"
   },
 
-  "Order": {
+  "tOrder": {
     "your_orders": "your orders",
     "Cart_is_empty_please_add_an_item": "cart is empty.please add an item",
     "delete": "delete",

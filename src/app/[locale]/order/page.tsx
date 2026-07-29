@@ -13,7 +13,8 @@ import { motion } from "motion/react";
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -21,7 +22,9 @@ interface cartItems {
 }
 
 const Product: React.FC = () => {
-  const t = useTranslations("Order");
+  const t = useTranslations("");
+  const tOrder = useTranslations("Order");
+
   const [cartItems, setCartItems] = useState<cartItems[]>([]);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -66,13 +69,13 @@ const Product: React.FC = () => {
   return (
     <div className="pt-[160px] max-w-[1536px] mx-auto">
       {cartItems.length !== 0 ? (
-        <h1 className="text-center mb-10 capitalize font-bold text-3xl dark:text-white">{t("your_orders")}</h1>
+        <h1 className="text-center mb-10 capitalize font-bold text-3xl dark:text-white">{tOrder("your_orders")}</h1>
       ) : (
         ""
       )}
       {cartItems.length === 0 ? (
         <h1 className="flex justify-center items-center text-center uppercase sm:text-4xl text-base h-[70vh] dark:text-white">
-          {t("Cart_is_empty_please_add_an_item")}
+          {tOrder("Cart_is_empty_please_add_an_item")}
         </h1>
       ) : null}
       <div className="flex flex-col gap-4">
@@ -95,7 +98,7 @@ const Product: React.FC = () => {
                     {item.title}
                   </h3>
                   <p className="text-[#aaa] max-w-[200px] capitalize text-lg">
-                    {item.desc}
+                     {t(`${item.category}.${item.desc_key}`)}
                   </p>
                   <span>
                     <Stars currentRating={null} />
@@ -122,7 +125,7 @@ const Product: React.FC = () => {
                 <span 
                 className="flex gap-2 text-xl cursor-pointer uppercase hover:underline hover:text-accent transition-all duration-300 ease-in-out"
                 onClick={() => removeCartItems(index)}>
-                 {t("delete")}
+                 {tOrder("delete")}
                   <Trash
                     size={26}
                     className="cursor-pointer hover:text-accent dark:text-white"
@@ -136,13 +139,13 @@ const Product: React.FC = () => {
       <div className="flex items-center justify-end mt-4 gap-10 mb-4">
         {cartItems.length !== 0 ? (
           <button type="button"  className="bg-accent text-[#fff] text-xl hover:bg-purple-400 transition-colors duration-300 ease-in-out py-3 px-7 rounded-full">
-            {t("buy")}
+            {tOrder("buy")}
           </button>
         ) : (
           ""
         )}
         {cartItems.length !== 0 ? (
-          <span className="capitalize text-accent font-bold">{t("total_items")}: {cartItems.length}</span>
+          <span className="capitalize text-accent font-bold">{tOrder("total_items")}: {cartItems.length}</span>
         ) : (
           ""
         )}

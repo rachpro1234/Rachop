@@ -15,7 +15,7 @@ interface Product {
   id: number;
   slug: string;
   title: string;
-  desc: string;
+  desc_key: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -24,7 +24,8 @@ interface Product {
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -40,7 +41,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 0,
       img: "/jewellery/p1.webp",
       title: `${t("o-collier")}`,
-      desc: `${t("occasion_collier")}`,
+      desc_key: "occasion_collier",
       slug: t("occasion_collier"),
       price: 400,
       prevPrice: 600,
@@ -49,7 +50,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 1,
       img: "/jewellery/p2.webp",
       title: `${t("f-d-necklace")}`,
-      desc: `${t("festival_day_necklace")}`,
+      desc_key: "festival_day_necklace",
       slug: t("festival_day_necklace"),
       price: 400,
       prevPrice: 600,
@@ -58,7 +59,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 2,
       img: "/jewellery/p3.webp",
       title: `${t("h-necklace")}`,
-      desc: `${t("holiday_necklace")}`,
+      desc_key: "holiday_necklace",
       slug: t("holiday_necklace"),
       price: 400,
       prevPrice: 600,
@@ -67,7 +68,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 3,
       img: "/jewellery/pr4.webp",
       title: `${t("f-e-necklace")}`,
-      desc: `${t("formal_evening_necklace")}`,
+      desc_key: "formal_evening_necklace",
       slug: t("formal_evening_necklace"),
       price: 400,
       prevPrice: 600,
@@ -76,7 +77,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 4,
       img: "/jewellery/p5.webp",
       title: `${t("c-d-necklace")}`,
-      desc: `${t("casual_daily_necklace")}`,
+      desc_key: "casual_daily_necklace",
       slug: t("casual_daily_necklace"),
       price: 400,
       prevPrice: 600,
@@ -85,7 +86,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 5,
       img: "/jewellery/p6.webp",
       title: `${t("w-collier")}`,
-      desc: `${t("wedding_collier")}`,
+      desc_key: "wedding_collier",
       slug: t("wedding_collier"),
       price: 400,
       prevPrice: 600,
@@ -120,7 +121,8 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
        const newCartItem = {
          id: product.id,
          title: product.title,
-         desc: product.desc,
+         desc_key: product.desc_key,
+         category: "Jewellery",
          img: product.img,
          price: product.price,
          prevPrice: product.prevPrice,
@@ -154,7 +156,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
         <ImageEffect image={product.img} />
         <div>
             <h1 className="text-3xl font-bold text-accent uppercase">{product.title}</h1>
-            <p className="text-xl capitalize">{product.desc}</p>
+            <p className="text-xl capitalize">{t(product.desc_key)}</p>
             <span>
                 <Stars currentRating={null} />
             </span>

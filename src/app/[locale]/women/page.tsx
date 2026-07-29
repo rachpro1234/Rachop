@@ -15,7 +15,8 @@ import { motion } from "motion/react";
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -26,7 +27,7 @@ interface Product {
   id: number;
   slug: string;
   title: string;
-  desc: string;
+  desc_key: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -41,54 +42,54 @@ function Women() {
     {
       id: 0,
       img: "/womenProducts/w-product1.webp",
-      title: `${t("automn-dress")}`,
-      desc: `${t("green_occasions_dress")}`,
-      slug: `${slugify(t("green_occasions_dress"))}`,
+      title: "automn-dress",
+      desc_key: "green_occasions_dress",
+      slug: slugify("green occasions dress"),
       price: 30,
       prevPrice: 70,
     },
     {
       id: 1,
-      title: `${t("sommer-dress")}`,
+      title: "sommer-dress",
       img: "/womenProducts/w-product2.webp",
-      desc: `${t("party_wear_dress")}`,
-      slug: `${slugify(t("party_wear_dress"))}`,
+      desc_key: "party_wear_dress",
+      slug: slugify("party wear dress"),
       price: 70,
       prevPrice: 120,
     },
     {
       id: 2,
-      title: `${t("winter-dress")}`,
+      title: "winter-dress",
       img: "/womenProducts/w-product3.webp",
-      desc: `${t("snow_wear_dress")}`,
-      slug: `${slugify(t("snow_wear_dres"))}`,
+      desc_key: "snow_wear_dress",
+      slug: slugify("snow wear dress"),
       price: 60,
       prevPrice: 90,
     },
     {
       id: 3,
-      title: `${t("sport-wear")}`,
+      title: "sport-wear",
       img: "/womenProducts/w-product4.webp",
-      desc: `${t("sport_top_trikot")}`,
-      slug: `${slugify(t("ssport_top_trikot"))}`,
+      desc_key: "sport_top_trikot",
+      slug: slugify("ssport top trikot"),
       price: 30,
       prevPrice: 50,
     },
     {
       id: 4,
-      title: `${t("sport-wear")}`,
+      title: "sport-wear",
       img: "/womenProducts/w-product5.webp",
-      desc: `${t("sommer_outgoing_wear")}`,
-      slug: `${slugify(t("sommer_outgoing_wear"))}`,
+      desc_key: "sommer_outgoing_wear",
+      slug: slugify("sommer outgoing wear"),
       price: 60,
       prevPrice: 90,
     },
     {
       id: 5,
-      title: `${t("sommer-wear")}`,
+      title: "sommer-wear",
       img: "/womenProducts/w-product6.webp",
-      desc: `${t("top_sommer_trikot")}`,
-      slug: `${slugify(t("top_sommer_trikot"))}`,
+      desc_key: "top_sommer_trikot",
+      slug: slugify("top sommer trikot"),
       price: 40,
       prevPrice: 60,
     },
@@ -112,7 +113,8 @@ function Women() {
       const newCartItem = {
         id: product.id,
         title: product.title,
-        desc: product.desc,
+        desc_key: product.desc_key,
+        category: "Women",
         img: product.img,
         price: product.price,
         prevPrice: product.prevPrice,
@@ -172,10 +174,10 @@ function Women() {
                   </div>
                   <div className="product-card__info space-y-2 py-2">
                     <h3 className="text-accent font-bold uppercase">
-                      {item.title}
+                      {t(item.title)}
                     </h3>
                     <p className="text-[#aaa] max-w-[200px] capitalize">
-                      {item.desc}
+                      {t(item.desc_key)}
                     </p>
                     <span>
                       <Stars currentRating={null} />

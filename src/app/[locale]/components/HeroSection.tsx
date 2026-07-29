@@ -26,7 +26,7 @@ interface Product {
   id: number;
   slug: string;
   title: string;
-  desc: string;
+  desc_key: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -35,7 +35,8 @@ interface Product {
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -43,39 +44,7 @@ interface cartItems {
 }
 
 const HeroSection = () => {
-  const t = useTranslations("Index");
-
-  // slide data
-  // const slideData = [
-  //   {
-  //     id: 0,
-  //     title: `${t("trending_item")}`,
-  //     img: "/assets/shop-1.webp",
-  //     price: "$20",
-  //     desc: `${t("men_sunglasses")}`,
-  //   },
-  //   {
-  //     id: 1,
-  //     title: `${t("new_fashion_summer_sale")}`,
-  //     img: "/assets/shop-2.webp",
-  //     price: "$20",
-  //     desc: `${t("women_latest_fashion")}`,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: `${t("trending_earring")}`,
-  //     img: "/assets/shop-3.webp",
-  //     price: "$20",
-  //     desc: `${t("women_latest_fashion_sale")}`,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: `${t("modern_nails_design")}`,
-  //     img: "/assets/shop-4.webp",
-  //     price: "$20",
-  //     desc: `${t("women_latest_design")}`,
-  //   },
-  // ];
+  const t = useTranslations("HeroSection");
 
    // split the slug to get the product ID and find the corresponding product
   const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
@@ -86,8 +55,8 @@ const HeroSection = () => {
       id: 0,
       img: "/products/product-1.webp",
       title: `${t("jacket")}`,
-      slug: `${slugify(t("jacket"))}`,
-      desc: `${t("greyman_jacket_heliko_tex")}`,
+      slug: slugify(t("jacket")),
+      desc_key: "greyman_jacket_heliko_tex",
       price: 45,
       prevPrice: 95,
     },
@@ -96,7 +65,7 @@ const HeroSection = () => {
       img: "/products/product-2.webp",
       title: `${t("skirt")}`,
       slug: `${slugify(t("skirt"))}`,
-      desc: `${t("brown_floral_wrap_midi_skirt")}`,
+      desc_key: "brown_floral_wrap_midi_skirt",
       price: 55,
       prevPrice: 105,
     },
@@ -105,7 +74,7 @@ const HeroSection = () => {
       img: "/products/product-3.webp",
       title: ` ${t("party_wear")}`,
       slug: `${slugify(t("party_wear"))}`,
-      desc: `${t("women_party_shoes")}`,
+      desc_key: "women_party_shoes",
       price: 25,
       prevPrice: 75,
     },
@@ -114,7 +83,7 @@ const HeroSection = () => {
       img: "/products/product-4.webp",
       title: `${t("shirt")}`,
       slug: `${slugify(t("shirt"))}`,      
-      desc: `${t("men_corporate_shirt")}`,
+      desc_key: "men_corporate_shirt",
       price: 45,
       prevPrice: 95,
     },
@@ -123,7 +92,7 @@ const HeroSection = () => {
       img: "/products/product-5.webp",
       title: `${t("shoes")}`,
       slug: `${slugify(t("shoes"))}`,      
-      desc: `${t("green_waterproof_hiking_shoes")}`,
+      desc_key: "green_waterproof_hiking_shoes",
       price: 100,
       prevPrice: 107,
     },
@@ -132,7 +101,7 @@ const HeroSection = () => {
       img: "/products/product-6.webp",
       title: `${t("watches")}`,
       slug: `${slugify(t("watches"))}`,
-      desc: `${t("smart_watches_vital_plus")}`,
+      desc_key: "smart_watches_vital_plus",
       price: 100,
       prevPrice: 150,
     },
@@ -141,7 +110,7 @@ const HeroSection = () => {
       img: "/products/product-7.webp",
       title: `${t("watches")}`,
       slug: `${slugify(t("watches"))}`,
-      desc: `${t("pocket_watch_leather_pouch")}`,
+      desc_key: "pocket_watch_leather_pouch",
       price: 120,
       prevPrice: 170,
     },
@@ -190,7 +159,8 @@ const HeroSection = () => {
       const newCartItem = {
         id: product.id,
         title: product.title,
-        desc: product.desc,
+        desc_key: product.desc_key,
+        category: "HeroSection",
         img: product.img,
         price: product.price,
         prevPrice: product.prevPrice,
@@ -259,7 +229,7 @@ const HeroSection = () => {
                           {item.title}
                         </h3>
                         <p className="text-[#aaa] max-w-[200px] capitalize">
-                          {item.desc}
+                          {t(item.desc_key)}
                         </p>
                         <span>
                           <Stars currentRating={null} />

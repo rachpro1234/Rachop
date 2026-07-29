@@ -15,7 +15,7 @@
     "not_found": "Nicht Gefunden"
   },
 
-  "Index": {
+  "HeroSection": {
     "FREE_SHIPPING": "KOSTENLOSER VERSAND",
     "50$": "50€",
     "THIS_WEEK_ORDER_OVER": "Die Woche bestellung uber",
@@ -121,7 +121,7 @@
     "$" : "€"
   },
 
-  "Order": {
+  "tOrder": {
     "your_orders": "Ihre Bestellungen",
     "Cart_is_empty_please_add_an_item": "Einkaufswagen ist leer.Bitte fügen Sie einen Artikel hinzu",
     "delete": "löschen",

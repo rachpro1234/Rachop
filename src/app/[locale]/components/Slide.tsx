@@ -17,7 +17,7 @@ import { useTranslations } from "next-intl";
 
 
 export default function App() {
-  const t = useTranslations("Index");
+  const t = useTranslations("HeroSection");
  
     // slide data
   const slideData = [

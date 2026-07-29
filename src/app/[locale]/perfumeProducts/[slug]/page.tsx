@@ -15,7 +15,7 @@ interface Product {
   id: number;
   slug: string;
   title: string;
-  desc: string;
+  desc_key: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -24,7 +24,8 @@ interface Product {
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -40,7 +41,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 0,
       img: "/perfume/pro1.webp",
       title: "aqua alleguria",
-      desc: `${t("winter_perfume")}`,
+      desc_key: "winter_perfume",
       slug: t("winter_perfume"),
       price: 30,
       prevPrice: 50,
@@ -49,7 +50,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 1,
       img: "/perfume/pro2.webp",
       title: "park avenue",
-      desc: "eau de parfum",
+      desc_key: "eau de parfum",
       slug: t("winter_perfume"),
       price: 60,
       prevPrice: 100,
@@ -58,7 +59,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 2,
       img: "/perfume/pro3.webp",
       title: "poeme",
-      desc: "lancome",
+      desc_key: "lancome",
       slug: t("winter_perfume"),
       price: 50,
       prevPrice: 90,
@@ -67,7 +68,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 3,
       img: "/perfume/pro4.webp",
       title: "eaudemoiselle",
-      desc: "de givenchy",
+      desc_key: "de givenchy",
       slug: t("winter_perfume"),
       price: 100,
       prevPrice: 140,
@@ -76,7 +77,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 4,
       img: "/perfume/pro5.webp",
       title: "jeanne lanvin",
-      desc: `${t("automn_perfume")}`,
+      desc_key: "automn_perfume",
       slug: t("winter_perfume"),
       price: 70,
       prevPrice: 120,
@@ -85,7 +86,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       id: 5,
       img: "/perfume/pro6.webp",
       title: "aqua alleguria",
-      desc: `${t("daily_perfume")}`,
+      desc_key: "daily_perfume",
       slug: t("winter_perfume"),
       price: 40,
       prevPrice: 60,
@@ -120,7 +121,8 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
        const newCartItem = {
          id: product.id,
          title: product.title,
-         desc: product.desc,
+         desc_key: product.desc_key,
+         category: "Perfume",
          img: product.img,
          price: product.price,
          prevPrice: product.prevPrice,
@@ -154,7 +156,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
         <ImageEffect image={product.img} />
         <div>
             <h1 className="text-3xl font-bold text-accent uppercase">{product.title}</h1>
-            <p className="text-xl capitalize">{product.desc}</p>
+            <p className="text-xl capitalize">{t(product.desc_key)}</p>
             <span>
                 <Stars currentRating={null} />
             </span>

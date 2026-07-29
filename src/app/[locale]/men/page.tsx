@@ -15,7 +15,8 @@ import { motion } from "motion/react";
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -25,7 +26,7 @@ interface cartItems {
 interface Product {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
   img: string;
   price: number;
   prevPrice: number;
@@ -41,8 +42,8 @@ function Men() {
       id: 0,
       img: "/menProducts/product1.webp",
       title: "jacket",
-      desc: `${t("light_jogging_jacket")}`,
-      slug: `${slugify(t("light_jogging_jacket"))}`,
+      desc_key: "light_jogging_jacket",
+      slug: slugify("light jogging jacket"),
       price: 50,
       prevPrice: 100,
     },
@@ -50,8 +51,8 @@ function Men() {
       id: 1,
       title: "Jacket",
       img: "/menProducts/product2.webp",
-      desc: `${t("jogging_jacket")}`,
-      slug: `${slugify(t("jogging_jacket"))}`,
+      desc_key: "jogging_jacket",
+      slug: slugify("jogging jacket"),
       price: 60,
       prevPrice: 120,
     },
@@ -59,8 +60,8 @@ function Men() {
       id: 2,
       title: "color",
       img: "/menProducts/product3.webp",
-      desc: `${t("winter_jacket")}`,
-      slug: `${slugify(t("winter_jacket"))}`,
+      desc_key: "winter_jacket",
+      slug: slugify("winter jacket"),
       price: 90,
       prevPrice: 140,
     },
@@ -68,8 +69,8 @@ function Men() {
       id: 3,
       title: "price range",
       img: "/menProducts/product4.webp",
-      desc: `${t("winter_hoodie")}`,
-      slug: `${slugify(t("winter_hoodie"))}`,
+      desc_key: "winter_hoodie",
+      slug: slugify("winter hoodie"),
       price: 70,
       prevPrice: 100,
     },
@@ -77,8 +78,8 @@ function Men() {
       id: 4,
       title: "price range",
       img: "/menProducts/product5.webp",
-      desc: `${t("automn_trikot")}`,
-      slug: `${slugify(t("automn_trikot"))}`,
+      desc_key: "automn_trikot",
+      slug: slugify("automn trikot"),
       price: 50,
       prevPrice: 70,
     },
@@ -86,8 +87,8 @@ function Men() {
       id: 5,
       title: "price range",
       img: "/menProducts/product6.webp",
-      desc: `${t("cold_days_jacket")}`,
-      slug: `${slugify(t("cold_days_jacket"))}`,
+      desc_key: "cold_days_jacket",
+      slug: slugify("cold days jacket"),
       price: 70,
       prevPrice: 100,
     },
@@ -111,7 +112,8 @@ function Men() {
       const newCartItem = {
         id: product.id,
         title: product.title,
-        desc: product.desc,
+        desc_key: product.desc_key,
+        category: "Men",
         img: product.img,
         price: product.price,
         prevPrice: product.prevPrice,
@@ -174,7 +176,7 @@ function Men() {
                       {item.title}
                     </h3>
                     <p className="text-[#aaa] max-w-[200px] capitalize">
-                      {item.desc}
+                      {t(item.desc_key)}
                     </p>
                     <span>
                       <Stars currentRating={null} />

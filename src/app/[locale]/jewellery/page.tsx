@@ -12,25 +12,27 @@ import { AppDispatch, useAppSelector } from "../redux/store";
 import { useDispatch } from "react-redux";
 import { motion } from "motion/react";
 
+interface Product {
+  id: number;
+  title: string;
+  desc_key: string;
+  slug: string;
+  img: string;
+  price: number;
+  prevPrice: number;
+}
+
 interface cartItems {
   id: number;
   title: string;
-  desc: string;
+  desc_key: string;
+  category: string;
   img: string;
   price: number;
   prevPrice: number;
   quantity: number;
 }
 
-interface Product {
-  id: number;
-  title: string;
-  desc: string;
-  slug: string;
-  img: string;
-  price: number;
-  prevPrice: number;
-}
 
 function Jewellery() {
   const t = useTranslations("Jewellery");
@@ -41,54 +43,54 @@ function Jewellery() {
     {
       id: 0,
       img: "/jewellery/p1.webp",
-      title: `${t("o-collier")}`,
-      desc: `${t("occasion_collier")}`,
-      slug: `${slugify(t("occasion_collier"))}`,
+      title: "o-collier",
+      desc_key: "occasion_collier",
+      slug: slugify("occasion collier"),
       price: 400,
       prevPrice: 600,
     },
     {
       id: 1,
       img: "/jewellery/p2.webp",
-      title: `${t("f-d-necklace")}`,
-      desc: `${t("festival_day_necklace")}`,
-      slug: `${slugify(t("festival_day_necklace"))}`,
+      title: "f-d-necklace",
+      desc_key: "festival_day_necklace",
+      slug: slugify("festival day necklace"),
       price: 400,
       prevPrice: 600,
     },
     {
       id: 2,
       img: "/jewellery/p3.webp",
-      title: `${t("h-necklace")}`,
-      desc: `${t("holiday_necklace")}`,
-      slug: `${slugify(t("holiday_necklace"))}`,
+      title: "h-necklace",
+      desc_key: "holiday_necklace",
+      slug: slugify("holiday necklace"),
       price: 400,
       prevPrice: 600,
     },
     {
       id: 3,
       img: "/jewellery/pr4.webp",
-      title: `${t("f-e-necklace")}`,
-      desc: `${t("formal_evening_necklace")}`,
-      slug: `${slugify(t("formal_evening_necklace"))}`,
+      title: "f-e-necklace",
+      desc_key: "formal_evening_necklace",
+      slug: slugify("formal evening necklace"),
       price: 400,
       prevPrice: 600,
     },
     {
       id: 4,
       img: "/jewellery/p5.webp",
-      title: `${t("c-d-necklace")}`,
-      desc: `${t("casual_daily_necklace")}`,
-      slug: `${slugify(t("casual_daily_necklace"))}`,
+      title: "c-d-necklace",
+      desc_key: "casual_daily_necklace",
+      slug: slugify("casual daily necklace"),
       price: 400,
       prevPrice: 600,
     },
     {
       id: 5,
       img: "/jewellery/p6.webp",
-      title: `${t("w-collier")}`,
-      desc: `${t("wedding_collier")}`,
-      slug: `${slugify(t("wedding_collier"))}`,
+      title: "w-collier",
+      desc_key: "wedding_collier",
+      slug: slugify("wedding collier"),
       price: 400,
       prevPrice: 600,
     },
@@ -112,7 +114,8 @@ function Jewellery() {
       const newCartItem = {
         id: product.id,
         title: product.title,
-        desc: product.desc,
+        desc_key: product.desc_key,
+        category: "Jewellery",
         img: product.img,
         price: product.price,
         prevPrice: product.prevPrice,
@@ -175,10 +178,10 @@ function Jewellery() {
                     </div>
                     <div className="product-card__info space-y-2 py-2">
                       <h3 className="text-accent font-bold uppercase">
-                        {item.title}
+                        {t(item.title)}
                       </h3>
                       <p className="text-[#aaa] max-w-[200px] capitalize">
-                        {item.desc}
+                        {t(item.desc_key)}
                       </p>
                       <span>
                         <Stars currentRating={null} />
