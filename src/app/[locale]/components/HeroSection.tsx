@@ -32,6 +32,7 @@ interface Product {
   prevPrice: number;
 }
 
+
 interface cartItems {
   id: number;
   title: string;
@@ -54,7 +55,7 @@ const HeroSection = () => {
     {
       id: 0,
       img: "/products/product-1.webp",
-      title: `${t("jacket")}`,
+      title: "jacket",
       slug: slugify(t("jacket")),
       desc_key: "greyman_jacket_heliko_tex",
       price: 45,
@@ -63,8 +64,8 @@ const HeroSection = () => {
     {
       id: 1,
       img: "/products/product-2.webp",
-      title: `${t("skirt")}`,
-      slug: `${slugify(t("skirt"))}`,
+      title: "skirt",
+      slug: slugify(t("skirt")),
       desc_key: "brown_floral_wrap_midi_skirt",
       price: 55,
       prevPrice: 105,
@@ -72,8 +73,8 @@ const HeroSection = () => {
     {
       id: 2,
       img: "/products/product-3.webp",
-      title: ` ${t("party_wear")}`,
-      slug: `${slugify(t("party_wear"))}`,
+      title: "party_wear",
+      slug: slugify(t("party_wear")),
       desc_key: "women_party_shoes",
       price: 25,
       prevPrice: 75,
@@ -81,8 +82,8 @@ const HeroSection = () => {
     {
       id: 3,
       img: "/products/product-4.webp",
-      title: `${t("shirt")}`,
-      slug: `${slugify(t("shirt"))}`,      
+      title: "shirt",
+      slug: slugify(t("shirt")),      
       desc_key: "men_corporate_shirt",
       price: 45,
       prevPrice: 95,
@@ -90,8 +91,8 @@ const HeroSection = () => {
     {
       id: 4,
       img: "/products/product-5.webp",
-      title: `${t("shoes")}`,
-      slug: `${slugify(t("shoes"))}`,      
+      title: "shoes",
+      slug: slugify(t("shoes")),      
       desc_key: "green_waterproof_hiking_shoes",
       price: 100,
       prevPrice: 107,
@@ -99,8 +100,8 @@ const HeroSection = () => {
     {
       id: 5,
       img: "/products/product-6.webp",
-      title: `${t("watches")}`,
-      slug: `${slugify(t("watches"))}`,
+      title: "watches",
+      slug: slugify(t("watches")),
       desc_key: "smart_watches_vital_plus",
       price: 100,
       prevPrice: 150,
@@ -108,8 +109,8 @@ const HeroSection = () => {
     {
       id: 6,
       img: "/products/product-7.webp",
-      title: `${t("watches")}`,
-      slug: `${slugify(t("watches"))}`,
+      title: "watches",
+      slug: slugify(t("watches")),
       desc_key: "pocket_watch_leather_pouch",
       price: 120,
       prevPrice: 170,
@@ -122,22 +123,22 @@ const HeroSection = () => {
       id: 0,
       img: "/testimonial/ph-1.webp",
       name: "Natalia Brese",
-      position: `${t("fashion_model_&_artist")}`,
-      testimonial: `${t("the_service_is_amazing!!")}`,
+      position: "fashion_model_&_artist",
+      testimonial: "the_service_is_amazing!!",
     },
     {
       id: 1,
       img: "/testimonial/ph-2.webp",
       name: "Thomas Havbe",
-      position: `${t("film_maker_&_singer")}`,
-      testimonial: `${t("i_would_recommend_it_to_everybody")}`,
+      position: "film_maker_&_singer",
+      testimonial: "i_would_recommend_it_to_everybody",
     },
     {
       id: 2,
       img: "/testimonial/ph-4.webp",
       name: "Karmen raden",
-      position: `${t("ceo_&_founder_invision")}`,
-      testimonial: `${t("i_can't_ask_for_more_than_that")}`,
+      position: "ceo_&_founder_invision",
+      testimonial: "i_can't_ask_for_more_than_that",
     },
   ];
 
@@ -226,7 +227,7 @@ const HeroSection = () => {
                     <div className="product-card__info flex flex-col justify-between">
                       <div>
                         <h3 className="text-accent font-bold uppercase">
-                          {item.title}
+                          {t(item.title)}
                         </h3>
                         <p className="text-[#aaa] max-w-[200px] capitalize">
                           {t(item.desc_key)}
@@ -272,8 +273,8 @@ const HeroSection = () => {
                 key={item.id}
                 name={item.name}
                 img={item.img}
-                position={item.position}
-                testimonial={item.testimonial}
+                position={t(item.position)}
+                testimonial={t(item.testimonial)}
               />
             );
           })}
@@ -287,23 +288,6 @@ const HeroSection = () => {
             style={{ '--media-accent-color':'rgb(151, 79, 218)', '--media-object-fit': 'cover' }}
             className="overflow-hidden rounded-xl pt-4"
           />
-          {/* <div className=" text-center lg:space-y-4 bg-[#ff7a1aa2] min-w-[270px] sm:min-w-[300px] py-9 sm:px-9 md:min-w-[500px]  rounded-lg sm:rounded-none">
-            <Link href={`/discount`}>
-              <button
-                type="button"
-                className=" bg-blakish p-4 capitalize rounded-lg text-white"
-              >
-                {t("25%_discount")}
-              </button>
-            </Link>
-
-            <p className="font-extrabold text-2xl text-blakish uppercase">
-              {t("sommer_collection")}
-            </p>
-            <p className="text-gray-500 text-[20px]">
-              {t("starting_@_$20_shop_now")}
-            </p>
-          </div> */}
         </div>
       </div>
     </main>

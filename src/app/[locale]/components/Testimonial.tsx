@@ -2,14 +2,14 @@ import React from "react";
 import Image from "next/image";
 import { Quotes } from "@phosphor-icons/react/dist/ssr";
 
-interface propsType {
+interface Testimonial {
   name: string;
   img: string;
   position: string;
   testimonial: string;
 }
 
-const Testimonial: React.FC<propsType> = ({
+const Testimonial: React.FC<Testimonial> = ({
   name,
   img,
   position,
