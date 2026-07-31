@@ -71,7 +71,7 @@ function Women() {
       title: "sport-wear",
       img: "/womenProducts/w-product4.webp",
       desc_key: "sport_top_trikot",
-      slug: slugify("ssport top trikot"),
+      slug: slugify("sport top trikot"),
       price: 30,
       prevPrice: 50,
     },
