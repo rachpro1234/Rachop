@@ -146,7 +146,7 @@
 
   
   ".next/types/**/*.ts"
-
+, "src/app/[locale]/index.ts"
   ],
 
   "exclude": [
