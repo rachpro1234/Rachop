@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 
-export function Home() {
+function DataFetch() {
    const [message, setMessage] = useState('');
 
    useEffect(() => {
@@ -32,4 +32,4 @@ export function Home() {
   
 }
 
-export default Home;
+export default DataFetch;

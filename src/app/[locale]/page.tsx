@@ -6,7 +6,7 @@ import FullHeader from "./components/FullHeader";
 import SearviceBanner from "./components/SearviceBanner";
 import ReduxProvider from "./redux/provider";
 import Footer from "./components/Footer";
-// import Home from "./index";
+import DataFetch from "./index";
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
           <HeroSection />
           <SearviceBanner />
           <Footer />
-          {/* <Home /> */}
+          <DataFetch />
         </div>
       </ReduxProvider>
     </div>
