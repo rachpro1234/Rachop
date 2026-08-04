@@ -34,7 +34,6 @@
     "react-use": "^17.5.1",
     "sharp": "^0.33.4",
     "slick-carousel": "^1.8.1",
-    "stripe": "^22.3.2",
     "swiper": "^14.0.1",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"

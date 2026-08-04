@@ -6,30 +6,33 @@ import Link from "next/link";
 import banner from "/public/jewellery/banner.webp";
 import Stars from "../components/Stars";
 import { ShoppingCartSimple } from "@phosphor-icons/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { updateCart } from "../redux/features/cart-slice";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { useDispatch } from "react-redux";
 import { motion } from "motion/react";
+import axios from "axios";
+
 
 interface Product {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
   slug: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
+  createdAt: string;
 }
 
 interface cartItems {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
   quantity: number;
 }
 
@@ -39,62 +42,82 @@ function Jewellery() {
 
   const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
 
-  const jewelleryItems = [
-    {
-      id: 0,
-      img: "/jewellery/p1.webp",
-      title: "o-collier",
-      desc_key: "occasion_collier",
-      slug: slugify("occasion collier"),
-      price: 400,
-      prevPrice: 600,
-    },
-    {
-      id: 1,
-      img: "/jewellery/p2.webp",
-      title: "f-d-necklace",
-      desc_key: "festival_day_necklace",
-      slug: slugify("festival day necklace"),
-      price: 400,
-      prevPrice: 600,
-    },
-    {
-      id: 2,
-      img: "/jewellery/p3.webp",
-      title: "h-necklace",
-      desc_key: "holiday_necklace",
-      slug: slugify("holiday necklace"),
-      price: 400,
-      prevPrice: 600,
-    },
-    {
-      id: 3,
-      img: "/jewellery/pr4.webp",
-      title: "f-e-necklace",
-      desc_key: "formal_evening_necklace",
-      slug: slugify("formal evening necklace"),
-      price: 400,
-      prevPrice: 600,
-    },
-    {
-      id: 4,
-      img: "/jewellery/p5.webp",
-      title: "c-d-necklace",
-      desc_key: "casual_daily_necklace",
-      slug: slugify("casual daily necklace"),
-      price: 400,
-      prevPrice: 600,
-    },
-    {
-      id: 5,
-      img: "/jewellery/p6.webp",
-      title: "w-collier",
-      desc_key: "wedding_collier",
-      slug: slugify("wedding collier"),
-      price: 400,
-      prevPrice: 600,
-    },
-  ];
+  const [jewelleryProducts, setJewelleryProducts] = useState<Product[]>([]);
+
+  // const jewelleryItems = [
+  //   {
+  //     id: 0,
+  //     img: "/jewellery/p1.webp",
+  //     title: "o-collier",
+  //     desc_key: "occasion_collier",
+  //     slug: slugify("occasion collier"),
+  //     price: 400,
+  //     prevPrice: 600,
+  //   },
+  //   {
+  //     id: 1,
+  //     img: "/jewellery/p2.webp",
+  //     title: "f-d-necklace",
+  //     desc_key: "festival_day_necklace",
+  //     slug: slugify("festival day necklace"),
+  //     price: 400,
+  //     prevPrice: 600,
+  //   },
+  //   {
+  //     id: 2,
+  //     img: "/jewellery/p3.webp",
+  //     title: "h-necklace",
+  //     desc_key: "holiday_necklace",
+  //     slug: slugify("holiday necklace"),
+  //     price: 400,
+  //     prevPrice: 600,
+  //   },
+  //   {
+  //     id: 3,
+  //     img: "/jewellery/pr4.webp",
+  //     title: "f-e-necklace",
+  //     desc_key: "formal_evening_necklace",
+  //     slug: slugify("formal evening necklace"),
+  //     price: 400,
+  //     prevPrice: 600,
+  //   },
+  //   {
+  //     id: 4,
+  //     img: "/jewellery/p5.webp",
+  //     title: "c-d-necklace",
+  //     desc_key: "casual_daily_necklace",
+  //     slug: slugify("casual daily necklace"),
+  //     price: 400,
+  //     prevPrice: 600,
+  //   },
+  //   {
+  //     id: 5,
+  //     img: "/jewellery/p6.webp",
+  //     title: "w-collier",
+  //     desc_key: "wedding_collier",
+  //     slug: slugify("wedding collier"),
+  //     price: 400,
+  //     prevPrice: 600,
+  //   },
+  // ];
+
+
+  // fetch Jewellery Data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<Product[]>("http://localhost:5000/api/products", {
+          params: { category: "Jewellery" }
+        })
+        setJewelleryProducts(response.data);
+        console.log("jewellery data: ", response.data);
+      } catch (error) {
+        console.log("No data found for the category: ", error);
+      }
+    }
+
+    fetchData();
+  }, [])
 
   const dispatch = useDispatch<AppDispatch>();
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
@@ -113,12 +136,12 @@ function Jewellery() {
     } else {
       const newCartItem = {
         id: product.id,
-        title: product.title,
+        title_key: product.title_key,
         desc_key: product.desc_key,
         category: "Jewellery",
         img: product.img,
         price: product.price,
-        prevPrice: product.prevPrice,
+        prev_price: product.prev_price,
         quantity: 1,
       };
 
@@ -156,7 +179,7 @@ function Jewellery() {
 
       <div className="pt-14">
         <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
-          {jewelleryItems.map((item, index) => {
+          {jewelleryProducts.map((item, index) => {
             return (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -178,7 +201,7 @@ function Jewellery() {
                     </div>
                     <div className="product-card__info space-y-2 py-2">
                       <h3 className="text-accent font-bold uppercase">
-                        {t(item.title)}
+                        {t(item.title_key)}
                       </h3>
                       <p className="text-[#aaa] max-w-[200px] capitalize">
                         {t(item.desc_key)}
@@ -192,7 +215,7 @@ function Jewellery() {
                             {item.price}.00{t("$")}
                           </span>
                           <span className="line-through font-normal text-[#aea3a3]">
-                            {item.prevPrice}.00{t("$")}
+                            {item.prev_price}.00{t("$")}
                           </span>
                         </div>
                         <button
