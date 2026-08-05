@@ -12,12 +12,12 @@ import { motion } from "motion/react";
 
 interface cartItems {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
   quantity: number;
 }
 
@@ -95,7 +95,7 @@ const Product: React.FC = () => {
               <div className="flex flex-col justify-between">
                 <div>
                   <h3 className="text-accent font-bold uppercase text-3xl">
-                    {item.title}
+                    {item.title_key}
                   </h3>
                   <p className="text-[#aaa] max-w-[200px] capitalize text-lg">
                      {t(`${item.category}.${item.desc_key}`)}

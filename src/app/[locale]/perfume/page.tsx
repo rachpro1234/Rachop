@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,89 +10,51 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
 import { motion } from "motion/react";
+import axios from "axios";
 
 interface cartItems {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
   quantity: number;
 }
 
 interface Product {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
+  slug: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
+  createdAt: string;
 }
 
 function Perfume() {
   const t = useTranslations("Perfume");
+  const [perfumeProducts, setPerfumeProducts] = useState<Product[]>([]);
 
   const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
 
-  const perfumeItems = [
-    {
-      id: 0,
-      img: "/perfume/pro1.webp",
-      title: "aqua alleguria",
-      desc_key: "winter_perfume",
-      slug: slugify("winter aqua alleguria"),
-      price: 30,
-      prevPrice: 50,
-    },
-    {
-      id: 1,
-      img: "/perfume/pro2.webp",
-      title: "park avenue",
-      desc_key: "eau de parfum",
-      slug: slugify("park avenue"),
-      price: 60,
-      prevPrice: 100,
-    },
-    {
-      id: 2,
-      img: "/perfume/pro3.webp",
-      title: "poeme",
-      desc_key: "lancome",
-      slug: slugify("poeme"),
-      price: 50,
-      prevPrice: 90,
-    },
-    {
-      id: 3,
-      img: "/perfume/pro4.webp",
-      title: "eaudemoiselle",
-      desc_key: "de givenchy",
-      slug: slugify("eaudemoiselle"),
-      price: 100,
-      prevPrice: 140,
-    },
-    {
-      id: 4,
-      img: "/perfume/pro5.webp",
-      title: "jeanne lanvin",
-      desc_key: "automn_perfume",
-      slug: slugify("jeanne lanvin"),
-      price: 70,
-      prevPrice: 120,
-    },
-    {
-      id: 5,
-      img: "/perfume/pro6.webp",
-      title: "aqua alleguria",
-      desc_key: "daily_perfume",
-      slug: slugify("aqua alleguria"),
-      price: 40,
-      prevPrice: 60,
-    },
-  ];
+  // fetch products data 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<Product[]>("http://localhost:5000/api/products", {
+          params: { category: "Perfume" }
+        });
+       setPerfumeProducts(response.data)
+      } catch (error) {
+       console.log("No Perfume data is found", error);
+      }
+    }
 
+    fetchData();
+  })
 
   const dispatch = useDispatch<AppDispatch>();
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
@@ -111,12 +73,12 @@ function Perfume() {
     } else {
       const newCartItem = {
         id: product.id,
-        title: product.title,
+        title_key: product.title_key,
         desc_key: product.desc_key,
         category: "Perfume",
         img: product.img,
         price: product.price,
-        prevPrice: product.prevPrice,
+        prev_price: product.prev_price,
         quantity: 1,
       };
 
@@ -151,7 +113,7 @@ function Perfume() {
 
       <div className="pt-14">
         <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
-          {perfumeItems.map((item, index) => {
+          {perfumeProducts.map((item, index) => {
             return (
               <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -172,7 +134,7 @@ function Perfume() {
                     </div>
                     <div className="product-card__info space-y-2 py-2">
                       <h3 className="text-accent font-bold uppercase">
-                        {item.title}
+                        {item.title_key}
                       </h3>
                       <p className="text-[#aaa] max-w-[200px] capitalize">
                         {t(item.desc_key)}
@@ -184,7 +146,7 @@ function Perfume() {
                         <div className="product-card__price font-bold flex gap-4">
                           <span className="dark:text-white">{item.price}.00{t("$")}</span>
                           <span className="line-through font-normal text-[#aea3a3]">
-                            {item.prevPrice}.00{t("$")}
+                            {item.prev_price}.00{t("$")}
                           </span>
                         </div>
                         <button

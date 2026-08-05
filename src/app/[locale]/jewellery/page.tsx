@@ -44,63 +44,6 @@ function Jewellery() {
 
   const [jewelleryProducts, setJewelleryProducts] = useState<Product[]>([]);
 
-  // const jewelleryItems = [
-  //   {
-  //     id: 0,
-  //     img: "/jewellery/p1.webp",
-  //     title: "o-collier",
-  //     desc_key: "occasion_collier",
-  //     slug: slugify("occasion collier"),
-  //     price: 400,
-  //     prevPrice: 600,
-  //   },
-  //   {
-  //     id: 1,
-  //     img: "/jewellery/p2.webp",
-  //     title: "f-d-necklace",
-  //     desc_key: "festival_day_necklace",
-  //     slug: slugify("festival day necklace"),
-  //     price: 400,
-  //     prevPrice: 600,
-  //   },
-  //   {
-  //     id: 2,
-  //     img: "/jewellery/p3.webp",
-  //     title: "h-necklace",
-  //     desc_key: "holiday_necklace",
-  //     slug: slugify("holiday necklace"),
-  //     price: 400,
-  //     prevPrice: 600,
-  //   },
-  //   {
-  //     id: 3,
-  //     img: "/jewellery/pr4.webp",
-  //     title: "f-e-necklace",
-  //     desc_key: "formal_evening_necklace",
-  //     slug: slugify("formal evening necklace"),
-  //     price: 400,
-  //     prevPrice: 600,
-  //   },
-  //   {
-  //     id: 4,
-  //     img: "/jewellery/p5.webp",
-  //     title: "c-d-necklace",
-  //     desc_key: "casual_daily_necklace",
-  //     slug: slugify("casual daily necklace"),
-  //     price: 400,
-  //     prevPrice: 600,
-  //   },
-  //   {
-  //     id: 5,
-  //     img: "/jewellery/p6.webp",
-  //     title: "w-collier",
-  //     desc_key: "wedding_collier",
-  //     slug: slugify("wedding collier"),
-  //     price: 400,
-  //     prevPrice: 600,
-  //   },
-  // ];
-
 
   // fetch Jewellery Data
   useEffect(() => {

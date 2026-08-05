@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -11,88 +11,54 @@ import { updateCart } from "../redux/features/cart-slice";
 import Stars from "../components/Stars";
 import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";
 import { motion } from "motion/react";
+import axios from "axios";
 
 interface cartItems {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
   quantity: number;
 }
 
 interface Product {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
+  slug: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
+  createdAt: string;
 }
 
 function Men() {
   const t = useTranslations("Men");
 
+  const [menProducts, setMenaparoducts] = useState<Product[]>([]);
+
   const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
 
-  const menProducts = [
-    {
-      id: 0,
-      img: "/menProducts/product1.webp",
-      title: "jacket",
-      desc_key: "light_jogging_jacket",
-      slug: slugify("light jogging jacket"),
-      price: 50,
-      prevPrice: 100,
-    },
-    {
-      id: 1,
-      title: "Jacket",
-      img: "/menProducts/product2.webp",
-      desc_key: "jogging_jacket",
-      slug: slugify("jogging jacket"),
-      price: 60,
-      prevPrice: 120,
-    },
-    {
-      id: 2,
-      title: "color",
-      img: "/menProducts/product3.webp",
-      desc_key: "winter_jacket",
-      slug: slugify("winter jacket"),
-      price: 90,
-      prevPrice: 140,
-    },
-    {
-      id: 3,
-      title: "price range",
-      img: "/menProducts/product4.webp",
-      desc_key: "winter_hoodie",
-      slug: slugify("winter hoodie"),
-      price: 70,
-      prevPrice: 100,
-    },
-    {
-      id: 4,
-      title: "price range",
-      img: "/menProducts/product5.webp",
-      desc_key: "automn_trikot",
-      slug: slugify("automn trikot"),
-      price: 50,
-      prevPrice: 70,
-    },
-    {
-      id: 5,
-      title: "price range",
-      img: "/menProducts/product6.webp",
-      desc_key: "cold_days_jacket",
-      slug: slugify("cold days jacket"),
-      price: 70,
-      prevPrice: 100,
-    },
-  ];
+
+  // fetch data 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<Product[]>("http://localhost:5000/api/products", {
+          params : { category: "Men" }
+        })
+        setMenaparoducts(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.log("No Men products are found", error);
+      }
+    }
+
+    fetchData();
+  }, [])
 
   const dispatch = useDispatch<AppDispatch>();
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
@@ -111,12 +77,12 @@ function Men() {
     } else {
       const newCartItem = {
         id: product.id,
-        title: product.title,
+        title_key: product.title_key,
         desc_key: product.desc_key,
         category: "Men",
         img: product.img,
         price: product.price,
-        prevPrice: product.prevPrice,
+        prev_price: product.prev_price,
         quantity: 1,
       };
 
@@ -173,7 +139,7 @@ function Men() {
                   </div>
                   <div className="product-card__info space-y-2 py-2">
                     <h3 className="text-accent font-bold uppercase">
-                      {item.title}
+                      {item.title_key}
                     </h3>
                     <p className="text-[#aaa] max-w-[200px] capitalize">
                       {t(item.desc_key)}
@@ -187,7 +153,7 @@ function Men() {
                           {item.price}.00{t("$")}
                         </span>
                         <span className="line-through font-normal text-[#aea3a3]">
-                          {item.prevPrice}.00{t("$")}
+                          {item.prev_price}.00{t("$")}
                         </span>
                       </div>
                       <button

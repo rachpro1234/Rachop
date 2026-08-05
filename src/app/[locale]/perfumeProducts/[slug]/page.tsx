@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { notFound } from "next/navigation";
 import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";
@@ -10,96 +10,59 @@ import { updateCart } from "../../redux/features/cart-slice";
 import Stars from "../../components/Stars";
 import ImageEffect from "@/src/app/[locale]/components/ImageEffect"
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
+import axios from "axios";
 
 interface Product {
   id: number;
   slug: string;
-  title: string;
+  title_key: string;
   desc_key: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
+  createdAt: string;
 }
 
 interface cartItems {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
   quantity: number;
 }
 
 const ProductPage = ({ params }: { params: { slug: string } }) => {
   const t = useTranslations("Jewellery");
 
-    // products data
-    const perfumeProducts: Product[] = [
-    {
-      id: 0,
-      img: "/perfume/pro1.webp",
-      title: "aqua alleguria",
-      desc_key: "winter_perfume",
-      slug: t("winter aqua alleguria"),
-      price: 30,
-      prevPrice: 50,
-    },
-    {
-      id: 1,
-      img: "/perfume/pro2.webp",
-      title: "park avenue",
-      desc_key: "eau de parfum",
-      slug: t("park avenue"),
-      price: 60,
-      prevPrice: 100,
-    },
-    {
-      id: 2,
-      img: "/perfume/pro3.webp",
-      title: "poeme",
-      desc_key: "lancome",
-      slug: t("poeme"),
-      price: 50,
-      prevPrice: 90,
-    },
-    {
-      id: 3,
-      img: "/perfume/pro4.webp",
-      title: "eaudemoiselle",
-      desc_key: "de givenchy",
-      slug: t("eaudemoiselle"),
-      price: 100,
-      prevPrice: 140,
-    },
-    {
-      id: 4,
-      img: "/perfume/pro5.webp",
-      title: "jeanne lanvin",
-      desc_key: "automn_perfume",
-      slug: t("jeanne lanvin"),
-      price: 70,
-      prevPrice: 120,
-    },
-    {
-      id: 5,
-      img: "/perfume/pro6.webp",
-      title: "aqua alleguria",
-      desc_key: "daily_perfume",
-      slug: t("aqua alleguria"),
-      price: 40,
-      prevPrice: 60,
-    },
-  ];
-
   const { slug } = params;
+  const [productItem, setProductItem] = useState<Product[] | null>(null)
+    // products data
+   useEffect(() => {
+    const fetchItemData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/products", {
+          params: slug,
+        });
+       setProductItem(response.data);
+       console.log(response.data);
+      } catch (error) {
+        console.log("no perfume item is found", error);
+      }
+    }
+
+    fetchItemData()
+   }, []);
+
+  // const { slug } = params;
 
 
 
- const product = perfumeProducts.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
+//  const product = perfumeProducts.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
 
- if(!product) {
+ if(!productItem) {
   notFound();
  }
 
@@ -120,12 +83,12 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
      } else {
        const newCartItem = {
          id: product.id,
-         title: product.title,
+         title_key: product.title_key,
          desc_key: product.desc_key,
          category: "Perfume",
          img: product.img,
          price: product.price,
-         prevPrice: product.prevPrice,
+         prev_price: product.prev_price,
          quantity: 1,
        };
  
@@ -153,7 +116,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       </div>
       <article className="flex items-center justify-center gap-7 py-7">
         {/* <img className="w-[700px]" src={product.img} alt={product.title} /> */}
-        <ImageEffect image={product.img} />
+        <ImageEffect image={productItem.img} />
         <div>
             <h1 className="text-3xl font-bold text-accent uppercase">{product.title}</h1>
             <p className="text-xl capitalize">{t(product.desc_key)}</p>
