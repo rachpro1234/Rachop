@@ -14,108 +14,60 @@ import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
-import { useEffect } from "react";
+import { useEffect , useState} from "react";
 import { motion } from "motion/react";
 import Slide from "./Slide"
 import Video from 'next-video'
 import videoDatei from '@/videos/discount-vd.mp4';
-
+import axios from "axios";
 import { HR } from "flowbite-react";
 
 interface Product {
   id: number;
   slug: string;
-  title: string;
+  title_key: string;
   desc_key: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
+  createdAt: string;
 }
 
 
 interface cartItems {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
   quantity: number;
 }
 
 const HeroSection = () => {
   const t = useTranslations("HeroSection");
 
+  const [heroProduct, setHeroProduct] = useState<Product[]>([]);
+
    // split the slug to get the product ID and find the corresponding product
   const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
 
-  // products data
-  const products: Product[] = [
-    {
-      id: 0,
-      img: "/products/product-1.webp",
-      title: "jacket",
-      slug: slugify(t("jacket")),
-      desc_key: "greyman_jacket_heliko_tex",
-      price: 45,
-      prevPrice: 95,
-    },
-    {
-      id: 1,
-      img: "/products/product-2.webp",
-      title: "skirt",
-      slug: slugify(t("skirt")),
-      desc_key: "brown_floral_wrap_midi_skirt",
-      price: 55,
-      prevPrice: 105,
-    },
-    {
-      id: 2,
-      img: "/products/product-3.webp",
-      title: "party_wear",
-      slug: slugify(t("party_wear")),
-      desc_key: "women_party_shoes",
-      price: 25,
-      prevPrice: 75,
-    },
-    {
-      id: 3,
-      img: "/products/product-4.webp",
-      title: "shirt",
-      slug: slugify(t("shirt")),      
-      desc_key: "men_corporate_shirt",
-      price: 45,
-      prevPrice: 95,
-    },
-    {
-      id: 4,
-      img: "/products/product-5.webp",
-      title: "shoes",
-      slug: slugify(t("shoes")),      
-      desc_key: "green_waterproof_hiking_shoes",
-      price: 100,
-      prevPrice: 107,
-    },
-    {
-      id: 5,
-      img: "/products/product-6.webp",
-      title: "watches",
-      slug: slugify(t("watches")),
-      desc_key: "smart_watches_vital_plus",
-      price: 100,
-      prevPrice: 150,
-    },
-    {
-      id: 6,
-      img: "/products/product-7.webp",
-      title: "watches",
-      slug: slugify(t("watches")),
-      desc_key: "pocket_watch_leather_pouch",
-      price: 120,
-      prevPrice: 170,
-    },
-  ];
+  // fetch products data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<Product[]>("http://localhost:5000/api/products", {
+          params: { category: "HeroSection" },
+        });
+        setHeroProduct(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.log("No Hero section products found", error);
+      }
+    }
+    fetchData();
+  }, []);
   
   // Testimonial data
   const testimonialData = [
@@ -159,12 +111,12 @@ const HeroSection = () => {
     } else {
       const newCartItem = {
         id: product.id,
-        title: product.title,
+        title_key: product.title_key,
         desc_key: product.desc_key,
         category: "HeroSection",
         img: product.img,
         price: product.price,
-        prevPrice: product.prevPrice,
+        prev_price: product.prev_price,
         quantity: 1,
       };
 
@@ -203,7 +155,7 @@ const HeroSection = () => {
             {t("new_arrival")} <HR className="text-black dark:text-white w-full [2px]" />
           </h1>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] pt-4 place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
-            {products.map((item, index) => {
+            {heroProduct.map((item, index) => {
               return (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -227,7 +179,7 @@ const HeroSection = () => {
                     <div className="product-card__info flex flex-col justify-between">
                       <div>
                         <h3 className="text-accent font-bold uppercase">
-                          {t(item.title)}
+                          {t(item.title_key)}
                         </h3>
                         <p className="text-[#aaa] max-w-[200px] capitalize">
                           {t(item.desc_key)}
@@ -240,7 +192,7 @@ const HeroSection = () => {
                         <div className="product-card__price font-bold flex gap-4">
                           <span className="text-blakish dark:text-white">{item.price}.00{t("$")}</span>
                           <span className="line-through font-normal text-[#aea3a3]">
-                            {item.prevPrice}.00{t("$")}
+                            {item.prev_price}.00{t("$")}
                           </span>
                         </div>
                         <button

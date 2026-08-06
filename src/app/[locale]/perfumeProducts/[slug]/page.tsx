@@ -38,12 +38,15 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
   const t = useTranslations("Jewellery");
 
   const { slug } = params;
-  const [productItem, setProductItem] = useState<Product[] | null>(null)
+  const [productItem, setProductItem] = useState<Product | null>(null);
+
     // products data
    useEffect(() => {
+    if(!slug) return;
+    
     const fetchItemData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/products", {
+        const response = await axios.get<Product>("http://localhost:5000/api/products", {
           params: slug,
         });
        setProductItem(response.data);
@@ -54,7 +57,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     }
 
     fetchItemData()
-   }, []);
+   }, [slug]);
 
   // const { slug } = params;
 
@@ -118,15 +121,15 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
         {/* <img className="w-[700px]" src={product.img} alt={product.title} /> */}
         <ImageEffect image={productItem.img} />
         <div>
-            <h1 className="text-3xl font-bold text-accent uppercase">{product.title}</h1>
-            <p className="text-xl capitalize">{t(product.desc_key)}</p>
+            <h1 className="text-3xl font-bold text-accent uppercase">{productItem.title_key}</h1>
+            <p className="text-xl capitalize">{t(productItem.desc_key)}</p>
             <span>
                 <Stars currentRating={null} />
             </span>
             <div className="flex justify-between gap-4 mt-4">
               <span className="flex items-center gap-2">
-                <p className="text-blakish dark:text-white text-4xl font-bold">${product.price}</p>
-                <p className="line-through text-[#aea3a3]">${product.prevPrice}</p>
+                <p className="text-blakish dark:text-white text-4xl font-bold">${productItem.price}</p>
+                <p className="line-through text-[#aea3a3]">${productItem.prev_price}</p>
               </span>
               {/* <button
                 type="submit"
@@ -141,7 +144,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
                 type="submit"
                 aria-label={t("add_to_cart")}
                 title={t("add_to_cart")}
-                onClick={() => addToCart(product)}
+                onClick={() => addToCart(productItem)}
                 className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-[2px] bg-black rounded-full bg-gradient-to-t from-[#8122b0] to-[#dc98fd] active:scale-95"
               >
                 <span
