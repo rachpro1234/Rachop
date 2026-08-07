@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -11,89 +11,53 @@ import { updateCart } from "../redux/features/cart-slice";
 import { ShoppingCartSimple } from "@phosphor-icons/react";
 import Stars from "../components/Stars";
 import { motion } from "motion/react";
+import axios from "axios";
 
 interface cartItems {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
   quantity: number;
 }
 
 interface Product {
   id: number;
   slug: string;
-  title: string;
+  title_key: string;
   desc_key: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
+  createdAt: string;
 }
 
 function Women() {
   const t = useTranslations("Women");
 
-  const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+  const [womenProducts, setWomenProducts] = useState<Product[]>([]);
 
-  const womenProducts = [
-    {
-      id: 0,
-      img: "/womenProducts/w-product1.webp",
-      title: "automn-dress",
-      desc_key: "green_occasions_dress",
-      slug: slugify("green occasions dress"),
-      price: 30,
-      prevPrice: 70,
-    },
-    {
-      id: 1,
-      title: "sommer-dress",
-      img: "/womenProducts/w-product2.webp",
-      desc_key: "party_wear_dress",
-      slug: slugify("party wear dress"),
-      price: 70,
-      prevPrice: 120,
-    },
-    {
-      id: 2,
-      title: "winter-dress",
-      img: "/womenProducts/w-product3.webp",
-      desc_key: "snow_wear_dress",
-      slug: slugify("snow wear dress"),
-      price: 60,
-      prevPrice: 90,
-    },
-    {
-      id: 3,
-      title: "sport-wear",
-      img: "/womenProducts/w-product4.webp",
-      desc_key: "sport_top_trikot",
-      slug: slugify("sport top trikot"),
-      price: 30,
-      prevPrice: 50,
-    },
-    {
-      id: 4,
-      title: "sport-wear",
-      img: "/womenProducts/w-product5.webp",
-      desc_key: "sommer_outgoing_wear",
-      slug: slugify("sommer outgoing wear"),
-      price: 60,
-      prevPrice: 90,
-    },
-    {
-      id: 5,
-      title: "sommer-wear",
-      img: "/womenProducts/w-product6.webp",
-      desc_key: "top_sommer_trikot",
-      slug: slugify("top sommer trikot"),
-      price: 40,
-      prevPrice: 60,
-    },
-  ];
+  // const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+
+  // fetch women data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
+          params: { category: "Women" },
+        });
+       setWomenProducts(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.log("no women products are found", error);
+      }
+    };
+    fetchData()
+  }, []);
+
 
   const dispatch = useDispatch<AppDispatch>();
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
@@ -112,12 +76,12 @@ function Women() {
     } else {
       const newCartItem = {
         id: product.id,
-        title: product.title,
+        title_key: product.title_key,
         desc_key: product.desc_key,
         category: "Women",
         img: product.img,
         price: product.price,
-        prevPrice: product.prevPrice,
+        prev_price: product.prev_price,
         quantity: 1,
       };
 
@@ -174,7 +138,7 @@ function Women() {
                   </div>
                   <div className="product-card__info space-y-2 py-2">
                     <h3 className="text-accent font-bold uppercase">
-                      {t(item.title)}
+                      {t(item.title_key)}
                     </h3>
                     <p className="text-[#aaa] max-w-[200px] capitalize">
                       {t(item.desc_key)}
@@ -185,10 +149,10 @@ function Women() {
                     <div className="flex justify-between items-center">
                       <div className="product-card__price font-bold flex gap-4">
                         <span className="dark:text-white">
-                          {item.price}.00{t("$")}
+                          {item.price}{t("$")}
                         </span>
                         <span className="line-through font-normal text-[#aea3a3]">
-                          {item.prevPrice}.00{t("$")}
+                          {item.prev_price}{t("$")}
                         </span>
                       </div>
                       <button

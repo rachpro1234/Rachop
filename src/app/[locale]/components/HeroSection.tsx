@@ -165,7 +165,7 @@ const HeroSection = () => {
                   className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                   key={item.id}
                 >
-                  <Link className="grid h-full" href={`/product/${item.slug}-${item.id}`}>
+                  <Link className="grid h-full" href={`/product/${slugify(item.slug)}-${item.id}`}>
                     <div className="overflow-hidden">
                       <Image
                         src={item.img}

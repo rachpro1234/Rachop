@@ -44,12 +44,14 @@ function Jewellery() {
 
   const [jewelleryProducts, setJewelleryProducts] = useState<Product[]>([]);
 
+  const responsePort = process.env.NEXT_PUBLIC_API_URL;
+  console.log("PORT is" ,responsePort);
 
   // fetch Jewellery Data
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<Product[]>("http://localhost:5000/api/products", {
+        const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
           params: { category: "Jewellery" }
         })
         setJewelleryProducts(response.data);
