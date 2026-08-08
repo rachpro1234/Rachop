@@ -46,7 +46,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     
     const fetchItemData = async () => {
       try {
-        const response = await axios.get<Product>("http://localhost:5000/api/products", {
+        const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
           params: slug,
         });
        setProductItem(response.data);

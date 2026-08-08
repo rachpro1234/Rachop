@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { notFound } from "next/navigation";
 import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";
@@ -10,94 +10,60 @@ import { updateCart } from "../../redux/features/cart-slice";
 import Stars from "../../components/Stars";
 import ImageEffect from "@/src/app/[locale]/components/ImageEffect"
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
+import axios from "axios";
 
 interface Product {
   id: number;
   slug: string;
-  title: string;
+  title_key: string;
   desc_key: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number | null;
+  createdAt: string;
 }
 
 interface cartItems {
   id: number;
-  title: string;
+  title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number | null;
   quantity: number;
 }
 
 const ProductPage = ({ params }: { params: { slug: string } }) => {
   const t = useTranslations("Women");
 
-    // products data
-   const womenProducts: Product[] = [
-    {
-      id: 0,
-      img: "/womenProducts/w-product1.webp",
-      title: `${t("automn-dress")}`,
-      slug: t('automn-dress'),
-      desc_key: "green_occasions_dress",
-      price: 30,
-      prevPrice: 70,
-    },
-    {
-      id: 1,
-      title: `${t("sommer-dress")}`,
-      slug: t("sommer-dress"),
-      img: "/womenProducts/w-product2.webp",
-      desc_key: "party_wear_dress",
-      price: 70,
-      prevPrice: 120,
-    },
-    {
-      id: 2,
-      title: `${t("winter-dress")}`,
-      slug: t("winter-dress"),
-      img: "/womenProducts/w-product3.webp",
-      desc_key: "snow_wear_dress",
-      price: 60,
-      prevPrice: 90,
-    },
-    {
-      id: 3,
-      title: `${t("sport-wear")}`,
-      slug: t("sport-wear"),
-      img: "/womenProducts/w-product4.webp",
-      desc_key: "sport_top_trikot",
-      price: 30,
-      prevPrice: 50,
-    },
-    {
-      id: 4,
-      title: `${t("sport-wear")}`,
-      slug: t("sport-wear"),
-      img: "/womenProducts/w-product5.webp",
-      desc_key: "sommer_outgoing_wear",
-      price: 60,
-      prevPrice: 90,
-    },
-    {
-      id: 5,
-      title: `${t("sommer-wear")}`,
-      slug: t("sommer-wear"),
-      img: "/womenProducts/w-product6.webp",
-      desc_key: "top_sommer_trikot",
-      price: 40,
-      prevPrice: 60,
-    },
-  ];
+  const [productItem, setProductItem] = useState<Product[]>([]);
 
   const { slug } = params;
 
+  // fetch women product item
+  useEffect(() => {
+    if(!slug) return;
+    const fetchItemData = async () => {
+      try {
+        const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
+          params: slug,
+        });
+       setProductItem(response.data);
+       console.log(response.data);
+      } catch (error) {
+        console.log("no women product item is found", error);
+      }
+    }
+
+    fetchItemData();
+  }, [slug]);
+
+    const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
 
 
- const product = womenProducts.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
+
+ const product = productItem.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
 
  if(!product) {
   notFound();
@@ -120,12 +86,12 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
      } else {
        const newCartItem = {
          id: product.id,
-         title: product.title,
+         title_key: product.title_key,
          desc_key: product.desc_key,
          category: "Women",
          img: product.img,
          price: product.price,
-         prevPrice: product.prevPrice,
+         prev_price: product.prev_price,
          quantity: 1,
        };
  
@@ -155,7 +121,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
         {/* <img className="w-[700px]" src={product.img} alt={product.title} /> */}
         <ImageEffect image={product.img} />
         <div>
-            <h1 className="text-3xl font-bold text-accent uppercase">{product.title}</h1>
+            <h1 className="text-3xl font-bold text-accent uppercase">{product.title_key}</h1>
             <p className="text-xl capitalize">{t(product.desc_key)}</p>
             <span>
                 <Stars currentRating={null} />
@@ -163,7 +129,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
             <div className="flex justify-between gap-4 mt-4">
               <span className="flex items-center gap-2">
                 <p className="text-blakish dark:text-white text-4xl font-bold">${product.price}</p>
-                <p className="line-through text-[#aea3a3]">${product.prevPrice}</p>
+                <p className="line-through text-[#aea3a3]">${product.prev_price}</p>
               </span>
               {/* <button
                 type="submit"

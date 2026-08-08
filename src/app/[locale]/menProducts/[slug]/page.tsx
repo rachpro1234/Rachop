@@ -11,6 +11,7 @@ import Stars from "../../components/Stars";
 import ImageEffect from "@/src/app/[locale]/components/ImageEffect"
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 interface Product {
   id: number;
@@ -19,81 +20,26 @@ interface Product {
   desc_key: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   createdAt: string;
 }
 
 interface cartItems {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   quantity: number;
 }
 
 const ProductPage = ({ params }: { params: { slug: string } }) => {
   const t = useTranslations("Men");
 
-    // products data
-  // const menProducts: Product[] = [
-  //   {
-  //     id: 0,
-  //     img: "/menProducts/product1.webp",
-  //     title: "jacket",
-  //     desc_key: "light_jogging_jacket",
-  //     slug: t("light_jogging_jacket"),
-  //     price: 50,
-  //     prevPrice: 100,
-  //   },
-  //   {
-  //     id: 1,
-  //     title: "Jacket",
-  //     img: "/menProducts/product2.webp",
-  //     desc_key: "jogging_jacket",
-  //     slug: t("jogging_jacket"),
-  //     price: 60,
-  //     prevPrice: 120,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "color",
-  //     img: "/menProducts/product3.webp",
-  //     desc_key: "winter_jacket",
-  //     slug: t("winter_jacket"),
-  //     price: 90,
-  //     prevPrice: 140,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "price range",
-  //     img: "/menProducts/product4.webp",
-  //     desc_key: "winter_hoodie",
-  //     slug: t("winter_hoodie"),
-  //     price: 70,
-  //     prevPrice: 100,
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "price range",
-  //     img: "/menProducts/product5.webp",
-  //     desc_key: "automn_trikot",
-  //     slug: t("automn_trikot"),
-  //     price: 50,
-  //     prevPrice: 70,
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "price range",
-  //     img: "/menProducts/product6.webp",
-  //     desc_key: "cold_days_jacket",
-  //     slug: t("cold_days_jacket"),
-  //     price: 70,
-  //     prevPrice: 100,
-  //   },
-  // ];
+  // const router = useRouter();
 
   const [productItem, setProductItem] = useState<Product | null>(null)
 
@@ -103,27 +49,26 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     if(!slug) return;
 
     const fetchData = async () => {
-      const response = await axios.get<Product>("http://localhost:5000/api/products", {
-        params: slug
-      })
-      setProductItem(response.data)
+      try {
+        const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`)
+        setProductItem(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.log("no men product item is found", error);
+      }
     }
 
     fetchData();
   }, [slug]);
 //   const { slug } = params;
 
-//  const product = productItem.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
-
- if(!productItem) {
-  notFound();
- }
+  const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
 
    const dispatch = useDispatch<AppDispatch>();
    const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
  
    const addToCart = (product: Product) => {
-     const itemIndex = cartArray.findIndex((item) => item.id === product.id);
+     const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
  
      if (itemIndex !== -1) {
        const updatedCart = cartArray.map((item, index) => {
@@ -136,6 +81,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
      } else {
        const newCartItem = {
          id: product.id,
+         slug: product.slug,
          title_key: product.title_key,
          desc_key: product.desc_key,
          category: "Men",
@@ -155,6 +101,21 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
      useEffect(() => {
        console.log("cartArray", cartArray);
      }, [cartArray]);
+
+
+     if(!productItem) {
+        return <p className="h-screen flex justify-center items-center">Loading...</p>
+      }
+
+// const id = Number(slug.split("-".toUpperCase()));
+
+//  const product = productItem.find((p) => p.id === id); // Extract the ID from the slug and find the product
+// console.log(product)
+
+ if(!productItem) {
+  notFound();
+ }
+
  
   return (
     <section>

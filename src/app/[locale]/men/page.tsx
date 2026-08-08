@@ -15,12 +15,13 @@ import axios from "axios";
 
 interface cartItems {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   quantity: number;
 }
 
@@ -31,7 +32,7 @@ interface Product {
   slug: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   createdAt: string;
 }
 
@@ -47,7 +48,7 @@ function Men() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<Product[]>("http://localhost:5000/api/products", {
+        const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
           params : { category: "Men" }
         })
         setMenaparoducts(response.data);
@@ -64,7 +65,7 @@ function Men() {
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
 
   const addToCart = (product: Product) => {
-    const itemIndex = cartArray.findIndex((item) => item.id === product.id);
+    const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
 
     if (itemIndex !== -1) {
       const updatedCart = cartArray.map((item, index) => {
@@ -77,6 +78,7 @@ function Men() {
     } else {
       const newCartItem = {
         id: product.id,
+        slug: product.slug,
         title_key: product.title_key,
         desc_key: product.desc_key,
         category: "Men",
@@ -127,7 +129,7 @@ function Men() {
                 className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                 key={item.id}
               >
-                <Link href={`/menProducts/${item.slug}-${item.id}`}>
+                <Link href={`/menProducts/${item.slug}`}>
                   <div className="overflow-hidden">
                     <Image
                       src={item.img}

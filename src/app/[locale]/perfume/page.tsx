@@ -44,7 +44,7 @@ function Perfume() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<Product[]>("http://localhost:5000/api/products", {
+        const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
           params: { category: "Perfume" }
         });
        setPerfumeProducts(response.data)
