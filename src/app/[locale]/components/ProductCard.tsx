@@ -10,31 +10,34 @@ import { updateCart } from "../redux/features/cart-slice";
 
 interface Product {
   id: number;
-  title: string;
+  slug: string
+  title_key: string;
   desc_key: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number;
+  createdAt: string
 }
 
 interface cartItems {
   id: number;
-  title: string;
+  slug: string;
+  title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number | null;
   quantity: number;
 }
 
 
 const ProductCard: React.FC<Product> = ({
-  title,
+  title_key,
   desc_key,
   img,
   price,
-  prevPrice,
+  prev_price,
 }) => 
   
   
@@ -60,12 +63,13 @@ const ProductCard: React.FC<Product> = ({
         } else {
           const newCartItem  = {
             id: product.id,
-            title: product.title,
+            slug: product.slug,
+            title_key: product.title_key,
             desc_key: product.desc_key,
             category: '',
             img: product.img,
             price: product.price,
-            prevPrice: product.prevPrice,
+            prev_price: product.prev_price,
             quantity: 1
           }
     
@@ -96,16 +100,16 @@ const ProductCard: React.FC<Product> = ({
           />
         </div>
         <div className="product-card__info space-y-2 py-2">
-          <h3 className="text-accent font-bold uppercase">{title}</h3>
+          <h3 className="text-accent font-bold uppercase">{title_key}</h3>
           <p className="text-[#aaa] max-w-[200px] capitalize">{desc_key}</p>
           <span>
             <Stars currentRating={null} />
           </span>
           <div className="flex justify-between items-center">
             <div className="product-card__price font-bold flex gap-4">
-              <span>{price}.00$</span>
+              <span>{price}$</span>
               <span className="line-through font-normal text-[#aea3a3]">
-                {prevPrice}.00$
+                {prev_price}$
               </span>
             </div>
             <Link href="/order">

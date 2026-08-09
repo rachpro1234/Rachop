@@ -47,7 +47,7 @@ interface cartItems {
 }
 
 const HeroSection = () => {
-  const t = useTranslations("HeroSection");
+  const t = useTranslations("Hero");
 
   const [heroProduct, setHeroProduct] = useState<Product[]>([]);
 
@@ -56,7 +56,7 @@ const HeroSection = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
-          params: { category: "HeroSection" },
+          params: { category: "hero" },
         });
         setHeroProduct(response.data);
       } catch (error) {
@@ -111,7 +111,7 @@ const HeroSection = () => {
         slug: product.slug,
         title_key: product.title_key,
         desc_key: product.desc_key,
-        category: "HeroSection",
+        category: "hero",
         img: product.img,
         price: product.price,
         prev_price: product.prev_price,
@@ -160,7 +160,7 @@ const HeroSection = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
-                  key={item.id}
+                  key={index}
                 >
                   <Link className="grid h-full" href={`/product/${item.slug}`}>
                     <div className="overflow-hidden">

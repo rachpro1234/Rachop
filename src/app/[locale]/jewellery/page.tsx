@@ -127,7 +127,7 @@ function Jewellery() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
-                key={item.id}
+                key={index}
               >
                 <Link href={`/jewelleryProducts/${item.slug}`}>
                     <div className="overflow-hidden">

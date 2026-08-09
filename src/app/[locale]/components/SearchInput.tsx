@@ -19,12 +19,13 @@ import Navbar from "./Navbar";
 
 interface cartItems {
   id: number;
-  title: string;
+  slug: string;
+  title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prevPrice: number;
+  prev_price: number | null;
   quantity: number;
 }
 

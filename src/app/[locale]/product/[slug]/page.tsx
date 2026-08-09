@@ -51,7 +51,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
         try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`);
         setProductItem(response.data);
-        // console.log(response.data);
+        console.log(response.data);
         } catch (error) {
           console.log("no hero section item found", error);
         }
