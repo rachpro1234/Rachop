@@ -26,12 +26,13 @@ interface Product {
 
 interface cartItems {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   quantity: number;
 }
 
@@ -39,72 +40,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
   const t = useTranslations("HeroSection");
 
   const [productItem, setProductItem] = useState<Product | null>(null);
-    // products data
-  // const products: Product[] = [
-  //   {
-  //     id: 0,
-  //     img: "/products/product-1.webp",
-  //     title: `${t("jacket")}`,
-  //     slug: `${"jacket"}`,
-  //     desc_key: "greyman_jacket_heliko_tex",
-  //     price: 45,
-  //     prevPrice: 95,
-  //   },
-  //   {
-  //     id: 1,
-  //     img: "/products/product-2.webp",
-  //     title: `${t("skirt")}`,
-  //     slug: `${"skirt"}`,
-  //     desc_key: "brown_floral_wrap_midi_skirt",
-  //     price: 55,
-  //     prevPrice: 105,
-  //   },
-  //   {
-  //     id: 2,
-  //     img: "/products/product-3.webp",
-  //     title: ` ${t("party_wear")}`,
-  //     slug: `${"party_wear"}`,
-  //     desc_key: "women_party_shoes",
-  //     price: 25,
-  //     prevPrice: 75,
-  //   },
-  //   {
-  //     id: 3,
-  //     img: "/products/product-4.webp",
-  //     title: `${t("shirt")}`,
-  //     slug: `${"shirt"}`,
-  //     desc_key: "men_corporate_shirt",
-  //     price: 45,
-  //     prevPrice: 95,
-  //   },
-  //   {
-  //     id: 4,
-  //     img: "/products/product-5.webp",
-  //     title: `${t("shoes")}`,
-  //     slug: `${"shoes"}`,
-  //     desc_key: "green_waterproof_hiking_shoes",
-  //     price: 100,
-  //     prevPrice: 107,
-  //   },
-  //   {
-  //     id: 5,
-  //     img: "/products/product-6.webp",
-  //     title: `${t("watches")}`,
-  //     slug: `${"watches"}`,
-  //     desc_key: "smart_watches_vital_plus",
-  //     price: 100,
-  //     prevPrice: 150,
-  //   },
-  //   {
-  //     id: 6,
-  //     img: "/products/product-7.webp",
-  //     title: `${t("watches")}`,
-  //     slug: `${"watches"}`,
-  //     desc_key: "pocket_watch_leather_pouch",
-  //     price: 120,
-  //     prevPrice: 170,
-  //   },
-  // ];
+
   const { slug } = params;
 
   // fetch Hero section products data
@@ -113,11 +49,9 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
 
     const fetchItemData = async () => {
         try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
-          params: slug,
-        });
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`);
         setProductItem(response.data);
-        console.log(response.data);
+        // console.log(response.data);
         } catch (error) {
           console.log("no hero section item found", error);
         }
@@ -127,18 +61,11 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
 
 
 
-
-//  const product = products.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
-
- if(!productItem) {
-  notFound();
- }
-
    const dispatch = useDispatch<AppDispatch>();
    const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
  
    const addToCart = (product: Product) => {
-     const itemIndex = cartArray.findIndex((item) => item.id === product.id);
+     const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
  
      if (itemIndex !== -1) {
        const updatedCart = cartArray.map((item, index) => {
@@ -151,6 +78,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
      } else {
        const newCartItem = {
          id: product.id,
+         slug: product.slug,
          title_key: product.title_key,
          desc_key: product.desc_key,
          category: "HeroSection",
@@ -168,8 +96,12 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
    };
 
      useEffect(() => {
-       console.log("cartArray", cartArray);
+      //  console.log("cartArray", cartArray);
      }, [cartArray]);
+
+      if(!productItem) {
+        notFound();
+      }
  
   return (
     <section>

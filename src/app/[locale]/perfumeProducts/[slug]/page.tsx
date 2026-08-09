@@ -25,12 +25,13 @@ interface Product {
 
 interface cartItems {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   quantity: number;
 }
 
@@ -46,11 +47,9 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     
     const fetchItemData = async () => {
       try {
-        const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
-          params: slug,
-        });
+        const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`);
        setProductItem(response.data);
-       console.log(response.data);
+      //  console.log(response.data);
       } catch (error) {
         console.log("no perfume item is found", error);
       }
@@ -59,21 +58,12 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     fetchItemData()
    }, [slug]);
 
-  // const { slug } = params;
-
-
-
-//  const product = perfumeProducts.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
-
- if(!productItem) {
-  notFound();
- }
 
    const dispatch = useDispatch<AppDispatch>();
    const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
  
    const addToCart = (product: Product) => {
-     const itemIndex = cartArray.findIndex((item) => item.id === product.id);
+     const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
  
      if (itemIndex !== -1) {
        const updatedCart = cartArray.map((item, index) => {
@@ -86,6 +76,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
      } else {
        const newCartItem = {
          id: product.id,
+         slug: product.slug,
          title_key: product.title_key,
          desc_key: product.desc_key,
          category: "Perfume",
@@ -103,8 +94,18 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
    };
 
      useEffect(() => {
-       console.log("cartArray", cartArray);
+      //  console.log("cartArray", cartArray);
      }, [cartArray]);
+
+
+       if(!productItem) {
+        return <p className="h-screen flex justify-center items-center">loading...</p>
+      }
+
+
+      if(!productItem) {
+        notFound();
+      }
  
   return (
     <section>

@@ -36,12 +36,13 @@ interface Product {
 
 interface cartItems {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   quantity: number;
 }
 
@@ -50,18 +51,14 @@ const HeroSection = () => {
 
   const [heroProduct, setHeroProduct] = useState<Product[]>([]);
 
-   // split the slug to get the product ID and find the corresponding product
-  const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
-
   // fetch products data
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<Product[]>("http://localhost:5000/api/products", {
+        const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
           params: { category: "HeroSection" },
         });
         setHeroProduct(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log("No Hero section products found", error);
       }
@@ -98,7 +95,7 @@ const HeroSection = () => {
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
 
   const addToCart = (product: Product) => {
-    const itemIndex = cartArray.findIndex((item) => item.id === product.id);
+    const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
 
     if (itemIndex !== -1) {
       const updatedCart = cartArray.map((item, index) => {
@@ -111,6 +108,7 @@ const HeroSection = () => {
     } else {
       const newCartItem = {
         id: product.id,
+        slug: product.slug,
         title_key: product.title_key,
         desc_key: product.desc_key,
         category: "HeroSection",
@@ -128,7 +126,6 @@ const HeroSection = () => {
   };
 
   useEffect(() => {
-    console.log("cartArray", cartArray);
   }, [cartArray]);
 
   // slider settings
@@ -165,7 +162,7 @@ const HeroSection = () => {
                   className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                   key={item.id}
                 >
-                  <Link className="grid h-full" href={`/product/${slugify(item.slug)}-${item.id}`}>
+                  <Link className="grid h-full" href={`/product/${item.slug}`}>
                     <div className="overflow-hidden">
                       <Image
                         src={item.img}
@@ -190,9 +187,9 @@ const HeroSection = () => {
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="product-card__price font-bold flex gap-4">
-                          <span className="text-blakish dark:text-white">{item.price}.00{t("$")}</span>
+                          <span className="text-blakish dark:text-white">{item.price}{t("$")}</span>
                           <span className="line-through font-normal text-[#aea3a3]">
-                            {item.prev_price}.00{t("$")}
+                            {item.prev_price}{t("$")}
                           </span>
                         </div>
                         <button

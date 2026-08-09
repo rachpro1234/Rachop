@@ -11,7 +11,6 @@ import Stars from "../../components/Stars";
 import ImageEffect from "@/src/app/[locale]/components/ImageEffect"
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
 import axios from "axios";
-import { useRouter } from "next/router";
 
 interface Product {
   id: number;
@@ -39,8 +38,6 @@ interface cartItems {
 const ProductPage = ({ params }: { params: { slug: string } }) => {
   const t = useTranslations("Men");
 
-  // const router = useRouter();
-
   const [productItem, setProductItem] = useState<Product | null>(null)
 
   const { slug } = params;
@@ -52,7 +49,6 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       try {
         const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`)
         setProductItem(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log("no men product item is found", error);
       }
@@ -60,9 +56,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
 
     fetchData();
   }, [slug]);
-//   const { slug } = params;
 
-  const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
 
    const dispatch = useDispatch<AppDispatch>();
    const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
@@ -99,7 +93,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
    };
 
      useEffect(() => {
-       console.log("cartArray", cartArray);
+      //  console.log("cartArray", cartArray);
      }, [cartArray]);
 
 
@@ -107,14 +101,10 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
         return <p className="h-screen flex justify-center items-center">Loading...</p>
       }
 
-// const id = Number(slug.split("-".toUpperCase()));
 
-//  const product = productItem.find((p) => p.id === id); // Extract the ID from the slug and find the product
-// console.log(product)
-
- if(!productItem) {
-  notFound();
- }
+      if(!productItem) {
+        notFound();
+      }
 
  
   return (

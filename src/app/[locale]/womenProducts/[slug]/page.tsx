@@ -19,12 +19,13 @@ interface Product {
   desc_key: string;
   img: string;
   price: number;
-  prev_price: number | null;
+  prev_price: number;
   createdAt: string;
 }
 
 interface cartItems {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
   category: string;
@@ -37,7 +38,7 @@ interface cartItems {
 const ProductPage = ({ params }: { params: { slug: string } }) => {
   const t = useTranslations("Women");
 
-  const [productItem, setProductItem] = useState<Product[]>([]);
+  const [productItem, setProductItem] = useState<Product | null>(null);
 
   const { slug } = params;
 
@@ -46,11 +47,9 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     if(!slug) return;
     const fetchItemData = async () => {
       try {
-        const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
-          params: slug,
-        });
+        const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`);
        setProductItem(response.data);
-       console.log(response.data);
+      //  console.log(response.data);
       } catch (error) {
         console.log("no women product item is found", error);
       }
@@ -59,21 +58,12 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
     fetchItemData();
   }, [slug]);
 
-    const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
-
-
-
- const product = productItem.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
-
- if(!product) {
-  notFound();
- }
 
    const dispatch = useDispatch<AppDispatch>();
    const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
  
    const addToCart = (product: Product) => {
-     const itemIndex = cartArray.findIndex((item) => item.id === product.id);
+     const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
  
      if (itemIndex !== -1) {
        const updatedCart = cartArray.map((item, index) => {
@@ -86,6 +76,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
      } else {
        const newCartItem = {
          id: product.id,
+         slug: product.slug,
          title_key: product.title_key,
          desc_key: product.desc_key,
          category: "Women",
@@ -103,8 +94,18 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
    };
 
      useEffect(() => {
-       console.log("cartArray", cartArray);
+      //  console.log("cartArray", cartArray);
      }, [cartArray]);
+
+
+     
+       if(!productItem) {
+        return <p className="h-screen flex justify-center items-center">loading...</p>
+      }
+
+      if(!productItem) {
+        notFound();
+      }
  
   return (
     <section>
@@ -119,17 +120,17 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       </div>
       <article className="flex items-center justify-center gap-7 py-7">
         {/* <img className="w-[700px]" src={product.img} alt={product.title} /> */}
-        <ImageEffect image={product.img} />
+        <ImageEffect image={productItem.img} />
         <div>
-            <h1 className="text-3xl font-bold text-accent uppercase">{product.title_key}</h1>
-            <p className="text-xl capitalize">{t(product.desc_key)}</p>
+            <h1 className="text-3xl font-bold text-accent uppercase">{productItem.title_key}</h1>
+            <p className="text-xl capitalize">{t(productItem.desc_key)}</p>
             <span>
                 <Stars currentRating={null} />
             </span>
             <div className="flex justify-between gap-4 mt-4">
               <span className="flex items-center gap-2">
-                <p className="text-blakish dark:text-white text-4xl font-bold">${product.price}</p>
-                <p className="line-through text-[#aea3a3]">${product.prev_price}</p>
+                <p className="text-blakish dark:text-white text-4xl font-bold">${productItem.price}</p>
+                <p className="line-through text-[#aea3a3]">${productItem.prev_price}</p>
               </span>
               {/* <button
                 type="submit"
@@ -144,7 +145,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
                 type="submit"
                 aria-label={t("add_to_cart")}
                 title={t("add_to_cart")}
-                onClick={() => addToCart(product)}
+                onClick={() => addToCart(productItem)}
                 className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-[2px] bg-black rounded-full bg-gradient-to-t from-[#8122b0] to-[#dc98fd] active:scale-95"
               >
                 <span

@@ -10,7 +10,6 @@ import { updateCart } from "../../redux/features/cart-slice";
 import Stars from "../../components/Stars";
 import ImageEffect from "@/src/app/[locale]/components/ImageEffect"
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
-import { useRouter } from "next/router";
 import axios from "axios";
 
 interface Product {
@@ -26,12 +25,13 @@ interface Product {
 
 interface cartItems {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   quantity: number;
 }
 
@@ -39,37 +39,25 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
   const t = useTranslations("Jewellery");
 
   const [productItem, setProductItem] = useState<Product | null>(null)
-  // const router = useRouter();
-  // const { slug } = router.query;
+
   const { slug } = params;
 
   useEffect(() => {
      if(!slug) return;
 
     const fetchData = async () => {
-      const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
-        params: slug
-      })
+      const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`)
        setProductItem(response.data);
     }
     fetchData();
   }, [slug])
 
-//   const { slug } = params;
-
-
-
-//  const product = jewelleryProducts.find((p) => p.id === Number(slug.split("-").pop())); // Extract the ID from the slug and find the product
-
- if(!productItem) {
-  notFound();
- }
 
    const dispatch = useDispatch<AppDispatch>();
    const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
  
    const addToCart = (product: Product) => {
-     const itemIndex = cartArray.findIndex((item) => item.id === product.id);
+     const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
  
      if (itemIndex !== -1) {
        const updatedCart = cartArray.map((item, index) => {
@@ -82,6 +70,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
      } else {
        const newCartItem = {
          id: product.id,
+         slug: product.slug,
          title_key: product.title_key,
          desc_key: product.desc_key,
          category: "Jewellery",
@@ -99,8 +88,17 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
    };
 
      useEffect(() => {
-       console.log("cartArray", cartArray);
      }, [cartArray]);
+
+
+      if(!productItem) {
+        return <p className="h-screen flex justify-center items-center">loading...</p>
+      }
+
+      if(!productItem) {
+        notFound();
+      }
+
  
   return (
     <section>

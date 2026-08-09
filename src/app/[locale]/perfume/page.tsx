@@ -14,20 +14,21 @@ import axios from "axios";
 
 interface cartItems {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   quantity: number;
 }
 
 interface Product {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
-  slug: string;
   img: string;
   price: number;
   prev_price: number;
@@ -37,8 +38,6 @@ interface Product {
 function Perfume() {
   const t = useTranslations("Perfume");
   const [perfumeProducts, setPerfumeProducts] = useState<Product[]>([]);
-
-  const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
 
   // fetch products data 
   useEffect(() => {
@@ -60,7 +59,7 @@ function Perfume() {
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
 
   const addToCart = (product: Product) => {
-    const itemIndex = cartArray.findIndex((item) => item.id === product.id);
+    const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
 
     if (itemIndex !== -1) {
       const updatedCart = cartArray.map((item, index) => {
@@ -73,6 +72,7 @@ function Perfume() {
     } else {
       const newCartItem = {
         id: product.id,
+        slug: product.slug,
         title_key: product.title_key,
         desc_key: product.desc_key,
         category: "Perfume",
@@ -90,7 +90,7 @@ function Perfume() {
   };
 
   useEffect(() => {
-    console.log("cartArray", cartArray);
+    // console.log("cartArray", cartArray);
   }, [cartArray]);
 
   return (
@@ -122,7 +122,7 @@ function Perfume() {
               viewport={{ once: true }}
               className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]" 
               key={item.id}>
-                <Link href={`/perfumeProducts/${item.slug}-${item.id}`}>
+                <Link href={`/perfumeProducts/${item.slug}`}>
                     <div className="overflow-hidden">
                       <Image
                         src={item.img}

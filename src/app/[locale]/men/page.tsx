@@ -41,9 +41,6 @@ function Men() {
 
   const [menProducts, setMenaparoducts] = useState<Product[]>([]);
 
-  const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
-
-
   // fetch data 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +49,6 @@ function Men() {
           params : { category: "Men" }
         })
         setMenaparoducts(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log("No Men products are found", error);
       }
@@ -96,7 +92,6 @@ function Men() {
   };
 
   useEffect(() => {
-    console.log("cartArray", cartArray);
   }, [cartArray]);
 
   return (

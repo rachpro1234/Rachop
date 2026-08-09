@@ -27,12 +27,13 @@ interface Product {
 
 interface cartItems {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   quantity: number;
 }
 
@@ -40,12 +41,7 @@ interface cartItems {
 function Jewellery() {
   const t = useTranslations("Jewellery");
 
-  const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
-
   const [jewelleryProducts, setJewelleryProducts] = useState<Product[]>([]);
-
-  const responsePort = process.env.NEXT_PUBLIC_API_URL;
-  console.log("PORT is" ,responsePort);
 
   // fetch Jewellery Data
   useEffect(() => {
@@ -55,7 +51,6 @@ function Jewellery() {
           params: { category: "Jewellery" }
         })
         setJewelleryProducts(response.data);
-        console.log("jewellery data: ", response.data);
       } catch (error) {
         console.log("No data found for the category: ", error);
       }
@@ -68,7 +63,7 @@ function Jewellery() {
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
 
   const addToCart = (product: Product) => {
-    const itemIndex = cartArray.findIndex((item) => item.id === product.id);
+    const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
 
     if (itemIndex !== -1) {
       const updatedCart = cartArray.map((item, index) => {
@@ -81,6 +76,7 @@ function Jewellery() {
     } else {
       const newCartItem = {
         id: product.id,
+        slug: product.slug,
         title_key: product.title_key,
         desc_key: product.desc_key,
         category: "Jewellery",
@@ -98,7 +94,6 @@ function Jewellery() {
   };
 
   useEffect(() => {
-    console.log("cartArray", cartArray);
   }, [cartArray]);
 
   return (
@@ -134,7 +129,7 @@ function Jewellery() {
                 className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                 key={item.id}
               >
-                <Link href={`/jewelleryProducts/${item.slug}-${item.id}`}>
+                <Link href={`/jewelleryProducts/${item.slug}`}>
                     <div className="overflow-hidden">
                       <Image
                         src={item.img}

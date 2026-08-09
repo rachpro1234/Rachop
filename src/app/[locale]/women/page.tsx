@@ -15,12 +15,13 @@ import axios from "axios";
 
 interface cartItems {
   id: number;
+  slug: string;
   title_key: string;
   desc_key: string;
   category: string;
   img: string;
   price: number;
-  prev_price: number;
+  prev_price: number | null;
   quantity: number;
 }
 
@@ -40,7 +41,6 @@ function Women() {
 
   const [womenProducts, setWomenProducts] = useState<Product[]>([]);
 
-  // const slugify = (text: string) => text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
 
   // fetch women data
   useEffect(() => {
@@ -50,7 +50,7 @@ function Women() {
           params: { category: "Women" },
         });
        setWomenProducts(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.log("no women products are found", error);
       }
@@ -63,7 +63,7 @@ function Women() {
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
 
   const addToCart = (product: Product) => {
-    const itemIndex = cartArray.findIndex((item) => item.id === product.id);
+    const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
 
     if (itemIndex !== -1) {
       const updatedCart = cartArray.map((item, index) => {
@@ -76,6 +76,7 @@ function Women() {
     } else {
       const newCartItem = {
         id: product.id,
+        slug: product.slug,
         title_key: product.title_key,
         desc_key: product.desc_key,
         category: "Women",
@@ -93,7 +94,7 @@ function Women() {
   };
 
   useEffect(() => {
-    console.log("cartArray", cartArray);
+    // console.log("cartArray", cartArray);
   }, [cartArray]);
 
   return (
@@ -126,7 +127,7 @@ function Women() {
                 className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
                 key={item.id}
               >
-                <Link href={`/womenProducts/${item.slug}-${item.id}`}>
+                <Link href={`/womenProducts/${item.slug}`}>
                   <div className="overflow-hidden">
                     <Image
                       src={item.img}
