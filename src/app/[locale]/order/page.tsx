@@ -9,6 +9,7 @@ import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
 import Stars from "../components/Stars";
 import { motion } from "motion/react";
+import { it } from "node:test";
 
 interface cartItems {
   id: number;
@@ -24,7 +25,7 @@ interface cartItems {
 
 const Product: React.FC = () => {
   const t = useTranslations("");
-  const tOrder = useTranslations("Order");
+  const tOrder = useTranslations("tOrder");
 
   const [cartItems, setCartItems] = useState<cartItems[]>([]);
 
@@ -67,6 +68,11 @@ const Product: React.FC = () => {
     dispatch(updateCart(tempCartItems));
   };
 
+  // cart total price
+  const total = cartItems.reduce((acc, item) => {
+    return acc + item.price * (item.quantity as number);
+  }, 0);
+
   return (
     <div className="pt-[160px] max-w-[1536px] mx-auto">
       {cartItems.length !== 0 ? (
@@ -99,7 +105,7 @@ const Product: React.FC = () => {
                     {item.title_key}
                   </h3>
                   <p className="text-[#aaa] max-w-[200px] capitalize text-lg">
-                     {t(`${item.category}.${item.desc_key}`)}
+                     {tOrder(`${item.category}.${item.desc_key}`)}
                   </p>
                   <span>
                     <Stars currentRating={null} />
@@ -136,6 +142,10 @@ const Product: React.FC = () => {
             </motion.div>
           );
         })}
+
+        <div>
+           <span>Total : {total.toFixed(2)}$</span>
+        </div>
       </div>
       <div className="flex items-center justify-end mt-4 gap-10 mb-4">
         {cartItems.length !== 0 ? (
