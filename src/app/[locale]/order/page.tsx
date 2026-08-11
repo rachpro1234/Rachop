@@ -88,64 +88,61 @@ const Product: React.FC = () => {
       <div className="flex flex-col gap-4">
         {cartItems.map((item, index) => {
           return (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              key={index}
-              className="flex gap-4 border-blue-500 border-separate"
-            >
-              <div className="product-img">
-                <Image src={item.img} width={200} height={200} alt="image" className="rounded-lg"/>
-              </div>
-              <div className="flex flex-col justify-between">
-                <div>
-                  <h3 className="text-accent font-bold uppercase text-3xl">
-                    {item.title_key}
-                  </h3>
-                  <p className="text-[#aaa] max-w-[200px] capitalize text-lg">
-                     {tOrder(`${item.category}.${item.desc_key}`)}
-                  </p>
-                  <span>
-                    <Stars currentRating={null} />
-                  </span>
-                  <h2 className="font-bold dark:text-white text-4xl mb-2">{item.price * item.quantity}$</h2>
-                  <div className="flex items-center gap-4 w-fit rounded-xl border-black border-2 border-solid px-2">
-                    <button
-                      type="button"
-                      onClick={() => decrementCartItems(index)}
-                      className="bg-accent p-2 rounded-full w-[21px] h-[21px] flex justify-center items-center text-white"
-                    >
-                      -
-                    </button>
-                    <span className="dark:text-white">{item.quantity}</span>
-                    <button
-                      type="button"
-                      onClick={() => incrementCartItems(index)}
-                      className="bg-accent p-2 rounded-full w-[21px] h-[21px] flex justify-center items-center text-[#fff]"
-                    >
-                      +
-                    </button>
-                  </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                key={index}
+                className="flex gap-4 border-blue-500 border-separate"
+              >
+                <div className="product-img">
+                  <Image src={item.img} width={200} height={200} alt="image" className="rounded-lg"/>
                 </div>
-                <span 
-                className="flex gap-2 text-xl cursor-pointer uppercase hover:underline hover:text-accent transition-all duration-300 ease-in-out"
-                onClick={() => removeCartItems(index)}>
-                 {tOrder("delete")}
-                  <Trash
-                    size={26}
-                    className="cursor-pointer hover:text-accent dark:text-white"
-                  />
-                </span>
-              </div>
-            </motion.div>
+                <div className="flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-accent font-bold uppercase text-3xl">
+                      {item.title_key}
+                    </h3>
+                    <p className="text-[#aaa] max-w-[200px] capitalize text-lg">
+                      {tOrder(`${item.category}.${item.desc_key}`)}
+                    </p>
+                    <span>
+                      <Stars currentRating={null} />
+                    </span>
+                    <h2 className="font-bold dark:text-white text-4xl mb-2">${item.price * item.quantity}</h2>
+                    <div className="flex items-center gap-4 w-fit rounded-xl border-black border-2 border-solid px-2">
+                      <button
+                        type="button"
+                        onClick={() => decrementCartItems(index)}
+                        className="bg-accent p-2 rounded-full w-[21px] h-[21px] flex justify-center items-center text-white"
+                      >
+                        -
+                      </button>
+                      <span className="dark:text-white">{item.quantity}</span>
+                      <button
+                        type="button"
+                        onClick={() => incrementCartItems(index)}
+                        className="bg-accent p-2 rounded-full w-[21px] h-[21px] flex justify-center items-center text-[#fff]"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <span 
+                  className="flex gap-2 text-xl cursor-pointer uppercase hover:underline hover:text-red-500 transition-all duration-300 ease-in-out"
+                  onClick={() => removeCartItems(index)}>
+                  {tOrder("delete")}
+                    <Trash
+                      size={26}
+                      className="cursor-pointer hover:text-red-500 dark:text-white"
+                    />
+                  </span>
+                </div>
+              </motion.div>
           );
         })}
 
-        <div>
-           <span>Total : {total.toFixed(2)}$</span>
-        </div>
       </div>
       <div className="flex items-center justify-end mt-4 gap-10 mb-4">
         {cartItems.length !== 0 ? (
@@ -156,10 +153,14 @@ const Product: React.FC = () => {
           ""
         )}
         {cartItems.length !== 0 ? (
-          <span className="capitalize text-accent font-bold">{tOrder("total_items")}: {cartItems.length}</span>
+          <p className="capitalize text-accent text-2xl font-bold">{tOrder("total_items")}: <span className="text-2xl font-bold text-black">{cartItems.length}</span></p>
         ) : (
           ""
         )}
+        <div className="flex items-center gap-4">
+          <p className="text-accent text-2xl font-bold">Total :</p>
+          <span className="text-2xl font-bold">${total.toFixed(2)}</span>
+        </div>
       </div>
     </div>
   );
