@@ -9,7 +9,7 @@ import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
 import Stars from "../components/Stars";
 import { motion } from "motion/react";
-import { it } from "node:test";
+import axios from "axios";
 
 interface cartItems {
   id: number;
@@ -72,6 +72,14 @@ const Product: React.FC = () => {
   const total = cartItems.reduce((acc, item) => {
     return acc + item.price * (item.quantity as number);
   }, 0);
+
+  // fecth stored data to be sent to the server
+const handleCheckout = async () => {
+  let selectedKeys = [];
+  const cart = cartItems.map((cartItem => {
+     
+  }))
+}
 
   return (
     <div className="pt-[160px] max-w-[1536px] mx-auto">
