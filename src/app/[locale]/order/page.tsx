@@ -75,11 +75,16 @@ const Product: React.FC = () => {
 
   // fecth stored data to be sent to the server
 const handleCheckout = async () => {
-  let selectedKeys = [];
-  const cart = cartItems.map((cartItem => {
-     
-  }))
-}
+  const retrievedKeys = cartItems.map((cartItem => {
+     return { slug: cartItem.slug, quantity: cartItem.quantity };
+  }));
+  try {
+   const request =  axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/checkout-session`, { items: retrievedKeys });
+    console.log(request);
+  } catch (error) {
+    console.log("no request is sent", error);
+  }
+};
 
   return (
     <div className="pt-[160px] max-w-[1536px] mx-auto">
@@ -154,7 +159,10 @@ const handleCheckout = async () => {
       </div>
       <div className="flex items-center justify-end mt-4 gap-10 mb-4">
         {cartItems.length !== 0 ? (
-          <button type="button"  className="bg-accent text-[#fff] text-xl hover:bg-purple-400 transition-colors duration-300 ease-in-out py-3 px-7 rounded-full">
+          <button 
+          type="button"  
+          onClick={handleCheckout}
+          className="bg-accent text-[#fff] text-xl hover:bg-purple-400 transition-colors duration-300 ease-in-out py-3 px-7 rounded-full">
             {tOrder("buy")}
           </button>
         ) : (
