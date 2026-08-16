@@ -10,6 +10,10 @@ import { updateCart } from "../redux/features/cart-slice";
 import Stars from "../components/Stars";
 import { motion } from "motion/react";
 import axios from "axios";
+import Link from "next/link";
+import Router from "next/router";
+import { useRouter } from "next/navigation";
+import { setClientSecret } from "../redux/features/checkout-slice";
 
 interface cartItems {
   id: number;
@@ -28,9 +32,11 @@ const Product: React.FC = () => {
   const tOrder = useTranslations("tOrder");
 
   const [cartItems, setCartItems] = useState<cartItems[]>([]);
+  // const [stripeClient, setStripeClient] = useState<string | null>(null);
+  const router = useRouter();
 
   const dispatch = useDispatch<AppDispatch>();
-  const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
+  const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer); // cart
 
 
   useEffect(() => {
@@ -79,8 +85,10 @@ const handleCheckout = async () => {
      return { slug: cartItem.slug, quantity: cartItem.quantity };
   }));
   try {
-   const request =  axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/checkout-session`, { items: retrievedKeys });
+   const request = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/checkout-session`, { items: retrievedKeys });
     console.log(request);
+    dispatch(setClientSecret(request.data.clientSecret));
+    router.push("/payment");
   } catch (error) {
     console.log("no request is sent", error);
   }
@@ -159,12 +167,12 @@ const handleCheckout = async () => {
       </div>
       <div className="flex items-center justify-end mt-4 gap-10 mb-4">
         {cartItems.length !== 0 ? (
-          <button 
-          type="button"  
-          onClick={handleCheckout}
-          className="bg-accent text-[#fff] text-xl hover:bg-purple-400 transition-colors duration-300 ease-in-out py-3 px-7 rounded-full">
-            {tOrder("buy")}
-          </button>
+            <button 
+            type="button"  
+            onClick={handleCheckout}
+            className="bg-accent text-[#fff] text-xl hover:bg-purple-400 transition-colors duration-300 ease-in-out py-3 px-7 rounded-full">
+              {tOrder("buy")}
+            </button>
         ) : (
           ""
         )}
@@ -178,6 +186,8 @@ const handleCheckout = async () => {
           <span className="text-2xl font-bold">${total.toFixed(2)}</span>
         </div>
       </div>
+
+      {/* {stripeClient && <CheckoutRender clientSecret={stripeClient} />} */}
     </div>
   );
 };
