@@ -10,8 +10,6 @@ import { updateCart } from "../redux/features/cart-slice";
 import Stars from "../components/Stars";
 import { motion } from "motion/react";
 import axios from "axios";
-import Link from "next/link";
-import Router from "next/router";
 import { useRouter } from "next/navigation";
 import { setClientSecret } from "../redux/features/checkout-slice";
 
@@ -80,19 +78,19 @@ const Product: React.FC = () => {
   }, 0);
 
   // fecth stored data to be sent to the server
-const handleCheckout = async () => {
-  const retrievedKeys = cartItems.map((cartItem => {
-     return { slug: cartItem.slug, quantity: cartItem.quantity };
-  }));
-  try {
-   const request = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/checkout-session`, { items: retrievedKeys });
-    console.log(request);
-    dispatch(setClientSecret(request.data.clientSecret));
-    router.push("/payment");
-  } catch (error) {
-    console.log("no request is sent", error);
-  }
-};
+  const handleCheckout = async () => {
+    const retrievedKeys = cartItems.map((cartItem => {
+      return { slug: cartItem.slug, quantity: cartItem.quantity, name: t(cartItem.title_key) };
+    }));
+    try {
+    const request = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/checkout-session`, { items: retrievedKeys });
+      // console.log(request);
+      dispatch(setClientSecret(request.data.clientSecret));
+      router.push("/payment");
+    } catch (error) {
+      console.log("no request is sent", error);
+    }
+  };
 
   return (
     <div className="pt-[160px] max-w-[1536px] mx-auto">
@@ -123,10 +121,10 @@ const handleCheckout = async () => {
                 <div className="flex flex-col justify-between">
                   <div>
                     <h3 className="text-accent font-bold uppercase text-3xl">
-                      {item.title_key}
+                      {t(`${item.title_key}`)}
                     </h3>
                     <p className="text-[#aaa] max-w-[200px] capitalize text-lg">
-                      {tOrder(`${item.category}.${item.desc_key}`)}
+                      {t(`${item.category}.${item.desc_key}`)}
                     </p>
                     <span>
                       <Stars currentRating={null} />
