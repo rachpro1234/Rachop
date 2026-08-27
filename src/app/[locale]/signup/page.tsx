@@ -1,13 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import React, { useState, useId } from "react";
+import React, { useState, useEffect, useId } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
+import axios from "axios";
 
 const SignUp = () => {
   const t = useTranslations("SignUp");
@@ -19,6 +20,7 @@ const SignUp = () => {
     email: "",
     password: "",
   });
+  const [errors, setErrors] = useState([]);
 
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(<EyeSlash size={20} />);
@@ -73,6 +75,21 @@ const SignUp = () => {
         alert(errorMessage);
       });
   };
+
+  const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+  // fetch user registration data
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${NEXT_PUBLIC_API_URL}/signup`, {signUpFormData});
+      setsignUpFormData(response.data);
+      console.log(response.data)
+    } catch (error) {
+      console.log("can't sign up this user")
+    }
+  };
+
 
   return (
     <div className="flex items-center justify-center pt-[160px] mb-10">
