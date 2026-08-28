@@ -51,30 +51,30 @@ const SignUp = () => {
 
   // const id = useId();
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const formSignUpSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    console.log(signUpFormData);
-    createUserWithEmailAndPassword(
-      auth,
-      signUpFormData.email,
-      signUpFormData.password
-    )
-      .then((userCredential: { user: any }) => {
-        const user = userCredential.user;
-        // console.log(user);
+  // const formSignUpSubmit = (e: { preventDefault: () => void }) => {
+  //   e.preventDefault();
+  //   console.log(signUpFormData);
+  //   createUserWithEmailAndPassword(
+  //     auth,
+  //     signUpFormData.email,
+  //     signUpFormData.password
+  //   )
+  //     .then((userCredential: { user: any }) => {
+  //       const user = userCredential.user;
+  //       // console.log(user);
 
-        router.push("signin");
-        alert("successfully created account");
-      })
-      .catch((error: { code: any; message: any }) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // console.log(errorCode, errorMessage)
-        alert(errorMessage);
-      });
-  };
+  //       router.push("signin");
+  //       alert("successfully created account");
+  //     })
+  //     .catch((error: { code: any; message: any }) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       // console.log(errorCode, errorMessage)
+  //       alert(errorMessage);
+  //     });
+  // };
 
   const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -105,7 +105,8 @@ const SignUp = () => {
           className={
             "space-y-4 transition-all duration-500 ease-in-out transform "
           }
-          onSubmit={formSignUpSubmit}
+          // onSubmit={formSignUpSubmit}
+          onSubmit={handleSubmit}
         >
           <div>
             <label
@@ -116,14 +117,15 @@ const SignUp = () => {
             </label>
             <input
               type="name"
-                id={`${id}-name`}
+              id={`${id}-name`}
               required
               value={signUpFormData.name}
               onChange={handleChange}
               name="name"
               placeholder={t("enter_your_name")}
-              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              className="block w-full p-2 mt-1 border rounded-md focus:!border-accent shadow-sm"
             />
+            <span className="hidden text-red-600">please enter a name</span>
           </div>
 
           <div>

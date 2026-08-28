@@ -98,11 +98,11 @@ function Jewellery() {
 
   return (
     <div className="container relative pt-[160px]">
-      <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
-        {t("jewellery")}
-      </h1>
 
-      <div>
+      <div className="jewellery-ban">
+        <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
+          {t("jewellery")}
+        </h1>
         <Image
           src={banner}
           width={1000}

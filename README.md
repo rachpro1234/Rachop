@@ -37,12 +37,22 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 # About the project
 
-- the App supports switching between languages applied using next-intl with app router
-- the icons used are from phosphor icons library [PhosphorIcons](https://phosphoricons.com/)
-- the app is user friendly and fit in all devices 
-- Redux toolkit for the shopping cart 
-- Typescript is the main software used in this project
-- Tailwind css for styling [Tailwindcss](https://tailwindcss.com/)
-- Dark mode [darkMode](https://prismic.io/blog/tailwind-css-darkmode-tutorial)
-- Firebase for backend to handle Authentication [Firebase](https://firebase.google.com/)
-- React-slick Package to manage the images slide [slickcarousel](https://react-slick.neostack.com/)
+============================= 
+Front-End
+============================= 
+
+=> the App supports switching between languages applied using next-intl with app router
+=> the icons used are from phosphor icons library [PhosphorIcons](https://phosphoricons.com/)
+=> the app is user friendly and fit in all devices 
+=> Redux toolkit for the shopping cart and saved selected cart item for the payment checkout sessions
+=> Typescript for strict types check.
+=> Tailwind css for styling [Tailwindcss](https://tailwindcss.com/)
+=> Dark mode [darkMode](https://prismic.io/blog/tailwind-css-darkmode-tutorial)
+=> React-slick Package to manage the images slide [slickcarousel](https://react-slick.neostack.com/)
+
+==============================
+Back-End [Repository](https://github.com/rachpro1234/rachop-backend) 
+==============================
+
+=> Express js for handling stripe checkout sessions, user Authentication [Firebase](https://firebase.google.com/) 
+=> MySQL Database for storing and retrieving products items. 
