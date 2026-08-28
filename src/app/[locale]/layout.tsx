@@ -19,7 +19,7 @@ const RootLayout: React.FC<Props> = ({ children, params: { locale } }) => {
   const messages = useMessages();
   return (
     <html lang={locale}>
-      <body className="bg-white dark:bg-[#131927] bg-[repeating-linear-gradient(45deg,theme(colors.gray.800)_0,theme(colors.gray.800)_1px,transparent_1px,transparent_8px)]">
+      <body className="bg-white dark:bg-[#131927] bg-[repeating-linear-gradient(45deg,theme(colors.gray.800)_0,theme(colors.gray.800)_1px,transparent_1px,transparent_13px)]">
         <NextIntlClientProvider messages={messages}>
           <ReduxProvider>{children}</ReduxProvider>
         </NextIntlClientProvider>
