@@ -156,12 +156,12 @@
   "SignUp": {
     "sign_up": "Iscrivetevi",
     "sign_in": "Accedi",
-    "name": "Nome",
+    "username": "Nome utente",
     "email": "Email",
     "password": "Password",
     "enter_your_password": "Inserisci la tua password",
     "enter_your_email": "Inserisci la tua email",
-    "enter_your_name": "Inserisci il tuo nome",
+    "enter_your_username": "Inserisci il tuo nome utente",
     "already_have_account": "Hai già un account"
   },
 

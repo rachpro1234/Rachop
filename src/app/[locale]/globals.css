@@ -108,10 +108,20 @@ input[type="radio"] {
 }
 
 
-.jewellery-ban::before, 
+/* .jewellery-ban::before, 
 .jewellery-ban::after {
   content: "";
   border-width: 1px;
   border-color: #1f2937;
   border-style: solid;
+} */
+
+.product-card {
+  --s: 70px; /* corner size */
+  padding: 5px;
+  border: 5px solid rgb(151, 79, 218);
+  mask:
+    conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+     0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+    conic-gradient(#000 0 0) content-box;
 }

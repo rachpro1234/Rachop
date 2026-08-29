@@ -116,7 +116,7 @@ function Women() {
       </h1>
 
       <div className="pt-14">
-        <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
+        <div className="grid grid-cols-1 place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
           {womenProducts.map((item, index) => {
             return (
               <motion.div
@@ -124,7 +124,7 @@ function Women() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
+                className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-[400px]"
                 key={item.id}
               >
                 <Link href={`/womenProducts/${item.slug}`}>
@@ -137,7 +137,7 @@ function Women() {
                       className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
                     />
                   </div>
-                  <div className="product-card__info space-y-2 py-2">
+                  <div className="product-card__info space-y-2 p-2">
                     <h3 className="text-accent font-bold uppercase">
                       {t(item.title_key)}
                     </h3>

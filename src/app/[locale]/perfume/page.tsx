@@ -120,7 +120,7 @@ function Perfume() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]" 
+              className="product-card px-7 dark:bg-slate-950 bg-white rounded-xl max-w-[400px]" 
               key={item.id}>
                 <Link href={`/perfumeProducts/${item.slug}`}>
                     <div className="overflow-hidden">
@@ -132,7 +132,7 @@ function Perfume() {
                         className="img bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
                       />
                     </div>
-                    <div className="product-card__info space-y-2 py-2">
+                    <div className="product-card__info space-y-2 p-2">
                       <h3 className="text-accent font-bold uppercase">
                         {item.title_key}
                       </h3>

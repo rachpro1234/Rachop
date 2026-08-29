@@ -162,12 +162,12 @@
   "SignUp": {
     "sign_up": "Melden Sie sich an",
     "sign_in" : "anmelden",
-    "name": "Name",
+    "username": "benutzername",
     "email" :"E-Mail",
     "password": "Passwort",
     "enter_your_password": "Geben Sie Ihr Passwort ein",
     "enter_your_email": "Geben Sie Ihre E-Mail-Adresse ein",
-    "enter_your_name": "Geben Sie Ihren Namen ein",
+    "enter_your_username": "Geben Sie Ihren benutzernamen ein",
     "already_have_account": "Sie haben bereits ein Konto"
   },
 

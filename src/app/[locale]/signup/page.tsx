@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
+import querystring from 'querystring';
 
 const SignUp = () => {
   const t = useTranslations("SignUp");
@@ -16,7 +17,7 @@ const SignUp = () => {
   const id = useId();
 
   const [signUpFormData, setsignUpFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -39,6 +40,7 @@ const SignUp = () => {
     }
   };
 
+  // handle input value change
   const handleChange = (event: { target: { name: string; value: any } }) => {
     const { name, value } = event.target;
     setsignUpFormData((prevFormData) => {
@@ -49,9 +51,8 @@ const SignUp = () => {
     });
   };
 
-  // const id = useId();
 
-  // const router = useRouter();
+  const router = useRouter();
 
   // const formSignUpSubmit = (e: { preventDefault: () => void }) => {
   //   e.preventDefault();
@@ -76,17 +77,19 @@ const SignUp = () => {
   //     });
   // };
 
-  const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   // fetch user registration data
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${NEXT_PUBLIC_API_URL}/signup`, {signUpFormData});
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`, signUpFormData);
       setsignUpFormData(response.data);
-      console.log(response.data)
+      console.log(response.data);
+      router.push("signin");
+      alert(`successfully created account, welcome ${signUpFormData.username} by Rachop`);
     } catch (error) {
-      console.log("can't sign up this user")
+      console.log("can't sign up this user", error);
+      alert("no account has been created");
     }
   };
 
@@ -110,22 +113,22 @@ const SignUp = () => {
         >
           <div>
             <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700 dark:text-white"
+              htmlFor="username"
+              className="block text-sm capitalize font-medium text-gray-700 dark:text-white"
             >
-              {t("name")}
+              {t("username")}
             </label>
             <input
-              type="name"
-              id={`${id}-name`}
+              type="username"
+              id={`${id}-username`}
               required
-              value={signUpFormData.name}
+              value={signUpFormData.username}
               onChange={handleChange}
-              name="name"
-              placeholder={t("enter_your_name")}
+              name="username"
+              placeholder={t("enter_your_username")}
               className="block w-full p-2 mt-1 border rounded-md focus:!border-accent shadow-sm"
             />
-            <span className="hidden text-red-600">please enter a name</span>
+            <span className="hidden text-red-600">please enter a username</span>
           </div>
 
           <div>

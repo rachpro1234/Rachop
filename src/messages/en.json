@@ -131,6 +131,7 @@
     "buy": "Buy",
     "total_items": "Total Items"
   },
+
   "Perfume": {
     "shop_with_us": "shop with us",
     "perfume": "Perfume",
@@ -156,12 +157,12 @@
   "SignUp": {
     "sign_up": "Sign up",
     "sign_in": "Sign in",
-    "name": "Name",
+    "username": "username",
     "email": "Email",
     "password": "Password",
     "enter_your_password": "Enter your password",
     "enter_your_email": "Enter your email",
-    "enter_your_name": "Enter your name",
+    "enter_your_username": "Enter your username",
     "already_have_account": "Already have an account"
   },
 

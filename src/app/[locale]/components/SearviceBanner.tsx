@@ -42,7 +42,7 @@ function SearviceBanner() {
     <div className="servicee-banner container py-10">
       <div className="icon md:flex items-center justify-between gap-10 select-none w-full ">
         {ServiceItems.map((item) => (
-          <div key={item.id} className="dark:bg-slate-950 dark:text-white px-10 py-7 rounded-lg">
+          <div key={item.id} className="dark:bg-slate-950 bg-white dark:text-white px-10 py-7 rounded-lg">
             <div className="flex items-center justify-center flex-col">
               {item.icon}
               <h4 className=" dark:text-white capitalize text-center font-bold">{item.title}</h4>
