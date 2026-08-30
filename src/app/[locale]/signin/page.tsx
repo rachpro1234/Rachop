@@ -75,10 +75,10 @@ function SignIn() {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, signInFormData);
       setsignInFormData(response.data);
+      router.push('/');
       console.log(response.data);
       alert(`you've successfully login in to your Rachop Space`);
     } catch (error) {
