@@ -1,15 +1,17 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 
 
-const initialState: string | null = null;
+const initialState = null;
+
 
 // reducer
 const checkout = createSlice({
     name: 'checkout',
     initialState,
     reducers: {
-      setClientSecret: (state, action: PayloadAction<string | null> ) => {
-         return action.payload
+      // @ts-ignore
+      setClientSecret: (state, action: PayloadAction<string | null> ) =>  {
+        return action.payload; 
       } 
     }
 });

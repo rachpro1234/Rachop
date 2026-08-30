@@ -9,6 +9,7 @@ import { auth } from "../../../firebase/firebase";
 import { useRouter } from "next/navigation";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
+import axios from "axios";
 
 function SignIn() {
   const t = useTranslations("SignIn");
@@ -50,27 +51,40 @@ function SignIn() {
   const router = useRouter();
 
   // submitting the form
-  const formSignInSubmit = (e: any) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(
-      auth,
-      signInFormData.email,
-      signInFormData.password
-    )
-      .then((userCredential) => {
-        const user = userCredential.user; // signed in
-        router.push("/");
-        alert("successfully logged in");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = "account not found";
-        console.log(errorCode, errorMessage);
-        alert(errorMessage);
-      });
-  };
+  // const formSignInSubmit = (e: any) => {
+  //   e.preventDefault();
+  //   signInWithEmailAndPassword(
+  //     auth,
+  //     signInFormData.email,
+  //     signInFormData.password
+  //   )
+  //     .then((userCredential) => {
+  //       const user = userCredential.user; // signed in
+  //       router.push("/");
+  //       alert("successfully logged in");
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = "account not found";
+  //       console.log(errorCode, errorMessage);
+  //       alert(errorMessage);
+  //     });
+  // };
 
-  console.log(id);
+  // console.log(id);
+
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, signInFormData);
+      setsignInFormData(response.data);
+      console.log(response.data);
+      alert(`you've successfully login in to your Rachop Space`);
+    } catch (error) {
+      console.log("we couldn't sign you in", error);
+    }
+  }
 
   return (
     <div className="flex items-center justify-center pt-[160px] mb-10">
@@ -86,7 +100,7 @@ function SignIn() {
           className={
             "space-y-4 transition-all duration-500 ease-in-out transform "
           }
-          onSubmit={formSignInSubmit}
+          onSubmit={handleLogin}
         >
           <div>
             <label
