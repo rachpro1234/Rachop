@@ -90,15 +90,6 @@ const SearchInput = () => {
       });
   };
 
-  // const [text] = useTypewriter({
-  //   words: [
-  //     `${t("variety")}`,
-  //     `${t("quality")}`,
-  //     `${t("guarantee")}`,
-  //     `${t("reliability")}`,
-  //   ],
-  //   loop: 0,
-  // });
 
   const [mode, setMode] = useState<String | null>(null) 
 
@@ -107,12 +98,6 @@ const SearchInput = () => {
     setMode(localStorage.getItem("theme"))
   })
 
-  // useEffect(() => {
-  //   const theme = localStorage.getItem("theme");
-  //   if (theme === "dark") {
-  //     document.documentElement.classList.add("dark");
-  //   }
-  // }, []);
 
   const toggleTheme = () => {
     if (document.documentElement.classList.contains("dark")) {
@@ -124,10 +109,8 @@ const SearchInput = () => {
     }
   };
 
-  // const mode = localStorage.getItem("theme");
   
 
-  // #131927 nice dark mode color to use
   return (
     <div className="container flex items-center justify-between py-3 flex-col sm:flex-row gap-4">
       <div className="flex items-center justify-center gap-4 text-4xl font-bold uppercase dark:text-white text-blakish">
@@ -141,14 +124,6 @@ const SearchInput = () => {
         </Link>
       </div>
 
-      {/* <div className="sm:text-4xl md:text-2xl text-[16px] text-center font-bold uppercase dark:text-white">
-        {t("we_offer")}
-        <span className="text-accent ml-4 uppercase font-bold">
-          {text}
-          <Cursor />
-        </span>
-        {t("in_products")}
-      </div> */}
       <Navbar />
 
       <div className="sm:flex items-center gap-4 text-2xl hidden relative">

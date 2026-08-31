@@ -45,7 +45,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
  
 Repository: [rachop-backend](https://github.com/rachpro1234/rachop-backend)
  
-- Express.js for handling Stripe checkout sessions and user authentication via [Firebase](https://firebase.google.com/)
+- Express.js for handling Stripe checkout sessions and user authentication via [REST API](https://blog.postman.com/how-to-create-a-rest-api-with-node-js-and-express/)
 - MySQL database for storing and retrieving product data
 ---
  

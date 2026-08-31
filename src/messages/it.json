@@ -157,7 +157,7 @@
     "sign_up": "Iscrivetevi",
     "sign_in": "Accedi",
     "username": "Nome utente",
-    "email": "Email",
+    "email": "e-mail",
     "password": "Password",
     "enter_your_password": "Inserisci la tua password",
     "enter_your_email": "Inserisci la tua email",
@@ -168,10 +168,10 @@
   "SignIn": {
     "sign_up": "Iscrivetevi",
     "sign_in": "Accedi",
-    "email": "Email",
+    "username": "Nome utente",
     "password": "Password",
+    "enter_your_username": "Inserisci il tuo nome utente",
     "enter_your_password": "Inserisci la tua password",
-    "enter_your_email": "Inserisci la tua email",
     "don't_have_an_account": "Non hai un account"
   }
 }

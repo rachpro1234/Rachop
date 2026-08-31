@@ -169,10 +169,10 @@
   "SignIn": {
     "sign_up": "Sign up",
     "sign_in": "Sign in",
-    "email": "Email",
+    "username": "username",
     "password": "Password",
+    "enter_your_username": "Enter your username",
     "enter_your_password": "Enter your password",
-    "enter_your_email": "Enter your email",
     "don't_have_an_account": "Don't have an account"
   }
 }

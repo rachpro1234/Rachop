@@ -3,8 +3,8 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState, useId } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase/firebase";
+// import { signInWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "../../../firebase/firebase";
 
 import { useRouter } from "next/navigation";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
@@ -15,7 +15,7 @@ function SignIn() {
   const t = useTranslations("SignIn");
 
   const [signInFormData, setsignInFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -81,10 +81,20 @@ function SignIn() {
       router.push('/');
       console.log(response.data);
       alert(`you've successfully login in to your Rachop Space`);
+      localStorage.setItem("tokenKey", 'token');
+      console.log(localStorage.getItem("tokenKey"));
     } catch (error) {
       console.log("we couldn't sign you in", error);
     }
   }
+
+
+  const handleLogout = () => {
+    localStorage.removeItem("tokenKey");
+    router.push('/signin');
+  }
+
+
 
   return (
     <div className="flex items-center justify-center pt-[160px] mb-10">
@@ -102,26 +112,28 @@ function SignIn() {
           }
           onSubmit={handleLogin}
         >
-          <div>
+          {/* // USERNAME // */}
+           <div>
             <label
-              htmlFor="email"
+              htmlFor="username"
               className="block text-sm font-medium text-gray-700  dark:text-white"
             >
-              {t("email")}
+              {t("username")}
             </label>
             <input
-              type="email"
+              type="username"
               // id="email"
-              id={`${id} + -email`}
+              id={`${id} + -username`}
               required
-              value={signInFormData.email}
+              value={signInFormData.username}
               onChange={handleChange}
-              name="email"
-              placeholder={t("enter_your_email")}
-              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              name="username"
+              placeholder={t("enter_your_username")}
+              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-accent"
             />
           </div>
 
+          {/* password // */}
           <div className="relative">
             <label
               htmlFor="password"
@@ -138,7 +150,7 @@ function SignIn() {
               onChange={handleChange}
               name="password"
               placeholder={t("enter_your_password")}
-              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-accent"
             />
             <span
               className="absolute right-4 top-9 cursor-pointer"

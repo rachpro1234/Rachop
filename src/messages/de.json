@@ -174,10 +174,10 @@
   "SignIn": {
     "sign_up": "Melden Sie sich an",
     "sign_in" : "anmelden",
-    "email" :"E-Mail",
+    "username": "benutzername",
     "password": "Passwort",
+    "enter_your_username": "Geben Sie Ihren benutzernamen ein",
     "enter_your_password": "Geben Sie Ihr Passwort ein",
-    "enter_your_email": "Geben Sie Ihre E-Mail-Adresse ein",
     "don't_have_an_account": "habe kein Konto"
   }
 }
