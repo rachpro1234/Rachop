@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useState, useId } from "react";
+import { useState, useId, use } from "react";
 // import { signInWithEmailAndPassword } from "firebase/auth";
 // import { auth } from "../../../firebase/firebase";
 
@@ -18,6 +18,8 @@ function SignIn() {
     username: "",
     password: "",
   });
+
+  const [user, setUser] = useState(null);
 
   const id = useId();
 
@@ -77,9 +79,27 @@ function SignIn() {
     e.preventDefault();
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, signInFormData);
+
+      let token = response.data.token;
+
+      localStorage.setItem("jwtToken", token);
+
+      const storedToken = localStorage.getItem('jwtToken');
+      console.log('stored token: ', storedToken);
+
+      const profile = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, {
+        headers: {
+          Authorization: `Bearer ${storedToken}`
+        }
+      })
+      
+      console.log(profile.data);
+
       setsignInFormData(response.data);
+      setUser(response.data);
       router.push('/');
-      console.log(response.data);
+      console.log(signInFormData);
+      console.log(user);
       alert(`you've successfully login in to your Rachop Space`);
       localStorage.setItem("tokenKey", 'token');
       console.log(localStorage.getItem("tokenKey"));
