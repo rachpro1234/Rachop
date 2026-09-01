@@ -96,6 +96,10 @@ function SignIn() {
       console.log(profile.data);
 
       setsignInFormData(response.data);
+      setsignInFormData({
+        username: "",
+        password: ""
+      })
       setUser(response.data);
       router.push('/');
       console.log(signInFormData);
@@ -151,6 +155,7 @@ function SignIn() {
               placeholder={t("enter_your_username")}
               className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-accent"
             />
+            {signInFormData.username === "" && <span className="text-red-500 text-lg">please fill in your username</span>}
           </div>
 
           {/* password // */}

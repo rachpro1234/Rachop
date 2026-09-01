@@ -84,6 +84,11 @@ const SignUp = () => {
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`, signUpFormData);
       setsignUpFormData(response.data);
+      setsignUpFormData({
+        username: "",
+        email: "",
+        password: ""
+      })
       console.log(response.data);
       router.push("signin");
       alert(`successfully created account, welcome ${signUpFormData.username} by Rachop`);
