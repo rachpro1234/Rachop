@@ -20,6 +20,25 @@ function SignIn() {
   });
 
   const [user, setUser] = useState(null);
+  // inputs error handling
+  const [usernameError, setUsernameError] = useState("");
+  const [usernameFocus, setUsernameFocus] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [passwordFocus, setPasswordFocus] = useState(false);
+  
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/gi;
+  const usernameReg = /^[a-z]+\s*[a-z]*/gi;
+
+   const onFocusUsernameInput = () => {
+    if (usernameReg.test(signInFormData.username)) {
+      setUsernameFocus(true);
+    }
+    else{
+      setUsernameFocus(false)
+    }
+  };
 
   const id = useId();
 
@@ -42,6 +61,8 @@ function SignIn() {
 
   const handleChange = (event: { target: { name: string; value: any } }) => {
     const { name, value } = event.target;
+
+
     setsignInFormData((prevFormData) => {
       return {
         ...prevFormData,
