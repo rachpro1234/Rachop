@@ -9,7 +9,7 @@ import Link from "next/link";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
-import querystring from 'querystring';
+import { toast } from 'react-toastify'
 
 const SignUp = () => {
   const t = useTranslations("SignUp");
@@ -26,6 +26,39 @@ const SignUp = () => {
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(<EyeSlash size={20} />);
   const [isVisible, setIsVisible] = useState(false);
+
+    // inputs error handling
+  const [usernameError, setUsernameError] = useState("");
+  const [usernameFocus, setUsernameFocus] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [passwordFocus, setPasswordFocus] = useState(false);
+  
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/gi;
+  const usernameReg = /^[a-z]+\s*[a-z]*/gi;
+
+   const onFocusUsernameInput = () => {
+    if (usernameReg.test(signUpFormData.username)) {
+      setUsernameFocus(true);
+    }
+    else{
+      setUsernameFocus(false);
+    }
+  };
+
+  const onFocusEmailInput = () => {
+    if(emailRegex.test(signUpFormData.email)) {
+      setEmailFocus(true);
+    }
+  }
+
+  const onFocusPasswordInput = () => {
+    if(signUpFormData.password.length >= 6) {
+      setPasswordFocus(true)
+    }
+  }
+
 
   // toggle the password visibility when clicking on the eye icon
   const togglePasswordVisibility = () => {
@@ -49,6 +82,33 @@ const SignUp = () => {
         [name]: value,
       };
     });
+
+    if(name === "username") {
+      setUsernameError("");
+      if(!usernameReg.test(value)) {
+        setUsernameError("name should start with an alphabet")
+      } else {
+        setUsernameFocus(true)
+      }
+    }
+
+    if(name === "email") {
+      setEmailError("");
+      if(!emailRegex.test(signUpFormData.email)) {
+        setEmailError("Invalid Email")
+      } else {
+        setEmailFocus(true)
+      }
+    }
+
+    if(name === "password") {
+      setPasswordError("");
+      if(signUpFormData.password.length < 6) {
+        setPasswordError("password should be at least 6 charachters");
+      } else {
+        setPasswordFocus(true);
+      }
+    }
   };
 
 
@@ -82,6 +142,17 @@ const SignUp = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
+      // check inputs
+      const { username, email, password } = signUpFormData;
+
+      if(!username || !email || !password) {
+        toast.error("please fill all fields", {
+          position: "bottom-left",
+          theme: "colored"
+        });
+        return;
+      }
+
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`, signUpFormData);
       setsignUpFormData(response.data);
       setsignUpFormData({
