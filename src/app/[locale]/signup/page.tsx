@@ -204,7 +204,7 @@ const SignUp = () => {
               placeholder={t("enter_your_username")}
               className="block w-full p-2 mt-1 border rounded-md focus:!border-accent shadow-sm"
             />
-            <span className="hidden text-red-600">please enter a username</span>
+            <span className="hidden text-red-600">{usernameError}</span>
           </div>
 
           <div>
@@ -224,6 +224,7 @@ const SignUp = () => {
               placeholder={t("enter_your_email")}
               className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             />
+            <span className="hidden text-red-600">{emailError}</span>
           </div>
 
           <div className="relative">
@@ -249,6 +250,7 @@ const SignUp = () => {
             >
               {icon}
             </span>
+            <span className="hidden text-red-600">{passwordError}</span>
           </div>
 
           <button

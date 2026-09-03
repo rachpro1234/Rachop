@@ -21,6 +21,12 @@ function SignIn() {
 
   const [user, setUser] = useState(null);
 
+  const [usernameError, setUsernameError] = useState("");
+  const [usernameFocus, setUsernameFocus] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [passwordFocus, setPasswordFocus] = useState(false);
+
+
   const id = useId();
 
   const [type, setType] = useState("password");
@@ -50,6 +56,25 @@ function SignIn() {
         [name]: value,
       };
     });
+
+    if(name=== "username") {
+      setUsernameError("");
+      if(signInFormData.username === "") {
+        setUsernameError("Please enter a valid username");
+      } else {
+        setUsernameFocus(true);
+      }
+    }
+
+      if(name=== "password") {
+      setPasswordError("");
+      if(signInFormData.password === "") {
+        setPasswordError("Please enter a password");
+      } else {
+        setPasswordFocus(true);
+      }
+    }
+
   };
 
   const router = useRouter();
@@ -80,6 +105,13 @@ function SignIn() {
   const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
+      const { username, password } = signInFormData;
+
+      if(!username || !password) {
+        console.log("inputs must be filled");
+      }
+
+
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, signInFormData);
 
       let token = response.data.token;
