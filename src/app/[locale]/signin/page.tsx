@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
+import cs from "./auth.module.css";
 
 function SignIn() {
   const t = useTranslations("SignIn");
@@ -25,6 +26,23 @@ function SignIn() {
   const [usernameFocus, setUsernameFocus] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [passwordFocus, setPasswordFocus] = useState(false);
+
+  const usernameReg = /^[a-z]+\s*[a-z]*/gi;
+
+   const onFocusUsernameInput = () => {
+    if (usernameReg.test(signInFormData.username)) {
+      setUsernameFocus(true);
+    }
+    else{
+      setUsernameFocus(false);
+    }
+  };
+
+  const onFocusPasswordInput = () => {
+    if(signInFormData.password.length >= 6) {
+      setPasswordFocus(true)
+    }
+  }
 
 
   const id = useId();
@@ -165,13 +183,12 @@ function SignIn() {
 
         {/* Form */}
         <form
-          className={
-            "space-y-4 transition-all duration-500 ease-in-out transform "
-          }
+          className={`${cs.inputContainer} space-y-4 transition-all duration-500 ease-in-out transform `}
           onSubmit={handleLogin}
         >
           {/* // USERNAME // */}
-           <div>
+           <div className={`${cs.inputContainer} 
+           ${usernameError.length > 0 ? cs.inputContainerError : usernameFocus ? cs.inputContainerSuccess : ""}`}>
             <label
               htmlFor="username"
               className="block text-sm font-medium text-gray-700  dark:text-white"
@@ -185,15 +202,17 @@ function SignIn() {
               required
               value={signInFormData.username}
               onChange={handleChange}
+              onFocus={onFocusUsernameInput}
               name="username"
               placeholder={t("enter_your_username")}
-              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-accent"
+              className="block w-full p-2 mt-1 rounded-md shadow-sm "
             />
-            {signInFormData.username === "" && <span className="text-red-500 text-lg">please fill in your username</span>}
+            {/* {signInFormData.username === "" && <span className="text-red-500 text-lg">please fill in your username</span>} */}
           </div>
 
           {/* password // */}
-          <div className="relative">
+          <div className={` ${cs.inputContainer} 
+          ${passwordError.length > 0 ? cs.inputContainerError : passwordFocus ? cs.inputContainerSuccess : ""} relative`}>
             <label
               htmlFor="password"
               className="block text-sm font-medium text-gray-700  dark:text-white"
@@ -207,24 +226,27 @@ function SignIn() {
               required
               value={signInFormData.password}
               onChange={handleChange}
+              onFocus={onFocusPasswordInput}
               name="password"
               placeholder={t("enter_your_password")}
-              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-accent"
+              className="block w-full p-2 mt-1 rounded-md shadow-sm"
             />
             <span
-              className="absolute right-4 top-9 cursor-pointer"
+              className="absolute right-4 top-10 cursor-pointer"
               onClick={togglePasswordVisibility}
             >
               {icon}
             </span>
           </div>
 
-          <button
-            type="submit"
-            className="w-full px-4 py-2 font-bold text-white bg-accent rounded-md hover:bg-purple-500  dark:text-white"
-          >
-            {t("sign_in")}
-          </button>
+          <div className={cs.loginBtnDiv}>
+            <button
+              type="submit"
+              className="w-full px-4 py-2 font-bold text-white bg-accent rounded-md hover:bg-purple-500  dark:text-white"
+            >
+              {t("sign_in")}
+            </button>
+          </div>
         </form>
 
         <div className="text-sm text-center text-gray-600">
