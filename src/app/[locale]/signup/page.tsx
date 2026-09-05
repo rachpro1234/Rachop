@@ -9,7 +9,7 @@ import Link from "next/link";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const t = useTranslations("SignUp");

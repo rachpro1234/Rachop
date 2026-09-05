@@ -11,6 +11,8 @@ import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
 import cs from "./auth.module.css";
+import { toast } from 'react-toastify';
+
 
 function SignIn() {
   const t = useTranslations("SignIn");
@@ -84,10 +86,12 @@ function SignIn() {
       }
     }
 
-      if(name=== "password") {
+      if(name === "password") {
       setPasswordError("");
-      if(signInFormData.password === "") {
-        setPasswordError("Please enter a password");
+      if(signInFormData.password ===  "") {
+        setPasswordError("please enter a valid password"); }
+      else if(signInFormData.password.length < 6) {
+        setPasswordError("password should be at least 6 charachters");
       } else {
         setPasswordFocus(true);
       }
@@ -127,6 +131,12 @@ function SignIn() {
 
       if(!username || !password) {
         console.log("inputs must be filled");
+        setUsernameFocus(false);
+        toast.error("please fill all fields", {
+                  position: "bottom-left",
+                  theme: "colored"
+                });
+                return;
       }
 
 
@@ -207,7 +217,7 @@ function SignIn() {
               placeholder={t("enter_your_username")}
               className="block w-full p-2 mt-1 rounded-md shadow-sm "
             />
-            {/* {signInFormData.username === "" && <span className="text-red-500 text-lg">please fill in your username</span>} */}
+            <div className={cs.error}>{usernameError}</div>
           </div>
 
           {/* password // */}
@@ -237,6 +247,7 @@ function SignIn() {
             >
               {icon}
             </span>
+            <div className={cs.error}>{passwordError}</div>
           </div>
 
           <div className={cs.loginBtnDiv}>

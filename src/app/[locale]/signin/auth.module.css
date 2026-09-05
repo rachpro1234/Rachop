@@ -6,14 +6,6 @@
   margin: 0 auto 1% auto;
 }
 
-
-/* .hurry, .create{
-  font-weight: 400;
-  font-size: 16px;
-  color: #2B3A4A;
-} */
-
-
 .inputContainer, .inputContainerError,.inputContainerSuccess{
   margin: 5% 0 0 0;
   position: relative;
@@ -29,7 +21,7 @@
 .inputContainer input, .inputContainerError input, .inputContainerSuccess input{
   width: 100%;
   height: 48px;
-  border: 1px solid #AAB3BD;
+  border: 2px solid #AAB3BD;
   background: #FDFDFE;
   border-radius: 8px;
   color: #CCD0D4;
@@ -39,11 +31,11 @@
 }
 
 .inputContainerError input{
-  border: 1px solid #F2B2AD;
+  border: 2px solid #F2B2AD;
 }
 
 .inputContainerSuccess input{
-  border: 1px solid #97BF84;
+  border: 2px solid #97BF84;
 }
 
 .error{
@@ -53,11 +45,11 @@
   font-weight: 400;
 }
 
-/* .passwordIcon{
+.passwordIcon{
   position: absolute;
   right: 5%;
   top: 50%;
-} */
+}
 
 .passwordIconError{
   position: absolute;
@@ -73,12 +65,4 @@
 .loginBtnDiv button, .deleteBtnDiv button{
   width: 100%;
   height: 48px;
-  /* background-color: #003571;
-  outline: none;
-  color: #ffffff;
-  font-size: 16px;
-  border-radius: 8px;
-  outline: none;
-  border: 1px solid #003571;
-  cursor: pointer; */
 }
