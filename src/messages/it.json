@@ -162,7 +162,12 @@
     "enter_your_password": "Inserisci la tua password",
     "enter_your_email": "Inserisci la tua email",
     "enter_your_username": "Inserisci il tuo nome utente",
-    "already_have_account": "Hai già un account"
+    "already_have_account": "Hai già un account",
+    "username_error_text": "ⓘ Il campo nome utente è obbligatorio",
+    "email_error_text": "ⓘ e-mail utente è obbligatorio",
+    "password_error_text": "ⓘ Il campo password è obbligatorio",
+    "invalid_email_error_text": "ⓘ Ungültige E-Mail-Adresse",
+    "password_length_error": "ⓘ La password deve contenere almeno 6 caratteri"
   },
 
   "SignIn": {
@@ -172,6 +177,9 @@
     "password": "Password",
     "enter_your_username": "Inserisci il tuo nome utente",
     "enter_your_password": "Inserisci la tua password",
-    "don't_have_an_account": "Non hai un account"
+    "don't_have_an_account": "Non hai un account",
+    "username_error_text": "ⓘ Il campo nome utente è obbligatorio",
+    "password_error_text": "ⓘ Il campo password è obbligatorio",
+    "password_length_error": "ⓘ La password deve contenere almeno 6 caratteri"
   }
 }

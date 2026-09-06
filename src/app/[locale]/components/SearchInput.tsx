@@ -30,7 +30,7 @@ interface cartItems {
 }
 
 const SearchInput = () => {
-  const t = useTranslations("Index");
+  const t = useTranslations("SignUp");
 
   const [cartItems, setCartItems] = useState(1);
   const dispatch = useDispatch<AppDispatch>();

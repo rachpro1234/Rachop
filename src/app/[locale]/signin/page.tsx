@@ -11,7 +11,7 @@ import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
 import cs from "./auth.module.css";
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 
 function SignIn() {
@@ -31,18 +31,28 @@ function SignIn() {
 
   const usernameReg = /^[a-z]+\s*[a-z]*/gi;
 
+  // error handling translated text variables
+  const usernameErrorText = t('username_error_text');
+  const passwordErrorText = t('password_error_text');
+  const passwordLengthError = t('password_length_error');
+
+
    const onFocusUsernameInput = () => {
     if (usernameReg.test(signInFormData.username)) {
       setUsernameFocus(true);
     }
     else{
       setUsernameFocus(false);
+      setUsernameError(usernameErrorText)
     }
   };
 
   const onFocusPasswordInput = () => {
     if(signInFormData.password.length >= 6) {
       setPasswordFocus(true)
+    } else if (signInFormData.password === "") {
+      setPasswordError(passwordErrorText)
+      setPasswordFocus(false)
     }
   }
 
@@ -77,22 +87,26 @@ function SignIn() {
       };
     });
 
-    if(name=== "username") {
-      setUsernameError("");
-      if(signInFormData.username === "") {
-        setUsernameError("Please enter a valid username");
+    if(name === "username") {
+      if(value === "") {
+        setUsernameError(usernameErrorText);
+        setUsernameFocus(false);
       } else {
+        setUsernameError("")
         setUsernameFocus(true);
       }
     }
 
       if(name === "password") {
-      setPasswordError("");
-      if(signInFormData.password ===  "") {
-        setPasswordError("please enter a valid password"); }
+      if (value === "") {
+      setPasswordError(passwordErrorText)
+      setPasswordFocus(false)
+      } 
       else if(signInFormData.password.length < 6) {
-        setPasswordError("password should be at least 6 charachters");
+        setPasswordError(passwordLengthError);
+        setPasswordFocus(false)
       } else {
+        setPasswordError("")
         setPasswordFocus(true);
       }
     }
@@ -129,14 +143,20 @@ function SignIn() {
     try {
       const { username, password } = signInFormData;
 
-      if(!username || !password) {
-        console.log("inputs must be filled");
+      if(!username) {
+        setUsernameError(usernameErrorText);
         setUsernameFocus(false);
-        toast.error("please fill all fields", {
-                  position: "bottom-left",
-                  theme: "colored"
-                });
-                return;
+      } else {
+        setUsernameError("");
+        setUsernameFocus(true);
+      }
+      
+      if (!password) {
+        setPasswordError(passwordErrorText);
+        setPasswordFocus(false);
+      }  else {
+        setPasswordError("");
+        setPasswordFocus(true);
       }
 
 
@@ -163,7 +183,9 @@ function SignIn() {
         password: ""
       })
       setUser(response.data);
-      router.push('/');
+      setTimeout(() => {
+        router.push('/');
+      }, 4000);
       console.log(signInFormData);
       console.log(user);
       alert(`you've successfully login in to your Rachop Space`);
@@ -186,7 +208,7 @@ function SignIn() {
     <div className="flex items-center justify-center pt-[160px] mb-10">
       <div className="relative w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg dark:bg-slate-950">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900  dark:text-white">
+          <h2 className="text-3xl font-bold capitalize text-gray-900  dark:text-white">
             {t("sign_in")}
           </h2>
         </div>
@@ -208,8 +230,7 @@ function SignIn() {
             <input
               type="username"
               // id="email"
-              id={`${id} + -username`}
-              required
+              id={`${id}-username`}
               value={signInFormData.username}
               onChange={handleChange}
               onFocus={onFocusUsernameInput}
@@ -232,8 +253,7 @@ function SignIn() {
             <input
               type={type}
               // id="password"
-              id={`${id} + -password`}
-              required
+              id={`${id}-password`}
               value={signInFormData.password}
               onChange={handleChange}
               onFocus={onFocusPasswordInput}

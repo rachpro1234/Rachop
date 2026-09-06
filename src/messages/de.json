@@ -160,7 +160,7 @@
   },
 
   "SignUp": {
-    "sign_up": "Melden Sie sich an",
+    "sign_up": "registrieren",
     "sign_in" : "anmelden",
     "username": "benutzername",
     "email" :"E-Mail",
@@ -168,16 +168,24 @@
     "enter_your_password": "Geben Sie Ihr Passwort ein",
     "enter_your_email": "Geben Sie Ihre E-Mail-Adresse ein",
     "enter_your_username": "Geben Sie Ihren benutzernamen ein",
-    "already_have_account": "Sie haben bereits ein Konto"
+    "already_have_account": "Sie haben bereits ein Konto",
+    "username_error_text": "ⓘ Benutzername ist erforderlich",
+    "email_error_text": "ⓘ E-Mail ist erforderlich",
+    "password_error_text": "ⓘ Passwort ist erforderlich",
+    "invalid_email_error_text": "ⓘ Ungültige E-Mail-Adresse",
+    "password_length_error": "ⓘ Das Passwort muss mindestens 6 Zeichen lang sein"
   },
 
   "SignIn": {
-    "sign_up": "Melden Sie sich an",
+    "sign_up": "register",
     "sign_in" : "anmelden",
     "username": "benutzername",
     "password": "Passwort",
     "enter_your_username": "Geben Sie Ihren benutzernamen ein",
     "enter_your_password": "Geben Sie Ihr Passwort ein",
-    "don't_have_an_account": "habe kein Konto"
+    "don't_have_an_account": "habe kein Konto",
+    "username_error_text": "ⓘ Benutzername ist erforderlich",
+    "password_error_text": "ⓘ Passwort ist erforderlich",
+    "password_length_error": "ⓘ Das Passwort muss mindestens 6 Zeichen lang sein"
   }
 }

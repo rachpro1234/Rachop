@@ -155,24 +155,32 @@
   },
 
   "SignUp": {
-    "sign_up": "Sign up",
-    "sign_in": "Sign in",
+    "sign_up": "register",
+    "sign_in": "login",
     "username": "username",
     "email": "Email",
     "password": "Password",
     "enter_your_password": "Enter your password",
     "enter_your_email": "Enter your email",
     "enter_your_username": "Enter your username",
-    "already_have_account": "Already have an account"
+    "already_have_account": "Already have an account",
+    "username_error_text": "ⓘ username field is required",
+    "email_error_text": "ⓘ email field is required",
+    "password_error_text": "ⓘ password field is required",
+    "invalid_email_error_text": "ⓘ invalid email",
+    "password_length_error": "ⓘ password should be at least 6 charachters"
   },
 
   "SignIn": {
-    "sign_up": "Sign up",
-    "sign_in": "Sign in",
+    "sign_up": "register",
+    "sign_in": "login",
     "username": "username",
     "password": "Password",
     "enter_your_username": "Enter your username",
     "enter_your_password": "Enter your password",
-    "don't_have_an_account": "Don't have an account"
+    "don't_have_an_account": "Don't have an account",
+    "username_error_text": "ⓘ username field is required",
+    "password_error_text": "ⓘ password field is required",
+    "password_length_error": "ⓘ password should be at least 6 charachters"
   }
 }
