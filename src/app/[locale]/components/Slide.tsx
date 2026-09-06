@@ -81,30 +81,6 @@ export default function App() {
             </SwiperSlide>
           </div>
         ))}
-        {/* <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/abstract-2.jpg" alt='' />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/abstract-3.jpg" alt='' />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/abstract-4.jpg" alt='' />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/abstract-5.jpg" alt='' />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/abstract-6.jpg" alt='' />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/abstract-7.jpg" alt='' />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/abstract-8.jpg" alt='' />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/abstract-9.jpg" alt='' />
-        </SwiperSlide> */}
       </Swiper>
     </>
   );

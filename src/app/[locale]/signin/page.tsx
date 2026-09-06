@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
-import cs from "./auth.module.css";
+import cs from "../auth.module.css";
 // import { toast } from 'react-toastify';
 
 
@@ -223,7 +223,7 @@ function SignIn() {
            ${usernameError.length > 0 ? cs.inputContainerError : usernameFocus ? cs.inputContainerSuccess : ""}`}>
             <label
               htmlFor="username"
-              className="block text-sm font-medium text-gray-700  dark:text-white"
+              className="block text-sm font-medium capitalize text-gray-700  dark:text-white"
             >
               {t("username")}
             </label>
@@ -246,7 +246,7 @@ function SignIn() {
           ${passwordError.length > 0 ? cs.inputContainerError : passwordFocus ? cs.inputContainerSuccess : ""} relative`}>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700  dark:text-white"
+              className="block text-sm font-medium capitalize text-gray-700  dark:text-white"
             >
               {t("password")}
             </label>

@@ -2,15 +2,15 @@
 
 .swiper {
   width: 100%;
-  padding-top: 50px;
+  padding-top: 100px;
   padding-bottom: 50px;
 }
 
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
 }
 
 .swiper-slide img {
@@ -20,6 +20,13 @@
   object-fit: cover;
 }
 
-.swiper-pagination-bullet-active {
+.light .swiper-pagination-bullet-active {
+    background-color: rgb(151, 79, 218) !important;
+}
+
+.dark .swiper-pagination-bullet {
+  background-color: #fff !important;
+}
+.dark .swiper-pagination-bullet-active {
     background-color: rgb(151, 79, 218) !important;
 }

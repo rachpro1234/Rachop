@@ -155,7 +155,7 @@ function Navbar() {
           ref={navRef}
           className={`nav-links ${
             navOpen ? "active" : "inactive"
-          }  relative  sm:flex items-center justify-center gap-7 text-lg capitalize font-medium hidden dark:bg-[#131927] dark:text-white`}
+          }  relative  sm:flex items-center justify-center gap-7 text-lg capitalize font-medium hidden`}
         >
           {navLinks.map((link) => {
             return (

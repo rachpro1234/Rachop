@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { Moon } from "@phosphor-icons/react/dist/ssr";
 import { Sun } from "@phosphor-icons/react/dist/ssr";
 import Navbar from "./Navbar";
+import { json } from "node:stream/consumers";
 
 interface cartItems {
   id: number;
@@ -93,22 +94,42 @@ const SearchInput = () => {
 
   const [mode, setMode] = useState<String | null>(null) 
 
+  
+  
+  // const toggleTheme = () => {
+  //   if (document.documentElement.classList.contains("dark")) {
+  //     document.documentElement.classList.remove("dark");
+  //     localStorage.setItem("theme", "light");
+  //     console.log("mode is set to:", localStorage.getItem("theme"))
+  //   } else {
+  //     document.documentElement.classList.add("dark");
+  //     localStorage.setItem("theme", "dark");
+  //     console.log("mode is set to:", localStorage.getItem("theme"))
+  //   }
+    
+  // };
+  
+  // useEffect(() => {
+  //   setMode(localStorage.getItem("theme"));
+  // }, [mode]);
 
-  useEffect(() => {
-    setMode(localStorage.getItem("theme"))
-  })
 
+  const switchMode = async (mode: 'dark' | 'light') => {
+    document.body.classList.remove("dark", "light");
+    document.body.classList.add(mode);
 
-  const toggleTheme = () => {
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
-  };
+    setMode(mode);
 
+    await fetch("/mode/modeapi", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mode }),
+    })
+  }
+
+  //   useEffect(() => {
+  //   setMode(() => switchMode(mode === "dark" ? "dark" : "light"));
+  // }, [mode]);
   
 
   return (
@@ -175,7 +196,7 @@ const SearchInput = () => {
             {/* sign-out */}
           </Link>
         )}
-        <button type="button" onClick={toggleTheme} className="dark:text-white">
+        <button type="button" onClick={() => switchMode(mode === 'dark' ? "light" : "dark")} className="dark:text-white">
           {mode === "dark" ? (
             <Sun size={32} className="hover:text-accent" />
           ) : (

@@ -153,7 +153,7 @@ const HeroSection = () => {
 
       {/** HOME Products container */}
         <article className="container pt-16">
-          <h1 className="flex items-center justify-center gap-4 font-medium text-3xl uppercase dark:text-white">
+          <h1 className="flex items-center justify-center gap-4 font-medium text-2xl border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] uppercase dark:text-white">
             {t("new_arrival")} <HR className="text-black dark:text-white w-full h-[2px]" />
           </h1>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] pt-4 place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
@@ -164,7 +164,7 @@ const HeroSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]"
+                  className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-[400px]"
                   key={index}
                 >
                   <Link className="grid h-full" href={`/product/${item.slug}`}>
@@ -178,7 +178,7 @@ const HeroSection = () => {
                         className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
                       />
                     </div>
-                    <div className="product-card__info flex flex-col justify-between">
+                    <div className="product-card__info flex flex-col justify-between p-2">
                       <div>
                         <h3 className="text-accent font-bold uppercase">
                           {t(item.title_key)}
@@ -217,7 +217,7 @@ const HeroSection = () => {
 
       {/** Testimonial */}
       <div className="container pt-9 grid-cols-2">
-        <h2 className="flex items-center justify-center gap-4 font-medium text-3xl uppercase dark:text-white">
+        <h2 className="flex items-center justify-center gap-4 border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] font-medium text-2xl uppercase dark:text-white">
           {t("testimonials")} <HR className="text-black dark:text-white w-full h-[2px]" />
         </h2>
         <Slider {...settings} className="w-[100%] rounded-xl pt-4">
@@ -234,7 +234,7 @@ const HeroSection = () => {
           })}
         </Slider>
         <div className="rounded-2xl grid mt-10">
-          <h2 className="flex items-center justify-center gap-4 font-medium text-3xl uppercase dark:text-white">
+          <h2 className="flex items-center justify-center gap-4 border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] font-medium text-3xl uppercase dark:text-white">
             {t("demo")} <HR className="text-black dark:text-white w-full h-[2px]" />
           </h2>
           <Video 

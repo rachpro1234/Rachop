@@ -17,7 +17,7 @@ export default function Home() {
           <FullHeader />
         <hr />
         <br />
-        <div>      
+        <div className="bg-[repeating-linear-gradient(45deg,theme(colors.gray.800)_0,theme(colors.gray.800)_1px,transparent_1px,transparent_13px)]">      
           <HeroSection />
           <SearviceBanner />
           <Footer />

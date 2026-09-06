@@ -9,8 +9,7 @@ import Link from "next/link";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
-import { toast } from 'react-toastify';
-import cs from "../signin/auth.module.css";
+import cs from "../auth.module.css";
 
 const SignUp = () => {
   const t = useTranslations("SignUp");
@@ -49,25 +48,32 @@ const SignUp = () => {
 
    const onFocusUsernameInput = () => {
     if (usernameReg.test(signUpFormData.username)) {
+      setUsernameError("")
       setUsernameFocus(true);
     }
-    else{
+    else if (signUpFormData.username === "") {
+      setUsernameError(usernameErrorText);
       setUsernameFocus(false);
     }
   };
 
   const onFocusEmailInput = () => {
-    if(emailRegex.test(signUpFormData.email)) {
-      setEmailFocus(true);
-    } else if (signUpFormData.email === "") {
+     if (signUpFormData.email === "") {
       setEmailError(emailErrorText);
       setEmailFocus(false);
+    } else if(emailRegex.test(signUpFormData.email)) {
+      setEmailError("");
+      setEmailFocus(true);
     }
   }
 
   const onFocusPasswordInput = () => {
     if(signUpFormData.password.length >= 6) {
+      setPasswordError("")
       setPasswordFocus(true)
+    } else if (signUpFormData.password === "") {
+      setPasswordError(passwordErrorText);
+      setPasswordFocus(false);
     }
   }
 
@@ -96,11 +102,11 @@ const SignUp = () => {
     });
 
     if(name === "username") {
-      if(!usernameReg.test(value)) {
-        setUsernameError("name should start with an alphabet");
-        setUsernameFocus(false);
-      } else if (value === "") {
+      if (value === "") {
         setUsernameError(usernameErrorText);
+        setUsernameFocus(false);
+      } else if(!usernameReg.test(value)) {
+        setUsernameError("name should start with an alphabet");
         setUsernameFocus(false);
       } else {
         setUsernameError("")
@@ -109,12 +115,12 @@ const SignUp = () => {
     }
 
     if(name === "email") {
-      if(!emailRegex.test(value)) {
-        setEmailError(invalidEmailErrorText);
-        setEmailFocus(false);
-      } else if (value === "") {
+      if (value === "") {
        setEmailError(emailErrorText);
        setEmailFocus(false);
+      } else if(!emailRegex.test(value)) {
+        setEmailError(invalidEmailErrorText);
+        setEmailFocus(false);
       } else {
         setEmailError("");
         setEmailFocus(true)
@@ -122,7 +128,11 @@ const SignUp = () => {
     }
 
     if(name === "password") {
-      if(value < 6) {
+      if(value === "") {
+       setPasswordError(passwordErrorText);
+       setPasswordFocus(false);
+      }
+      else if(signUpFormData.password.length < 6) {
         setPasswordError(passwordLengthError);
         setPasswordFocus(false);
       } else {
