@@ -7,7 +7,6 @@ import Testimonial from "./Testimonial";
 import { useTranslations } from "next-intl";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import Image from "next/image";
 import Stars from "./Stars";
 import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";

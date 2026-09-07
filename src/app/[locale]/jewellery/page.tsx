@@ -96,8 +96,12 @@ function Jewellery() {
   useEffect(() => {
   }, [cartArray]);
 
+  if(jewelleryProducts.length === 0) {
+    return <span className="h-screen italic flex justify-center items-center">No Hero Data is provided. Server Error</span>
+  }
+
   return (
-    <div className="container relative pt-[160px]">
+    <div className="container relative pt-[135px]">
 
       <div className="jewellery-ban">
         <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">

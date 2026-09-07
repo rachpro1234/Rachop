@@ -93,8 +93,12 @@ function Perfume() {
     // console.log("cartArray", cartArray);
   }, [cartArray]);
 
+    if(!perfumeProducts) {
+    return <span className="h-screen italic flex justify-center items-center">No Hero Data is provided. Server Error</span>
+  }
+
   return (
-    <div className="container relative pt-[160px]">
+    <div className="container relative pt-[135px]">
         <h1 className="absolute text-[#fff] text-7xl flex items-center justify-center capitalize ml-4">
           {t("perfume")}
         </h1>

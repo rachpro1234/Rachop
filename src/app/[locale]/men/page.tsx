@@ -95,7 +95,7 @@ function Men() {
   }, [cartArray]);
 
   return (
-    <div className="container pt-[160px] relative">
+    <div className="container pt-[135px] relative">
       <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
         {t("men")}
       </h1>

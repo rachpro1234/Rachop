@@ -1,18 +1,12 @@
 
 import React, { useRef, useState } from 'react';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-
 import "../css/swiperStyles.css";
-
-// import required modules
 import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
-import Slide from './Slide';
+// import Slide from './Slide';
 import { useTranslations } from "next-intl";
 
 
@@ -77,7 +71,7 @@ export default function App() {
         {slideData.map((slide, index) => (
           <div key={index}>
             <SwiperSlide>
-              <img src={slide.img} alt='' />
+              <img src={slide.img} alt={`slide-img-${index}`} />
             </SwiperSlide>
           </div>
         ))}
