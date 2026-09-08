@@ -111,7 +111,7 @@ function Perfume() {
         className="w-[100%] h-[505px] object-cover sm:object-right object-center rounded-lg"
       />
 
-      <h1 className="flex items-center justify-center font-bold capitalize text-4xl pt-9 dark:text-white">
+      <h1 className="flex items-center justify-center font-bold capitalize text-4xl pt-9 text-transparent bg-gradient-to-r from-green-500 via-purple-500 to-indigo-500 bg-clip-text bg-no-repeat">
         {t("shop_with_us")}
       </h1>
 
@@ -148,9 +148,9 @@ function Perfume() {
                       </span>
                       <div className="flex justify-between items-center">
                         <div className="product-card__price font-bold flex gap-4">
-                          <span className="dark:text-white">{item.price}.00{t("$")}</span>
+                          <span className="dark:text-white">{item.price}{t("$")}</span>
                           <span className="line-through font-normal text-[#aea3a3]">
-                            {item.prev_price}.00{t("$")}
+                            {item.prev_price}{t("$")}
                           </span>
                         </div>
                         <button

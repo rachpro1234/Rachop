@@ -2,6 +2,7 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { CaretUp } from "@phosphor-icons/react";
 
 const Footer = () => {
   const t = useTranslations("Footer");
@@ -16,15 +17,16 @@ const Footer = () => {
   return (
     <footer className="w-full dark:bg-slate-950 bg-white dark:text-white">
       <div className="relative container py-16 lg:pt-24">
-        <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
+        <div className="absolute end-0 top-4 sm:top-6 lg:top-8">
           <Link
-            className="animate-bounce inline-block rounded-full bg-purple-600 p-2 text-white shadow transition hover:bg-[#fff] hover:text-accent   hover:border-solid border-2 hover:border-purple-600     sm:p-3 lg:p-4"
+            className="animate-bounce inline-block rounded-full dark:bg-slate-950 bg-white p-2 text-white shadow transition hover:text-accent   hover:border-solid border border-accent sm:p-3 lg:p-4"
             href="#"
             onClick={scrollToTop}
           >
             <span className="sr-only">Back to top</span>
 
-            <svg
+            <CaretUp size={23} color="rgb(151, 79, 218)" />
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               className="size-5"
               viewBox="0 0 20 20"
@@ -35,7 +37,7 @@ const Footer = () => {
                 d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
                 clipRule="evenodd"
               />
-            </svg>
+            </svg> */}
           </Link>
         </div>
 
