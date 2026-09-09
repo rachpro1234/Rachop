@@ -41,6 +41,8 @@ interface cartItems {
 function Jewellery() {
   const t = useTranslations("Jewellery");
 
+  const tData = useTranslations("Product");
+
   const [jewelleryProducts, setJewelleryProducts] = useState<Product[]>([]);
 
   // fetch Jewellery Data
@@ -96,10 +98,6 @@ function Jewellery() {
   useEffect(() => {
   }, [cartArray]);
 
-  if(jewelleryProducts.length === 0) {
-    return <span className="h-screen italic flex justify-center items-center">No Hero Data is provided. Server Error</span>
-  }
-
   return (
     <div className="container relative pt-[135px]">
 
@@ -122,7 +120,7 @@ function Jewellery() {
       </h1>
 
       <div className="pt-14">
-        <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
+       {jewelleryProducts.length > 0 ? <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
           {jewelleryProducts.map((item, index) => {
             return (
               <motion.div
@@ -180,7 +178,7 @@ function Jewellery() {
               </motion.div>
             );
           })}
-        </div>
+        </div> : <span className="h-screen flex justify-center items-center text-white">{tData("no_data")}</span>}
       </div>
     </div>
   );

@@ -37,6 +37,7 @@ interface Product {
 
 function Perfume() {
   const t = useTranslations("Perfume");
+  const tData = useTranslations("Product")
   const [perfumeProducts, setPerfumeProducts] = useState<Product[]>([]);
 
   // fetch products data 
@@ -93,10 +94,6 @@ function Perfume() {
     // console.log("cartArray", cartArray);
   }, [cartArray]);
 
-    if(!perfumeProducts) {
-    return <span className="h-screen italic flex justify-center items-center">No Hero Data is provided. Server Error</span>
-  }
-
   return (
     <div className="container relative pt-[135px]">
         <h1 className="absolute text-[#fff] text-7xl flex items-center justify-center capitalize ml-4">
@@ -116,7 +113,7 @@ function Perfume() {
       </h1>
 
       <div className="pt-14">
-        <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
+       {perfumeProducts.length > 0 ? <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
           {perfumeProducts.map((item, index) => {
             return (
               <motion.div 
@@ -171,7 +168,7 @@ function Perfume() {
               </motion.div>
             );
           })}
-        </div>
+        </div> : <span className="h-screen flex justify-center items-center text-white">{tData("no_data")}</span>}
       </div>
     </div>
   );

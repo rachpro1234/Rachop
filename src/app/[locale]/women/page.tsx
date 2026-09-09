@@ -39,6 +39,8 @@ interface Product {
 function Women() {
   const t = useTranslations("Women");
 
+  const tData = useTranslations("Product");
+
   const [womenProducts, setWomenProducts] = useState<Product[]>([]);
 
 
@@ -116,7 +118,7 @@ function Women() {
       </h1>
 
       <div className="pt-14">
-        <div className="grid grid-cols-1 place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
+        {womenProducts.length > 0 ? <div className="grid grid-cols-1 place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
           {womenProducts.map((item, index) => {
             return (
               <motion.div
@@ -174,7 +176,7 @@ function Women() {
               </motion.div>
             );
           })}
-        </div>
+        </div> : <span className="h-screen flex justify-center items-center text-white">{tData("no_data")}</span>}
       </div>
     </div>
   );

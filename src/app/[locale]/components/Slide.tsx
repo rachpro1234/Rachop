@@ -71,7 +71,7 @@ export default function App() {
         {slideData.map((slide, index) => (
           <div key={index}>
             <SwiperSlide>
-              <img src={slide.img} alt={`slide-img-${index}`} />
+              <img src={slide.img} alt={`slide-img-${index}`} className='rounded-3xl' />
             </SwiperSlide>
           </div>
         ))}

@@ -48,6 +48,8 @@ interface cartItems {
 const HeroSection = () => {
   const t = useTranslations("Hero");
 
+  const tData = useTranslations("Product")
+
   const [heroProduct, setHeroProduct] = useState<Product[]>([]);
 
   
@@ -140,9 +142,6 @@ const HeroSection = () => {
     autoplaySpeed: 2000,
   };
 
-    if(!heroProduct) {
-    return <p className="h-screen flex justify-center items-center">No Hero Data is provided. Server Error</p>
-  }
 
   return (
     <main>
@@ -155,7 +154,7 @@ const HeroSection = () => {
           <h1 className="flex items-center justify-center gap-4 font-medium text-2xl border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] uppercase dark:text-white">
             {t("new_arrival")} <HR className="text-black dark:text-white w-full h-[2px]" />
           </h1>
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] pt-4 place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
+          {heroProduct.length > 0 ? <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] pt-4 place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
             {heroProduct.map((item, index) => {
               return (
                 <motion.div
@@ -174,7 +173,7 @@ const HeroSection = () => {
                         property="false"
                         width={200}
                         height={200}
-                        className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
+                        className="bg-transparent w-full h-[250px] object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
                       />
                     </div>
                     <div className="product-card__info flex flex-col justify-between p-2">
@@ -211,7 +210,7 @@ const HeroSection = () => {
                 </motion.div>
               );
             })}
-          </div>
+          </div> : <span className="h-screen flex justify-center items-center text-white">{tData("no_data")}</span> }
         </article>
 
       {/** Testimonial */}

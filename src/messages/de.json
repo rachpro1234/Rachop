@@ -187,5 +187,10 @@
     "username_error_text": "ⓘ Benutzername ist erforderlich",
     "password_error_text": "ⓘ Passwort ist erforderlich",
     "password_length_error": "ⓘ Das Passwort muss mindestens 6 Zeichen lang sein"
+  },
+
+  "Product": {
+    "no_data" : "Es wurden keine Produktdaten gefunden."
   }
+
 }

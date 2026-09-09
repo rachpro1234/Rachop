@@ -136,9 +136,9 @@
     "shop_with_us": "shop with us",
     "perfume": "Perfume",
     "add_to_cart": "add to cart",
-    "eau de parfum": "eau de parfum",
+    "eau_de_parfum": "eau de parfum",
     "lancome": "lancome",
-    "de givenchy": "de givenchy",
+    "de_givenchy": "de givenchy",
     "winter_perfume": "Winter Perfume",
     "automn_perfume": "Autumn Perfume",
     "daily_perfume": "Daily Perfume",
@@ -185,5 +185,9 @@
     "username_error_text": "ⓘ username field is required",
     "password_error_text": "ⓘ password field is required",
     "password_length_error": "ⓘ password should be at least 6 charachters"
+  },
+
+    "Product": {
+    "no_data" : "no products data was found"
   }
 }

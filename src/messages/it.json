@@ -181,5 +181,9 @@
     "username_error_text": "ⓘ Il campo nome utente è obbligatorio",
     "password_error_text": "ⓘ Il campo password è obbligatorio",
     "password_length_error": "ⓘ La password deve contenere almeno 6 caratteri"
+  },
+
+    "Product": {
+    "no_data" : "Non sono stati trovati dati relativi ai prodotti"
   }
 }
