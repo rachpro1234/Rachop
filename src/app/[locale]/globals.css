@@ -25,6 +25,10 @@
   /* outline: 1px rgb(151, 79, 218) solid; */
 }
 
+:root {
+  --primary-color: rgb(151, 79, 218);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -81,11 +85,11 @@ input[type="radio"] {
 
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   body {
     padding-inline: 1rem;
   }
-}
+} */
 
 .nav-links li .nav-link:hover,
 .nav-links li .nav-link.active {
@@ -116,3 +120,16 @@ input[type="radio"] {
      0 0/calc(100% - var(--s)) calc(100% - var(--s)),
     conic-gradient(#000 0 0) content-box;
 }
+
+.gradient-effect {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.3;
+    background-image: linear-gradient(35deg, var(--primary-color), #535050);
+  }
+
+body.dark .gradient-effect {
+      background-image: linear-gradient(35deg, var(--primary-color), #fff);
+}
+

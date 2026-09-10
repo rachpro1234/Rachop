@@ -49,7 +49,7 @@ function SearviceBanner() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }} 
             key={item.id} 
-            className="dark:bg-slate-950 bg-white dark:text-white px-10 py-7 rounded-lg">
+            className="dark:bg-slate-950 bg-white dark:text-white px-10 py-7 rounded-lg sm:mb-5">
             <div className="flex items-center justify-center flex-col">
               {item.icon}
               <h4 className=" dark:text-white capitalize text-center font-bold">{item.title}</h4>
