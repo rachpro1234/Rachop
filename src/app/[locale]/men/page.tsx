@@ -149,10 +149,10 @@ function Men() {
                     <div className="flex justify-between items-center">
                       <div className="product-card__price font-bold flex gap-4">
                         <span className="dark:text-white">
-                          {item.price}.00{t("$")}
+                          {item.price}{t("$")}
                         </span>
                         <span className="line-through font-normal text-[#aea3a3]">
-                          {item.prev_price}.00{t("$")}
+                          {item.prev_price}{t("$")}
                         </span>
                       </div>
                       <button
@@ -173,7 +173,7 @@ function Men() {
               </motion.div>
             );
           })}
-        </div> : <span className="h-screen flex justify-center items-center text-white">{tData("no_data")}</span>}
+        </div> : <span className="h-screen flex justify-center items-center dark:text-white">{tData("no_data")}</span>}
       </div>
     </div>
   );

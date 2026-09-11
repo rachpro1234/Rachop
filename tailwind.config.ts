@@ -27,7 +27,8 @@ const config: Config = {
         lin: "#0a66c2", // linkedin icon color
         cyan: "#26C6DA", // main website color
         blakish: "#1b1b1b",
-        accent: "rgb(151, 79, 218)"
+        accent: "rgb(151, 79, 218)",
+        dark_primary_bg: "#020617",
       },
     },
   },

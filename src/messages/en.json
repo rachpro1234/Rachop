@@ -16,9 +16,6 @@
   },
 
   "Hero": {
-    "FREE_SHIPPING": "FREE SHIPPING",
-    "50$": "50$",
-    "THIS_WEEK_ORDER_OVER": "THIS WEEK ORDER OVER",
     "we_offer": "we offer",
     "in_products": "in products",
     "variety": "variety",
@@ -30,15 +27,19 @@
     "sign_up": "sign up",
     "new_arrival": "New Arrival",
     "winter sweater": "winter sweater",
-    "winter wear": "winter clothing",
+    "winter_wear": "winter clothing",
     "sommer rock": "summer skirt",
-    "sommer wear": "summer clothing",
+    "sommer_wear": "summer clothing",
     "leader occasion hells": "leather occasion heels",
-    "party wear": "party outfit",
+    "party_wear": "party outfit",
     "long arm pullover": "long-sleeve pullover",
-    "automn wear": "autumn clothing",
+    "automn_wear": "autumn clothing",
+    "smart watch" : "smart watch",
+    "smart_watch" : "smart watch",
+    "necklace_watch" : "necklace watch",
+    "antique necklace watch": "antique necklace watch",
     "professional hicking shoes": "professional hiking shoes",
-    "mountains shoes": "mountain shoes",
+    "mountains_shoes": "mountain shoes",
     "testimonials": "Testimonials",
     "fashion_model_&_artist": "fashion model & artist",
     "the_service_is_amazing!!": "the service is amazing!!",
@@ -120,15 +121,14 @@
     "c-d-necklace": "C-D-Necklace",
     "casual_daily_necklace": "Casual Daily Necklace",
     "w-collier": "W-Necklace",
-    "wedding_collier": "Wedding Necklace",
-    "$" : "$"
+    "wedding_collier": "Wedding Necklace"
   },
 
   "tOrder": {
     "your_orders": "your orders",
     "Cart_is_empty_please_add_an_item": "cart is empty.please add an item",
     "delete": "delete",
-    "buy": "Buy",
+    "order": "order",
     "total_items": "Total Items"
   },
 

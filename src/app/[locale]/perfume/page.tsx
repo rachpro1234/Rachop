@@ -108,7 +108,7 @@ function Perfume() {
         className="w-[100%] h-[505px] object-cover sm:object-right object-center rounded-lg"
       />
 
-      <h1 className="flex items-center justify-center font-bold capitalize text-4xl pt-9 text-transparent bg-gradient-to-r from-green-500 via-purple-500 to-indigo-500 bg-clip-text bg-no-repeat">
+      <h1 className="flex items-center justify-center font-bold capitalize text-4xl pt-9 dark:text-white">
         {t("shop_with_us")}
       </h1>
 
@@ -168,7 +168,7 @@ function Perfume() {
               </motion.div>
             );
           })}
-        </div> : <span className="h-screen flex justify-center items-center text-white">{tData("no_data")}</span>}
+        </div> : <span className="h-screen flex justify-center items-center dark:text-white">{tData("no_data")}</span>}
       </div>
     </div>
   );

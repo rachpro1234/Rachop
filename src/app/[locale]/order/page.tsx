@@ -104,7 +104,7 @@ const Product: React.FC = () => {
           {tOrder("Cart_is_empty_please_add_an_item")}
         </h1>
       ) : null}
-      <div className="flex flex-col gap-4">
+      <div className="flex gap-4 container">
         {cartItems.map((item, index) => {
           return (
               <motion.div
@@ -113,10 +113,10 @@ const Product: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 key={index}
-                className="flex gap-4 border-blue-500 border-separate"
+                className="flex gap-4 border-blue-500 border-separate bg-white dark:bg-dark_primary_bg p-4 rounded-2xl"
               >
                 <div className="product-img">
-                  <Image src={item.img} width={200} height={200} alt="image" className="rounded-lg"/>
+                  <Image src={item.img} width={200} height={200} alt="image" className="rounded-lg h-fit"/>
                 </div>
                 <div className="flex flex-col justify-between">
                   <div>
@@ -129,12 +129,12 @@ const Product: React.FC = () => {
                     <span>
                       <Stars currentRating={null} />
                     </span>
-                    <h2 className="font-bold dark:text-white text-4xl mb-2">${item.price * item.quantity}</h2>
+                    {/* <h2 className="font-bold dark:text-white text-4xl mb-2">${item.price * item.quantity}</h2> */}
                     <div className="flex items-center gap-4 w-fit rounded-xl border-black border-2 border-solid px-2">
                       <button
                         type="button"
                         onClick={() => decrementCartItems(index)}
-                        className="bg-accent p-2 rounded-full w-[21px] h-[21px] flex justify-center items-center text-white"
+                        className="p-2 rounded-full border border-accent w-[21px] h-[21px] flex justify-center items-center text-white"
                       >
                         -
                       </button>
@@ -142,48 +142,51 @@ const Product: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => incrementCartItems(index)}
-                        className="bg-accent p-2 rounded-full w-[21px] h-[21px] flex justify-center items-center text-[#fff]"
+                        className="p-2 rounded-full  border border-accent w-[21px] h-[21px] flex justify-center items-center text-[#fff]"
                       >
                         +
                       </button>
                     </div>
                   </div>
-                  <span 
-                  className="flex gap-2 text-xl cursor-pointer uppercase hover:underline hover:text-red-500 transition-all duration-300 ease-in-out"
-                  onClick={() => removeCartItems(index)}>
-                  {tOrder("delete")}
-                    <Trash
-                      size={26}
-                      className="cursor-pointer hover:text-red-500 dark:text-white"
-                    />
-                  </span>
+                  <div>
+                    <h2 className="font-bold dark:text-white text-4xl mb-2">${item.price * item.quantity}</h2>
+                    <span 
+                    className="flex gap-2 text-xl cursor-pointer uppercase dark:text-white hover:underline hover:text-red-500 transition-all duration-300 ease-in-out"
+                    onClick={() => removeCartItems(index)}>
+                    {tOrder("delete")}
+                      <Trash
+                        size={26}
+                        className="cursor-pointer hover:text-red-500 dark:text-white"
+                      />
+                    </span>
+                  </div>
                 </div>
               </motion.div>
           );
         })}
 
       </div>
-      <div className="flex items-center justify-end mt-4 gap-10 mb-4">
+    {cartItems.length > 0 ? <div className="flex items-center justify-end container mt-4 gap-10 mb-4 p-4 rounded-lg dark:bg-dark_primary_bg bg-white">
         {cartItems.length !== 0 ? (
             <button 
             type="button"  
             onClick={handleCheckout}
-            className="bg-accent text-[#fff] text-xl hover:bg-purple-400 transition-colors duration-300 ease-in-out py-3 px-7 rounded-full">
-              {tOrder("buy")}
+            className="bg-transparent text-[#fff] text-xl capitalize border border-accent transition-colors duration-300 ease-in-out py-3 px-7 rounded-full">
+              {tOrder("order")}
             </button>
         ) : (
           ""
         )}
         {cartItems.length !== 0 ? (
-          <p className="capitalize text-accent text-2xl font-bold">{tOrder("total_items")}: <span className="text-2xl font-bold text-black">{cartItems.length}</span></p>
+          <p className="capitalize text-accent text-2xl font-bold">{tOrder("total_items")}: <span className="text-2xl font-bold dark:text-white">{cartItems.length}</span></p>
         ) : (
           ""
         )}
-        <div className="flex items-center gap-4">
+       <div className="flex items-center gap-4">
           <p className="text-accent text-2xl font-bold">Total :</p>
-          <span className="text-2xl font-bold">${total.toFixed(2)}</span>
+          <span className="text-2xl font-bold dark:text-white">${total.toFixed(2)}</span>
         </div>
-      </div>
+      </div> : ""}
 
       {/* {stripeClient && <CheckoutRender clientSecret={stripeClient} />} */}
     </div>

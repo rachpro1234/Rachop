@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import aboutBanner from "/public/about/aboutBanner.webp"
 
+import { motion } from "motion/react";
 
 interface AboutImages {
   id: Number;
@@ -62,7 +63,7 @@ const About = () => {
 
   return (
     <div>
-      <div className="container pt-[160px] relative">
+      <div className="container pt-[135px] relative">
         <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
           {t("about")}
         </h1>
@@ -104,7 +105,12 @@ const About = () => {
             <div className="w-full max-w-5xl p-5 pb-10 mx-auto mb-10 gap-5 sm:columns-3 columns-2 space-y-5 overflow-hidden">
               {aboutImages.map((img, index) => {
                 return (
-                  <div key={index}>
+                  <motion.div 
+                   initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }} 
+                  key={index}>
                     <Image
                       src={img.src}
                       width={600}
@@ -112,7 +118,7 @@ const About = () => {
                       alt="image"
                       className="cursor-pointer transition duration-500 hover:scale-110"
                     />
-                  </div>
+                  </motion.div>
               );
               })}
 

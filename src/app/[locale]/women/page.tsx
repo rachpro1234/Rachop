@@ -176,7 +176,7 @@ function Women() {
               </motion.div>
             );
           })}
-        </div> : <span className="h-screen flex justify-center items-center text-white">{tData("no_data")}</span>}
+        </div> : <span className="h-screen flex justify-center items-center dark:text-white">{tData("no_data")}</span>}
       </div>
     </div>
   );

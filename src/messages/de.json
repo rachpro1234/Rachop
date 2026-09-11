@@ -16,9 +16,6 @@
   },
 
   "Hero": {
-    "FREE_SHIPPING": "KOSTENLOSER VERSAND",
-    "50$": "50€",
-    "THIS_WEEK_ORDER_OVER": "Die Woche bestellung uber",
     "we_offer": "Wir bieten",
     "in_products": "bei Produkten",
     "variety": "Vielfalt",
@@ -31,15 +28,19 @@
     "trending_item": "Trendartikel",
     "new_arrival": "Neuankömmling",
     "winter sweater": "winter pullover",
-    "winter wear": "winter-kleidung",
+    "winter_wear": "winter-kleidung",
     "sommer rock": "sommer rock",
-    "sommer wear": "sommer-kleidung",
+    "sommer_wear": "sommer-kleidung",
     "leader occasion hells": "leader schuhe mit-absatz",
-    "party wear": "party-outfit",
+    "party_wear": "party-outfit",
     "long arm pullover": "langarmpullover",
-    "automn wear": "herbst-kleidung",
+    "automn_wear": "herbst-kleidung",
     "professional hicking shoes": "professionelle wanderschuhe",
-    "mountains shoes": "bergschuhe",
+    "mountains_shoes": "bergschuhe",
+     "smart watch": "Smartwatch",
+    "smart_watch": "Smartwatch",
+    "necklace_watch": "Halskettenuhr",
+    "antique necklace watch": "antike Halskettenuhr",
     "testimonials": "Referenzen",
     "fashion_model_&_artist": "Model und Künstler",
     "the_service_is_amazing!!": "Der Service ist unglaublich!!",
@@ -112,21 +113,20 @@
     "your_orders": "Ihre Bestellungen",
     "Cart_is_empty_please_add_an_item": "Einkaufswagen ist leer.Bitte fügen Sie einen Artikel hinzu",
     "delete": "löschen",
-    "buy": "Kaufen",
+    "order": "bestellen",
     "total_items": "Gesamtzahl der Artikel"
   },
 
   "Perfume": {
     "shop_with_us": "Kaufen Sie bei uns ein",
     "perfume": "Parfüm",
-    "eau de parfum": "eau de parfum",
+    "eau_de_parfum": "eau de parfum",
     "lancome": "lancome",
-    "de givenchy": "de givenchy",
+    "de_givenchy": "de givenchy",
     "winter_perfume": "winter parfüm",
     "automn_perfume": "herbst parfüm",
     "add_to_cart": "In den Warenkorb",
-    "daily_perfume": "alltags parfüm",
-    "$" : "€"
+    "daily_perfume": "alltags parfüm"  
   },
 
   "Women": {

@@ -14,9 +14,6 @@
   },
 
   "Hero": {
-    "FREE_SHIPPING": "Spedizione gratuita",
-    "50$": "50$",
-    "THIS_WEEK_ORDER_OVER": "L'ORDINE DI QUESTA SETTIMANA È FINITO",
     "we_offer": "offriamo",
     "in_products": "nei prodotti",
     "variety": "varietà",
@@ -28,15 +25,19 @@
     "sign_up": "Iscriviti",
     "new_arrival": "nuovo arrivo",
     "winter sweater": "maglione invernale",
-    "winter wear": "abbigliamento invernale",
+    "winter_wear": "abbigliamento invernale",
     "sommer rock": "gonna estiva",
-    "sommer wear": "abbigliamento estivo",
+    "sommer_wear": "abbigliamento estivo",
     "leader occasion hells": "scarpe con tacco in pelle da occasione",
-    "party wear": "abbigliamento da festa",
+    "party_wear": "abbigliamento da festa",
     "long arm pullover": "pullover a maniche lunghe",
-    "automn wear": "abbigliamento autunnale",
+    "automn_wear": "abbigliamento autunnale",
     "professional hicking shoes": "scarpe da trekking professionali",
-    "mountains shoes": "scarpe da montagna",
+    "mountains_shoes": "scarpe da montagna",
+     "smart watch": "smartwatch",
+    "smart_watch": "smartwatch",
+    "necklace_watch": "orologio a collana",
+    "antique necklace watch": "orologio a collana antico",
     "testimonials": "Testimonianze",
     "fashion_model_&_artist": "modella e artista",
     "the_service_is_amazing!!": "il servizio è fantastico!!",
@@ -127,18 +128,20 @@
     "your_orders": "I tuoi ordini",
     "Cart_is_empty_please_add_an_item": "Carrello vuoto.Aggiungi un articolo",
     "delete": "elimina",
-    "buy": "Acquista",
+    "order": "ordine",
     "total_items": "Numero totale di articoli"
   },
 
   "Perfume": {
     "shop_with_us": "Acquista con noi",
     "perfume": "Profumo",
+     "eau_de_parfum": "eau de parfum",
+    "lancome": "lancôme",
+    "de_givenchy": "de givenchy",
     "winter_perfume": "Profumo d'Inverno",
     "automn_perfume": "Profumo d'Autunno",
     "add_to_cart": "Aggiungi al carrello",
-    "daily_perfume": "Profumo Quotidiano",
-    "$" : "€"
+    "daily_perfume": "Profumo Quotidiano"
   },
 
   "Footer": {
