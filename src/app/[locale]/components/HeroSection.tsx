@@ -154,7 +154,7 @@ const HeroSection = () => {
           <h1 className="flex items-center justify-center gap-4 font-medium text-2xl border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] uppercase dark:text-white">
             {t("new_arrival")} <HR className="text-black dark:text-white w-full h-[2px]" />
           </h1>
-          {heroProduct.length > 0 ? <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] pt-4 place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
+          {heroProduct.length > 0 ? <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] pt-10 place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
             {heroProduct.map((item, index) => {
               return (
                 <motion.div
@@ -162,7 +162,7 @@ const HeroSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-[400px]"
+                  className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-[400px] w-full"
                   key={index}
                 >
                   <Link className="grid h-full" href={`/product/${item.slug}`}>
@@ -173,9 +173,10 @@ const HeroSection = () => {
                         property="false"
                         width={200}
                         height={200}
-                        className="bg-transparent w-full h-[250px] object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
+                        className="bg-transparent w-full h-[300px] object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
                       />
                     </div>
+                  </Link>
                     <div className="product-card__info flex flex-col justify-between p-2">
                       <div>
                         <h3 className="text-accent font-bold uppercase">
@@ -206,7 +207,6 @@ const HeroSection = () => {
                         </button>
                       </div>
                     </div>
-                  </Link>
                 </motion.div>
               );
             })}
@@ -218,7 +218,7 @@ const HeroSection = () => {
         <h2 className="flex items-center justify-center gap-4 border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] font-medium text-2xl uppercase dark:text-white">
           {t("testimonials")} <HR className="text-black dark:text-white w-full h-[2px]" />
         </h2>
-        <Slider {...settings} className="w-[100%] rounded-xl pt-4">
+        <Slider {...settings} className="w-[100%] rounded-xl pt-10">
           {testimonialData.map((item) => {
             return (
               <Testimonial
@@ -238,7 +238,7 @@ const HeroSection = () => {
           <Video 
             src={videoDatei} 
             style={{ '--media-accent-color':'rgb(151, 79, 218)', '--media-object-fit': 'cover' }}
-            className="overflow-hidden rounded-xl pt-4"
+            className="overflow-hidden rounded-xl pt-10"
           />
         </div>
       </div>

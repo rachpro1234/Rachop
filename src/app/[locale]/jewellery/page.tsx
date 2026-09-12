@@ -120,7 +120,7 @@ function Jewellery() {
       </h1>
 
       <div className="pt-14">
-       {jewelleryProducts.length > 0 ? <div className="grid grid-cols-1  place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
+       {jewelleryProducts.length > 0 ? <div className="grid grid-cols-1 place-items-center sm:place-items-start sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
           {jewelleryProducts.map((item, index) => {
             return (
               <motion.div
@@ -128,7 +128,7 @@ function Jewellery() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="product-card px-4  dark:bg-slate-950 bg-white rounded-xl max-w-[400px]"
+                className="product-card px-4  dark:bg-slate-950 bg-white rounded-xl max-w-[400px] w-full"
                 key={index}
               >
                 <Link href={`/jewelleryProducts/${item.slug}`}>
@@ -138,9 +138,10 @@ function Jewellery() {
                         alt="product-img"
                         width={200}
                         height={200}
-                        className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
+                        className="bg-transparent w-full object-cover object-center rounded-lg h-[300px] mb-10 cursor-pointer transition duration-500 hover:scale-110"
                       />
                     </div>
+                </Link>
                     <div className="product-card__info space-y-2 p-2">
                       <h3 className="text-accent font-bold uppercase">
                         {t(item.title_key)}
@@ -174,7 +175,6 @@ function Jewellery() {
                         </button>
                       </div>
                     </div>
-                </Link>
               </motion.div>
             );
           })}

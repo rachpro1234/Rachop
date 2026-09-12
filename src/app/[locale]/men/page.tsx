@@ -123,7 +123,7 @@ function Men() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-[400px]"
+                className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-[400px] w-full"
                 key={item.id}
               >
                 <Link href={`/menProducts/${item.slug}`}>
@@ -133,9 +133,10 @@ function Men() {
                       alt="product-img"
                       width={200}
                       height={200}
-                      className="bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
-                    />
+                      className="bg-transparent w-full object-cover object-center rounded-lg h-[300px] mb-10 cursor-pointer transition duration-500 hover:scale-110"
+                      />
                   </div>
+                </Link>
                   <div className="product-card__info space-y-2 p-2">
                     <h3 className="text-accent font-bold uppercase">
                       {item.title_key}
@@ -169,7 +170,6 @@ function Men() {
                       </button>
                     </div>
                   </div>
-                </Link>
               </motion.div>
             );
           })}

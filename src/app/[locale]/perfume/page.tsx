@@ -121,7 +121,7 @@ function Perfume() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="product-card px-7 dark:bg-slate-950 bg-white rounded-xl max-w-[400px]" 
+              className="product-card px-7 dark:bg-slate-950 bg-white rounded-xl max-w-[400px] w-full" 
               key={item.id}>
                 <Link href={`/perfumeProducts/${item.slug}`}>
                     <div className="overflow-hidden">
@@ -130,9 +130,10 @@ function Perfume() {
                         alt="product-img"
                         width={200}
                         height={200}
-                        className="img bg-transparent w-full object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
-                      />
+                        className="img bg-transparent w-full object-cover object-center rounded-lg h-[300px] cursor-pointer transition duration-500 hover:scale-110"
+                        />
                     </div>
+                </Link>
                     <div className="product-card__info space-y-2 p-2">
                       <h3 className="text-accent font-bold uppercase">
                         {item.title_key}
@@ -145,9 +146,9 @@ function Perfume() {
                       </span>
                       <div className="flex justify-between items-center">
                         <div className="product-card__price font-bold flex gap-4">
-                          <span className="dark:text-white">{item.price}{t("$")}</span>
+                          <span className="dark:text-white">{item.price}$</span>
                           <span className="line-through font-normal text-[#aea3a3]">
-                            {item.prev_price}{t("$")}
+                            {item.prev_price}$
                           </span>
                         </div>
                         <button
@@ -164,7 +165,6 @@ function Perfume() {
                         </button>
                       </div>
                     </div>
-                </Link>
               </motion.div>
             );
           })}
