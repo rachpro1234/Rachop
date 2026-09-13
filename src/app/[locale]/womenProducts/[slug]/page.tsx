@@ -108,52 +108,41 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
       }
  
   return (
-    <section>
-      <div className="mt-28 mx-auto max-w-[1265px]">
+    <section className="container">
+      <div className="mt-28">
           <Breadcrumb aria-label="Default breadcrumb example">
             <BreadcrumbItem href="/" className="hover:underline transition-all duration-300 ease-in-out">
               Home
             </BreadcrumbItem>
              <BreadcrumbItem href="" className="hover:underline transition-all duration-300 ease-in-out">{slug}</BreadcrumbItem>
-          {/* <BreadcrumbItem>Flowbite React</BreadcrumbItem> */}
           </Breadcrumb>
       </div>
-      <article className="flex items-center justify-center gap-7 py-7">
-        {/* <img className="w-[700px]" src={product.img} alt={product.title} /> */}
+      <article className="flex gap-7 py-7 bg-white dark:bg-dark_primary_bg p-4">
         <ImageEffect image={productItem.img} />
-        <div>
+        <div className="flex flex-col h-auto justify-between">
+          <div>
             <h1 className="text-3xl font-bold text-accent uppercase">{productItem.title_key}</h1>
-            <p className="text-xl capitalize">{t(productItem.desc_key)}</p>
+            <p className="text-xl capitalize dark:text-white">{t(productItem.desc_key)}</p>
             <span>
                 <Stars currentRating={null} />
             </span>
-            <div className="flex justify-between gap-4 mt-4">
-              <span className="flex items-center gap-2">
+              <span className="flex items-end gap-2">
                 <p className="text-blakish dark:text-white text-4xl font-bold">${productItem.price}</p>
                 <p className="line-through text-[#aea3a3]">${productItem.prev_price}</p>
               </span>
-              {/* <button
-                type="submit"
-                aria-label={t("add_to_cart")}
-                title={t("add_to_cart")}
-                className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 duration-300"
-                onClick={() => addToCart(product)}
-              >
-                <ShoppingCartSimple size={32}  className="dark:bg-[#131927] dark:text-white hover:text-accent"/>
-              </button> */}
+          </div>
+            <div className="mt-4">
               <button
                 type="submit"
                 aria-label={t("add_to_cart")}
                 title={t("add_to_cart")}
                 onClick={() => addToCart(productItem)}
-                className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-[2px] bg-black rounded-full bg-gradient-to-t from-[#8122b0] to-[#dc98fd] active:scale-95"
+                className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-[2px] bg-black border border-accent rounded-full active:scale-95"
               >
                 <span
-                  className="w-full h-full capitalize flex items-center gap-2 px-7 py-2 bg-accent text-white rounded-full bg-gradient-to-t from-[#a62ce2] to-accent"
+                  className="w-full h-full capitalize flex items-center gap-2 px-7 py-2 text-white rounded-full"
                 >
-                <ShoppingCartSimple size={20}  className="text-white"/>
-
-                add to cart</span>
+                <ShoppingCartSimple size={20}  className="text-white"/>{t("add_to_cart")}</span>
               </button>
             </div>
 

@@ -155,10 +155,10 @@ function Jewellery() {
                       <div className="flex justify-between items-center">
                         <div className="product-card__price font-bold flex gap-4">
                           <span className="dark:text-white">
-                            {item.price}{t("$")}
+                            ${item.price}
                           </span>
                           <span className="line-through font-normal text-[#aea3a3]">
-                            {item.prev_price}{t("$")}
+                            ${item.prev_price}
                           </span>
                         </div>
                         <button

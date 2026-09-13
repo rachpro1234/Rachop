@@ -104,7 +104,7 @@ const Product: React.FC = () => {
           {tOrder("Cart_is_empty_please_add_an_item")}
         </h1>
       ) : null}
-      <div className="flex gap-4 container">
+      <div className="flex flex-wrap gap-4 container">
         {cartItems.map((item, index) => {
           return (
               <motion.div
@@ -116,7 +116,7 @@ const Product: React.FC = () => {
                 className="flex gap-4 border-blue-500 border-separate bg-white dark:bg-dark_primary_bg p-4 rounded-2xl"
               >
                 <div className="product-img">
-                  <Image src={item.img} width={200} height={200} alt="image" className="rounded-lg h-fit"/>
+                  <Image src={item.img} width={200} height={200} alt="image" className="rounded-lg h-full"/>
                 </div>
                 <div className="flex flex-col justify-between">
                   <div>
