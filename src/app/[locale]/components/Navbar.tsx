@@ -20,7 +20,6 @@ import { useRouter } from "next/navigation";
 import { Moon } from "@phosphor-icons/react/dist/ssr";
 import { Sun } from "@phosphor-icons/react/dist/ssr";
 
-
 interface cartItems {
   id: number;
   slug: string;
@@ -139,14 +138,18 @@ function Navbar() {
     }
   };
 
-  // useEffect(() => {
-  //   const theme = localStorage.getItem("theme");
-  //   if (theme === "dark") {
-  //     document.documentElement.classList.add("dark");
-  //   }
-  // }, []);
-
-  // const mode = localStorage.getItem("theme");
+  // 
+    //  const { scrollY } = useScroll();
+    // const [hidden, setHidden] = useState(false);
+  
+    // useMotionValueEvent(scrollY, "change", (current) => {
+    //   const previous = scrollY.getPrevious() ?? 0;
+    //   if(current > previous && current > 150) {
+    //     setHidden(true);
+    //   } else {
+    //     setHidden(false);
+    //   }
+    // })
 
   return (
     <div>

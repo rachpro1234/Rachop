@@ -104,7 +104,7 @@ const Product: React.FC = () => {
           {tOrder("Cart_is_empty_please_add_an_item")}
         </h1>
       ) : null}
-      <div className="flex flex-wrap gap-4 container">
+      <div className="grid grid-cols-3 gap-4 container">
         {cartItems.map((item, index) => {
           return (
               <motion.div
@@ -113,7 +113,7 @@ const Product: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 key={index}
-                className="flex gap-4 border-blue-500 border-separate bg-white dark:bg-dark_primary_bg p-4 rounded-2xl"
+                className="flex gap-4 flex-1 border-blue-500 border-separate bg-white dark:bg-dark_primary_bg p-4 rounded-2xl"
               >
                 <div className="product-img">
                   <Image src={item.img} width={200} height={200} alt="image" className="rounded-lg h-full"/>
@@ -129,12 +129,11 @@ const Product: React.FC = () => {
                     <span>
                       <Stars currentRating={null} />
                     </span>
-                    {/* <h2 className="font-bold dark:text-white text-4xl mb-2">${item.price * item.quantity}</h2> */}
-                    <div className="flex items-center gap-4 w-fit rounded-xl border-black border-2 border-solid px-2">
+                    <div className="flex items-center gap-4 w-fit rounded-xl border-2 dark:border-white px-2">
                       <button
                         type="button"
                         onClick={() => decrementCartItems(index)}
-                        className="p-2 rounded-full border border-accent w-[21px] h-[21px] flex justify-center items-center text-white"
+                        className="p-2 rounded-full border border-accent w-[21px] h-[21px] flex justify-center items-center bg-accent dark:bg-transparent text-white"
                       >
                         -
                       </button>
@@ -142,7 +141,7 @@ const Product: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => incrementCartItems(index)}
-                        className="p-2 rounded-full  border border-accent w-[21px] h-[21px] flex justify-center items-center text-[#fff]"
+                        className="p-2 rounded-full  border border-accent w-[21px] h-[21px] flex justify-center items-center bg-accent dark:bg-transparent text-white"
                       >
                         +
                       </button>
@@ -171,7 +170,7 @@ const Product: React.FC = () => {
             <button 
             type="button"  
             onClick={handleCheckout}
-            className="bg-transparent text-[#fff] text-xl capitalize border border-accent transition-colors duration-300 ease-in-out py-3 px-7 rounded-full">
+            className="bg-transparent  dark:text-[#fff] text-xl capitalize border-2 border-accent transition-colors duration-300 ease-in-out py-2 px-7 rounded-full">
               {tOrder("order")}
             </button>
         ) : (

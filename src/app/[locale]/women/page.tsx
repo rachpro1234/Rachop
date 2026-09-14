@@ -168,7 +168,7 @@ function Women() {
                         <ShoppingCartSimple
                           size={32}
                           onClick={() => addToCart(item)}
-                          className="dark:bg-[#131927] dark:text-white hover:text-accent"
+                          className="dark:text-white hover:text-accent"
                         />
                       </button>
                     </div>

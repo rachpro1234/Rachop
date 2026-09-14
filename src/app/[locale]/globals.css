@@ -27,6 +27,7 @@
 
 :root {
   --primary-color: rgb(151, 79, 218);
+  --dark-mode-primary: #020617;
 }
 
 html {
@@ -63,7 +64,6 @@ input[type="radio"] {
     justify-content: flex-start;
     align-items: flex-start;
     height: 100vh;
-    width: 18.75rem;
     position: fixed;
     bottom: 6.5%;
     left: 0;
@@ -72,15 +72,22 @@ input[type="radio"] {
     color: #000;
     box-shadow: 1rem 2.5rem 3.75rem rgba(0, 0, 0, 0.1);
     z-index: 999;
-    transition: all 0.4s ease-in-out;
+    transition: left 0.4s ease-in-out, width .5s ease-in-out;
   }
 
   .nav-links.active {
     left: 0px;
+    width: 100%;
+  }
+
+  .dark .nav-links {
+    background-color: var(--dark-mode-primary);
+    color: white;
   }
 
   .nav-links.inactive {
     left: -18.75rem;
+    width: 0%;
   }
 
 }

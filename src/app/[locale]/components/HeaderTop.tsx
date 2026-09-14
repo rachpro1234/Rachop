@@ -44,9 +44,6 @@ const HeaderTop = () => {
             </Link>
           </div>
 
-          {/* <div className="text-gray-500 text-[12px]">
-            <b className="dark:text-white">{t("FREE_SHIPPING")}</b> {t("THIS_WEEK_ORDER_OVER")} - <span className="text-accent font-medium">{t("50$")}</span>
-          </div> */}
             <div className="sm:text-4xl md:text-2xl text-[16px] text-center font-bold uppercase dark:text-white">
               {t("we_offer")}
               <span className="text-accent ml-4 uppercase font-bold">

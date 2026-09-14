@@ -16,11 +16,13 @@ function FullHeader() {
   
     useMotionValueEvent(scrollY, "change", (current) => {
       const previous = scrollY.getPrevious() ?? 0;
-      if(current > previous && current > 150) {
+       if (window.innerWidth <= 600) {
+        setHidden(false) 
+        } else if(current > previous && current > 150) {
         setHidden(true);
-      } else {
+        } else {
         setHidden(false);
-      }
+        }
     })
 
   return (
