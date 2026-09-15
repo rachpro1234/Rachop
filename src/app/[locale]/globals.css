@@ -102,6 +102,7 @@ input[type="radio"] {
 .nav-links li .nav-link.active {
     color:  rgb(151, 79, 218);
     font-weight: bolder;
+    text-decoration: line-through;
 }
 
 

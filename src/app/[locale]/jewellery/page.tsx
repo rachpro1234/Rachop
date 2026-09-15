@@ -138,7 +138,7 @@ function Jewellery() {
                         alt="product-img"
                         width={200}
                         height={200}
-                        className="bg-transparent w-full object-cover object-center rounded-lg h-[300px] mb-10 cursor-pointer transition duration-500 hover:scale-110"
+                        className="bg-transparent w-full object-cover object-center rounded-lg h-[300px] cursor-pointer transition duration-500 hover:scale-110"
                       />
                     </div>
                 </Link>

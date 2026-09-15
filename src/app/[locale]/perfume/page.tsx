@@ -95,7 +95,7 @@ function Perfume() {
   }, [cartArray]);
 
   return (
-    <div className="container relative pt-[135px]">
+    <div className="container relative pt-[135px] px-4 sm:px-0">
         <h1 className="absolute text-[#fff] text-7xl flex items-center justify-center capitalize ml-4">
           {t("perfume")}
         </h1>
@@ -108,7 +108,7 @@ function Perfume() {
         className="w-[100%] h-[505px] object-cover sm:object-right object-center rounded-lg"
       />
 
-      <h1 className="flex items-center justify-center font-bold capitalize text-4xl pt-9 dark:text-white">
+      <h1 className="flex items-center justify-center text-center font-bold capitalize text-4xl pt-9 dark:text-white">
         {t("shop_with_us")}
       </h1>
 

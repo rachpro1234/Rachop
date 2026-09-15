@@ -124,19 +124,32 @@ function Navbar() {
     const [mode, setMode] = useState<String | null>(null) 
   
   
-    useEffect(() => {
-      setMode(localStorage.getItem("theme"))
-    })
+  //   useEffect(() => {
+  //     setMode(localStorage.getItem("theme"))
+  //   })
 
-  const toggleTheme = () => {
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
-  };
+  // const toggleTheme = () => {
+  //   if (document.documentElement.classList.contains("dark")) {
+  //     document.documentElement.classList.remove("dark");
+  //     localStorage.setItem("theme", "light");
+  //   } else {
+  //     document.documentElement.classList.add("dark");
+  //     localStorage.setItem("theme", "dark");
+  //   }
+  // };
+
+    const switchMode = async (mode: 'dark' | 'light') => {
+    document.body.classList.remove("dark", "light");
+    document.body.classList.add(mode);
+
+    setMode(mode);
+
+    await fetch("/mode/modeapi", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mode }),
+    })
+  }
 
   // 
     //  const { scrollY } = useScroll();
@@ -178,7 +191,7 @@ function Navbar() {
           <li>
             <button
               type="button"
-              onClick={toggleTheme}
+              onClick={() => switchMode(mode === "dark" ? "light" : "dark")}
               className="dark:text-white sm:hidden flex"
             >
               {mode === "dark" ? <Sun size={32} /> : <Moon size={32} />}

@@ -11,12 +11,10 @@ import { useClickAway } from "react-use";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import { useRouter } from "next/navigation";
-
-// import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { Moon } from "@phosphor-icons/react/dist/ssr";
 import { Sun } from "@phosphor-icons/react/dist/ssr";
 import Navbar from "./Navbar";
-import { json } from "node:stream/consumers";
+import axios from "axios";
 
 interface cartItems {
   id: number;
@@ -94,26 +92,6 @@ const SearchInput = () => {
 
   const [mode, setMode] = useState<String | null>(null) 
 
-  
-  
-  // const toggleTheme = () => {
-  //   if (document.documentElement.classList.contains("dark")) {
-  //     document.documentElement.classList.remove("dark");
-  //     localStorage.setItem("theme", "light");
-  //     console.log("mode is set to:", localStorage.getItem("theme"))
-  //   } else {
-  //     document.documentElement.classList.add("dark");
-  //     localStorage.setItem("theme", "dark");
-  //     console.log("mode is set to:", localStorage.getItem("theme"))
-  //   }
-    
-  // };
-  
-  // useEffect(() => {
-  //   setMode(localStorage.getItem("theme"));
-  // }, [mode]);
-
-
   const switchMode = async (mode: 'dark' | 'light') => {
     document.body.classList.remove("dark", "light");
     document.body.classList.add(mode);
@@ -126,10 +104,41 @@ const SearchInput = () => {
       body: JSON.stringify({ mode }),
     })
   }
+  
+  const [retrievedToken, setRetrievedToken] = useState<String | null>(null);
+  const storedToken = localStorage.getItem("tokenKey")
 
-  //   useEffect(() => {
-  //   setMode(() => switchMode(mode === "dark" ? "dark" : "light"));
-  // }, [mode]);
+  const getUserProfile = async (token: string) => {
+    try {
+      const userProfile = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      console.log("signed out user data", userProfile.data);
+    } catch (error) {
+      console.log('no user data is found', error);
+    }
+
+  }
+
+  // retrieve the tokenkey for a signed in user session to enable sign out
+  useEffect(() => {
+    setRetrievedToken(storedToken);
+
+    if(storedToken) {
+      getUserProfile(storedToken);
+    }
+  }, [])
+
+  // console.log(getUserProfile);
+
+  const signOutUser = () => {
+    console.log("user signed out", )
+    localStorage.removeItem("tokenKey");
+    setRetrievedToken(null)
+    router.push("/signin");
+  }
   
 
   return (
@@ -148,7 +157,7 @@ const SearchInput = () => {
       <Navbar />
 
       <div className="sm:flex items-center gap-4 text-2xl hidden relative">
-        {authenticatedUser === null ? (
+        {retrievedToken === null ? (
           <div ref={navRef}>
             <User
               size={32}
@@ -190,10 +199,10 @@ const SearchInput = () => {
           <Link
             href="/"
             id="profile"
-            onClick={userSignout}
+            onClick={signOutUser}
             className="text-4xl capitalize text-accent font-bold"
           >
-            {/* sign-out */}
+            sign-out
           </Link>
         )}
         <button type="button" onClick={() => switchMode(mode === 'dark' ? "light" : "dark")} className="dark:text-white">

@@ -115,29 +115,6 @@ function SignIn() {
 
   const router = useRouter();
 
-  // submitting the form
-  // const formSignInSubmit = (e: any) => {
-  //   e.preventDefault();
-  //   signInWithEmailAndPassword(
-  //     auth,
-  //     signInFormData.email,
-  //     signInFormData.password
-  //   )
-  //     .then((userCredential) => {
-  //       const user = userCredential.user; // signed in
-  //       router.push("/");
-  //       alert("successfully logged in");
-  //     })
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = "account not found";
-  //       console.log(errorCode, errorMessage);
-  //       alert(errorMessage);
-  //     });
-  // };
-
-  // console.log(id);
-
   const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
@@ -189,7 +166,7 @@ function SignIn() {
       console.log(signInFormData);
       console.log(user);
       alert(`you've successfully login in to your Rachop Space`);
-      localStorage.setItem("tokenKey", 'token');
+      localStorage.setItem("tokenKey", token);
       console.log(localStorage.getItem("tokenKey"));
     } catch (error) {
       console.log("we couldn't sign you in", error);
@@ -197,10 +174,10 @@ function SignIn() {
   }
 
 
-  const handleLogout = () => {
-    localStorage.removeItem("tokenKey");
-    router.push('/signin');
-  }
+  // const handleLogout = () => {
+  //   localStorage.removeItem("tokenKey");
+  //   router.push('/signin');
+  // }
 
 
 
