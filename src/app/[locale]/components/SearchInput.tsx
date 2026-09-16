@@ -91,6 +91,7 @@ const SearchInput = () => {
 
 
   const [mode, setMode] = useState<String | null>(null) 
+  const [authUser, setAuthUser] = useState<null | undefined>();
 
   const switchMode = async (mode: 'dark' | 'light') => {
     document.body.classList.remove("dark", "light");
@@ -106,24 +107,26 @@ const SearchInput = () => {
   }
   
   const [retrievedToken, setRetrievedToken] = useState<String | null>(null);
-  const storedToken = localStorage.getItem("tokenKey")
-
+  
   const getUserProfile = async (token: string) => {
     try {
-      const userProfile = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`, {
+      const userProfile = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/profile`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
       console.log("signed out user data", userProfile.data);
+      setAuthUser(userProfile.data);
+      console.log('welcome to your space' ,authUser);
     } catch (error) {
       console.log('no user data is found', error);
     }
-
+    
   }
-
+  
   // retrieve the tokenkey for a signed in user session to enable sign out
   useEffect(() => {
+    const storedToken = localStorage.getItem("jwtToken")
     setRetrievedToken(storedToken);
 
     if(storedToken) {
@@ -135,7 +138,7 @@ const SearchInput = () => {
 
   const signOutUser = () => {
     console.log("user signed out", )
-    localStorage.removeItem("tokenKey");
+    localStorage.removeItem("jwtToken");
     setRetrievedToken(null)
     router.push("/signin");
   }

@@ -44,52 +44,54 @@ const Footer = () => {
             </p>
           </div>
 
-          <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:mt-0 lg:justify-end lg:gap-12">
-            <li>
-              <Link
-                className="dark:text-white capitalize text-gray-700 transition hover:text-accent"
-                href={`/about`}
-              >
-                {" "}
-                {t("about_us")}{" "}
-              </Link>
-            </li>
+          <div className="flex flex-col">
+            <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:mt-0 lg:justify-end lg:gap-12">
+              <li>
+                <Link
+                  className="dark:text-white capitalize text-gray-700 transition hover:text-accent"
+                  href={`/about`}
+                >
+                  {" "}
+                  {t("about_us")}{" "}
+                </Link>
+              </li>
 
-            <li>
-              <Link
-                className="dark:text-white capitalize text-gray-700 transition hover:text-accent"
-                href={`/order`}
-              >
-                {" "}
-                {t("order")}{" "}
-              </Link>
-            </li>
+              <li>
+                <Link
+                  className="dark:text-white capitalize text-gray-700 transition hover:text-accent"
+                  href={`/order`}
+                >
+                  {" "}
+                  {t("order")}{" "}
+                </Link>
+              </li>
 
-            <li>
-              <Link
-                className="dark:text-white capitalize text-gray-700 transition hover:text-accent"
-                href={`/men`}
-              >
-                {" "}
-                {t("men")}{" "}
-              </Link>
-            </li>
+              <li>
+                <Link
+                  className="dark:text-white capitalize text-gray-700 transition hover:text-accent"
+                  href={`/men`}
+                >
+                  {" "}
+                  {t("men")}{" "}
+                </Link>
+              </li>
 
-            <li>
-              <Link
-                className="dark:text-white capitalize text-gray-700 transition hover:text-accent"
-                href={`/women`}
-              >
-                {" "}
-                {t("women")}{" "}
-              </Link>
-            </li>
-          </ul>
+              <li>
+                <Link
+                  className="dark:text-white capitalize text-gray-700 transition hover:text-accent"
+                  href={`/women`}
+                >
+                  {" "}
+                  {t("women")}{" "}
+                </Link>
+              </li>
+            </ul>
+            <p className="mt-12 text-center text-sm dark:text-white text-gray-500 lg:text-right capitalize">
+              {t("copyright")} &copy; {currentYear} rachop {t("all_rights_reserved")}.
+            </p>
+          </div>
         </div>
 
-        <p className="mt-12 text-center text-sm dark:text-white text-gray-500 lg:text-right capitalize">
-          {t("copyright")} &copy; {currentYear} rachop {t("all_rights_reserved")}.
-        </p>
       </div>
     </footer>
   );

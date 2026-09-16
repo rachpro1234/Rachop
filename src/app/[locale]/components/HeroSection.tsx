@@ -20,6 +20,7 @@ import Video from 'next-video'
 import videoDatei from '@/videos/discount-vd.mp4';
 import axios from "axios";
 import { HR } from "flowbite-react";
+import { it } from "node:test";
 
 interface Product {
   id: number;
@@ -163,9 +164,9 @@ const HeroSection = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-[400px] w-full"
-                  key={index}
+                  key={item.id}
                 >
-                  <Link className="grid h-full" href={`/product/${item.slug}`}>
+                  <Link className="grid" href={`/product/${item.slug}`}>
                     <div className="overflow-hidden">
                       <Image
                         src={item.img}

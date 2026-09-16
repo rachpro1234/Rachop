@@ -37,7 +37,7 @@ interface cartItems {
 }
 
 const ProductPage = ({ params }: { params: { slug: string } }) => {
-  const t = useTranslations("HeroSection");
+  const t = useTranslations("Hero");
 
   const [productItem, setProductItem] = useState<Product | null>(null);
 
@@ -81,7 +81,7 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
          slug: product.slug,
          title_key: product.title_key,
          desc_key: product.desc_key,
-         category: "HeroSection",
+         category: "hero",
          img: product.img,
          price: product.price,
          prev_price: product.prev_price,
@@ -115,7 +115,6 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
           </Breadcrumb>
       </div>
       <article className="flex items-center justify-center gap-7 py-7">
-        {/* <img className="w-[700px]" src={product.img} alt={product.title} /> */}
         <ImageEffect image={productItem.img} />
         <div>
             <h1 className="text-3xl font-bold text-accent uppercase">{productItem.title_key}</h1>
@@ -128,15 +127,6 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
                 <p className="text-blakish dark:text-white text-4xl font-bold">${productItem.price}</p>
                 <p className="line-through text-[#aea3a3]">${productItem.prev_price}</p>
               </span>
-              {/* <button
-                type="submit"
-                aria-label={t("add_to_cart")}
-                title={t("add_to_cart")}
-                className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 duration-300"
-                onClick={() => addToCart(product)}
-              >
-                <ShoppingCartSimple size={32}  className="dark:bg-[#131927] dark:text-white hover:text-accent"/>
-              </button> */}
               <button
                 type="submit"
                 aria-label={t("add_to_cart")}
@@ -147,20 +137,13 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
                 <span
                   className="w-full h-full capitalize flex items-center gap-2 px-7 py-2 bg-accent text-white rounded-full bg-gradient-to-t from-[#a62ce2] to-accent"
                 >
-                <ShoppingCartSimple size={20}  className="text-white"/>
-
-                add to cart</span>
+                <ShoppingCartSimple size={20}  className="dark:text-white"/>{("add_to_cart")}</span>
               </button>
             </div>
 
         </div>
 
       </article>
-        {/* thumbnail display test */}
-        {/* <div className="w-full h-screen flex items-center justify-center"> */}
-          {/* <ThumbnailSlider images={product.images} /> */}
-        {/* </div> */}
-        {/* <ImageEffect image={product.img} /> */}
     </section>
   );
 };
