@@ -28,6 +28,10 @@ interface cartItems {
   quantity: number;
 }
 
+interface UserData {
+  username: string;
+}
+
 const SearchInput = () => {
   const t = useTranslations("SignUp");
 
@@ -54,44 +58,43 @@ const SearchInput = () => {
     setIsOpen(false);
   };
 
-  const [authenticatedUser, setAuthenticatedUser] = useState<null | undefined>();
+  // const [authenticatedUser, setAuthenticatedUser] = useState<null | undefined>();
   const router = useRouter();
 
-  function updateUserProfile(user: any) {
-    let userEmail = user.email;
+  // function updateUserProfile(user: any) {
+  //   let userEmail = user.email;
 
-    const e = document.querySelector<HTMLElement>("#profile");
-    if (e) {
-      e.textContent = userEmail.slice(0, 4);
-    }
-  }
+  //   const e = document.querySelector<HTMLElement>("#profile");
+  //   if (e) {
+  //     e.textContent = userEmail.slice(0, 4);
+  //   }
+  // }
 
-  useEffect(() => {
-    onAuthStateChanged(auth, async (user: any) => {
-      if (user) {
-        setAuthenticatedUser(user);
-        updateUserProfile(user);
-      } else {
-        // signed out
-        setAuthenticatedUser(null);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, async (user: any) => {
+  //     if (user) {
+  //       setAuthenticatedUser(user);
+  //       updateUserProfile(user);
+  //     } else {
+  //       setAuthenticatedUser(null);
+  //     }
+  //   });
+  // }, []);
 
-  const userSignout = () => {
-    signOut(auth)
-      .then(() => {
-        router.push("/signup");
-        alert("user signed out");
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
+  // const userSignout = () => {
+  //   signOut(auth)
+  //     .then(() => {
+  //       router.push("/signup");
+  //       alert("user signed out");
+  //     })
+  //     .catch((error) => {
+  //       alert(error);
+  //     });
+  // };
 
 
   const [mode, setMode] = useState<String | null>(null) 
-  const [authUser, setAuthUser] = useState<null | undefined>();
+  const [authUser, setAuthUser] = useState<UserData | null>(null);
 
   const switchMode = async (mode: 'dark' | 'light') => {
     document.body.classList.remove("dark", "light");
@@ -115,14 +118,18 @@ const SearchInput = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      console.log("signed out user data", userProfile.data);
-      setAuthUser(userProfile.data);
-      console.log('welcome to your space' ,authUser);
+      // console.log("signed out user data", userProfile.data);
+      const userData = userProfile.data;
+      setAuthUser(userData);
     } catch (error) {
       console.log('no user data is found', error);
     }
     
   }
+  // console.log('welcome to your space' ,authUser?.username.slice(0, 4));
+
+  // signed user
+  const loggedUser = authUser?.username.slice(0, 4);
   
   // retrieve the tokenkey for a signed in user session to enable sign out
   useEffect(() => {
@@ -137,7 +144,7 @@ const SearchInput = () => {
   // console.log(getUserProfile);
 
   const signOutUser = () => {
-    console.log("user signed out", )
+    // console.log("user signed out", )
     localStorage.removeItem("jwtToken");
     setRetrievedToken(null)
     router.push("/signin");
@@ -205,7 +212,7 @@ const SearchInput = () => {
             onClick={signOutUser}
             className="text-4xl capitalize text-accent font-bold"
           >
-            sign-out
+            {loggedUser}
           </Link>
         )}
         <button type="button" onClick={() => switchMode(mode === 'dark' ? "light" : "dark")} className="dark:text-white">

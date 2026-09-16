@@ -3,15 +3,11 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState, useId, use } from "react";
-// import { signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "../../../firebase/firebase";
-
 import { useRouter } from "next/navigation";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
 import cs from "../auth.module.css";
-// import { toast } from 'react-toastify';
 
 
 function SignIn() {
@@ -22,7 +18,7 @@ function SignIn() {
     password: "",
   });
 
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
   const [usernameError, setUsernameError] = useState("");
   const [usernameFocus, setUsernameFocus] = useState(false);
@@ -143,28 +139,26 @@ function SignIn() {
 
       localStorage.setItem("jwtToken", token);
 
-      const storedToken = localStorage.getItem('jwtToken');
-      console.log('stored token: ', storedToken);
+      // const storedToken = localStorage.getItem('jwtToken');
+      // console.log('stored token: ', storedToken);
 
-      const profile = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, {
-        headers: {
-          Authorization: `Bearer ${storedToken}`
-        }
-      })
+      // const profile = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, {
+      //   headers: {
+      //     Authorization: `Bearer ${storedToken}`
+      //   }
+      // })
       
-      console.log(profile.data);
+      // console.log(profile.data);
 
       setsignInFormData(response.data);
       setsignInFormData({
         username: "",
         password: ""
       })
-      setUser(response.data);
       setTimeout(() => {
         router.push('/');
       }, 4000);
-      console.log(signInFormData);
-      console.log(user);
+      // console.log(signInFormData);
       alert(`you've successfully login in to your Rachop Space`);
       // localStorage.setItem("tokenKey", token);
       // console.log(localStorage.getItem("tokenKey"));
@@ -173,11 +167,6 @@ function SignIn() {
     }
   }
 
-
-  // const handleLogout = () => {
-  //   localStorage.removeItem("tokenKey");
-  //   router.push('/signin');
-  // }
 
 
 
