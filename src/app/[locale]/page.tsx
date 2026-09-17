@@ -9,8 +9,6 @@ export default function Home() {
   return (
     <div className="bg-white dark:bg-[#131927] p-0">
       <ReduxProvider>
-        {/* <HeaderTop />
-        <SearchInput /> */}
           <FullHeader />
         <hr />
         <br />
@@ -18,7 +16,6 @@ export default function Home() {
           <HeroSection />
           <SearviceBanner />
           <Footer />
-          {/* <DataFetch /> */}
         </div>
       </ReduxProvider>
     </div>

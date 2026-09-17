@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import HeaderTop from './HeaderTop';
-// import Navbar from './Navbar';
 import SearchInput from './SearchInput';
 import { motion, useScroll, useMotionValueEvent } from "motion/react"
 
@@ -35,7 +34,6 @@ function FullHeader() {
     >
       <HeaderTop />
       <SearchInput />
-      {/* <Navbar /> */}
     </motion.header>
   )
 }

@@ -30,7 +30,6 @@ const Product: React.FC = () => {
   const tOrder = useTranslations("tOrder");
 
   const [cartItems, setCartItems] = useState<cartItems[]>([]);
-  // const [stripeClient, setStripeClient] = useState<string | null>(null);
   const router = useRouter();
 
   const dispatch = useDispatch<AppDispatch>();
@@ -187,7 +186,6 @@ const Product: React.FC = () => {
         </div>
       </div> : ""}
 
-      {/* {stripeClient && <CheckoutRender clientSecret={stripeClient} />} */}
     </div>
   );
 };

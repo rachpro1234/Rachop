@@ -174,7 +174,7 @@ const HeroSection = () => {
                         property="false"
                         width={200}
                         height={200}
-                        className="bg-transparent w-full h-[300px] object-cover object-center rounded-lg mb-10 cursor-pointer transition duration-500 hover:scale-110"
+                        className="bg-transparent w-full object-cover object-center rounded-lg cursor-pointer transition duration-500 hover:scale-110"
                       />
                     </div>
                   </Link>

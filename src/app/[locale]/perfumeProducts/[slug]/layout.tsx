@@ -1,7 +1,4 @@
 import Footer from "@/src/app/[locale]/components/Footer";
-// import HeaderTop from "../components/HeaderTop";
-// import Navbar from "../components/Navbar";
-// import { SearchInput } from "../components/SearchInput";
 import FullHeader from "@/src/app/[locale]/components/FullHeader";
 import SearviceBanner from "@/src/app/[locale]/components/SearviceBanner";
 
@@ -17,12 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <>
-      {/* <HeaderTop />
-      <SearchInput /> */}
-        <FullHeader />
+      <FullHeader />
       <hr />
       <br />
-      {/* <Navbar /> */}
       {children}
       <SearviceBanner />
       <Footer />

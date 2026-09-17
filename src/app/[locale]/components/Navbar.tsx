@@ -3,22 +3,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { X } from "@phosphor-icons/react/dist/ssr";
-import { Handbag } from "@phosphor-icons/react/dist/ssr";
-import { SquaresFour } from "@phosphor-icons/react/dist/ssr";
-import { List } from "@phosphor-icons/react/dist/ssr";
-import { User } from "@phosphor-icons/react/dist/ssr";
-import { House } from "@phosphor-icons/react/dist/ssr";
 import { useClickAway } from "react-use";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../../../firebase/firebase";
+// import { onAuthStateChanged, signOut } from "firebase/auth";
+// import { auth } from "../../../firebase/firebase";
 import { useRouter } from "next/navigation";
-import { Moon } from "@phosphor-icons/react/dist/ssr";
-import { Sun } from "@phosphor-icons/react/dist/ssr";
+import { Moon, Sun, Handbag, SquaresFour, List, User, House, X } from "@phosphor-icons/react/dist/ssr";
+import axios from "axios";
 
 interface cartItems {
   id: number;
@@ -31,6 +25,12 @@ interface cartItems {
   prev_price: number | null;
   quantity: number;
 }
+
+
+interface UserData {
+  username: string;
+}
+
 
 function Navbar() {
   const t = useTranslations("Navbar");
@@ -88,38 +88,38 @@ function Navbar() {
   const [authenticatedUser, setAuthenticatedUser] = useState<null | undefined>();
   const router = useRouter();
 
-  function updateUserProfile(user: any) {
-    const username = user.displayName;
-    let userEmail = user.email;
+  // function updateUserProfile(user: any) {
+  //   const username = user.displayName;
+  //   let userEmail = user.email;
 
-    const e = document.querySelector<HTMLElement>("#hello");
-    if (e) {
-      e.textContent = userEmail.slice(0, 4);
-    }
-  }
+  //   const e = document.querySelector<HTMLElement>("#hello");
+  //   if (e) {
+  //     e.textContent = userEmail.slice(0, 4);
+  //   }
+  // }
 
-  useEffect(() => {
-    onAuthStateChanged(auth, async (user: any) => {
-      if (user) {
-        setAuthenticatedUser(user);
-        updateUserProfile(user);
-      } else {
-        // signed out
-        setAuthenticatedUser(null);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, async (user: any) => {
+  //     if (user) {
+  //       setAuthenticatedUser(user);
+  //       updateUserProfile(user);
+  //     } else {
+  //       // signed out
+  //       setAuthenticatedUser(null);
+  //     }
+  //   });
+  // }, []);
 
-  const userSignout = () => {
-    signOut(auth)
-      .then(() => {
-        router.push("/signup");
-        alert("user signed out");
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
+  // const userSignout = () => {
+  //   signOut(auth)
+  //     .then(() => {
+  //       router.push("/signup");
+  //       alert("user signed out");
+  //     })
+  //     .catch((error) => {
+  //       alert(error);
+  //     });
+  // };
 
     const [mode, setMode] = useState<String | null>(null) 
   
@@ -151,18 +151,50 @@ function Navbar() {
     })
   }
 
-  // 
-    //  const { scrollY } = useScroll();
-    // const [hidden, setHidden] = useState(false);
+    const [retrievedToken, setRetrievedToken] = useState<String | null>(null);
+    const [authUser, setAuthUser] = useState<UserData | null>(null);
   
-    // useMotionValueEvent(scrollY, "change", (current) => {
-    //   const previous = scrollY.getPrevious() ?? 0;
-    //   if(current > previous && current > 150) {
-    //     setHidden(true);
-    //   } else {
-    //     setHidden(false);
-    //   }
-    // })
+
+     const getUserProfile = async (token: string) => {
+    try {
+      const userProfile = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      // console.log("signed out user data", userProfile.data);
+      const userData = userProfile.data;
+      setAuthUser(userData);
+    } catch (error) {
+      console.log('no user data is found', error);
+    }
+    
+  }
+  // console.log('welcome to your space' ,authUser?.username.slice(0, 4));
+
+  // signed user
+  const loggedUser = authUser?.username.slice(0, 4);
+  
+  // retrieve the tokenkey for a signed in user session to enable sign out
+  useEffect(() => {
+    const storedToken = localStorage.getItem("jwtToken")
+    setRetrievedToken(storedToken);
+
+    if(storedToken) {
+      getUserProfile(storedToken);
+    }
+  }, [])
+
+  // console.log(getUserProfile);
+
+  const signOutUser = () => {
+    // console.log("user signed out", )
+    localStorage.removeItem("jwtToken");
+    setRetrievedToken(null)
+    router.push("/signin");
+  }
+  
+    
 
   return (
     <div>
@@ -241,7 +273,7 @@ function Navbar() {
               <House size={32} className="hover:text-accent" />
             )}
           </Link>
-          {authenticatedUser === null ? (
+          {retrievedToken === null ? (
             <div ref={navRef}>
               <User
                 size={32}
@@ -283,10 +315,10 @@ function Navbar() {
             <Link
               href="/"
               id="hello"
-              onClick={userSignout}
+              onClick={signOutUser}
               className="text-normal capitalize text-accent font-bold"
             >
-              {/* sign-out */}
+            {loggedUser}
             </Link>
           )}
 

@@ -8,8 +8,6 @@ import { useTranslations } from "next-intl";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { useClickAway } from "react-use";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../../../firebase/firebase";
 import { useRouter } from "next/navigation";
 import { Moon } from "@phosphor-icons/react/dist/ssr";
 import { Sun } from "@phosphor-icons/react/dist/ssr";
@@ -58,40 +56,7 @@ const SearchInput = () => {
     setIsOpen(false);
   };
 
-  // const [authenticatedUser, setAuthenticatedUser] = useState<null | undefined>();
   const router = useRouter();
-
-  // function updateUserProfile(user: any) {
-  //   let userEmail = user.email;
-
-  //   const e = document.querySelector<HTMLElement>("#profile");
-  //   if (e) {
-  //     e.textContent = userEmail.slice(0, 4);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, async (user: any) => {
-  //     if (user) {
-  //       setAuthenticatedUser(user);
-  //       updateUserProfile(user);
-  //     } else {
-  //       setAuthenticatedUser(null);
-  //     }
-  //   });
-  // }, []);
-
-  // const userSignout = () => {
-  //   signOut(auth)
-  //     .then(() => {
-  //       router.push("/signup");
-  //       alert("user signed out");
-  //     })
-  //     .catch((error) => {
-  //       alert(error);
-  //     });
-  // };
-
 
   const [mode, setMode] = useState<String | null>(null) 
   const [authUser, setAuthUser] = useState<UserData | null>(null);

@@ -171,7 +171,8 @@
     "email_error_text": "ⓘ email field is required",
     "password_error_text": "ⓘ password field is required",
     "invalid_email_error_text": "ⓘ invalid email",
-    "password_length_error": "ⓘ password should be at least 6 charachters"
+    "password_length_error": "ⓘ password should be at least 6 charachters",
+    "welcome_msg": "welcome by Rachop"
   },
 
   "SignIn": {
@@ -184,7 +185,8 @@
     "don't_have_an_account": "Don't have an account",
     "username_error_text": "ⓘ username field is required",
     "password_error_text": "ⓘ password field is required",
-    "password_length_error": "ⓘ password should be at least 6 charachters"
+    "password_length_error": "ⓘ password should be at least 6 charachters",
+    "close": "close"
   },
 
     "Product": {

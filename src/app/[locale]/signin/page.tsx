@@ -5,9 +5,10 @@ import Link from "next/link";
 import { useState, useId, use } from "react";
 import { useRouter } from "next/navigation";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
-import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
+import { EyeSlash, Checks } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
 import cs from "../auth.module.css";
+import { Button, Modal, ModalBody, ModalHeader } from "flowbite-react";
 
 
 function SignIn() {
@@ -110,6 +111,8 @@ function SignIn() {
   };
 
   const router = useRouter();
+  const [successLogin, setSuccessLogin] = useState(false);
+  const [user, setUser] = useState("");
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
@@ -139,18 +142,9 @@ function SignIn() {
 
       localStorage.setItem("jwtToken", token);
 
-      // const storedToken = localStorage.getItem('jwtToken');
-      // console.log('stored token: ', storedToken);
-
-      // const profile = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, {
-      //   headers: {
-      //     Authorization: `Bearer ${storedToken}`
-      //   }
-      // })
-      
-      // console.log(profile.data);
-
       setsignInFormData(response.data);
+      setSuccessLogin(true);
+      setUser(signInFormData.username);
       setsignInFormData({
         username: "",
         password: ""
@@ -158,16 +152,11 @@ function SignIn() {
       setTimeout(() => {
         router.push('/');
       }, 4000);
-      // console.log(signInFormData);
-      alert(`you've successfully login in to your Rachop Space`);
-      // localStorage.setItem("tokenKey", token);
-      // console.log(localStorage.getItem("tokenKey"));
+      // alert(`you've successfully login in to your Rachop Space`);
     } catch (error) {
       console.log("we couldn't sign you in", error);
     }
   }
-
-
 
 
   return (
@@ -178,6 +167,23 @@ function SignIn() {
             {t("sign_in")}
           </h2>
         </div>
+
+        <Modal show={successLogin} size="md" onClose={() => setSuccessLogin(false)} popup className="bg-opacity-10 border border-gray-100">
+            <ModalHeader />
+            <ModalBody>
+              <div className="text-center">
+                <Checks className="mx-auto mb-4 h-14 w-14 text-green-500" />
+                <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                  Welcome to your Space <span className="text-accent uppercase">{user}</span>
+                </h3>
+                <div className="flex justify-center gap-4">
+                  <Button color="purple" className="px-10 rounded-2xl" onClick={() => setSuccessLogin(false)}>
+                    {t("close")}
+                  </Button>
+                </div>
+              </div>
+            </ModalBody>
+        </Modal>
 
         {/* Form */}
         <form

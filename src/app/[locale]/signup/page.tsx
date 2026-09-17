@@ -1,15 +1,15 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import React, { useState, useEffect, useId } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase/firebase";
+import React, { useState, useId } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
-import { EyeSlash } from "@phosphor-icons/react/dist/ssr";
+import { EyeSlash, Checks } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
 import cs from "../auth.module.css";
+import { Button, Modal, ModalBody, ModalHeader } from "flowbite-react";
+
 
 const SignUp = () => {
   const t = useTranslations("SignUp");
@@ -144,30 +144,8 @@ const SignUp = () => {
 
 
   const router = useRouter();
-
-  // const formSignUpSubmit = (e: { preventDefault: () => void }) => {
-  //   e.preventDefault();
-  //   console.log(signUpFormData);
-  //   createUserWithEmailAndPassword(
-  //     auth,
-  //     signUpFormData.email,
-  //     signUpFormData.password
-  //   )
-  //     .then((userCredential: { user: any }) => {
-  //       const user = userCredential.user;
-  //       // console.log(user);
-
-  //       router.push("signin");
-  //       alert("successfully created account");
-  //     })
-  //     .catch((error: { code: any; message: any }) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       // console.log(errorCode, errorMessage)
-  //       alert(errorMessage);
-  //     });
-  // };
-
+  const [successRegister, setSuccessRegister] = useState(false);
+  const [newUser, setNewUser] = useState("");
 
   // fetch user registration data
   const handleSubmit = async (e: any) => {
@@ -202,6 +180,9 @@ const SignUp = () => {
 
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`, signUpFormData);
       setsignUpFormData(response.data);
+
+      setSuccessRegister(true);
+      setNewUser(signUpFormData.username)
       setsignUpFormData({
         username: "",
         email: "",
@@ -211,7 +192,6 @@ const SignUp = () => {
       setTimeout(() => {
         router.push("signin");
       }, 4000)
-      alert(`successfully created account, welcome ${signUpFormData.username} by Rachop`);
     } catch (error) {
       console.log("can't sign up this user", error);
       alert("no account has been created");
@@ -227,6 +207,23 @@ const SignUp = () => {
             {t("sign_up")}
           </h2>
         </div>
+
+          <Modal show={successRegister} size="md" onClose={() => setSuccessRegister(false)} popup className="bg-opacity-10 border border-gray-100">
+            <ModalHeader />
+            <ModalBody>
+              <div className="text-center">
+                <Checks className="mx-auto mb-4 h-14 w-14 text-green-500" />
+                <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                  {t("Welcome_msg")} <span className="text-accent uppercase">{newUser}</span>
+                </h3>
+                <div className="flex justify-center gap-4">
+                  <Button color="purple" className="px-10 rounded-2xl" onClick={() => setSuccessRegister(false)}>
+                    {t("close")}
+                  </Button>
+                </div>
+              </div>
+          </ModalBody>
+        </Modal>
 
         {/* Form */}
         <form
