@@ -20,7 +20,6 @@ import Video from 'next-video'
 import videoDatei from '@/videos/discount-vd.mp4';
 import axios from "axios";
 import { HR } from "flowbite-react";
-import { it } from "node:test";
 
 interface Product {
   id: number;

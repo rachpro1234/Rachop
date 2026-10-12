@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="bg-white dark:bg-[#131927] p-0">
+    <div className="bg-white dark:bg-[#131927] px-4 sm:px-0">
       <ReduxProvider>
           <FullHeader />
         <hr />

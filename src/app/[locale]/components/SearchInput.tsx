@@ -198,38 +198,6 @@ const SearchInput = () => {
 
           <Handbag size={32} className="dark:text-white hover:text-accent" />
         </Link>
-
-        {/* <div ref={navRef}>
-          <User size={32} onClick={toggleDropdown} className="cursor-pointer" />
-          {isOpen && (
-            <div className="origin-top-right absolute right-0 mt-2 w-44 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
-              <ul
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="options-menu"
-              >
-                <li>
-                  <Link
-                    href={`signin`}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer capitalize"
-                    onClick={closeDropdown}
-                  >
-                    {t("sign_in")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={`signup`}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer capitalize"
-                    onClick={closeDropdown}
-                  >
-                    {t("sign_up")}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          )}
-        </div> */}
       </div>
     </div>
   );

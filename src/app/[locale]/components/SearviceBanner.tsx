@@ -41,7 +41,7 @@ function SearviceBanner() {
 
   return (
     <div className="servicee-banner container py-10">
-      <div className="icon md:flex items-center justify-between gap-10 select-none w-full ">
+      <div className="icon flex items-center justify-between flex-col sm:flex-row gap-5 select-none w-full ">
         {ServiceItems.map((item, index) => (
           <motion.div
            initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ function SearviceBanner() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }} 
             key={item.id} 
-            className="dark:bg-slate-950 bg-white dark:text-white px-10 py-7 rounded-lg sm:mb-5">
+            className="dark:bg-slate-950 bg-white dark:text-white px-10 py-7 w-full h-[stretch] rounded-lg">
             <div className="flex items-center justify-center flex-col">
               {item.icon}
               <h4 className=" dark:text-white capitalize text-center font-bold">{item.title}</h4>

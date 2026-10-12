@@ -103,7 +103,8 @@ const Product: React.FC = () => {
           {tOrder("Cart_is_empty_please_add_an_item")}
         </h1>
       ) : null}
-      <div className="grid grid-cols-3 gap-4 container">
+      {/* /* grid grid-cols-3 */ }
+      <div className="flex gap-4 container"> 
         {cartItems.map((item, index) => {
           return (
               <motion.div
