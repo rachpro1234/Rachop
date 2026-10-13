@@ -174,7 +174,7 @@ function SignIn() {
               <div className="text-center">
                 <Checks className="mx-auto mb-4 h-14 w-14 text-green-500" />
                 <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                  Welcome to your Space <span className="text-accent uppercase">{user}</span>
+                 {t("greeting")} <span className="text-accent uppercase">{user}</span>
                 </h3>
                 <div className="flex justify-center gap-4">
                   <Button color="purple" className="px-10 rounded-2xl" onClick={() => setSuccessLogin(false)}>

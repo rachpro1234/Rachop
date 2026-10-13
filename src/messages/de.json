@@ -188,7 +188,8 @@
     "password_error_text": "ⓘ Passwort ist erforderlich",
     "password_length_error": "ⓘ Das Passwort muss mindestens 6 Zeichen lang sein",
     "close": "schliessen",
-    "welcome_msg": "willkomen bei Rachop"
+    "welcome_msg": "willkomen bei Rachop",
+    "greeting": "Willkommen in deinem Bereich"
   },
 
   "Product": {

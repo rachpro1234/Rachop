@@ -185,7 +185,8 @@
     "username_error_text": "ⓘ Il campo nome utente è obbligatorio",
     "password_error_text": "ⓘ Il campo password è obbligatorio",
     "password_length_error": "ⓘ La password deve contenere almeno 6 caratteri",
-    "close": "chiudi"
+    "close": "chiudi",
+    "greeting": "Benvenuto nel tuo spazio"
   },
 
     "Product": {

@@ -186,7 +186,8 @@
     "username_error_text": "ⓘ username field is required",
     "password_error_text": "ⓘ password field is required",
     "password_length_error": "ⓘ password should be at least 6 charachters",
-    "close": "close"
+    "close": "close",
+    "greeting": "Welcome to your Space"
   },
 
     "Product": {
