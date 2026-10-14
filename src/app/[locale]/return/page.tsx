@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import Link from 'next/link';
+import { useTranslations } from "next-intl";
+
 
 interface SessionDetails {
     amountTotal: number;
@@ -17,6 +19,8 @@ interface SessionDetails {
 
 
 function paymentCompleted() {
+    const t = useTranslations("checkout");
+
 
     const searchParams = useSearchParams();
     const sessionId = searchParams.get("session_id");
@@ -42,7 +46,7 @@ function paymentCompleted() {
     if(!session) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#fff] to-accent">
-                <p className="text-white text-xl">Loading your receipt...</p>
+                <p className="text-white text-xl">{t(".")}</p>
             </div>
         )
     };

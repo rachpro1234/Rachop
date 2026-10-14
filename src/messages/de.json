@@ -194,6 +194,10 @@
 
   "Product": {
     "no_data" : "Es wurden keine Produktdaten gefunden."
+  },
+
+  "checkout": {
+    "loading": "Loading your receipt.."
   }
 
 }

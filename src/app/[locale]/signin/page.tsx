@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useState, useId, use } from "react";
+import { useState, useId } from "react";
 import { useRouter } from "next/navigation";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash, Checks } from "@phosphor-icons/react/dist/ssr";
