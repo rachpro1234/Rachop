@@ -191,5 +191,17 @@
 
     "Product": {
     "no_data" : "Non sono stati trovati dati relativi ai prodotti"
+  },
+
+  "checkout": {
+    "loading": "Caricamento della tua ricevuta..",
+    "success": "Successo!",
+    "payment_completed": "pagamento completato",
+    "success_transaction": "La tua transazione è stata elaborata con successo",
+    "amount": "somma",
+    "transaction": "transazione",
+    "date": "data",
+    "continue_shopping": "continua a fare acquisti",
+    "thankyou_msg": "grazie per il tuo acquisto"
   }
 }

@@ -197,7 +197,15 @@
   },
 
   "checkout": {
-    "loading": "Loading your receipt.."
+    "loading": "Lade deinen Beleg..",
+    "success": "Erfolg!",
+    "payment_completed": "Zahlung abgeschlossen",
+    "success_transaction": "Deine Transaktion wurde erfolgreich bearbeitet",
+    "amount": "betrag",
+    "transaction": "Transaktion",
+    "date": "datum",
+    "continue_shopping": "Weiter einkaufen",
+    "thankyou_msg": "Danke für deinen Kauf"
   }
 
 }

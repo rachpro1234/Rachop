@@ -46,7 +46,7 @@ function paymentCompleted() {
     if(!session) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#fff] to-accent">
-                <p className="text-white text-xl">{t(".")}</p>
+                <p className="text-white text-xl">{t("loading")}</p>
             </div>
         )
     };
@@ -74,22 +74,22 @@ function paymentCompleted() {
           </div>
 
           <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Success!</h1>
-            <p className="text-xl text-white/90 mb-2">Payment Completed</p>
-            <p className="text-white/70">Your transaction has been processed successfully</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t("success")}</h1>
+            <p className="text-xl text-white/90 mb-2">{t("payment_completed")}</p>
+            <p className="text-white/70">{t("success_transaction")}</p>
           </div>
 
           <div className="bg-white/10 rounded-2xl p-6 mb-8 border border-white/10">
             <div className="flex justify-between items-center mb-4">
-              <span className="text-white/70">Amount</span>
+              <span className="text-white/70">{t("amount")}</span>
               <span className="text-2xl font-bold text-white">${formattedAmount}</span>
             </div>
             <div className="flex justify-between items-center mb-4">
-              <span className="text-white/70">Transaction ID</span>
+              <span className="text-white/70">{t("transaction")} ID</span>
               <span className="text-white font-mono text-sm">#{session.id.slice(-10).toUpperCase()}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-white/70">Date</span>
+              <span className="text-white/70">{t("date")}</span>
               <span className="text-white">{formattedDate}</span>
             </div>
           </div>
@@ -97,13 +97,13 @@ function paymentCompleted() {
           <div className="space-y-4">
             <Link href="/">
                 <button className="w-full bg-transparent border-2 border-white/30 text-white font-semibold py-4 px-6 rounded-2xl hover:bg-white/10 transition-all duration-300">
-                Continue Shopping
+                {t("continue_shopping")}
                 </button>
             </Link>
           </div>
 
           <div className="mt-8 text-white/60 text-sm">
-            <p>Thank you for your purchase!</p>
+            <p>T{t("thankyou_msg")}</p>
           </div>
         </div>
       </div>

@@ -104,7 +104,7 @@ const Product: React.FC = () => {
         </h1>
       ) : null}
       {/* /* grid grid-cols-3 */ }
-      <div className="flex gap-4 container"> 
+      <div className="grid grid-cols-2 gap-4 container"> 
         {cartItems.map((item, index) => {
           return (
               <motion.div
