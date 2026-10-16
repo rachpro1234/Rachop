@@ -116,7 +116,7 @@ const Product: React.FC = () => {
                 className="flex gap-4 flex-1 border-blue-500 border-separate bg-white dark:bg-dark_primary_bg p-4 rounded-2xl"
               >
                 <div className="product-img">
-                  <Image src={item.img} width={200} height={200} alt="image" className="rounded-lg h-full"/>
+                  <Image src={item.img} width={200} height={200} alt="image" className="rounded-lg h-full object-cover"/>
                 </div>
                 <div className="flex flex-col justify-between">
                   <div>

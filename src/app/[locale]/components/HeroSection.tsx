@@ -203,7 +203,7 @@ const HeroSection = () => {
                           className="cursor-pointer hover:text-accent p-2 rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
                           onClick={() => addToCart(item)}
                         >
-                          <ShoppingCartSimple size={32}  className="dark:bg-[#131927] dark:text-white hover:text-accent"/>
+                          <ShoppingCartSimple size={32}  className="dark:text-white hover:text-accent"/>
                         </button>
                       </div>
                     </div>
