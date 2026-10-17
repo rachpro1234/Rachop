@@ -40,7 +40,7 @@ function SearviceBanner() {
   ];
 
   return (
-    <div className="servicee-banner container py-10">
+    <div className="service-banner container py-10 px-4 sm:px-0">
       <div className="icon flex items-center justify-between flex-col sm:flex-row gap-5 select-none w-full ">
         {ServiceItems.map((item, index) => (
           <motion.div
