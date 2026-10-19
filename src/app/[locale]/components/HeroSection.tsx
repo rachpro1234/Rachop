@@ -3,13 +3,13 @@
 
 import Link from "next/link";
 import Slider from "react-slick";
-import Testimonial from "./Testimonial";
+// import Testimonial from "./Testimonial";
 import { useTranslations } from "next-intl";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import Stars from "./Stars";
-import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";
+import { ShoppingCartSimple, Quotes } from "@phosphor-icons/react/dist/ssr";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { updateCart } from "../redux/features/cart-slice";
@@ -45,12 +45,21 @@ interface cartItems {
   quantity: number;
 }
 
+interface Testimonial {
+  id: number;
+  img: string;
+  person_name: string;
+  person_position: string;
+  person_testimonial: string;
+}
+
 const HeroSection = () => {
   const t = useTranslations("Hero");
 
   const tData = useTranslations("Product")
 
   const [heroProduct, setHeroProduct] = useState<Product[]>([]);
+  const [testimonialData, setTestimonialData] = useState<Testimonial[]>([]);
 
   
   // fetch products data
@@ -68,30 +77,45 @@ const HeroSection = () => {
     fetchData();
   }, []);
 
+  // retrieve testimonials data
+  useEffect(() => {
+    const fetchTestimonialsData = async () => {
+      try {
+        const response = await axios.get<Testimonial[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/testimonials`);
+        console.log(response.data);
+        setTestimonialData(response.data);
+      } catch (error) {
+        console.log("No Testimonials items found", error);
+      }
+    }
+
+    fetchTestimonialsData();
+  }, [])
+
   // Testimonial data
-  const testimonialData = [
-    {
-      id: 0,
-      img: "/testimonial/ph-1.webp",
-      name: "Natalia Brese",
-      position: "fashion_model_&_artist",
-      testimonial: "the_service_is_amazing!!",
-    },
-    {
-      id: 1,
-      img: "/testimonial/ph-2.webp",
-      name: "Thomas Havbe",
-      position: "film_maker_&_singer",
-      testimonial: "i_would_recommend_it_to_everybody",
-    },
-    {
-      id: 2,
-      img: "/testimonial/ph-4.webp",
-      name: "Karmen raden",
-      position: "ceo_&_founder_invision",
-      testimonial: "i_can't_ask_for_more_than_that",
-    },
-  ];
+  // const testimonialData = [
+  //   {
+  //     id: 0,
+  //     img: "/testimonial/ph-1.webp",
+  //     name: "Natalia Brese",
+  //     position: "fashion_model_&_artist",
+  //     testimonial: "the_service_is_amazing!!",
+  //   },
+  //   {
+  //     id: 1,
+  //     img: "/testimonial/ph-2.webp",
+  //     name: "Thomas Havbe",
+  //     position: "film_maker_&_singer",
+  //     testimonial: "i_would_recommend_it_to_everybody",
+  //   },
+  //   {
+  //     id: 2,
+  //     img: "/testimonial/ph-4.webp",
+  //     name: "Karmen raden",
+  //     position: "ceo_&_founder_invision",
+  //     testimonial: "i_can't_ask_for_more_than_that",
+  //   },
+  // ];
 
   const dispatch = useDispatch<AppDispatch>();
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
@@ -219,15 +243,46 @@ const HeroSection = () => {
           {t("testimonials")} <HR className="text-black dark:text-white w-full h-[2px]" />
         </h2>
         <Slider {...settings} className="w-[100%] rounded-xl pt-10">
-          {testimonialData.map((item) => {
+          {testimonialData.map((item, index) => {
+             console.log(item.img);
             return (
-              <Testimonial
-                key={item.id}
-                name={item.name}
-                img={item.img}
-                position={t(item.position)}
-                testimonial={t(item.testimonial)}
-              />
+                 <div 
+                 className="flex items-center relative" 
+                 key={index}>
+                    <p className="absolute top-0 left-0 w-full h-full m-0 bg-black/50 rounded-xl"></p>
+                    <div className="w-[100%]">
+                      <Image
+                        alt="image"
+                        src={item.img}
+                        width={2000}
+                        height={2000}
+                        property="false"
+                        className="rounded-xl object-cover sm:object-top-[20%] w-[100%] h-[500px]"
+                      />
+                    </div>
+                    <div className="absolute left-[30px] lg:space-y-4 bg-[#ffffffa2] sm:bg-transparent p-6 sm:p-0 rounded-lg sm:rounded-none">
+                      <div className="flex-col relative">
+                        <h3 className="text-accent font-bold uppercase text-[4rem]">{item.person_name}</h3>
+                        <p className="sm:text-[#8b8b8b] text-blakish">{item.person_position}</p>
+                        <p className="text-white">
+                          <span className="text-accent absolute -left-[5.2%]">
+                            <Quotes size={20} weight="fill" />
+                          </span>
+                          {item.person_testimonial}
+                          <span className="text-accent absolute">
+                            <Quotes size={20} weight="fill" />
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+              // <Testimonial
+              //   key={item.id}
+              //   person_name={item.person_name}
+              //   img={item.img}
+              //   person_position={t(item.person_position)}
+              //   person_testimonial={t(item.person_testimonial)}
+              // />
             );
           })}
         </Slider>

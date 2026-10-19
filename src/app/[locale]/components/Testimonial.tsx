@@ -3,17 +3,17 @@ import Image from "next/image";
 import { Quotes } from "@phosphor-icons/react/dist/ssr";
 
 interface Testimonial {
-  name: string;
   img: string;
-  position: string;
-  testimonial: string;
+  person_name: string;
+  person_position: string;
+  person_testimonial: string;
 }
 
 const Testimonial: React.FC<Testimonial> = ({
-  name,
+  person_name,
   img,
-  position,
-  testimonial,
+  person_position,
+  person_testimonial,
 }) => {
   return (
     <div className="flex items-center relative">
@@ -30,13 +30,13 @@ const Testimonial: React.FC<Testimonial> = ({
       </div>
       <div className="absolute left-[30px] lg:space-y-4 bg-[#ffffffa2] sm:bg-transparent p-6 sm:p-0 rounded-lg sm:rounded-none">
         <div className="flex-col relative">
-          <h3 className="text-accent font-bold uppercase text-[4rem]">{name}</h3>
-          <p className="sm:text-[#8b8b8b] text-blakish">{position}</p>
+          <h3 className="text-accent font-bold uppercase text-[4rem]">{person_name}</h3>
+          <p className="sm:text-[#8b8b8b] text-blakish">{person_position}</p>
           <p className="text-white">
             <span className="text-accent absolute -left-[5.2%]">
               <Quotes size={20} weight="fill" />
             </span>
-            {testimonial}
+            {person_testimonial}
             <span className="text-accent absolute">
               <Quotes size={20} weight="fill" />
             </span>
