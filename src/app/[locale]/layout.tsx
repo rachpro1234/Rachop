@@ -1,7 +1,13 @@
+import { use } from "react";
 import "./globals.css";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import ReduxProvider from "./redux/provider";
-import { cookies } from "next/headers";
+import { cookies, type UnsafeUnwrappedCookies } from "next/headers";
+
+// @next-codemod-ignore Cache Components adoption: this segment temporarily allows blocking.
+// Remove this opt-out after verifying the segment passes validation without it.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
 
 export const metadata = {
   title: "Rachop",
@@ -15,12 +21,23 @@ type Props = {
   };
 };
 
-const RootLayout: React.FC<Props> = ({ children, params: { locale } }) => {
+const RootLayout: React.FC<Props> = props => {
+  const params = use(props.params);
+
+  const {
+    locale
+  } = params;
+
+  const {
+    children
+  } = props;
+
   // providing all messages to the client
   const messages = useMessages();
 
   // store Mode state
-  const cookieStore = cookies();
+  const cookieStore = (/* @next-codemod-error Await this API and update its callers; remove the temporary UnsafeUnwrappedCookies cast after repairing the migration. */
+  cookies() as unknown as UnsafeUnwrappedCookies);
   const mode = cookieStore.get("mode")?.value || 'dark';
   return (
     <html lang={locale}>

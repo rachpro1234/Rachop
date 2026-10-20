@@ -6,7 +6,7 @@
     "dev": "next dev & npx next-video sync -w",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",
@@ -22,11 +22,11 @@
     "gsap": "^3.15.0",
     "lucide-react": "^0.427.0",
     "motion": "^12.42.0",
-    "next": "^14.2.5",
+    "next": "16.4.2",
     "next-intl": "^4.13.0",
     "next-video": "^2.8.1",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "react-firebase-hooks": "^5.1.1",
     "react-redux": "^9.1.2",
     "react-simple-typewriter": "^5.0.1",
@@ -41,14 +41,18 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "@types/react-slick": "^0.23.13",
     "autoprefixer": "^10.0.1",
-    "eslint": "^8",
-    "eslint-config-next": "^0.2.4",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.2",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "6.0.3"
+  },
+  "overrides": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0"
   }
 }

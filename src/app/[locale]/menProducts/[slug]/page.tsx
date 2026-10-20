@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, use } from "react";
 import { useTranslations } from "next-intl";
 import { notFound } from "next/navigation";
 import { ShoppingCartSimple } from "@phosphor-icons/react/dist/ssr";
@@ -35,7 +35,8 @@ interface cartItems {
   quantity: number;
 }
 
-const ProductPage = ({ params }: { params: { slug: string } }) => {
+const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
+  const params = use(props.params);
   const t = useTranslations("Men");
 
   const [productItem, setProductItem] = useState<Product | null>(null)
@@ -58,55 +59,55 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
   }, [slug]);
 
 
-   const dispatch = useDispatch<AppDispatch>();
-   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
- 
-   const addToCart = (product: Product) => {
-     const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
- 
-     if (itemIndex !== -1) {
-       const updatedCart = cartArray.map((item, index) => {
-         return index === itemIndex
-           ? { ...item, quantity: item.quantity + 1 }
-           : item;
-       });
- 
-       dispatch(updateCart(updatedCart));
-     } else {
-       const newCartItem = {
-         id: product.id,
-         slug: product.slug,
-         title_key: product.title_key,
-         desc_key: product.desc_key,
-         category: "Men",
-         img: product.img,
-         price: product.price,
-         prev_price: product.prev_price,
-         quantity: 1,
-       };
- 
-       const updatedCart = [...cartArray, newCartItem];
-       dispatch(updateCart(updatedCart));
-     }
- 
-     // console.log("Add to cart");
-   };
+  const dispatch = useDispatch<AppDispatch>();
+  const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
 
-     useEffect(() => {
-      //  console.log("cartArray", cartArray);
-     }, [cartArray]);
+  const addToCart = (product: Product) => {
+    const itemIndex = cartArray.findIndex((item) => item.slug === product.slug);
 
+    if (itemIndex !== -1) {
+      const updatedCart = cartArray.map((item, index) => {
+        return index === itemIndex
+          ? { ...item, quantity: item.quantity + 1 }
+          : item;
+      });
 
-     if(!productItem) {
-        return <p className="h-screen flex justify-center items-center">Loading...</p>
-      }
+      dispatch(updateCart(updatedCart));
+    } else {
+      const newCartItem = {
+        id: product.id,
+        slug: product.slug,
+        title_key: product.title_key,
+        desc_key: product.desc_key,
+        category: "Men",
+        img: product.img,
+        price: product.price,
+        prev_price: product.prev_price,
+        quantity: 1,
+      };
+
+      const updatedCart = [...cartArray, newCartItem];
+      dispatch(updateCart(updatedCart));
+    }
+
+    // console.log("Add to cart");
+  };
+
+  useEffect(() => {
+   //  console.log("cartArray", cartArray);
+  }, [cartArray]);
 
 
-      if(!productItem) {
-        notFound();
-      }
+  if(!productItem) {
+     return <p className="h-screen flex justify-center items-center">Loading...</p>
+   }
 
- 
+
+  if(!productItem) {
+    notFound();
+  }
+
+
   return (
     <section className="container">
       <div className="mt-28">
