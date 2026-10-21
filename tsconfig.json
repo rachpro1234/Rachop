@@ -1,158 +1,53 @@
 {
-
   "compilerOptions": {
-  "lib": [
-  "dom",
-
-  
-  
-  "dom.iterable",
-
-  
-  
-  "esnext"
-
-  
-  ],
-
-  
-  "allowJs": true,
-
-  
-  "skipLibCheck": true,
-
-  
-  "forceConsistentCasingInFileNames": true,
-
-  
-  "strict": true,
-
-  
-  "noEmit": true,
-
-  
-  "esModuleInterop": true,
-
-  
-  "module": "esnext",
-
-  
-  "moduleResolution": "bundler",
-
-  
-  "resolveJsonModule": true,
-
-  
-  "isolatedModules": true,
-
-  
-  "jsx": "preserve",
-
-  
-  "incremental": true,
-
-  
-  "plugins": [
-
-  
-  
-  {
-
-  
-  
-  
-  "name": "next"
-
-  
-  
-  }
-
-  
-  ],
-
-  
-  "paths": {
-
-  
-  
-  "@/components/*": [
-
-  
-  
-  
-  "./app/[locale]/components/*"
-
-  
-  
-  ],
-
-  
-  
-  "@/*": [
-
-  
-  
-  
-  "./*"
-
-  
-  
-  ],
-
-  
-  
-  "/*": [
-
-  
-  
-  
-  "./node_modules/*"
-
-  
-  
-  ],
-
-  
-  
-  "@videos/*": [
-
-  
-  
-  
-  "./videos/*"
-
-  
-  
-  ]
-
-  
-  }
-
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/components/*": [
+        "./app/[locale]/components/*"
+      ],
+      "@/*": [
+        "./*"
+      ],
+      "/*": [
+        "./node_modules/*"
+      ],
+      "@videos/*": [
+        "./videos/*"
+      ]
+    },
+    "target": "ES2017"
   },
-
   "include": [
-
-  
-  "video.d.ts",
-
-  
-  "next-env.d.ts",
-
-  
-  "**/*.ts",
-
-  
-  "**/*.tsx",
-
-  
-  ".next/types/**/*.ts"
-, "src/app/[locale]/index.ts"
+    "video.d.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/[locale]/index.ts",
+    ".next/dev/types/**/*.ts"
   ],
-
   "exclude": [
-
-  
-  "node_modules"
-
+    "node_modules"
   ]
 }
