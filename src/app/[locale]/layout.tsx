@@ -1,5 +1,6 @@
 import "./globals.css";
-import { NextIntlClientProvider, useMessages } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import ReduxProvider from "./redux/provider";
 import { cookies } from "next/headers";
 
@@ -22,7 +23,7 @@ const RootLayout = async ({ children, params }: Props) => {
   const { locale } = await params;
 
   // providing all messages to the client
-  const messages = await useMessages();
+  const messages = await getMessages();
 
   // store Mode state
   const cookieStore = await cookies();
