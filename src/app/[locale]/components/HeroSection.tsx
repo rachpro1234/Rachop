@@ -83,8 +83,8 @@ const HeroSection = () => {
     const fetchTestimonialsData = async () => {
       try {
         const response = await axios.get<Testimonial[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/testimonials`);
-        console.log(response.data);
         setTestimonialData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log("No Testimonials items found", error);
       }
@@ -92,31 +92,6 @@ const HeroSection = () => {
 
     fetchTestimonialsData();
   }, [])
-
-  // Testimonial data
-  // const testimonialData = [
-  //   {
-  //     id: 0,
-  //     img: "/testimonial/ph-1.webp",
-  //     name: "Natalia Brese",
-  //     position: "fashion_model_&_artist",
-  //     testimonial: "the_service_is_amazing!!",
-  //   },
-  //   {
-  //     id: 1,
-  //     img: "/testimonial/ph-2.webp",
-  //     name: "Thomas Havbe",
-  //     position: "film_maker_&_singer",
-  //     testimonial: "i_would_recommend_it_to_everybody",
-  //   },
-  //   {
-  //     id: 2,
-  //     img: "/testimonial/ph-4.webp",
-  //     name: "Karmen raden",
-  //     position: "ceo_&_founder_invision",
-  //     testimonial: "i_can't_ask_for_more_than_that",
-  //   },
-  // ];
 
   const dispatch = useDispatch<AppDispatch>();
   const cartArray: cartItems[] = useAppSelector((state) => state.cartReducer);
@@ -245,7 +220,6 @@ const HeroSection = () => {
         </h2>
         <Slider {...settings} className="w-[100%] rounded-xl pt-10">
           {testimonialData.map((item, index) => {
-             console.log(item.img);
             return (
                  <div 
                  className="flex items-center relative" 
