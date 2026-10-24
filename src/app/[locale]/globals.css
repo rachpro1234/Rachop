@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "tailwindcss";
+@import "flowbite-react/plugin/tailwindcss";
+@source "../../../.flowbite-react/class-list.json";
+@config "../../../tailwind.config.ts";
+
 /* @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"); */
 
 @layer components {
@@ -17,6 +23,7 @@
     @apply bg-gray-200 rounded-md p-[6px] text-[14px] cursor-pointer hover:bg-lin hover:text-white;
   }
 }
+
 
 * {
   padding: 0;

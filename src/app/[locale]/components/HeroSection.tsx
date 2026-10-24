@@ -226,14 +226,14 @@ const HeroSection = () => {
                  key={index}>
                     <p className="absolute top-0 left-0 w-full h-full m-0 bg-black/50 rounded-xl"></p>
                     <div className="w-[100%]">
-                      {item.img ? <Image
+                      <Image
                         alt="image"
                         src={item.img}
                         width={2000}
                         height={2000}
                         property="false"
                         className="rounded-xl object-cover sm:object-top-[20%] w-[100%] h-[500px]"
-                      /> : null}
+                      /> 
                     </div>
                     <div className="absolute left-[30px] lg:space-y-4 bg-[#ffffffa2] sm:bg-transparent p-6 sm:p-0 rounded-lg sm:rounded-none">
                       <div className="flex-col relative">
