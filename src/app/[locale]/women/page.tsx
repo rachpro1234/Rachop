@@ -100,7 +100,7 @@ function Women() {
   }, [cartArray]);
 
   return (
-    <div className="container pt-[135px] relative">
+    <div className="container pt-33.75 relative">
       <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
         {t("women")}
       </h1>
@@ -109,7 +109,7 @@ function Women() {
         width={900}
         height={900}
         property="false"
-        className="w-[100%] h-[500px] object-cover sm:object-right object-center rounded-lg"
+        className="w-full h-125 object-cover sm:object-right object-center rounded-lg"
         alt="men-banner"
       />
 
@@ -126,7 +126,7 @@ function Women() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-[400px] w-full"
+                className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-100 w-full"
                 key={item.id}
               >
                 <Link href={`/womenProducts/${item.slug}`}>
@@ -136,7 +136,7 @@ function Women() {
                       alt="product-img"
                       width={200}
                       height={200}
-                      className="bg-transparent w-full object-cover object-center rounded-lg h-[300px] cursor-pointer transition duration-500 hover:scale-110"
+                      className="bg-transparent w-full object-cover object-center rounded-lg h-75 cursor-pointer transition duration-500 hover:scale-110"
                       />
                   </div>
                 </Link>
@@ -144,7 +144,7 @@ function Women() {
                     <h3 className="text-accent font-bold uppercase">
                       {t(item.title_key)}
                     </h3>
-                    <p className="text-[#aaa] max-w-[200px] capitalize">
+                    <p className="text-[#aaa] max-w-50 capitalize">
                       {t(item.desc_key)}
                     </p>
                     <span>

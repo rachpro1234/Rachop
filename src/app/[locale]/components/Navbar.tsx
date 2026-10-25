@@ -233,7 +233,7 @@ function Navbar() {
       </header>
 
       {/* small screen navbar on the page bottom when resizing the screen */}
-      <div className="lg:hidden fixed bottom-0 w-full bg-white left-[50%] -translate-x-[50%] max-w-[500px] px-8 z-50 rounded-lg dark:bg-[#131927] dark:text-white">
+      <div className="lg:hidden fixed bottom-0 w-full bg-white left-[50%] translate-x-[-50%] max-w-125 px-8 z-50 rounded-lg dark:bg-[#131927] dark:text-white">
         <div className="flex justify-between items-center text-[28px] py-2 cursor-pointer">
           <div className="bars" onClick={toggleSideBar}>
             {navOpen ? (
@@ -252,7 +252,7 @@ function Navbar() {
               className={pathname === "/order" ? "text-accent" : ""}
             >
               {cartItems !== 0 ? (
-                <div className="bg-red-600 rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
+                <div className="bg-red-600 rounded-full absolute top-0 right-0 w-4.5 h-4.5 text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
                   {cartItems}
                 </div>
               ) : (

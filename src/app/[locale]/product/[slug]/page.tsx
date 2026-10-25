@@ -49,13 +49,13 @@ const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
     if(!slug) return;
 
     const fetchItemData = async () => {
-        try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`);
+        // try {
+        const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`);
         setProductItem(response.data);
         console.log(response.data);
-        } catch (error) {
-          console.log("no hero section item found", error);
-        }
+        // } catch (error) {
+        //   console.log("no hero section item found", error);
+        // }
       }
     fetchItemData();
   }, [slug]);
@@ -82,7 +82,7 @@ const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
         slug: product.slug,
         title_key: product.title_key,
         desc_key: product.desc_key,
-        category: "hero",
+        category: "Hero",
         img: product.img,
         price: product.price,
         prev_price: product.prev_price,
@@ -101,12 +101,16 @@ const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
   }, [cartArray]);
 
   if(!productItem) {
+    return <p className="h-screen flex justify-center items-center">loading...</p>
+  }
+
+  if(!productItem) {
     notFound();
   }
 
   return (
     <section>
-      <div className="mt-28 mx-auto max-w-[1265px]">
+      <div className="mt-28 mx-auto max-w-316.25">
           <Breadcrumb aria-label="Default breadcrumb example">
             <BreadcrumbItem href="/">
               Home
@@ -133,10 +137,10 @@ const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
                 aria-label={t("add_to_cart")}
                 title={t("add_to_cart")}
                 onClick={() => addToCart(productItem)}
-                className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-[2px] bg-black rounded-full bg-gradient-to-t from-[#8122b0] to-[#dc98fd] active:scale-95"
+                className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-0.5 bg-black rounded-full bg-linear-to-t from-[#8122b0] to-[#dc98fd] active:scale-95"
               >
                 <span
-                  className="w-full h-full capitalize flex items-center gap-2 px-7 py-2 bg-accent text-white rounded-full bg-gradient-to-t from-[#a62ce2] to-accent"
+                  className="w-full h-full capitalize flex items-center gap-2 px-7 py-2 bg-accent text-white rounded-full bg-linear-to-t from-[#a62ce2] to-accent"
                 >
                 <ShoppingCartSimple size={20}  className="dark:text-white"/>{("add_to_cart")}</span>
               </button>

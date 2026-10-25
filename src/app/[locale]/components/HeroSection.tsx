@@ -67,7 +67,7 @@ const HeroSection = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get<Product[]>(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
-          params: { category: "hero" },
+          params: { category: "Hero" },
         });
         setHeroProduct(response.data);
         console.log(response.data);
@@ -113,7 +113,7 @@ const HeroSection = () => {
         slug: product.slug,
         title_key: product.title_key,
         desc_key: product.desc_key,
-        category: "hero",
+        category: "Hero",
         img: product.img,
         price: product.price,
         prev_price: product.prev_price,
@@ -152,7 +152,7 @@ const HeroSection = () => {
       {/** HOME Products container */}
         <article className="container pt-16">
           <h1 className="flex items-center justify-center gap-4 font-medium text-2xl border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] uppercase dark:text-white">
-            {t("new_arrival")} <HR className="text-black dark:text-white w-full h-[2px]" />
+            {t("new_arrival")} <HR className="text-black dark:text-white w-full h-0.5" />
           </h1>
           {heroProduct.length > 0 ? <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] pt-10 place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
             {heroProduct.map((item, index) => {
@@ -162,7 +162,7 @@ const HeroSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-[400px] w-full"
+                  className="product-card px-4 dark:bg-slate-950 bg-white rounded-xl max-w-100 w-full"
                   key={item.id}
                 >
                   <Link className="grid" href={`/product/${item.slug}`}>
@@ -182,7 +182,7 @@ const HeroSection = () => {
                         <h3 className="text-accent font-bold uppercase">
                           {t(item.title_key)}
                         </h3>
-                        <p className="text-[#aaa] max-w-[200px] capitalize">
+                        <p className="text-[#aaa] max-w-50 capitalize">
                           {t(item.desc_key)}
                         </p>
                         <span>
@@ -191,9 +191,9 @@ const HeroSection = () => {
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="product-card__price font-bold flex gap-4">
-                          <span className="text-blakish dark:text-white">{item.price}{t("$")}</span>
+                          <span className="text-blakish dark:text-white">${item.price}</span>
                           <span className="line-through font-normal text-[#aea3a3]">
-                            {item.prev_price}{t("$")}
+                            ${item.prev_price}
                           </span>
                         </div>
                         <button
@@ -216,34 +216,34 @@ const HeroSection = () => {
       {/** Testimonial */}
       <div className="container pt-9 grid-cols-2">
         <h2 className="flex items-center justify-center gap-4 border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] font-medium text-2xl uppercase dark:text-white">
-          {t("testimonials")} <HR className="text-black dark:text-white w-full h-[2px]" />
+          {t("testimonials")} <HR className="text-black dark:text-white w-full h-0.5" />
         </h2>
-        <Slider {...settings} className="w-[100%] rounded-xl pt-10">
+        <Slider {...settings} className="w-full rounded-xl pt-10">
           {testimonialData.map((item, index) => {
             return (
                  <div 
                  className="flex items-center relative" 
                  key={index}>
                     <p className="absolute top-0 left-0 w-full h-full m-0 bg-black/50 rounded-xl"></p>
-                    <div className="w-[100%]">
+                    <div className="w-full">
                       <Image
                         alt="image"
                         src={item.img}
                         width={2000}
                         height={2000}
                         property="false"
-                        className="rounded-xl object-cover sm:object-top-[20%] w-[100%] h-[500px]"
+                        className="rounded-xl object-cover sm:object-top-[20%] w-full h-125"
                       /> 
                     </div>
-                    <div className="absolute left-[30px] lg:space-y-4 bg-[#ffffffa2] sm:bg-transparent p-6 sm:p-0 rounded-lg sm:rounded-none">
+                    <div className="absolute left-7.5 top-0 lg:space-y-4 bg-[#ffffffa2] sm:bg-transparent p-6 sm:p-0 rounded-lg sm:rounded-none">
                       <div className="flex-col relative">
                         <h3 className="text-accent font-bold uppercase text-[4rem]">{item.person_name}</h3>
-                        <p className="sm:text-[#8b8b8b] text-blakish">{item.person_position}</p>
+                        <p className="sm:text-[#8b8b8b] text-blakish">{t(item.person_position)}</p>
                         <p className="text-white">
-                          <span className="text-accent absolute -left-[5.2%]">
+                          <span className="text-accent absolute left-[-5.2%]">
                             <Quotes size={20} weight="fill" />
                           </span>
-                          {item.person_testimonial}
+                          {t(item.person_testimonial)}
                           <span className="text-accent absolute">
                             <Quotes size={20} weight="fill" />
                           </span>
@@ -251,19 +251,12 @@ const HeroSection = () => {
                       </div>
                     </div>
                   </div>
-              // <Testimonial
-              //   key={item.id}
-              //   person_name={item.person_name}
-              //   img={item.img}
-              //   person_position={t(item.person_position)}
-              //   person_testimonial={t(item.person_testimonial)}
-              // />
             );
           })}
         </Slider>
         <div className="rounded-2xl grid mt-10">
           <h2 className="flex items-center justify-center gap-4 border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] font-medium text-3xl uppercase dark:text-white">
-            {t("demo")} <HR className="text-black dark:text-white w-full h-[2px]" />
+            {t("demo")} <HR className="text-black dark:text-white w-full h-0.5" />
           </h2>
           <Video 
             src={videoDatei} 

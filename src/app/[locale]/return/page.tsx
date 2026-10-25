@@ -45,7 +45,7 @@ function paymentCompleted() {
 
     if(!session) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#fff] to-accent">
+            <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-white to-accent">
                 <p className="text-white text-xl">{t("loading")}</p>
             </div>
         )
@@ -62,7 +62,7 @@ function paymentCompleted() {
     const formattedAmount = (session.amountTotal / 100).toFixed(2);
 
   return (
-<div className="min-h-screen overflow-hidden relative bg-gradient-to-br from-[#fff] to-accent">
+<div className="min-h-screen overflow-hidden relative bg-linear-to-br from-white to-accent">
       <div className="min-h-screen flex items-center justify-center px-4">
         <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-8 md:p-12 max-w-md w-full text-center shadow-2xl">
           <div className="mb-8">

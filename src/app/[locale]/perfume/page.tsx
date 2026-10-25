@@ -95,8 +95,8 @@ function Perfume() {
   }, [cartArray]);
 
   return (
-    <div className="container relative pt-[135px] px-4 sm:px-0">
-        <h1 className="absolute text-[#fff] text-7xl flex items-center justify-center capitalize ml-4">
+    <div className="container relative pt-33.75 px-4 sm:px-0">
+        <h1 className="absolute text-white text-7xl flex items-center justify-center capitalize ml-4">
           {t("perfume")}
         </h1>
       <Image
@@ -105,7 +105,7 @@ function Perfume() {
         height={900}
         alt="banner"
         property="true"
-        className="w-[100%] h-[505px] object-cover sm:object-right object-center rounded-lg"
+        className="w-full h-126.25 object-cover sm:object-right object-center rounded-lg"
       />
 
       <h1 className="flex items-center justify-center text-center font-bold capitalize text-4xl pt-9 dark:text-white">
@@ -121,7 +121,7 @@ function Perfume() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="product-card px-7 dark:bg-slate-950 bg-white rounded-xl max-w-[400px] w-full" 
+              className="product-card px-7 dark:bg-slate-950 bg-white rounded-xl max-w-100 w-full" 
               key={item.id}>
                 <Link href={`/perfumeProducts/${item.slug}`}>
                     <div className="overflow-hidden">
@@ -130,7 +130,7 @@ function Perfume() {
                         alt="product-img"
                         width={200}
                         height={200}
-                        className="img bg-transparent w-full object-cover object-center rounded-lg h-[300px] cursor-pointer transition duration-500 hover:scale-110"
+                        className="img bg-transparent w-full object-cover object-center rounded-lg h-75 cursor-pointer transition duration-500 hover:scale-110"
                         />
                     </div>
                 </Link>
@@ -138,7 +138,7 @@ function Perfume() {
                       <h3 className="text-accent font-bold uppercase">
                         {item.title_key}
                       </h3>
-                      <p className="text-[#aaa] max-w-[200px] capitalize">
+                      <p className="text-[#aaa] max-w-50 capitalize">
                         {t(item.desc_key)}
                       </p>
                       <span>

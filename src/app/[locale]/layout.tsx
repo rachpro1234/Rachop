@@ -12,6 +12,12 @@ export const metadata = {
   description: "This ia a simple next js app",
 };
 
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin']
+})
+
 type Props = {
   children: React.ReactNode;
   params: Promise<{
@@ -29,8 +35,8 @@ const RootLayout = async ({ children, params }: Props) => {
   const cookieStore = await cookies();
   const mode = cookieStore.get("mode")?.value || 'dark';
   return (
-    <html lang={locale}>
-      <body className={` ${mode} bg-white dark:bg-[#131927] bg-[repeating-linear-gradient(45deg,theme(colors.gray.800)_0,theme(colors.gray.800)_1px,transparent_1px,transparent_13px)]`}>
+    <html lang={locale} className={roboto.className}>
+      <body className={`${mode} bg-white dark:bg-[#131927] bg-[repeating-linear-gradient(45deg,var(--color-gray-800)_0,var(--color-gray-800)_1px,transparent_1px,transparent_13px)]`}>
         <NextIntlClientProvider messages={messages}>
           <ReduxProvider>{children}</ReduxProvider>
         </NextIntlClientProvider>

@@ -200,7 +200,7 @@ const SignUp = () => {
 
 
   return (
-    <div className="flex items-center justify-center pt-[160px] mb-10">
+    <div className="flex items-center justify-center pt-40 mb-10">
       <div className="relative w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg dark:bg-slate-950">
         <div className="text-center">
           <h2 className="text-3xl font-bold capitalize text-gray-900 dark:text-white">
@@ -246,7 +246,7 @@ const SignUp = () => {
               onFocus={onFocusUsernameInput}
               name="username"
               placeholder={t("enter_your_username")}
-              className="block w-full p-2 mt-1 border rounded-md focus:!border-accent shadow-sm"
+              className="block w-full p-2 mt-1 border rounded-md focus:border-accent! shadow-sm"
             />
             <span className={cs.error}>{usernameError}</span>
           </div>
@@ -267,7 +267,7 @@ const SignUp = () => {
               onFocus={onFocusEmailInput}
               name="email"
               placeholder={t("enter_your_email")}
-              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:!border-accent"
+              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:border-accent!"
             />
             <span className={cs.error}>{emailError}</span>
           </div>
@@ -288,7 +288,7 @@ const SignUp = () => {
               onFocus={onFocusPasswordInput}
               name="password"
               placeholder={t("enter_your_password")}
-              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:!border-accent"
+              className="block w-full p-2 mt-1 border rounded-md shadow-sm focus:border-accent!"
             />
             <span
               className="absolute right-4 top-9 cursor-pointer"

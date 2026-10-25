@@ -29,9 +29,9 @@ const LanguageSwitcher = () => {
             onChange={onChangeLanguage}
             className="cursor-pointer dark:bg-[#131927] dark:text-white"
           >
-            <option value="en">Englich</option>
-            <option value="de">Deutsch</option>
-            <option value="it">Italiano</option>
+            <option value="en">En</option>
+            <option value="de">De</option>
+            <option value="it">It</option>
           </select>
         </label>
       </div>

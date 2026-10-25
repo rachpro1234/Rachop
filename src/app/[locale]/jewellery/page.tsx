@@ -99,7 +99,7 @@ function Jewellery() {
   }, [cartArray]);
 
   return (
-    <div className="container relative pt-[135px]">
+    <div className="container relative pt-33.75">
 
       <div className="jewellery-ban">
         <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
@@ -111,7 +111,7 @@ function Jewellery() {
           height={1000}
           alt="jewellery banner"
           property="false"
-          className="w-full h-[505px] object-cover sm:object-right object-center rounded-lg"
+          className="w-full h-126.25 object-cover sm:object-right object-center rounded-lg"
         />
       </div>
 
@@ -128,7 +128,7 @@ function Jewellery() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="product-card px-4  dark:bg-slate-950 bg-white rounded-xl max-w-[400px] w-full"
+                className="product-card px-4  dark:bg-slate-950 bg-white rounded-xl max-w-100 w-full"
                 key={index}
               >
                 <Link href={`/jewelleryProducts/${item.slug}`}>
@@ -138,7 +138,7 @@ function Jewellery() {
                         alt="product-img"
                         width={200}
                         height={200}
-                        className="bg-transparent w-full object-cover object-center rounded-lg h-[300px] cursor-pointer transition duration-500 hover:scale-110"
+                        className="bg-transparent w-full object-cover object-center rounded-lg h-75 cursor-pointer transition duration-500 hover:scale-110"
                       />
                     </div>
                 </Link>
@@ -146,7 +146,7 @@ function Jewellery() {
                       <h3 className="text-accent font-bold uppercase">
                         {t(item.title_key)}
                       </h3>
-                      <p className="text-[#aaa] max-w-[200px] capitalize">
+                      <p className="text-[#aaa] max-w-50 capitalize">
                         {t(item.desc_key)}
                       </p>
                       <span>

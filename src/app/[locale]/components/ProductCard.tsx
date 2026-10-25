@@ -89,7 +89,7 @@ const ProductCard: React.FC<Product> = ({
  
   return (
     <div>
-      <div className="product-card px-4 border border-gray-200 rounded-xl max-w-[400px]">
+      <div className="product-card px-4 border border-gray-200 rounded-xl max-w-100">
         <div className="overflow-hidden">
           <Image
             src={img}
@@ -101,7 +101,7 @@ const ProductCard: React.FC<Product> = ({
         </div>
         <div className="product-card__info space-y-2 py-2">
           <h3 className="text-accent font-bold uppercase">{title_key}</h3>
-          <p className="text-[#aaa] max-w-[200px] capitalize">{desc_key}</p>
+          <p className="text-[#aaa] max-w-50 capitalize">{desc_key}</p>
           <span>
             <Stars currentRating={null} />
           </span>

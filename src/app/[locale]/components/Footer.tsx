@@ -17,7 +17,7 @@ const Footer = () => {
   return (
     <footer className="w-full dark:bg-slate-950 bg-white dark:text-white">
       <div className="relative container py-16 lg:pt-24">
-        <div className="absolute end-0 top-4 sm:top-6 lg:top-8">
+        <div className="absolute inset-e-0 top-4 sm:top-6 lg:top-8">
           <Link
             className="animate-bounce inline-block rounded-full dark:bg-slate-950 bg-white p-2 text-white shadow transition hover:text-accent   hover:border-solid border border-accent sm:p-3 lg:p-4"
             href="#"

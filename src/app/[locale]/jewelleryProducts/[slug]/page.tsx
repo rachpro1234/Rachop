@@ -131,10 +131,10 @@ const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
                 aria-label={t("add_to_cart")}
                 title={t("add_to_cart")}
                 onClick={() => addToCart(productItem)}
-                className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-[2px] bg-black rounded-full bg-gradient-to-t from-[#8122b0] to-[#dc98fd] active:scale-95"
+                className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-0.5 bg-black rounded-full bg-linear-to from-[#8122b0] to-[#b4aeb7] active:scale-95"
               >
                 <span
-                  className="w-full h-full capitalize flex items-center gap-2 px-7 py-2 bg-accent text-white rounded-full bg-gradient-to-t from-[#a62ce2] to-accent"
+                  className="w-full h-full capitalize flex items-center gap-2 px-7 py-2 bg-accent text-white rounded-full bg-linear-to from-[#a62ce2] to-accent"
                 >
                 <ShoppingCartSimple size={20}  className="text-white"/>{t("add_to_cart")}</span>
               </button>
@@ -143,11 +143,6 @@ const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
         </div>
 
       </article>
-        {/* thumbnail display test */}
-        {/* <div className="w-full h-screen flex items-center justify-center"> */}
-          {/* <ThumbnailSlider images={product.images} /> */}
-        {/* </div> */}
-        {/* <ImageEffect image={product.img} /> */}
     </section>
   );
 };

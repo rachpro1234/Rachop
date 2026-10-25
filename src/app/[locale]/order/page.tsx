@@ -92,7 +92,7 @@ const Product: React.FC = () => {
   };
 
   return (
-    <div className="pt-[160px] max-w-[1536px] mx-auto">
+    <div className="pt-40 max-w-384 mx-auto">
       {cartItems.length !== 0 ? (
         <h1 className="text-center mb-10 capitalize font-bold text-3xl dark:text-white">{tOrder("your_orders")}</h1>
       ) : (
@@ -123,7 +123,7 @@ const Product: React.FC = () => {
                     <h3 className="text-accent font-bold uppercase text-3xl">
                       {t(`${item.title_key}`)}
                     </h3>
-                    <p className="text-[#aaa] max-w-[200px] capitalize text-lg">
+                    <p className="text-[#aaa] max-w-50 capitalize text-lg">
                       {t(`${item.category}.${item.desc_key}`)}
                     </p>
                     <span>
@@ -133,7 +133,7 @@ const Product: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => decrementCartItems(index)}
-                        className="p-2 rounded-full border border-accent w-[21px] h-[21px] flex justify-center items-center bg-accent dark:bg-transparent text-white"
+                        className="p-2 rounded-full border border-accent w-5.25 h-5.25 flex justify-center items-center bg-accent dark:bg-transparent text-white"
                       >
                         -
                       </button>
@@ -141,7 +141,7 @@ const Product: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => incrementCartItems(index)}
-                        className="p-2 rounded-full  border border-accent w-[21px] h-[21px] flex justify-center items-center bg-accent dark:bg-transparent text-white"
+                        className="p-2 rounded-full  border border-accent w-5.25 h-5.25 flex justify-center items-center bg-accent dark:bg-transparent text-white"
                       >
                         +
                       </button>
@@ -170,7 +170,7 @@ const Product: React.FC = () => {
             <button 
             type="button"  
             onClick={handleCheckout}
-            className="bg-transparent  dark:text-[#fff] text-xl capitalize border-2 border-accent transition-colors duration-300 ease-in-out py-2 px-7 rounded-full">
+            className="bg-transparent  dark:text-white text-xl capitalize border-2 border-accent transition-colors duration-300 ease-in-out py-2 px-7 rounded-full">
               {tOrder("order")}
             </button>
         ) : (

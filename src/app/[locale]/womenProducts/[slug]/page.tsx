@@ -138,7 +138,7 @@ const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
                 aria-label={t("add_to_cart")}
                 title={t("add_to_cart")}
                 onClick={() => addToCart(productItem)}
-                className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-[2px] bg-black border border-accent rounded-full active:scale-95"
+                className="relative cursor-pointer opacity-90 hover:opacity-100 transition-opacity p-0.5 bg-black border border-accent rounded-full active:scale-95"
               >
                 <span
                   className="w-full h-full capitalize flex items-center gap-2 px-7 py-2 text-white rounded-full"
