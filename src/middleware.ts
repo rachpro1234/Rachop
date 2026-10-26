@@ -1,7 +1,5 @@
-// import createMiddleware from 'next-intl/middleware';
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
-// import  {type NextRequest, type NextResponse } from "next/server";
 
 const nextIntlMiddleware = createMiddleware({
   // A list of all locales that are supported
@@ -17,11 +15,7 @@ export default function (req: NextRequest): NextResponse {
 }
 
 export const config = {
-  // Match only internationalized pathnames
   matcher: [
-    // "/", "/(de|en|it)/:path*",
-    // "/((?!api|_next/static|_next/image|assets|favicon.ico).*)",
-    // '/((?!api|_next/static|_next/image|.*\\.webp$).*)',
     '/((?!api|_next/static|_next/image|favicon.ico|.*\\.webp$).*)'
   ],
 };
