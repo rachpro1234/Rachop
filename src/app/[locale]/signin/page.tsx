@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { Eye } from "@phosphor-icons/react/dist/ssr";
 import { EyeSlash, Checks } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
-import cs from "../auth.module.css";
+import cs from "../css/auth.module.css";
 import { Button, Modal, ModalBody, ModalHeader } from "flowbite-react";
 
 

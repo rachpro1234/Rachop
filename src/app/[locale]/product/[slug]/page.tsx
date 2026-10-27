@@ -49,13 +49,9 @@ const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
     if(!slug) return;
 
     const fetchItemData = async () => {
-        // try {
         const response = await axios.get<Product>(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`);
         setProductItem(response.data);
         console.log(response.data);
-        // } catch (error) {
-        //   console.log("no hero section item found", error);
-        // }
       }
     fetchItemData();
   }, [slug]);
@@ -109,29 +105,31 @@ const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
   }
 
   return (
-    <section>
-      <div className="mt-28 mx-auto max-w-316.25">
+    <section className="container">
+      <div className="mt-28">
           <Breadcrumb aria-label="Default breadcrumb example">
-            <BreadcrumbItem href="/">
+            <BreadcrumbItem href="/"  className="hover:underline transition-all duration-300 ease-in-out">
               Home
             </BreadcrumbItem>
              <BreadcrumbItem href="">{slug}</BreadcrumbItem>
-          {/* <BreadcrumbItem>Flowbite React</BreadcrumbItem> */}
           </Breadcrumb>
       </div>
-      <article className="flex items-center justify-center gap-7 py-7">
+      <article className="flex gap-7 py-7 bg-white dark:bg-dark_primary_bg p-4">
         <ImageEffect image={productItem.img} />
-        <div>
+        <div className="flex flex-col h-auto justify-between">
+          <div>
             <h1 className="text-3xl font-bold text-accent uppercase">{productItem.title_key}</h1>
-            <p className="text-xl capitalize">{t(productItem.desc_key)}</p>
+            <p className="text-xl capitalize dark:text-white">{t(productItem.desc_key)}</p>
             <span>
                 <Stars currentRating={null} />
             </span>
-            <div className="flex justify-between gap-4 mt-4">
+            {/* <div className="flex justify-between gap-4 mt-4"> */}
               <span className="flex items-center gap-2">
                 <p className="text-blakish dark:text-white text-4xl font-bold">${productItem.price}</p>
                 <p className="line-through text-[#aea3a3]">${productItem.prev_price}</p>
               </span>
+          </div>
+          <div className="mt-4">
               <button
                 type="submit"
                 aria-label={t("add_to_cart")}
@@ -144,9 +142,10 @@ const ProductPage = (props: { params: Promise<{ slug: string }> }) => {
                 >
                 <ShoppingCartSimple size={20}  className="dark:text-white"/>{("add_to_cart")}</span>
               </button>
-            </div>
-
+            {/* </div> */}
+          </div>
         </div>
+
 
       </article>
     </section>
