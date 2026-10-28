@@ -7,7 +7,6 @@
 @source "../../../.flowbite-react/class-list.json";
 @config "../../../tailwind.config.ts";
 
-/* @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"); */
 
 @layer components {
   .header_top__fb_wrapper {

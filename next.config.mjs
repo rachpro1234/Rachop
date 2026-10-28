@@ -13,6 +13,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const nextConfig = {
   turbopack: {
     root: __dirname,
+  },
+  experimental: {
+    optimizePackageImports: []
   }
 };
 
