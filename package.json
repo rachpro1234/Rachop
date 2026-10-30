@@ -2,7 +2,6 @@
   "name": "my-next-app",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev & npx next-video sync -w",
     "build": "next build",

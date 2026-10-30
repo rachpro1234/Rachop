@@ -56,7 +56,7 @@ interface Testimonial {
 const HeroSection = () => {
   const t = useTranslations("Hero");
 
-  const tData = useTranslations("Product")
+  const tData = useTranslations("Product");
 
   const [heroProduct, setHeroProduct] = useState<Product[]>([]);
   const [testimonialData, setTestimonialData] = useState<Testimonial[]>([]);
@@ -155,7 +155,7 @@ const HeroSection = () => {
             {t("new_arrival")} <HR className="text-black dark:text-white w-full h-0.5" />
           </h1>
           {heroProduct.length > 0 ? <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] pt-10 place-items-stretch sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10">
-            {heroProduct.map((item, index) => {
+            {heroProduct.map((item: any, index: number) => {
               return (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -218,7 +218,7 @@ const HeroSection = () => {
         <h2 className="flex items-center justify-center gap-4 border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] font-medium text-2xl uppercase dark:text-white">
           {t("testimonials")} <HR className="text-black dark:text-white w-full h-0.5" />
         </h2>
-        <Slider {...settings} className="w-full rounded-xl pt-10">
+        {testimonialData.length > 0 ? <Slider {...settings} className="w-full rounded-xl pt-10">
           {testimonialData.map((item, index) => {
             return (
                  <div 
@@ -253,7 +253,7 @@ const HeroSection = () => {
                   </div>
             );
           })}
-        </Slider>
+        </Slider> : <span className="h-screen flex justify-center items-center dark:text-white">{tData("no_data")}</span>}
         <div className="rounded-2xl grid mt-10">
           <h2 className="flex items-center justify-center gap-4 border border-accent px-5 whitespace-nowrap rounded-[40px] bg-white dark:bg-[#131927] font-medium text-3xl uppercase dark:text-white">
             {t("demo")} <HR className="text-black dark:text-white w-full h-0.5" />

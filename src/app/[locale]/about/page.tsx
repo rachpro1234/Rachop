@@ -63,7 +63,7 @@ const About = () => {
 
   return (
     <div>
-      <div className="container pt-[135px] relative">
+      <div className="container pt-33.75 relative">
         <h1 className="text-7xl flex items-center justify-center capitalize absolute text-white ml-4">
           {t("about")}
         </h1>
@@ -75,11 +75,11 @@ const About = () => {
           placeholder="blur"
           blurDataURL="about blur image"
           alt="banner"
-          className="w-[100%] h-[500px] object-cover object-right rounded-xl"
+          className="w-full h-125 object-cover object-right rounded-xl"
         />
 
         <div className="pt-16 sm:flex items-center justify-center gap-10">
-          <h1 className="sm:text-5xl text-3xl w-[100%] text-center capitalize font-medium dark:text-white">
+          <h1 className="sm:text-5xl text-3xl w-full text-center capitalize font-medium dark:text-white">
             {t("we_have_fashion_store_in")}
             <span className="text-accent ml-4 uppercase font-bold">
               {text}
@@ -89,7 +89,7 @@ const About = () => {
         </div>
 
         <div className="about-area">
-          <div className="container md:max-w-[740px] w-[100%] sm:px-4 sm:mx-auto pt-10">
+          <div className="container md:max-w-185 w-full sm:px-4 sm:mx-auto pt-10">
             <h1 className="sm:text-7xl text-4xl font-bold capitalize text-center dark:text-white">
               {t("our_story")}
             </h1>
@@ -145,7 +145,7 @@ const About = () => {
               height={900}
               property="true"
               alt="banner"
-              className="w-[100%] h-[500px] object-cover object-center rounded-xl mb-10"
+              className="w-full h-125 object-cover object-center rounded-xl mb-10"
             />
           </div>
         </div>
