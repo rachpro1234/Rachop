@@ -105,6 +105,7 @@ function Perfume() {
         height={900}
         alt="banner"
         property="true"
+        loading="eager"
         className="w-full h-126.25 object-cover sm:object-right object-center rounded-lg"
       />
 
