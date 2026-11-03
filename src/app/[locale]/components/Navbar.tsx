@@ -8,8 +8,6 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
-// import { onAuthStateChanged, signOut } from "firebase/auth";
-// import { auth } from "../../../firebase/firebase";
 import { useRouter } from "next/navigation";
 import { Moon, Sun, Handbag, SquaresFour, List, User, House, X } from "@phosphor-icons/react/dist/ssr";
 import axios from "axios";
@@ -85,58 +83,15 @@ function Navbar() {
     setISClick(!isClick);
   }
 
-  const [authenticatedUser, setAuthenticatedUser] = useState<null | undefined>();
+  // const [authenticatedUser, setAuthenticatedUser] = useState<null | undefined>();
   const router = useRouter();
 
-  // function updateUserProfile(user: any) {
-  //   const username = user.displayName;
-  //   let userEmail = user.email;
 
-  //   const e = document.querySelector<HTMLElement>("#hello");
-  //   if (e) {
-  //     e.textContent = userEmail.slice(0, 4);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, async (user: any) => {
-  //     if (user) {
-  //       setAuthenticatedUser(user);
-  //       updateUserProfile(user);
-  //     } else {
-  //       // signed out
-  //       setAuthenticatedUser(null);
-  //     }
-  //   });
-  // }, []);
-
-  // const userSignout = () => {
-  //   signOut(auth)
-  //     .then(() => {
-  //       router.push("/signup");
-  //       alert("user signed out");
-  //     })
-  //     .catch((error) => {
-  //       alert(error);
-  //     });
-  // };
 
     const [mode, setMode] = useState<String | null>(null) 
-  
-  
-  //   useEffect(() => {
-  //     setMode(localStorage.getItem("theme"))
-  //   })
 
-  // const toggleTheme = () => {
-  //   if (document.documentElement.classList.contains("dark")) {
-  //     document.documentElement.classList.remove("dark");
-  //     localStorage.setItem("theme", "light");
-  //   } else {
-  //     document.documentElement.classList.add("dark");
-  //     localStorage.setItem("theme", "dark");
-  //   }
-  // };
+
+
 
     const switchMode = async (mode: 'dark' | 'light') => {
     document.body.classList.remove("dark", "light");
