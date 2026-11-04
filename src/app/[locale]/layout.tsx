@@ -35,7 +35,7 @@ const RootLayout = async ({ children, params }: Props) => {
   const cookieStore = await cookies();
   const mode = cookieStore.get("mode")?.value || 'dark';
   return (
-    <html lang={locale} className={roboto.className}>
+    <html lang={locale} className={roboto.className} data-scroll-behavior="smooth">
       <body className={`${mode} bg-white dark:bg-[#131927] bg-[repeating-linear-gradient(45deg,var(--color-gray-800)_0,var(--color-gray-800)_1px,transparent_1px,transparent_13px)]`}>
         <NextIntlClientProvider messages={messages}>
           <ReduxProvider>{children}</ReduxProvider>

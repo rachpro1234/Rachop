@@ -110,7 +110,9 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }} 
-                  key={index}>
+                  key={index}
+                  className="mb-4"
+                  >
                     <Image
                       src={img.src}
                       width={600}
